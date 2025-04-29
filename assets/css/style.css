@@ -3042,118 +3042,44 @@ canvas {
       -ms-flex-align: center;
           align-items: center;
 }
-/* Ensure the solution content starts off hidden */
-.hidden {
-  display: none;
-}
-
-/* Styling the main container */
-
-
-/* Button and SVG styling */
-.button-split {
-  background: none;
-  border: none;
-  padding: 5px;
-  cursor: pointer;
-  margin: 10px 0;
-}
-
-.button-split img {
-  width: 30px; /* Adjust the size of the SVG icon */
-  height: 30px;
-  transition: transform 0.3s ease;
-}
-
-/* Close button styling */
-.close-button {
-  background: none;
-  border: none;
-  padding: 5px;
-  cursor: pointer;
-  margin: 10px auto; /* Center the button */
-  display: none;
-}
-
-.close-button img {
-  width: 20px; /* Adjust size */
-  height: 20px;
-  transition: transform 0.3s ease;
-}
-
-/* Style for solution-content when it is visible */
-/* Container for solution content */
-/* Make sure the main container takes up the full width and height */
-#cattle-solution {
+/* 
+<!-- Tech Stack Grid CSS --> */
+.tech-stack-grid {
   display: flex;
-  flex-direction: column;
-  align-items: center; /* Centers items horizontally */
-  justify-content: flex-start; /* Aligns items to the top */
-  text-align: center;
-  margin: 0;
-  padding: 20px; /* Adjust padding */
-  background-color: transparent; /* Remove any grey background */
-  color: #fff; /* White text for the title */
-  width: 100%;
-  height: auto; /* Full width */
-  overflow-x: hidden;
+  flex-wrap: wrap;
+  justify-content: center; /* center the full grid */
+  gap: 40px 20px;
+  padding: 30px 0;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-#cattle-solution h2 {
-  margin: 0;
-  padding: 10px;
-  font-size: 24px;
-}
-/* Make sure solution content is displayed fully without being boxed */
-#solution-content {
-  position: relative;
-  overflow: visible; /* Ensure content isn't clipped */
-  background: #f5f5f5;
-  width: 100%; /* Adjust background as needed */
-  max-width: 1200px; /* Set a reasonable maximum width */
-  margin: 0 auto; /* Center horizontally within the parent */
-  word-wrap: break-word; /* Ensure long text wraps properly */
-  white-space: pre-wrap; /* Preserve spaces and allow text wrapping */
-  text-align: left; /* Align text to the left */
-  padding: 10px; /* Add padding to prevent content from touching edges */
+.tech-item {
+  flex: 0 1 calc(20% - 20px); /* 5 items per row */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#solution-content.open {
-  display: block;
-  padding: 20px;
-  background: #222; /* Light grey or any color you prefer */
-  border-radius: 8px;
+.tech-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
-/* Style the paragraph to make sure it occupies the full space */
-#solution-content p {
-  font-family: 'Courier New', Courier, monospace; /* Use a monospaced font */
-  white-space: pre-wrap; /* Maintain whitespace and ensure wrapping */
-  text-align: left; /* Ensure text is left-aligned */
-  word-wrap: break-word; /* Allow words to break properly */
+.tech-item img:hover {
+  transform: scale(1.2);
 }
 
-#toggle-button-bottom {
-  display: block;
-  margin: 20px auto; /* Center the button */
-}
-/* Container for the SVG background elements */
-#svg-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* So that it doesn't interfere with other elements */
-  z-index: 1; /* Ensure it stays behind all other elements */
-  overflow: hidden; /* Ensure overflow is hidden */
+@media (max-width: 992px) {
+  .tech-item {
+    flex: 0 1 calc(33.33% - 20px); /* 3 per row on tablets */
+  }
 }
 
-.svg-animal {
-  position: absolute;
-  opacity: 0.3; /* Transparency level */
-  transition: transform 0.3s ease; /* Optional for hover effect or animation */
+@media (max-width: 600px) {
+  .tech-item {
+    flex: 0 1 calc(50% - 20px); /* 2 per row on mobiles */
+  }
 }
-
-
-
