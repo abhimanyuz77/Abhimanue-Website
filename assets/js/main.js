@@ -492,7 +492,7 @@
   --------------------------------------------------------------*/
 // Define the placeSVGs function outside the document ready function
 function placeSVGs() {
-  console.log("Placing SVGs...");
+ // console.log("Placing SVGs...");
   const svgContainer = $('<div id="svg-background"></div>');
   $('#solution-content').prepend(svgContainer);
 
@@ -510,7 +510,7 @@ function placeSVGs() {
       const containerWidth = $('#solution-content').get(0).scrollWidth; // Get full width of the expanded text
       const containerHeight = $('#solution-content').get(0).scrollHeight; // Get full height of the expanded text
 
-      console.log(`Expanded container size for SVGs: ${containerWidth}px (width) x ${containerHeight}px (height)`);
+     // console.log(`Expanded container size for SVGs: ${containerWidth}px (width) x ${containerHeight}px (height)`);
 
       const placedPositions = [];
       const minDistance = 300; // Minimum distance to maintain between SVGs
@@ -545,7 +545,7 @@ function placeSVGs() {
           } while (isOverlapping(randomLeft, randomTop, randomSize) && attempts < 100);
 
           if (attempts >= 100) {
-              console.warn("Unable to place SVG without overlap after 100 attempts. Adjust settings or container size.");
+             // console.warn("Unable to place SVG without overlap after 100 attempts. Adjust settings or container size.");
               break;
           }
 
@@ -574,66 +574,37 @@ function getRandomInt(min, max) {
 // Function to reveal the solution without animation
 function revealSolution() {
   const solutionDiv = $('#solution-content');
-  const toggleIcon = $('#toggle-icon');
-  const closeButtonTop = $('#close-button-top');
-  const closeButtonBottom = $('#close-button-bottom');
+  const paragraph   = solutionDiv.find('p');
+  const endNote     = '\n\nTotal cattle of the sun god = 7.76 × 10\u2065444!';
 
   if (solutionDiv.hasClass('open')) {
-    closeSolution();
-    return;
+    return closeSolution();
   }
 
-  if (solutionDiv.hasClass('hidden')) {
-      // Fetch the content from the text file
-      $.ajax({
-          url: 'assets/Total-Cattles.txt', // Ensure this path is correct
-          dataType: 'text',
-          
-          success: function(data) {
-              console.log("Data fetched successfully. Length of data: ", data.length);
-              const containerWidth = solutionDiv.width(); // Get the width of the container
-              console.log("Container width: ", containerWidth);
+  solutionDiv
+    .removeClass('hidden')
+    .addClass('open');
 
-              const testSpan = $('<span>').text('0').css({
-                  'visibility': 'hidden', 
-                  'font-family': 'Courier New, Courier, monospace',
-                  'font-size': $('#solution-content p').css('font-size') // Ensure it matches the target font size
-              });
-              $('body').append(testSpan);
-              const charWidth = testSpan.width(); // Get the width of one character in the monospace font
-              testSpan.remove();
-              console.log("Character width calculated as: ", charWidth);
+  $.ajax({
+    url: 'assets/Total-Cattles.txt',
+    dataType: 'text',
+    success(data) {
+      // strip everything except digits
+      const digitsOnly = data.replace(/\D/g, '');
+      // dump it wholesale (no <br/> needed)
+      paragraph.text(digitsOnly + endNote);
 
-              const charsPerLine = Math.floor((containerWidth - 24) / charWidth); // Calculate how many characters fit per line
-
-              // Split the number into chunks based on how many characters fit per line
-              let splitNumber = '';
-              for (let i = 0; i < data.length; i += charsPerLine) {
-                  const chunk = data.substr(i, charsPerLine);
-                  console.log(`Processing chunk [${i} - ${i + charsPerLine}]: "${chunk}"`); // Log the chunk being processed
-                  splitNumber += chunk.replace(/[^\d]/g, '') + '<br>'; // Keep only digits
-              }
-
-              $('#solution-content p').html(splitNumber); // Directly display the number without animation
-              solutionDiv.removeClass('hidden').addClass('open'); // Show the solution content
-              closeButtonTop.show(); // Show the top close button
-              closeButtonBottom.show();
-              placeSVGs(); // Place SVGs in the background
-              const endNote = '<br><br><strong style="display: block; text-align: center;">Total cattle of the sun god = 7.76 x 10<sup>206544</sup>!</strong>';
-              $('#solution-content p').append(endNote);
-          },
-          error: function(xhr, status, error) {
-              console.error("Error loading the file:", status, error);
-              $('#solution-content p').text("Error loading the cattle number.");
-              solutionDiv.removeClass('hidden').addClass('open'); // Ensure the solution div is displayed even in case of an error
-              closeButtonTop.show(); // Show the top close button
-              closeButtonBottom.show();
-          }
-      });
-
-      toggleIcon.attr('src', 'assets/img/up-chevron.svg').attr('alt', 'Close Icon');
-  } 
+      // now show controls & SVGs
+      $('#close-button-top, #close-button-bottom').show();
+      $('#toggle-icon').attr('src','assets/img/up-chevron.svg');
+      placeSVGs();
+    },
+    error() {
+      paragraph.text("Error loading the cattle number.");
+    }
+  });
 }
+
 
 function closeSolution() {
     const solutionDiv = $('#solution-content');
@@ -653,6 +624,17 @@ $(document).ready(function () {
     $('#toggle-button').on('click', revealSolution); // Attach the open button functionality
     $('#close-button-top').on('click', closeSolution); // Attach the top close button functionality
     $('#close-button-bottom').on('click', closeSolution);
+});
+
+let resizeTimeout;
+$(window).on('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function() {
+        if ($('#solution-content').hasClass('open')) {
+            closeSolution();
+            setTimeout(revealSolution, 100); // slight delay for layout to stabilize
+        }
+    }, 300); // wait 300ms after resizing stops
 });
 
 
