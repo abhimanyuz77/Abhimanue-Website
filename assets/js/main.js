@@ -575,7 +575,8 @@ function getRandomInt(min, max) {
 function revealSolution() {
   const solutionDiv = $('#solution-content');
   const paragraph   = solutionDiv.find('p');
-  const endNote     = '\n\nTotal cattle of the sun god = 7.76 × 10\u2065444!';
+  // use <sup> for the exponent and allow HTML rendering
+  const endNote     = '<br/><br/>Total cattle of the sun god = 7.76 × 10<sup>206544</sup>!';
 
   if (solutionDiv.hasClass('open')) {
     return closeSolution();
@@ -589,12 +590,10 @@ function revealSolution() {
     url: 'assets/Total-Cattles.txt',
     dataType: 'text',
     success(data) {
-      // strip everything except digits
       const digitsOnly = data.replace(/\D/g, '');
-      // dump it wholesale (no <br/> needed)
-      paragraph.text(digitsOnly + endNote);
+      // switch from text() to html() so the <sup> is interpreted
+      paragraph.html(digitsOnly + endNote);
 
-      // now show controls & SVGs
       $('#close-button-top, #close-button-bottom').show();
       $('#toggle-icon').attr('src','assets/img/up-chevron.svg');
       placeSVGs();
@@ -604,6 +603,7 @@ function revealSolution() {
     }
   });
 }
+
 
 
 function closeSolution() {
