@@ -3222,4 +3222,9 @@ canvas {
     font-size: 0.8rem;
     padding: 0 10px;
   }
+  
+  /* Responsive heading for mobile devices */
+  .responsive-heading {
+    font-size: 26px !important; /* Smaller size for mobile */
+  }
 }
