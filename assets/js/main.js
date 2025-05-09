@@ -224,17 +224,30 @@
             type: "POST",
             url: "assets/php/mail.php",
             data: values,
-            success: function () {
+            dataType: 'json',
+            success: function (response) {
               $('#name').val('');
               $('#subject').val('');
               $('#phone').val('');
               $('#email').val('');
               $('#msg').val('');
 
-              $('#st-alert').fadeIn().html('<div class="alert alert-success"><strong>Success!</strong> Email has been sent successfully.</div>');
+              if (response.success) {
+                $('#st-alert').fadeIn().html('<div class="alert alert-success"><strong>Success!</strong> Email has been sent successfully.</div>');
+              } else {
+                $('#st-alert').fadeIn().html('<div class="alert alert-danger"><strong>Error!</strong> ' + response.message + '</div>');
+              }
+              
               setTimeout(function () {
                 $('#st-alert').fadeOut('slow');
               }, 4000);
+            },
+            error: function (xhr, status, error) {
+              $('#st-alert').fadeIn().html('<div class="alert alert-danger"><strong>Error!</strong> There was a problem sending your message. Please try again later.</div>');
+              setTimeout(function () {
+                $('#st-alert').fadeOut('slow');
+              }, 4000);
+              console.error("AJAX Error:", status, error);
             }
           });
         } else {
