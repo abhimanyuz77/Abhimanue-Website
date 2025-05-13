@@ -511,12 +511,11 @@ function placeSVGs() {
 
   // List of your SVG files
   const svgFiles = [
-      'assets/svg/cow1.svg', 'assets/svg/cow2.svg', 'assets/svg/cow3.svg', 'assets/svg/cow4.svg',
-      'assets/svg/bull1.svg', 'assets/svg/bull2.svg', 'assets/svg/bull3.svg', 'assets/svg/bull4.svg'
+   'assets/svg/bull.png', 'assets/svg/Cpp.svg'
   ];
 
   const numOfSVGs = svgFiles.length;
-  const numberOfCattleToShow = 3000; // Adjust as needed
+  const numberOfCattleToShow = 1000; // Reduced number since we're using fewer image types
 
   // Wait until the solution content is fully expanded before calculating dimensions
   setTimeout(() => {
