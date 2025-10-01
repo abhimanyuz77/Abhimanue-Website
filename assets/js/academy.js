@@ -22,10 +22,19 @@
       minutes = minutes < 10 ? '0' + minutes : minutes;
       seconds = seconds < 10 ? '0' + seconds : seconds;
       
-      // Update display
-      $('#hours').text(hours);
-      $('#minutes').text(minutes);
-      $('#seconds').text(seconds);
+      // Update display for coding academy
+      if ($('#hours').length) {
+        $('#hours').text(hours);
+        $('#minutes').text(minutes);
+        $('#seconds').text(seconds);
+      }
+      
+      // Update display for physics foundation
+      if ($('#hours-physics').length) {
+        $('#hours-physics').text(hours);
+        $('#minutes-physics').text(minutes);
+        $('#seconds-physics').text(seconds);
+      }
     }
     
     // Update immediately
