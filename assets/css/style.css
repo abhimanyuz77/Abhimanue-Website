@@ -1066,7 +1066,6 @@ hr {
 
 canvas {
   display: block;
-  vertical-align: bottom;
 }
 
 #particles-js {
@@ -3084,6 +3083,35 @@ canvas {
   transition: transform 0.3s ease;
 }
 
+/* Cattle Problem Achievement Section */
+.cattle-problem-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.achievement-text {
+  font-size: 20px;
+  color: #fec544;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.achievement-text strong {
+  color: #fdfeff;
+}
+
+.problem-description {
+  font-size: 16px;
+  color: #a9adb8;
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+.problem-description strong {
+  color: #fec544;
+}
+
 /* Style for solution-content when it is visible */
 /* Container for solution content */
 /* Make sure the main container takes up the full width and height */
@@ -3102,10 +3130,18 @@ canvas {
   overflow-x: hidden;
 }
 
-#cattle-solution h2 {
+#cattle-solution h3 {
   margin: 0;
   padding: 10px;
-  font-size: 24px;
+  font-size: 20px;
+  color: #fdfeff;
+}
+
+#cattle-solution h4 {
+  margin: 10px 0;
+  padding: 5px;
+  font-size: 18px;
+  color: #fec544;
 }
 /* Make sure solution content is displayed fully without being boxed */
 
@@ -3227,4 +3263,95 @@ canvas {
   .responsive-heading {
     font-size: 26px !important; /* Smaller size for mobile */
   }
+}
+
+/*--------------------------------------------------------------
+24. Academy Section
+----------------------------------------------------------------*/
+#academy {
+  padding: 80px 15px 0;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+#academy .container {
+  max-width: 1140px;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+#academy .st-section-heading {
+  width: 100%;
+  margin: 0 auto 25px;
+  text-align: center;
+}
+
+#academy .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 -15px;
+  width: 100%;
+}
+
+#academy .col-lg-6 {
+  padding: 0 15px;
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto 30px;
+}
+
+.st-price-card {
+  background-color: #0e1628;
+  border: 1px solid #555;
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.st-price-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: #fec544;
+}
+
+.st-price-card-title {
+  font-size: 28px;
+  color: #fec544;
+  margin-bottom: 25px;
+}
+
+.st-price-card-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+  text-align: center; /* Ensure text is centered */
+}
+
+.st-price-card-features li {
+  padding: 10px 0;
+  border-bottom: 1px solid #1c2333;
+  color: #a9adb8;
+  font-size: 16px;
+}
+
+.st-price-card-features li:last-child {
+  border-bottom: none;
+}
+
+.st-price-card .st-btn {
+  width: 100%;
+  padding: 12px;
 }
