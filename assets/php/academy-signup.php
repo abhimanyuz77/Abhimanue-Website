@@ -56,7 +56,7 @@ try {
     }
     
     // Prepare email content
-    $to = "your-email@example.com"; // Replace with your actual email
+    $to = "abhimanue@hexagonknow.com"; // Replace with your actual email
     $subject = "New Academy Signup: " . $fullname;
     
     $email_body = "New Academy Signup Application\n\n";
