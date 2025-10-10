@@ -51,7 +51,7 @@ try {
     }
     
     // Validate age
-    if (!is_numeric($age) || $age < 16 || $age > 100) {
+    if (!is_numeric($age) || $age < 9 || $age > 100) {
         throw new Exception("Invalid age");
     }
     
