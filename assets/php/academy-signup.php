@@ -72,7 +72,7 @@ try {
     $email_body .= "\n=================================\n";
     
     // Email headers
-    $headers = "From: Academy Signup <noreply@abhimanue.site>\r\n";
+    $headers = "From: Academy Signup <noreply@abhimanue.in>\r\n";
     $headers .= "Reply-To: " . $email . "\r\n";
     $headers .= "X-Mailer: PHP/" . phpversion();
     
