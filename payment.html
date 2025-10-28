@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Payment Successful — Receipt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6fbf7;
+      --card:#ffffff;
+      --accent:#16a34a; /* green */
+      --muted:#6b7280;
+      --glass: rgba(255,255,255,0.6);
+      --shadow: 0 8px 30px rgba(12, 20, 30, 0.08);
+      --radius:14px;
+      --max-width:760px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #f7fbff 0%, var(--bg) 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+      color:#0f172a;
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+      background:var(--card);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:0;
+    }
+
+    /* left panel */
+    .main{
+      padding:40px 44px;
+    }
+    .badge{
+      display:inline-flex;
+      gap:12px;
+      align-items:center;
+      background:linear-gradient(90deg, rgba(22,163,74,0.12), rgba(22,163,74,0.06));
+      color:var(--accent);
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:600;
+      width:max-content;
+    }
+
+    .hero{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      margin-top:18px;
+      margin-bottom:6px;
+    }
+    .check{
+      width:84px;height:84px;border-radius:999px;display:grid;place-items:center;background:linear-gradient(180deg, rgba(22,163,74,0.12), rgba(22,163,74,0.06));
+      border:1px solid rgba(22,163,74,0.12);
+      flex:0 0 84px;
+    }
+    .check svg{width:46px;height:46px}
+
+    h1{font-size:22px;margin:0 0 6px 0}
+    p.lead{margin:0;color:var(--muted);font-size:14px}
+
+    .details{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:12px;
+      margin-top:22px;
+    }
+    .detail-card{
+      padding:14px 16px;
+      border-radius:12px;
+      background:linear-gradient(180deg, rgba(15,23,42,0.02), rgba(15,23,42,0.01));
+      border:1px solid rgba(15,23,42,0.04);
+    }
+    .label{font-size:12px;color:var(--muted);margin-bottom:6px}
+    .value{font-weight:700}
+
+    .cta{display:flex;gap:12px;margin-top:26px}
+    .btn{padding:12px 16px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+    .btn-primary{background:var(--accent);color:white}
+    .btn-ghost{background:transparent;color:var(--accent);border:1px solid rgba(22,163,74,0.12)}
+
+    /* right panel (receipt summary) */
+    .side{
+      background:linear-gradient(180deg, rgba(246,251,247,1), rgba(245,255,250,1));
+      padding:28px;
+      border-left:1px dashed rgba(15,23,42,0.03);
+      display:flex;flex-direction:column;justify-content:space-between;
+    }
+    .receipt{
+      background:var(--glass);
+      padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.6);
+    }
+    .row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+    .muted{color:var(--muted);font-size:13px}
+    .big{font-weight:800;font-size:20px}
+
+    .meta{margin-top:18px;font-size:13px;color:var(--muted)}
+
+    footer{font-size:13px;color:var(--muted);margin-top:18px}
+
+    @media (max-width:880px){
+      .container{grid-template-columns:1fr;}
+      .side{order:2}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="main">
+      <div class="badge">✅ Payment received</div>
+
+      <div class="hero">
+        <div class="check" aria-hidden>
+          <!-- simple checkmark -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+        </div>
+        <div>
+          <h1>Payment Successful</h1>
+          <p class="lead">Thanks — your payment has been processed. A receipt has been emailed to you. Below are the details of this transaction.</p>
+        </div>
+      </div>
+
+      <div class="details">
+        <div class="detail-card">
+          <div class="label">Student</div>
+          <div class="value" id="studentName">—</div>
+        </div>
+        <div class="detail-card">
+          <div class="label">Course</div>
+          <div class="value" id="courseName">NEET Physics — 24 weeks</div>
+        </div>
+
+        <div class="detail-card">
+          <div class="label">Amount Paid</div>
+          <div class="value" id="amount">₹19,999</div>
+        </div>
+        <div class="detail-card">
+          <div class="label">Payment Method</div>
+          <div class="value" id="method">Card</div>
+        </div>
+
+        <div class="detail-card">
+          <div class="label">Transaction ID</div>
+          <div class="value" id="txid">—</div>
+        </div>
+        <div class="detail-card">
+          <div class="label">Date & Time</div>
+          <div class="value" id="date">—</div>
+        </div>
+      </div>
+
+      <div class="cta">
+        <button class="btn btn-primary" id="goDashboard">Go to Dashboard</button>
+        <button class="btn btn-ghost" id="printBtn">Print / Download Receipt</button>
+      </div>
+
+      <footer>
+        Tip: Keep your transaction ID safe. If you need help, contact support at <strong>abhimanue@hexagonknow.com</strong>.
+      </footer>
+    </div>
+
+    <aside class="side">
+      <div>
+        <div class="receipt">
+          <div class="row"><div class="muted">Receipt</div><div class="muted">#<span id="receiptNum">—</span></div></div>
+          <hr style="border:none;border-top:1px dashed rgba(15,23,42,0.06);margin:10px 0 12px">
+          <div class="row"><div class="muted">Course</div><div class="big" id="sideCourse">NEET Physics</div></div>
+          <div class="row"><div class="muted">Student</div><div class="muted" id="sideStudent">—</div></div>
+          <div style="height:12px"></div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="muted">Total Paid</div>
+              <div class="big" id="sideAmount">₹19,999</div>
+            </div>
+            <div style="text-align:right">
+              <div class="muted">Status</div>
+              <div style="font-weight:800;color:var(--accent)">PAID</div>
+            </div>
+          </div>
+          <div class="meta">This is a system generated receipt and does not require a physical signature.</div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px">
+        <div style="font-size:13px;color:var(--muted);margin-bottom:8px">Need help?</div>
+        <div style="display:flex;gap:8px">
+          <a href="mailto:abhimanue@hexagonknow.com" style="text-decoration:none;"><button class="btn" style="border:1px solid rgba(15,23,42,0.04)">Email Support</button></a>
+          <a href="#" style="text-decoration:none;"><button class="btn" style="border:1px solid rgba(15,23,42,0.04)">Contact</button></a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    // Simple demo script to populate placeholders. In real integration replace with server-side values or query params.
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const tx = params.get('tx') || 'TX' + Math.random().toString(36).slice(2,10).toUpperCase();
+      const name = params.get('name') || 'Student Name';
+      const method = params.get('method') || 'Card (Visa)';
+      const amount = params.get('amount') || '₹19,999';
+      const date = new Date().toLocaleString('en-IN', {timeZone: 'Asia/Kolkata'});
+
+      document.getElementById('txid').textContent = tx;
+      document.getElementById('receiptNum').textContent = tx.slice(-8);
+      document.getElementById('studentName').textContent = name;
+      document.getElementById('sideStudent').textContent = name;
+      document.getElementById('method').textContent = method;
+      document.getElementById('amount').textContent = amount;
+      document.getElementById('sideAmount').textContent = amount;
+      document.getElementById('date').textContent = date;
+
+      document.getElementById('printBtn').addEventListener('click', function(){
+        window.print();
+      });
+      document.getElementById('goDashboard').addEventListener('click', function(){
+        // change to your dashboard URL
+        location.href = '/neet-physics-crash-course.html';
+      });
+    })();
+  </script>
+</body>
+</html>

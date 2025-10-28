@@ -93,7 +93,7 @@ try {
     $response['message'] = 'Form submitted successfully';
 
     // Redirect to payment page
-    $payment_page = "https://rzp.io/rzp/UTyXWKNC";  // your actual payment page
+    $payment_page = "https://rzp.io/rzp/rcb6qf1h";  // your actual payment page
     header("Location: $payment_page");
     exit;
 
