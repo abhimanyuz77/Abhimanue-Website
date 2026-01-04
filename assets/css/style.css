@@ -1516,10 +1516,19 @@ canvas {
 ----------------------------------------------------------------*/
 .st-about-img {
   min-height: 550px;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .st-about-img-wrap {
   padding-right: 30px;
+}
+
+@media screen and (max-width: 991px) {
+  .st-about-img {
+    min-height: 0;
+  }
 }
 
 .st-text-block.st-style1 .st-text-block-title {
