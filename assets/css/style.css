@@ -1064,6 +1064,8 @@ hr {
   border: 6px solid rgba(255, 255, 255, 0.1);
   margin: auto;
   margin-bottom: 25px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
 }
 
 .st-hero.st-style2 .st-author img {
@@ -3109,11 +3111,26 @@ canvas {
   transition: transform 0.3s ease;
 }
 .st-author-video {
-  width: 100%;     /* adjust based on your theme */
+  width: 100%;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
   display: block;
+}
+
+/* Hero Main Title */
+.hero-main-title {
+  font-size: 28px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+  .hero-main-title {
+    font-size: 20px !important;
+  }
 }
 
 /* Hero Welcome Text Styling */
