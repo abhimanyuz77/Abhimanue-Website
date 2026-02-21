@@ -215,15 +215,18 @@
         msg = $.trim(msg);
 
         if (name != '' && email != '' && msg != '') {
-          var values = "name=" + name +
-            "&subject=" + subject +
-            "&phone=" + phone +
-            "&email=" + email +
-            "&msg=" + msg;
+          var formData = new FormData();
+          formData.append("name", name);
+          formData.append("subject", subject);
+          formData.append("email", email);
+          formData.append("msg", msg);
+          formData.append("company", $('#company').val() || '');
           $.ajax({
             type: "POST",
-            url: "assets/php/mail.php",
-            data: values,
+            url: "/api/contact",
+            data: formData,
+            processData: false,
+            contentType: false,
             dataType: 'json',
             success: function (response) {
               $('#name').val('');

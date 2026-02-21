@@ -163,7 +163,7 @@
 <div class="st-text-block-text">
 <p>I build structured systems that scale knowledge and operations.</p>
 
-<p>My background spans computational physics, advanced computing, enterprise troubleshooting, and years of teaching complex subjects across India and the Middle East. Across these roles, one principle remained constant: systems must work in the real world — not just in theory.</p>
+<p>My background spans computational physics, advanced computing, enterprise troubleshooting, and years of teaching physics and programming across India and the Middle East. Across these roles, one principle remained constant: systems must work in the real world — not just in theory.</p>
 
 <p>Early in my career at AT&amp;T ConnecTech, I diagnosed and resolved technical issues across thousands of systems. That experience strengthened a disciplined approach to identifying root causes, designing durable solutions, and operating effectively under pressure.</p>
 
@@ -991,7 +991,8 @@
         <div class="col-lg-6">
           <h3 class="st-contact-title">Send a message</h3>
           <div id="st-alert"></div>
-          <form action="assets/php/mail.php" method="POST" class="st-contact-form" id="contact-form">
+          <form action="/api/contact" method="POST" class="st-contact-form" id="contact-form">
+            <input type="text" name="company" id="company" style="display:none" tabindex="-1" autocomplete="off">
             <div class="st-form-field">
               <input type="text" id="name" name="name" placeholder="Your Name" required>
             </div>
