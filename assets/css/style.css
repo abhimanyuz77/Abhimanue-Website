@@ -3451,3 +3451,109 @@ canvas {
   width: 100%;
   padding: 12px;
 }
+
+/* Sitemap Page Styles */
+.sitemap-section {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.sitemap-section:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #fec544;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(254, 197, 68, 0.1);
+}
+
+.sitemap-heading {
+  color: #fec544;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(254, 197, 68, 0.3);
+}
+
+.sitemap-heading i {
+  margin-right: 10px;
+  color: #fec544;
+}
+
+.sitemap-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sitemap-list li {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sitemap-list li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.sitemap-list a {
+  color: #fdfeff;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.sitemap-list a:hover {
+  color: #fec544;
+  transform: translateX(5px);
+}
+
+.sitemap-list a i {
+  margin-right: 10px;
+  font-size: 14px;
+  color: #fec544;
+}
+
+.sitemap-description {
+  color: #a9adb8;
+  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  padding-left: 24px;
+  line-height: 1.6;
+}
+
+.sitemap-footer {
+  background: rgba(254, 197, 68, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+.sitemap-footer p {
+  color: #a9adb8;
+  margin: 0;
+  font-size: 16px;
+}
+
+.sitemap-footer a {
+  color: #fec544;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.sitemap-footer a:hover {
+  color: #fdfeff;
+  text-decoration: underline;
+}
+
+.sitemap-footer i {
+  color: #fec544;
+  margin-right: 8px;
+}
