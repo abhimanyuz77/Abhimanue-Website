@@ -1521,6 +1521,8 @@ canvas {
   width: 100%;
   height: auto;
   display: block;
+  object-fit: contain;
+  object-position: center;
 }
 
 .st-about-img-wrap {
