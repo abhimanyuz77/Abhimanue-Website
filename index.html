@@ -162,17 +162,18 @@
  <h4 class="st-text-block-subtitle">Founder of Hexagon Know</h4>
 <div class="st-text-block-text">
 
-<p>I build systems at the intersection of computing, physics, and education — designed to work in the real world and scale with clarity.</p>
+<p>I am an avid reader and builder who deploys systems at the intersection of computing, animation and education for real-world impact.</p>
 
-<p>My background spans computational physics, advanced computing, enterprise technical operations, and years of teaching physics and programming across India and the Middle East. Across these roles, one principle has remained constant: complex systems must be engineered into simple, reliable solutions.</p>
+<p>My background spans computational physics, advanced computing, enterprise technical operations, and years of teaching physics and building ed-tech solutions for 4 unicorn valued companies over a time of 6 years.</p>
 
-<p>I began my career as a technical support agent at AT&T ConnecTech, diagnosing and resolving technical issues for customers across the United States. This experience shaped my approach to root-cause analysis, durable solution design, and execution under pressure.</p>
+<p>In 2013 I began my corporate career as a technical support agent at AT&T ConnecTech, diagnosing and resolving technical issues across the USA. This experience helped me with my technical problem-solving skills, customer management & effective troubleshooting skills.</p>
 
-<p>At NIT, I focused on computational physics and advanced computing. Teaching later refined another key skill — translating deep concepts into clear and structured knowledge.</p>
+<p>Later joined VNIT for my master's in Applied Physics, where I researched and developed skills in classical & quantum computational physics, numerical programming & super computing. I explored Vedic Mathematics &intertwined it with modern computing and engineered C++ based programs to solve one of the most difficult equations called as <span class="diophantine-link" onclick="openDiophantineModal()">Diophantine equations</span> at extreme speed & 100% precision. My passion for teaching physics & businesses later helped me mentor millions of students and share knowledge widely.</p>
 
-<p>Today, I design AI-driven training and operational platforms through <strong>Hexagon Know</strong>, building systems that automate learning, improve workflows, and scale knowledge across organizations.</p>
+<p>Today, I deliver enterprise training and operational platforms through my company, <strong><a href="https://hexagonknow.com" target="_blank" rel="noopener noreferrer" style="color: #fec544; text-decoration: none;">Hexagon Know</a></strong>, building systems that automate learning, improve workflows, and scale knowledge across organizations.</p>
 
 </div>
+
 
 
                 
@@ -566,7 +567,7 @@
 
        <p class="problem-description">
   The Archimedes Cattle Problem is one of the most notorious puzzles in mathematical history—so complex that its solution spans 206,545 digits and remained unsolved for centuries without computational power.
-  Solving it requires deep mastery of Diophantine equations, particularly large-scale Pell–Fermat systems.
+  Solving it requires deep mastery of <span class="diophantine-link" onclick="openDiophantineModal()">Diophantine equations</span>, particularly large-scale Pell–Fermat systems.
 </p>
 
 <p class="problem-description">
@@ -1067,6 +1068,97 @@
   </section>
   <!-- End Contact Seciton -->
 
+  <!-- Diophantine Equations Modal -->
+  <div id="diophantineModal" class="diophantine-modal">
+    <div class="diophantine-modal-content">
+      <span class="diophantine-close" onclick="closeDiophantineModal()">&times;</span>
+      
+      <div class="diophantine-section">
+        <h2 class="diophantine-title">🧮 What are Diophantine Equations?</h2>
+        <p>Diophantine equations are equations where you're only interested in <strong>integer solutions</strong> (whole numbers).</p>
+        
+        <div class="diophantine-example">
+          <p><strong>Simple example:</strong></p>
+          <p class="equation">x + y = 5</p>
+          <p>→ many integer solutions like (2,3), (1,4), etc.</p>
+        </div>
+        
+        <div class="diophantine-example">
+          <p><strong>Hard example:</strong></p>
+          <p class="equation">x² + y² = z²</p>
+          <p>→ gives Pythagorean triples like (3,4,5)</p>
+        </div>
+        
+        <div class="diophantine-challenge">
+          <p><strong>The challenge:</strong></p>
+          <p>👉 No general method works for all Diophantine equations</p>
+          <p>👉 Some are insanely hard (even unsolvable in general — see Fermat's Last Theorem)</p>
+        </div>
+        
+        <p class="diophantine-named"><strong>Named after:</strong> Diophantus — often called the "father of algebra"</p>
+      </div>
+      
+      <div class="diophantine-section">
+        <h2 class="diophantine-title">🔥 Pell–Fermat Equation (Core Idea)</h2>
+        <p>The Pell equation looks like:</p>
+        <p class="equation-large">x² − Dy² = 1</p>
+        
+        <p><strong>Where:</strong> D is a non-square integer (like 2, 3, 5, 7…)</p>
+        
+        <div class="diophantine-example">
+          <p><strong>Example:</strong></p>
+          <p class="equation">x² − 2y² = 1</p>
+          <p><strong>Solutions:</strong> (3,2), (17,12), (99,70)… → they grow very fast</p>
+        </div>
+        
+        <div class="diophantine-insight">
+          <p><strong>Key Insight:</strong></p>
+          <p>Once you find the smallest solution, you can generate infinite others.</p>
+        </div>
+        
+        <div class="diophantine-why">
+          <p><strong>Why it matters:</strong></p>
+          <p>• Shows deep structure in numbers</p>
+          <p>• Connected to continued fractions</p>
+          <p>• Used in cryptography, algebraic number theory</p>
+        </div>
+        
+        <p class="diophantine-note"><strong>Despite the name:</strong> It wasn't really discovered by Pierre de Fermat or Pell — Europeans misunderstood earlier Indian work (important 👇)</p>
+      </div>
+      
+      <div class="diophantine-section">
+        <h2 class="diophantine-title">🇮🇳 Bhāskara's Chakravāla Method (The Real Power Move)</h2>
+        <p>The <strong>Chakravāla method</strong> (meaning "cyclic method") was developed by <strong>Bhāskara II</strong></p>
+        
+        <p>This method solves:</p>
+        <p class="equation-large">x² − Dy² = 1</p>
+        
+        <div class="diophantine-insane">
+          <p><strong>What makes it insane:</strong></p>
+          <p>• It's an iterative algorithm</p>
+          <p>• Works efficiently even for huge numbers</p>
+          <p>• Way ahead of Europe by ~500 years</p>
+        </div>
+        
+        <div class="diophantine-basic">
+          <p><strong>Basic idea (simplified):</strong></p>
+          <p>You start with an approximate solution and repeatedly refine it using a cyclic process until you hit the exact solution.</p>
+          <p><strong>It's like:</strong></p>
+          <p>👉 Intelligent trial-and-error with mathematical structure</p>
+          <p>👉 Not brute force — guided convergence</p>
+        </div>
+        
+        <div class="diophantine-example-final">
+          <p><strong>Example:</strong></p>
+          <p>For D = 61, the smallest solution is:</p>
+          <p class="equation">x = 1,766,319,049</p>
+          <p class="equation">y = 226,153,980</p>
+          <p>Bhāskara's method could handle this <strong>centuries before computers</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Start Footer Seciton -->
   <footer>
     <div class="container">
@@ -1084,5 +1176,25 @@
   <script src="assets/js/wow.min.js"></script>
   <script src="assets/js/ripples.min.js"></script>
   <script src="assets/js/main.js"></script>
+  
+  <script>
+    function openDiophantineModal() {
+      document.getElementById('diophantineModal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeDiophantineModal() {
+      document.getElementById('diophantineModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      var modal = document.getElementById('diophantineModal');
+      if (event.target == modal) {
+        closeDiophantineModal();
+      }
+    }
+  </script>
 </body>
 </html>
