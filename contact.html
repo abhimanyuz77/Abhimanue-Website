@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+  <!-- Meta Tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Abhimanue Udayan">
+  
+  <!-- Essential Meta Tags -->
+  <title>Contact Me | Abhimanue Udayan</title>
+  <meta name="description" content="Get in touch with Abhimanue Udayan for partnerships, consulting, contracts, and growth opportunities. Open to collaborations in tech, education, and entrepreneurship.">
+  <meta name="keywords" content="contact Abhimanue, tech consulting, education partnerships, startup mentorship, Kerala entrepreneur">
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Contact Abhimanue Udayan">
+  <meta property="og:description" content="Open to partnerships, consulting roles, contracts, and growth opportunities.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abhimanue.in/contact.html">
+  <meta property="og:image" content="https://abhimanue.in/assets/img/Abhimanue-Udayan-IEDC-SS.jpg">
+
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Abhimanue Udayan">
+  <meta name="twitter:description" content="Get in touch for partnerships and collaborations.">
+  <meta name="twitter:image" content="https://abhimanue.in/assets/img/Abhimanue-Udayan-IEDC-SS.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+  <link rel="shortcut icon" href="assets/img/favicon.png" type="image/png" />
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/fontawesome.css" />
+  <link rel="stylesheet" href="assets/css/slick.css" />
+  <link rel="stylesheet" href="assets/css/lightgallery.min.css" />
+  <link rel="stylesheet" href="assets/css/animate.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  
+  <style>
+    .contact-hero {
+      background: linear-gradient(135deg, #0f1624 0%, #1a2332 100%);
+      padding: 100px 0 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(254, 197, 68, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(59, 125, 221, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    .contact-badge {
+      display: inline-block;
+      background: rgba(254, 197, 68, 0.1);
+      color: #fec544;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      border: 1px solid rgba(254, 197, 68, 0.2);
+    }
+    
+    .contact-main-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 15px;
+      line-height: 1.2;
+    }
+    
+    .contact-subtitle {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .contact-form-wrapper {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+    
+    .form-group {
+      margin-bottom: 24px;
+    }
+    
+    .form-group label {
+      display: block;
+      color: #ffffff;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: #fec544;
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 0 0 3px rgba(254, 197, 68, 0.1);
+    }
+    
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+    
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .submit-btn {
+      width: 100%;
+      padding: 16px 32px;
+      background: linear-gradient(135deg, #fec544 0%, #f0b429 100%);
+      color: #0f1624;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(254, 197, 68, 0.4);
+    }
+    
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .contact-info-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .contact-info-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+    
+    .contact-info-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #fec544 0%, #f0b429 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #0f1624;
+      margin-bottom: 15px;
+    }
+    
+    .contact-info-title {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .contact-info-text {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    
+    .contact-info-text a {
+      color: #fec544;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-info-text a:hover {
+      color: #ffffff;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-btn {
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 20px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .social-btn:hover {
+      background: #fec544;
+      color: #0f1624;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(254, 197, 68, 0.3);
+    }
+    
+    .alert {
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+    
+    .alert-success {
+      background: rgba(80, 250, 123, 0.1);
+      border: 1px solid rgba(80, 250, 123, 0.3);
+      color: #50fa7b;
+    }
+    
+    .alert-error {
+      background: rgba(255, 85, 85, 0.1);
+      border: 1px solid rgba(255, 85, 85, 0.3);
+      color: #ff5555;
+    }
+    
+    @media (max-width: 991px) {
+      .contact-main-title {
+        font-size: 2.2rem;
+      }
+      
+      .contact-form-wrapper {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GPVMY7JG4V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GPVMY7JG4V');
+  </script>
+</head>
+
+<body id="home">
+  <!-- Start Header Section -->
+  <header class="st-site-header st-style1 st-sticky-header">
+    <div class="st-main-header">
+      <div class="container">
+        <div class="st-main-header-in">
+          <div class="st-main-header-left">
+            <a class="st-site-branding" href="index.html"><img src="assets/img/logo.png" alt="Abhimanue"></a>
+          </div>
+          <div class="st-main-header-right">
+            <div class="st-nav">
+              <ul class="st-nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#resume">Resume</a></li>
+                <li><a href="index.html#academy">Academies</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+              </ul>
+              <div class="sp-phone">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 13a5 5 0 0 0 7.07 7.07l3-3a5 5 0 0 0-7.07-7.07" />
+                  <path d="M14 11a5 5 0 0 0-7.07-7.07l-3 3a5 5 0 0 0 7.07 7.07" />
+                </svg>
+                <div class="sp-phone-no"><a href="https://abhimanue.in/links.html">My Links</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- End Header Section -->
+
+  <!-- Start Contact Hero -->
+  <section class="contact-hero">
+    <div class="container">
+      <div class="text-center">
+        <span class="contact-badge">💬 Let's Connect</span>
+        <h1 class="contact-main-title">Get In Touch</h1>
+        <p class="contact-subtitle">Open to partnerships, consulting roles, contracts, and growth opportunities. Let's build something amazing together.</p>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Hero -->
+
+  <!-- Start Contact Form Section -->
+  <section class="st-dark-bg" style="padding: 60px 0;">
+    <div class="container">
+      <div class="row">
+        <!-- Contact Form -->
+        <div class="col-lg-7">
+          <div class="contact-form-wrapper">
+            <h3 style="color: #ffffff; margin-bottom: 10px; font-size: 24px;">Send a Message</h3>
+            <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 30px;">Fill out the form below and I'll get back to you within 24 hours.</p>
+            
+            <div id="contact-alert"></div>
+            
+            <form id="contact-form" method="POST">
+              <!-- Honeypot field -->
+              <input type="text" name="company" id="company" style="display:none" tabindex="-1" autocomplete="off">
+              
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name" required>
+                  </div>
+                </div>
+                
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="your.email@example.com" required>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="form-control" placeholder="+91 XXXXX XXXXX">
+                  </div>
+                </div>
+                
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <input type="text" id="subject" name="subject" class="form-control" placeholder="What's this about?" required>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="message">Your Message *</label>
+                <textarea id="message" name="message" class="form-control" placeholder="Tell me more about your inquiry..." required></textarea>
+              </div>
+              
+              <button type="submit" class="submit-btn" id="submit-btn">
+                <span id="btn-text">Send Message</span>
+              </button>
+            </form>
+          </div>
+        </div>
+        
+        <!-- Contact Info -->
+        <div class="col-lg-5">
+          <div style="padding-left: 20px;">
+            <div class="contact-info-card">
+              <div class="contact-info-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <h4 class="contact-info-title">Email</h4>
+              <p class="contact-info-text">
+                <a href="mailto:abhimanue@hexagonknow.com">abhimanue@hexagonknow.com</a>
+              </p>
+            </div>
+            
+            <div class="contact-info-card">
+              <div class="contact-info-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <h4 class="contact-info-title">Location</h4>
+              <p class="contact-info-text">Ernakulam, Kerala, India</p>
+            </div>
+            
+            <div class="contact-info-card">
+              <div class="contact-info-icon">
+                <i class="fas fa-briefcase"></i>
+              </div>
+              <h4 class="contact-info-title">Open For</h4>
+              <p class="contact-info-text">
+                Partnerships • Consulting<br>
+                Contracts • Collaborations<br>
+                Speaking Engagements
+              </p>
+            </div>
+            
+            <div class="contact-info-card">
+              <div class="contact-info-icon">
+                <i class="fas fa-share-alt"></i>
+              </div>
+              <h4 class="contact-info-title">Connect With Me</h4>
+              <p class="contact-info-text" style="margin-bottom: 10px;">Follow me on social media</p>
+              <div class="social-links">
+                <a href="https://www.linkedin.com/in/abhimanue-udayan-496194158/" class="social-btn" target="_blank" rel="noopener">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.instagram.com/abhimanue_udayan/" class="social-btn" target="_blank" rel="noopener">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/abhimanyu.udayan" class="social-btn" target="_blank" rel="noopener">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.youtube.com/@HexagonKnowOfficial" class="social-btn" target="_blank" rel="noopener">
+                  <i class="fab fa-youtube"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Form Section -->
+
+  <!-- Start Footer -->
+  <footer class="st-dark-bg">
+    <div class="container">
+      <div class="st-copyright-wrap text-center st-border-top">
+        <div class="st-copyright-text">© 2025. Designed by Abhimanue. All right reserved.</div>
+      </div>
+    </div>
+  </footer>
+  <!-- End Footer -->
+
+  <!-- Scripts -->
+  <script src="assets/js/jquery-1.12.4.min.js"></script>
+  <script src="assets/js/jquery.slick.min.js"></script>
+  <script src="assets/js/lightgallery.min.js"></script>
+  <script src="assets/js/wow.min.js"></script>
+  <script src="assets/js/ripples.min.js"></script>
+  <script src="assets/js/particles.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  
+  <script>
+    // Contact form submission
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submit-btn');
+      const btnText = document.getElementById('btn-text');
+      const alertDiv = document.getElementById('contact-alert');
+      
+      // Check honeypot
+      if (document.getElementById('company').value) {
+        return false;
+      }
+      
+      // Disable button and show loading
+      submitBtn.disabled = true;
+      btnText.textContent = 'Sending...';
+      alertDiv.innerHTML = '';
+      
+      // Get form data
+      const formData = new FormData(this);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone') || 'Not provided',
+        subject: formData.get('subject'),
+        message: formData.get('message')
+      };
+      
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+          alertDiv.innerHTML = '<div class="alert alert-success">✓ Message sent successfully! I\'ll get back to you soon.</div>';
+          this.reset();
+        } else {
+          throw new Error('Failed to send message');
+        }
+      } catch (error) {
+        alertDiv.innerHTML = '<div class="alert alert-error">✗ Failed to send message. Please try again or email me directly.</div>';
+      } finally {
+        submitBtn.disabled = false;
+        btnText.textContent = 'Send Message';
+        
+        // Scroll to alert
+        alertDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  </script>
+</body>
+</html>
