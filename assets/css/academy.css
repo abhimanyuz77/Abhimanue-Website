@@ -43,10 +43,14 @@
 }
 
 /* Hero Section Enhancements */
+.st-hero.st-style2 .st-hero-text {
+  padding-top: 80px;
+}
+
 .batch-countdown {
   text-align: center;
   margin-bottom: 30px;
-  padding-top: 80px;
+  padding-top: 0;
 }
 
 .batch-badge {
@@ -88,15 +92,19 @@
 .trust-badges-hero {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 15px 25px;
   flex-wrap: wrap;
   margin: 25px 0;
 }
 
 .trust-item {
-  color: #a9adb8;
+  color: #d0d4dc;
   font-size: 14px;
   font-weight: 500;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  white-space: nowrap;
 }
 
 /* Contact Micro CTA */
@@ -1100,8 +1108,12 @@
 
 /* Responsive Styles */
 @media screen and (max-width: 991px) {
-  .batch-countdown {
+  .st-hero.st-style2 .st-hero-text {
     padding-top: 70px;
+  }
+  
+  .batch-countdown {
+    padding-top: 0;
   }
   
   .batch-badge {
@@ -1173,64 +1185,95 @@
 }
 
 @media screen and (max-width: 767px) {
+  .st-hero.st-style2 {
+    height: auto !important;
+    min-height: 100vh;
+    align-items: flex-start;
+    overflow: visible;
+  }
+  
+  .st-hero.st-style2 .st-hero-text {
+    padding-top: 110px;
+    padding-bottom: 40px;
+  }
+  
   .batch-countdown {
-    padding-top: 80px;
-    margin-bottom: 25px;
+    padding-top: 0;
+    margin-bottom: 15px;
   }
   
   .batch-badge {
     font-size: 10px;
-    padding: 8px 12px;
+    padding: 6px 12px;
     margin-top: 0;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     white-space: normal;
     text-align: center;
     line-height: 1.5;
     display: inline-block;
-    max-width: 90%;
+    max-width: 95%;
   }
   
   .batch-info {
-    font-size: 15px;
+    font-size: 13px;
     line-height: 1.4;
+    margin-bottom: 0;
   }
   
   .st-hero.st-video-bg {
     min-height: auto;
-    padding: 90px 0 50px 0;
+    padding: 0;
   }
   
   .st-hero-text h1 {
-    font-size: 24px;
+    font-size: 28px;
     line-height: 1.3;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   
   .st-hero-text h1 span {
-    font-size: 22px;
+    font-size: 20px;
   }
   
-  .st-hero-text p {
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 20px;
+  .st-hero-text p,
+  .st-hero-text p.hero-description {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    margin: 0 auto 15px !important;
+    max-width: 100% !important;
+    padding: 0 5px;
+  }
+  
+  .trust-badges-hero {
+    gap: 8px !important;
+    margin: 0 auto 20px !important;
+  }
+  
+  .trust-item {
+    font-size: 11px;
+    padding: 5px 10px;
   }
   
   .st-hero-btn {
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-    margin-top: 25px;
+    gap: 12px;
+    margin-top: 20px;
   }
   
   .st-btn {
-    width: 100%;
-    max-width: 100%;
+    width: 85%;
+    max-width: 300px;
     padding: 14px 20px;
     font-size: 14px;
     white-space: normal;
     text-align: center;
     line-height: 1.4;
+  }
+  
+  .micro-text {
+    margin-top: 15px !important;
+    font-size: 11px !important;
   }
   
   .program-highlight-box {
@@ -1380,26 +1423,36 @@
 
 /* Extra small devices */
 @media screen and (max-width: 480px) {
-  .batch-countdown {
-    padding-top: 85px;
+  .st-hero.st-style2 .st-hero-text {
+    padding-top: 100px;
+    padding-bottom: 30px;
   }
   
   .batch-badge {
     font-size: 9px;
-    padding: 6px 10px;
-    max-width: 95%;
-    line-height: 1.4;
+    padding: 5px 10px;
   }
   
   .batch-info {
-    font-size: 14px;
+    font-size: 12px;
   }
   
   .st-hero-text h1 {
-    font-size: 20px;
+    font-size: 24px;
   }
   
   .st-hero-text h1 span {
-    font-size: 18px;
+    font-size: 17px;
+  }
+  
+  .trust-item {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+  
+  .st-btn {
+    width: 90%;
+    font-size: 13px;
+    padding: 12px 16px;
   }
 }
