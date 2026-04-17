@@ -4,6 +4,9 @@
 .st-hero.st-video-bg {
   position: relative;
   overflow: hidden;
+  /* Override the fixed `height: 100vh` set in style.css which clips content
+     on laptop screens where the hero is taller than the viewport. */
+  height: auto !important;
   min-height: 100vh;
   display: flex;
   /* "safe center" keeps content centered when it fits, but aligns to the top
