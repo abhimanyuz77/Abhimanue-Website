@@ -6,7 +6,10 @@
   overflow: hidden;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  /* "safe center" keeps content centered when it fits, but aligns to the top
+     when the content is taller than the viewport (e.g. laptop screens) so the
+     badge / logo never get clipped behind the sticky header. */
+  align-items: safe center;
 }
 
 .hero-video-bg {
@@ -44,7 +47,10 @@
 
 /* Hero Section Enhancements */
 .st-hero.st-style2 .st-hero-text {
-  padding-top: 80px;
+  /* Enough top padding to always clear the sticky header (~90px) even on
+     laptop-height screens where the hero content overflows the viewport. */
+  padding-top: 130px;
+  padding-bottom: 40px;
 }
 
 .batch-countdown {
@@ -978,6 +984,96 @@
 /* Testimonials Section */
 .testimonials-slider {
   position: relative;
+  padding: 0 50px;
+}
+
+/* Give each slide breathing room inside the slick track */
+.testimonials-slider .slick-slide {
+  padding: 10px 12px;
+  height: inherit;
+}
+.testimonials-slider .slick-track {
+  display: flex !important;
+}
+.testimonials-slider .slick-slide > div {
+  height: 100%;
+}
+
+/* Prev / Next Arrows */
+.testimonials-slider .testimonial-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(254, 197, 68, 0.4);
+  background: rgba(16, 22, 36, 0.85);
+  color: #fec544;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  padding: 0;
+  transition: all 0.25s ease;
+  font-size: 14px;
+}
+.testimonials-slider .testimonial-arrow:hover {
+  background: #fec544;
+  color: #0a101e;
+  border-color: #fec544;
+  box-shadow: 0 6px 18px rgba(254, 197, 68, 0.35);
+}
+.testimonials-slider .slick-arrow-left {
+  left: 0;
+}
+.testimonials-slider .slick-arrow-right {
+  right: 0;
+}
+.testimonials-slider .testimonial-arrow.slick-disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* Pagination Dots */
+.testimonials-slider .testimonial-dots {
+  text-align: center;
+  margin-top: 25px;
+}
+.testimonials-slider .testimonial-dots .slick-dots {
+  display: inline-flex !important;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.testimonials-slider .testimonial-dots .slick-dots li button {
+  font-size: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.25s ease;
+}
+.testimonials-slider .testimonial-dots .slick-dots li.slick-active button {
+  background: #fec544;
+  width: 28px;
+  border-radius: 6px;
+}
+
+@media screen and (max-width: 575px) {
+  .testimonials-slider {
+    padding: 0 15px;
+  }
+  .testimonials-slider .testimonial-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
 }
 
 .testimonial-card {
