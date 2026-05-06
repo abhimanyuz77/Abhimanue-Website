@@ -160,7 +160,7 @@
             <div class="st-vertical-middle-in">
               <div class="st-text-block st-style1">
                 <h3 class="st-text-block-title responsive-heading">Abhimanue Udayan</h3>
- <h4 class="st-text-block-subtitle">Founder of Hexagon Know</h4>
+ <h4 class="st-text-block-subtitle">Founder of <a href="https://hexagonknow.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Hexagon Know</a></h4>
 <div class="st-text-block-text">
 
 <p>I am an avid reader and builder who develops systems at the intersection of computing, animation, and education to drive real-world impact. From an early age, science, nature, and machines became my core interests, while art, gaming, and travel evolved into my most cherished pursuits.</p>
@@ -168,9 +168,9 @@
 
 <p>In 2013, I began my corporate career as a technical support agent at AT&T ConnecTech, diagnosing and resolving technical issues across the USA. This experience helped me with my technical problem-solving skills, customer management & effective troubleshooting skills.</p>
 
-<p>Later, I joined VNIT for my Master’s in Applied Physics, where I focused on classical and quantum computational physics, numerical programming, and high-performance computing. During this time, I explored Vedic Mathematics and integrated its principles with modern computational methods, engineering C++-based systems to solve hard equations called <span class="diophantine-link" onclick="openDiophantineModal()">Diophantine equations</span> with complete accuracy & remarkable speed. This work culminated in cracking the Archimedes' Cattle Problem, computing solutions exceeding 18 million digits with absolute accuracy.</p>
+<p>Later, I joined VNIT for my Master’s in Applied Physics, where I focused on classical and quantum computational physics, numerical programming, and high-performance computing. During this time, I explored Vedic Mathematics and integrated its principles with modern computational methods, engineering C++-based systems to solve hard equations called <span class="diophantine-link" onclick="openDiophantineModal()">Diophantine equations</span> with complete accuracy & remarkable speed. This work culminated in cracking the <span class="diophantine-link" onclick="openCattleModal()">Archimedes' Cattle Problem</span>, computing solutions exceeding 18 million digits with absolute accuracy.</p>
 
-<p>My passion for teaching physics & businesses later helped me mentor millions of students and share knowledge widely. Today, I deliver enterprise training and operational platforms through my company, <strong><a href="https://hexagonknow.com" target="_blank" rel="noopener noreferrer" style="color: #fec544; text-decoration: none;">Hexagon Know</a></strong>, building systems that automate learning, improve workflows, and scale knowledge across organizations.</p>
+<p>My passion for teaching physics and building systems later evolved into helping startups, creators, and businesses structure and scale their knowledge. Today, through <a href="https://hexagonknow.com" target="_blank" rel="noopener noreferrer"></a>Hexagon Know</a>, I help build content, training, and operational systems that simplify learning, automate workflows, and turn ideas into scalable digital products and platforms.</p>
 
 </div>
 
@@ -1071,6 +1071,35 @@
   </section>
   <!-- End Contact Seciton -->
 
+  <!-- Archimedes' Cattle Problem Modal -->
+  <div id="cattleModal" class="diophantine-modal">
+    <div class="diophantine-modal-content">
+      <span class="diophantine-close" onclick="closeCattleModal()">&times;</span>
+
+      <div class="diophantine-section">
+        <h2 class="diophantine-title">🐂 What is the Archimedes' Cattle Problem?</h2>
+        <p>Archimedes posed this riddle over 2,000 years ago, asking mathematicians to determine how many white, black, dappled, and brown cattle Zeus owned under a labyrinth of conditions.</p>
+        <p>The final constraint turns it into a colossal Pell–Fermat equation whose smallest solution contains <strong>206,545 digits</strong>—far beyond pencil-and-paper mathematics.</p>
+      </div>
+
+      <div class="diophantine-section">
+        <h2 class="diophantine-title">🧠 How I approached it</h2>
+        <p>I built a custom C++ engine inspired by Bhāskara II’s Chakravāla method, optimized for arbitrary-precision arithmetic and modular factorization.</p>
+        <ul>
+          <li>Generated continued-fraction expansions to lock onto the minimal Pell solution</li>
+          <li>Vectorized the arithmetic to squeeze maximum performance from a desktop i7</li>
+          <li>Logged intermediate invariants to validate every step against historical references</li>
+        </ul>
+      </div>
+
+      <div class="diophantine-section">
+        <h2 class="diophantine-title">🚀 Why it matters</h2>
+        <p>This puzzle require solving a <strong>206,545-digit long</strong> number with absolutely no room for rounding errors. It’s the kind of calculation that let's you touch the heights of numerical computing and problem solving.</p>
+        <p>Reaching the correct number meant building fast C++ based systems to computate and study fascinating mathematical problems in human history making me one of the few in the world to tackle this problem with 100% accuracy and the first to solve it with Bhakara II's Chakravala method.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Diophantine Equations Modal -->
   <div id="diophantineModal" class="diophantine-modal">
     <div class="diophantine-modal-content">
@@ -1191,13 +1220,28 @@
       document.body.style.overflow = 'auto';
     }
     
-    // Close modal when clicking outside of it
-    window.onclick = function(event) {
-      var modal = document.getElementById('diophantineModal');
-      if (event.target == modal) {
+    function openCattleModal() {
+      document.getElementById('cattleModal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeCattleModal() {
+      document.getElementById('cattleModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    
+    window.addEventListener('click', function(event) {
+      var diophantineModal = document.getElementById('diophantineModal');
+      var cattleModal = document.getElementById('cattleModal');
+
+      if (event.target === diophantineModal) {
         closeDiophantineModal();
       }
-    }
+
+      if (event.target === cattleModal) {
+        closeCattleModal();
+      }
+    });
   </script>
 </body>
 </html>
