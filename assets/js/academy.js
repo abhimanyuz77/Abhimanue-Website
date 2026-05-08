@@ -52,6 +52,87 @@
     // Start countdown timer
     startCountdown();
     
+    const applyForm = $('#apply-form');
+    if (applyForm.length) {
+      const alertBox = $('#apply-alert');
+      const submitBtn = $('#apply-form button[type="submit"]');
+      const defaultBtnText = submitBtn.html();
+
+      function showApplyAlert(type, message) {
+        alertBox
+          .removeClass('alert-success alert-danger alert-warning show')
+          .addClass('alert-' + type + ' show')
+          .html(message);
+      }
+
+      applyForm.on('submit', function (e) {
+        e.preventDefault();
+
+        const studentName = $('#student_name').val().trim();
+        const email = $('#email').val().trim();
+        const phone = $('#phone').val().trim();
+        const currentScore = $('#current_score').val().trim();
+        const targetScore = $('#target_score').val().trim();
+        const message = $('#message').val().trim();
+        const regexEmail = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,})+$/;
+        const whatsappRegex = /^[0-9]{10,15}$/;
+
+        if (!studentName || !email || !phone) {
+          showApplyAlert('warning', '<strong>Missing info:</strong> Name, email, and WhatsApp number are required.');
+          return false;
+        }
+
+        if (!regexEmail.test(email)) {
+          showApplyAlert('danger', '<strong>Invalid email:</strong> Enter a valid email address.');
+          return false;
+        }
+
+        if (!whatsappRegex.test(phone.replace(/\D/g, ''))) {
+          showApplyAlert('danger', '<strong>WhatsApp number:</strong> Enter digits only, min 10 digits.');
+          return false;
+        }
+
+        const payload = {
+          name: studentName,
+          email: email,
+          phone: phone,
+          subject: 'NEET Physics Admission Application',
+          msg: [
+            'Current Score: ' + (currentScore || 'Not provided'),
+            'Target Score: ' + (targetScore || 'Not provided'),
+            'Notes: ' + (message || 'Not provided')
+          ].join('\n'),
+          form_context: $('input[name="form_context"]').val() || 'NEET Physics Admission',
+          forward_to: $('#forward_to').val() || ''
+        };
+
+        submitBtn.prop('disabled', true).html('<span class="button-spinner"></span> Sending');
+
+        $.ajax({
+          type: 'POST',
+          url: '/api/contact',
+          data: payload,
+          dataType: 'json'
+        })
+        .done(function (response) {
+          if (response.success) {
+            showApplyAlert('success', '<strong>Application received!</strong> We will reach out on WhatsApp within 24 hours.');
+            applyForm[0].reset();
+          } else {
+            showApplyAlert('danger', '<strong>Error:</strong> ' + (response.message || 'Please try again later.'));
+          }
+        })
+        .fail(function () {
+          showApplyAlert('danger', '<strong>Server issue:</strong> Could not send application. Please WhatsApp us directly.');
+        })
+        .always(function () {
+          submitBtn.prop('disabled', false).html(defaultBtnText);
+        });
+
+        return false;
+      });
+    }
+    
     // Form submission handler
     if ($('#academy-signup-form').length > 0) {
       $('#academy-alert').hide();
