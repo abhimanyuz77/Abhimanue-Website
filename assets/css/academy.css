@@ -3373,11 +3373,14 @@
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 12px;
-  padding: 18px 16px 8px;
+  padding: 18px 16px;
   font-size: 15px;
   color: #fdfeff;
   transition: border-color .2s ease, background .2s ease;
   font-family: inherit;
+}
+.form-floating-modern.input-field input {
+  background: #1a1f2e;
 }
 .form-floating-modern textarea {
   min-height: 90px;
@@ -3397,7 +3400,8 @@
 .form-floating-modern.select-field {
   position: relative;
 }
-.form-floating-modern.select-field label {
+.form-floating-modern.select-field label,
+.form-floating-modern.input-field label {
   position: static;
   font-size: 13px;
   color: #8b91a0;
@@ -3414,6 +3418,9 @@
   color: #fec544;
   pointer-events: none;
   font-size: 12px;
+}
+.form-floating-modern.input-field {
+  position: relative;
 }
 .form-floating-modern input:focus,
 .form-floating-modern textarea:focus {
