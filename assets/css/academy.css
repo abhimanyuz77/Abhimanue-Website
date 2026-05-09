@@ -3316,7 +3316,25 @@
 
 @media (max-width: 600px) {
   .stat-grid { grid-template-columns: 1fr; }
-  .hero-ctas .st-btn { width: 100%; text-align: center; }
+  .hero-ctas {
+    justify-content: center;
+  }
+  .hero-ctas .st-btn {
+    width: min(320px, 100%);
+    text-align: center;
+  }
+  .authority-strip {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .authority-strip span {
+    border-radius: 16px;
+    text-align: center;
+    padding: 12px 10px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
   .authority-strip span,
   .hero-logo-bar span { font-size: 12px; padding: 6px 12px; }
   .rank-columns { grid-template-columns: 1fr; }
@@ -3325,6 +3343,13 @@
   .audience-chip { font-size: 13px; padding: 8px 14px; }
   .phy-g-card { padding: 26px 18px; }
   .phy-g-content h2 { font-size: 28px; }
+  .batch-urgency {
+    background: #050910;
+  }
+  .batch-urgency-card {
+    background: radial-gradient(circle at top, rgba(254, 197, 68, 0.22), rgba(8, 12, 26, 0.95));
+    padding: 32px 24px;
+  }
 }
 
 /* =====================================================
