@@ -311,20 +311,14 @@
   align-items: center;
   padding: 40px 50px;
   border-radius: 24px;
-  background: linear-gradient(140deg, rgba(254, 197, 68, 0.12) 0%, rgba(8, 14, 30, 0.9) 55%, rgba(255, 107, 107, 0.1) 100%);
+  background: #0b1224;
   border: 1px solid rgba(254, 197, 68, 0.35);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 
 .batch-urgency-card::before {
-  content: '';
-  position: absolute;
-  inset: -50% -10% auto auto;
-  width: 60%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(254, 197, 68, 0.18), transparent 60%);
-  pointer-events: none;
+  content: none;
 }
 
 .batch-urgency-eyebrow {
@@ -3347,7 +3341,7 @@
     background: #050910;
   }
   .batch-urgency-card {
-    background: radial-gradient(circle at top, rgba(254, 197, 68, 0.22), rgba(8, 12, 26, 0.95));
+    background: #0c1428;
     padding: 32px 24px;
   }
 }
