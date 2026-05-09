@@ -38,30 +38,22 @@
   }
 
   /*--------------------------------------------------------------
-    Early Bird 24-Hour Rolling Countdown Timer
+    Early Bird Countdown Timer (Resets Daily at 3 AM)
   --------------------------------------------------------------*/
   function startEarlyBirdCountdown() {
-    // Get or set start time
-    var startTime = localStorage.getItem('earlyBirdStartTime');
-    if (!startTime) {
-      startTime = new Date().getTime();
-      localStorage.setItem('earlyBirdStartTime', startTime);
-    }
-    
     function updateEarlyBirdCountdown() {
-      var now = new Date().getTime();
-      var start = parseInt(localStorage.getItem('earlyBirdStartTime'));
-      var elapsed = now - start;
-      var duration = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+      var now = new Date();
+      var target = new Date();
       
-      var timeLeft = duration - elapsed;
+      // Set target to 3 AM today
+      target.setHours(3, 0, 0, 0);
       
-      // If time is up, reset to 24 hours
-      if (timeLeft <= 0) {
-        startTime = new Date().getTime();
-        localStorage.setItem('earlyBirdStartTime', startTime);
-        timeLeft = duration;
+      // If 3 AM has already passed today, set target to 3 AM tomorrow
+      if (now >= target) {
+        target.setDate(target.getDate() + 1);
       }
+      
+      var timeLeft = target - now;
       
       // Calculate hours, minutes, seconds
       var hours = Math.floor(timeLeft / (1000 * 60 * 60));
