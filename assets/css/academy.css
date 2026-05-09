@@ -436,6 +436,13 @@
   font-weight: 800;
 }
 
+.live-updated {
+  display: inline-block;
+  margin-left: 6px;
+  color: #7a8190;
+  font-size: 12px;
+}
+
 .urgency-stat p {
   margin: 0;
   color: #a9adb8;
@@ -2758,8 +2765,22 @@
   backdrop-filter: blur(6px);
   z-index: 3;
 }
-.air-chip-1 { top: 14%; right: -14px; }
-.air-chip-2 { bottom: 22%; right: -14px; }
+.air-chip-1,
+.air-chip-2 {
+  top: 16%;
+  left: -14px;
+  right: auto;
+}
+.air-chip-combined {
+  position: relative;
+  margin: 18px auto 0;
+  width: min(320px, 90%);
+  text-align: center;
+  justify-content: center;
+}
+.air-chip-combined h4 {
+  font-size: 20px;
+}
 .air-chip small {
   display: block;
   font-size: 11px;
@@ -3023,8 +3044,12 @@
   .lead-copy { font-size: 16px; }
   .mentor-panel { padding: 18px; }
   .hero-meta-stack { gap: 12px; }
-  .air-chip-1 { top: 8px; right: 8px; padding: 8px 12px; }
-  .air-chip-2 { bottom: 60px; right: 8px; padding: 8px 12px; }
+  .air-chip-1,
+  .air-chip-2 { top: 8px; left: 8px; padding: 8px 12px; width: auto; }
+  .air-chip-combined {
+    margin: 14px auto 0;
+    width: 100%;
+  }
   .air-chip h4 { font-size: 20px; }
   .mentor-signature { font-size: 22px; bottom: 12px; left: 14px; }
 

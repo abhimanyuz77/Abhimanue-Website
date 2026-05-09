@@ -116,18 +116,13 @@
         <div class="mentor-panel">
           <div class="mentor-image">
             <img src="assets/img/Abhimanue-Udayan-BGR.png" alt="Abhimanue Udayan" loading="lazy">
-            <div class="air-chip air-chip-1">
-              <small>AIIMS 2019</small>
-              <h4>AIR 1</h4>
-              <span>Mentored</span>
-            </div>
-            <div class="air-chip air-chip-2">
-              <small>NEET 2019</small>
-              <h4>AIR 2</h4>
-              <span>Mentored</span>
-            </div>
           </div>
-          <p class="mentor-tagline">Authority Strip • Live Mentorship • AI Analytics • Proven Rank Frameworks</p>
+          <div class="air-chip air-chip-combined">
+            <small>Sir Toppers</small>
+            <h4>AIR 1 · AIIMS &nbsp;& &nbsp; AIR 2 · NEET</h4>
+            <span>Mentored</span>
+          </div>
+          <p class="mentor-tagline">• Live Mentorship • AI Analytics • Proven Rank Frameworks</p>
         </div>
       </div>
     </div>
@@ -161,8 +156,8 @@
         <div class="urgency-stat live-stat">
           <div class="urgency-icon live"><span class="live-dot"></span><i class="fas fa-eye"></i></div>
           <div>
-            <h4 id="liveViewers">360</h4>
-            <p>Watching this page right now</p>
+            <h4 id="liveViewers" data-stats-url="https://app.hkskill.com/api/v1/public/visitor-stats/">--</h4>
+            <p>Watching this page right now <small class="live-updated">Updated <span id="liveUpdated">--:--</span></small></p>
           </div>
         </div>
         <a href="#" class="st-btn st-style1 st-color1 urgency-cta" data-bs-toggle="modal" data-bs-target="#applyModal">Secure Your Seat</a>
@@ -734,31 +729,47 @@
       setInterval(tick, 1000);
     }
 
-    // Registered students slow drift upwards from 65 (cap at 95 so seats-left stays believable)
-    const regEl = document.getElementById('registeredCount');
-    const seatsLeftEl = document.getElementById('seatsLeft');
-    const SEAT_CAP = 100;
-    if (regEl) {
-      let regCount = 65;
-      setInterval(function () {
-        if (regCount < 95 && Math.random() < 0.25) {
-          regCount += 1;
-          regEl.textContent = regCount;
-          if (seatsLeftEl) seatsLeftEl.textContent = (SEAT_CAP - regCount);
-        }
-      }, 15000);
-    }
-
-    // Live viewers: bounce ~360 ± 10–40 every 2s
+    // Live viewers: fetch from backend API instead of faking client-side numbers
     const liveEl = document.getElementById('liveViewers');
-    if (liveEl) {
-      let live = 360;
-      setInterval(function () {
-        const swing = Math.floor(Math.random() * 31) + 10; // 10–40
-        const dir = Math.random() < 0.5 ? -1 : 1;
-        live = Math.max(290, Math.min(430, live + dir * swing));
-        liveEl.textContent = live;
-      }, 2000);
+    const liveUpdatedEl = document.getElementById('liveUpdated');
+    if (liveEl && liveEl.dataset.statsUrl) {
+      const statsUrl = liveEl.dataset.statsUrl;
+      const statsKey = window.HK_VISITOR_STATS_KEY || '';
+      const DEFAULT_REFRESH = 5 * 60 * 1000; // 5 minutes fallback
+      let refreshTimer = null;
+
+      const scheduleNext = (ms) => {
+        clearTimeout(refreshTimer);
+        refreshTimer = setTimeout(loadVisitorStats, ms || DEFAULT_REFRESH);
+      };
+
+      async function loadVisitorStats() {
+        try {
+          const fetchOptions = {};
+          if (statsKey && statsKey !== 'REPLACE_WITH_SHARED_KEY') {
+            fetchOptions.headers = { 'X-Visitor-Stats-Key': statsKey };
+          }
+          const response = await fetch(statsUrl, fetchOptions);
+          if (!response.ok) {
+            throw new Error(`Visitor stats HTTP ${response.status}`);
+          }
+          const data = await response.json();
+          if (typeof data.value === 'number') {
+            liveEl.textContent = data.value.toLocaleString('en-IN');
+          }
+          if (liveUpdatedEl && data.captured_at) {
+            const updatedTime = new Date(data.captured_at);
+            liveUpdatedEl.textContent = updatedTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          }
+          const nextMs = (data.seconds_until_next_sample ?? data.refresh_seconds ?? 300) * 1000;
+          scheduleNext(nextMs);
+        } catch (error) {
+          console.error('Visitor stats error:', error);
+          scheduleNext(DEFAULT_REFRESH);
+        }
+      }
+
+      loadVisitorStats();
     }
   });
 
