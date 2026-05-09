@@ -22,13 +22,6 @@
       minutes = minutes < 10 ? '0' + minutes : minutes;
       seconds = seconds < 10 ? '0' + seconds : seconds;
       
-      // Update display for coding academy
-      if ($('#hours').length) {
-        $('#hours').text(hours);
-        $('#minutes').text(minutes);
-        $('#seconds').text(seconds);
-      }
-      
       // Update display for physics foundation
       if ($('#hours-physics').length) {
         $('#hours-physics').text(hours);
@@ -45,12 +38,66 @@
   }
 
   /*--------------------------------------------------------------
+    Early Bird 24-Hour Rolling Countdown Timer
+  --------------------------------------------------------------*/
+  function startEarlyBirdCountdown() {
+    // Get or set start time
+    var startTime = localStorage.getItem('earlyBirdStartTime');
+    if (!startTime) {
+      startTime = new Date().getTime();
+      localStorage.setItem('earlyBirdStartTime', startTime);
+    }
+    
+    function updateEarlyBirdCountdown() {
+      var now = new Date().getTime();
+      var start = parseInt(localStorage.getItem('earlyBirdStartTime'));
+      var elapsed = now - start;
+      var duration = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+      
+      var timeLeft = duration - elapsed;
+      
+      // If time is up, reset to 24 hours
+      if (timeLeft <= 0) {
+        startTime = new Date().getTime();
+        localStorage.setItem('earlyBirdStartTime', startTime);
+        timeLeft = duration;
+      }
+      
+      // Calculate hours, minutes, seconds
+      var hours = Math.floor(timeLeft / (1000 * 60 * 60));
+      var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+      
+      // Add leading zeros
+      hours = hours < 10 ? '0' + hours : hours;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+      
+      // Update display for early bird timer
+      if ($('#hours').length && $('#earlyBirdTimer').length) {
+        $('#hours').text(hours);
+        $('#minutes').text(minutes);
+        $('#seconds').text(seconds);
+      }
+    }
+    
+    // Update immediately
+    updateEarlyBirdCountdown();
+    
+    // Update every second
+    setInterval(updateEarlyBirdCountdown, 1000);
+  }
+
+  /*--------------------------------------------------------------
     Academy Signup Form Handler
   --------------------------------------------------------------*/
   $(document).ready(function () {
     
     // Start countdown timer
     startCountdown();
+    
+    // Start early bird 24-hour countdown timer
+    startEarlyBirdCountdown();
     
     const applyForm = $('#apply-form');
     if (applyForm.length) {
