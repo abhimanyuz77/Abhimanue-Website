@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="assets/css/animate.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="assets/css/academy.css" />
+  <link rel="stylesheet" href="https://vjs.zencdn.net/8.10.0/video-js.css">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GPVMY7JG4V"></script>
   <script>
@@ -166,6 +167,23 @@
   </div>
 </section>
 
+<section id="elite-video" class="elite-video-section">
+  <div class="container">
+    <div class="video-only-wrapper">
+      <div class="video-player-card">
+        <video id="academyHlsPlayer"
+               class="video-js vjs-big-play-centered video-inline-player"
+               controls
+               preload="auto"
+               playsinline
+               poster="assets/img/Abhimanue_Udayan_NEET_Physics_Academy.jpg">
+          <source src="https://d1nh1cy4xqxz3k.cloudfront.net/Physics-Academy/1080p/playlist.m3u8" type="application/x-mpegURL">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="founder-story" class="founder-authority st-dark-bg">
   <div class="st-height-b80 st-height-lg-b60"></div>
   <div class="container">
@@ -195,11 +213,11 @@
           </div>
           <div class="timeline-item">
             <span class="year">2018</span>
-            <p>Led Physics content at BYJU’S; engineered AI-driven lesson intelligence.</p>
+            <p>Developed the curriculum & content for Aakash-BYJU’S app & helped millions of students learn physics for NEET & IIT JEE.</p>
           </div>
           <div class="timeline-item">
             <span class="year">2025</span>
-            <p>Founded this NEET Physics command center—limited seats, relentless mentorship, measurable growth.</p>
+            <p>Founded CLEAR Physics NEET Academy command center—limited seats, relentless mentorship, measurable growth.</p>
           </div>
         </div>
       </div>
@@ -265,6 +283,29 @@
 <section class="rarity-note">
   <div class="container">
     <blockquote>“Very few faculties in India have personally trained top single-digit rankers inside the classroom environment.”</blockquote>
+  </div>
+</section>
+
+<section id="phy-g-access" class="phy-g-access">
+  <div class="container">
+    <div class="phy-g-card">
+      <div class="phy-g-content">
+        <div class="phy-g-eyebrow"><i class="fas fa-lock"></i><span>Limited cohort access only</span></div>
+        <h2>PHY-G™ Problem-Solving Lab</h2>
+        <p class="phy-g-lede">Ultra-exclusive problem-solving environment where NEET aspirants learn to attack Physics questions through gamified mastery loops.</p>
+        <ul class="phy-g-points">
+          <li><i class="fas fa-bolt"></i>Boss-level problem quests, momentum streaks, leaderboard pushes.</li>
+          <li><i class="fas fa-microchip"></i>AI hint engine tags conceptual blindspots and unlocks rescue videos.</li>
+          <li><i class="fas fa-user-shield"></i>Mentor review windows ensure attempts stay exam-accurate.</li>
+        </ul>
+      </div>
+      <div class="phy-g-aside">
+        <div class="phy-g-badge">Access Code Required</div>
+        <p class="phy-g-stat"><strong>Only 120</strong> logins issued per year</p>
+        <p class="phy-g-desc">Designed strictly for Sir’s inner circle students. Every cohort receives curated PHY-G missions synced with weekly teaching arcs.</p>
+        <a href="#" class="st-btn st-style1 st-color1" data-bs-toggle="modal" data-bs-target="#applyModal">Unlock PHY-G with Admission</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -634,18 +675,56 @@
             <small class="field-hint">Enter the WhatsApp-enabled number you actively use.</small>
           </div>
           <div class="form-row-2">
-            <div class="form-floating-modern">
-              <input type="number" id="current_score" name="current_score" min="0" max="180" placeholder=" ">
-              <label for="current_score">Current Mock Score</label>
+            <div class="form-floating-modern select-field">
+              <label for="student_state">Student Location</label>
+              <select id="student_state" name="student_state" required>
+                <option value="">Select state / location</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jammu and Kashmir">Jammu &amp; Kashmir</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manipur">Manipur</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="West Bengal">West Bengal</option>
+                <option value="Outside India">Outside India</option>
+              </select>
             </div>
             <div class="form-floating-modern">
-              <input type="number" id="target_score" name="target_score" min="0" max="180" placeholder=" ">
-              <label for="target_score">Target Score</label>
+              <input type="text" id="school_name" name="school_name" placeholder=" " required>
+              <label for="school_name">School Name</label>
             </div>
           </div>
-          <div class="form-floating-modern">
-            <textarea id="message" name="message" rows="3" placeholder=" "></textarea>
-            <label for="message">Tell us about your preparation</label>
+          <div class="form-floating-modern select-field">
+            <label for="class_level">Current Class</label>
+            <select id="class_level" name="class_level" required>
+              <option value="">Select class</option>
+              <option value="Class 11">Class 11 (Plus One)</option>
+              <option value="Class 12">Class 12 (Plus Two)</option>
+              <option value="Repeater">Repeater / Dropper</option>
+            </select>
           </div>
           <input type="hidden" name="redirect_url" value="https://abhimanue.in/payment.html">
           <button type="submit" class="st-btn st-style1 st-color1 w-100">Submit Application</button>
@@ -694,8 +773,40 @@
 <script src="assets/js/jquery.slick.min.js"></script>
 <script src="assets/js/lightgallery.min.js"></script>
 <script src="assets/js/wow.min.js"></script>
+<script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+<script src="https://unpkg.com/videojs-contrib-quality-levels@2.2.1/dist/videojs-contrib-quality-levels.min.js"></script>
+<script src="https://unpkg.com/videojs-hls-quality-selector@1.1.4/dist/videojs-hls-quality-selector.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/academy.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof videojs === 'undefined') {
+      return;
+    }
+    const videoElement = document.getElementById('academyHlsPlayer');
+    if (!videoElement) {
+      return;
+    }
+
+    const player = videojs(videoElement, {
+      controls: true,
+      fluid: true,
+      preload: 'auto',
+      autoplay: false,
+      playsinline: true,
+      html5: {
+        vhs: { overrideNative: true }
+      }
+    });
+
+    player.ready(function () {
+      if (typeof this.hlsQualitySelector === 'function') {
+        this.hlsQualitySelector({ displayCurrentQuality: true });
+      }
+    });
+  });
+</script>
 
 <script>
   // Batch Urgency: countdown + dynamic stats

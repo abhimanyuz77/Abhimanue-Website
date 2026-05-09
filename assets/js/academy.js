@@ -71,9 +71,9 @@
         const studentName = $('#student_name').val().trim();
         const email = $('#email').val().trim();
         const phone = $('#phone').val().trim();
-        const currentScore = $('#current_score').val().trim();
-        const targetScore = $('#target_score').val().trim();
-        const message = $('#message').val().trim();
+        const studentState = $('#student_state').val();
+        const schoolName = $('#school_name').val().trim();
+        const classLevel = $('#class_level').val();
         const regexEmail = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,})+$/;
         const whatsappRegex = /^[0-9]{10,15}$/;
 
@@ -92,15 +92,31 @@
           return false;
         }
 
+        if (!studentState) {
+          showApplyAlert('warning', '<strong>Location:</strong> Please choose your state or region.');
+          return false;
+        }
+
+        if (!schoolName) {
+          showApplyAlert('warning', '<strong>School:</strong> Please add your school name.');
+          return false;
+        }
+
+        if (!classLevel) {
+          showApplyAlert('warning', '<strong>Class:</strong> Please select your current class.');
+          return false;
+        }
+
         const payload = {
           name: studentName,
           email: email,
           phone: phone,
           subject: 'NEET Physics Admission Application',
           msg: [
-            'Current Score: ' + (currentScore || 'Not provided'),
-            'Target Score: ' + (targetScore || 'Not provided'),
-            'Notes: ' + (message || 'Not provided')
+            'WhatsApp / Mobile: ' + phone,
+            'Student Location: ' + studentState,
+            'School Name: ' + schoolName,
+            'Current Class: ' + classLevel
           ].join('\n'),
           form_context: $('input[name="form_context"]').val() || 'NEET Physics Admission',
           forward_to: $('#forward_to').val() || ''
