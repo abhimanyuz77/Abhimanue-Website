@@ -156,7 +156,7 @@
         <div class="urgency-stat live-stat">
           <div class="urgency-icon live"><span class="live-dot"></span><i class="fas fa-eye"></i></div>
           <div>
-            <h4 id="liveViewers" data-stats-url="https://api.hkskill.com/api/v1/public/visitor-stats/">--</h4>
+            <h4 id="liveViewers" data-stats-url="/api/public/visitor-stats">--</h4>
             <p>Watching this page right now <small class="live-updated">Updated <span id="liveUpdated">--:--</span></small></p>
           </div>
         </div>
@@ -734,7 +734,6 @@
     const liveUpdatedEl = document.getElementById('liveUpdated');
     if (liveEl && liveEl.dataset.statsUrl) {
       const statsUrl = liveEl.dataset.statsUrl;
-      const statsKey = window.HK_VISITOR_STATS_KEY || '';
       const DEFAULT_REFRESH = 5 * 60 * 1000; // 5 minutes fallback
       let refreshTimer = null;
 
@@ -745,11 +744,7 @@
 
       async function loadVisitorStats() {
         try {
-          const fetchOptions = {};
-          if (statsKey && statsKey !== 'REPLACE_WITH_SHARED_KEY') {
-            fetchOptions.headers = { 'X-Visitor-Stats-Key': statsKey };
-          }
-          const response = await fetch(statsUrl, fetchOptions);
+          const response = await fetch(statsUrl, { cache: 'no-store' });
           if (!response.ok) {
             throw new Error(`Visitor stats HTTP ${response.status}`);
           }
