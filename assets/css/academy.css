@@ -314,7 +314,7 @@
   margin-top: 4px;
 }
 
-.hero-ctas {
+.hero-actions .hero-ctas {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
@@ -322,7 +322,7 @@
   max-width: 540px;
 }
 
-.hero-ctas .hero-cta {
+.hero-actions .hero-ctas .hero-cta {
   flex: 0 1 auto;
 }
 
@@ -419,6 +419,56 @@
   letter-spacing: 0.2px;
 }
 
+.powered-hexagon {
+  padding: 70px 0;
+  background: radial-gradient(circle at top, rgba(254,197,68,0.15), transparent 55%), rgba(8, 12, 24, 0.9);
+}
+
+.powered-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 36px 46px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(2, 4, 10, 0.75);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+.powered-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 13px;
+  color: #fec544;
+  margin-bottom: 8px;
+}
+
+.powered-copy h3 {
+  font-size: 30px;
+  margin: 0 0 8px;
+}
+
+.powered-copy p {
+  color: #a9adb8;
+  margin: 0;
+  max-width: 420px;
+  line-height: 1.6;
+}
+
+.powered-logo img {
+  max-height: 60px;
+  width: auto;
+}
+
+@media (max-width: 768px) {
+  .powered-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .powered-copy p { max-width: none; }
+}
+
 .floating-whatsapp {
   position: fixed;
   right: 32px;
@@ -454,6 +504,13 @@
   .hero-trust-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
+  }
+  .final-cta-card .hero-ctas {
+    flex-direction: column;
+  }
+  .final-cta-card .hero-ctas .st-btn {
+    width: 100%;
+    min-width: 0;
   }
   .floating-whatsapp {
     right: 16px;
@@ -3769,6 +3826,21 @@
   color: #a9adb8;
   margin-bottom: 28px;
   font-size: 17px;
+}
+.final-cta-card .hero-ctas {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  width: 100%;
+}
+.final-cta-card .hero-ctas .st-btn {
+  min-width: 220px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  font-weight: 600;
 }
 
 /* Price card readability fix (text was dark on dark) */
