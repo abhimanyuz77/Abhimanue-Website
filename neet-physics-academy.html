@@ -31,8 +31,8 @@
   <link rel="stylesheet" href="assets/css/lightgallery.min.css" />
   <link rel="stylesheet" href="assets/css/animate.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="stylesheet" href="assets/css/academy.css" />
   <link rel="stylesheet" href="https://vjs.zencdn.net/8.10.0/video-js.css">
+  <link rel="stylesheet" href="assets/css/academy.css" />
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GPVMY7JG4V"></script>
   <script>
@@ -344,20 +344,15 @@
           <p class="phy-g-lede">Exclusive problem-solving environment where NEET aspirants learn to attack Physics questions through gamified mastery loops.</p>
         </div>
         <div class="phy-g-stat-block">
-  
-          <div class="phy-g-scarcity">
-            <span class="scarcity-dot filled"></span>
-            <span class="scarcity-dot filled"></span>
-            <span class="scarcity-dot filled"></span>
-            <span class="scarcity-dot filled"></span>
-            <span class="scarcity-dot filled"></span>
-            <span class="scarcity-dot filled"></span>
-            <span class="scarcity-dot filled"></span>
-            <span class="scarcity-dot filled"></span>
-            <span class="scarcity-dot filled"></span>
-            <span class="scarcity-dot filled"></span>
-            <span class="scarcity-dot filled"></span>
-            <span class="scarcity-dot filled"></span>
+          <div class="phy-g-video-wrapper">
+            <video id="phyGHlsPlayer"
+                   class="video-js video-inline-player phyg-player"
+                   controls
+                   preload="auto"
+                   playsinline
+                   poster="assets/img/Phy-G.jpg">
+              <source src="https://d1nh1cy4xqxz3k.cloudfront.net/Phy-G/master.m3u8" type="application/x-mpegURL">
+            </video>
           </div>
         </div>
         <div class="phy-g-features-block">
@@ -851,26 +846,26 @@
     if (typeof videojs === 'undefined') {
       return;
     }
-    const videoElement = document.getElementById('academyHlsPlayer');
-    if (!videoElement) {
-      return;
-    }
+    ['academyHlsPlayer', 'phyGHlsPlayer'].forEach(function (id) {
+      const videoElement = document.getElementById(id);
+      if (!videoElement) return;
 
-    const player = videojs(videoElement, {
-      controls: true,
-      fluid: true,
-      preload: 'auto',
-      autoplay: false,
-      playsinline: true,
-      html5: {
-        vhs: { overrideNative: true }
-      }
-    });
+      const player = videojs(videoElement, {
+        controls: true,
+        fluid: true,
+        preload: 'auto',
+        autoplay: false,
+        playsinline: true,
+        html5: {
+          vhs: { overrideNative: true }
+        }
+      });
 
-    player.ready(function () {
-      if (typeof this.hlsQualitySelector === 'function') {
-        this.hlsQualitySelector({ displayCurrentQuality: true });
-      }
+      player.ready(function () {
+        if (typeof this.hlsQualitySelector === 'function') {
+          this.hlsQualitySelector({ displayCurrentQuality: true });
+        }
+      });
     });
   });
 </script>
