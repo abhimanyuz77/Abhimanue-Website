@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Abhimanue Udayan">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Payment Successful - NEET Physics Academy</title>
+  <meta name="description" content="Your payment has been processed successfully. Welcome to the NEET Physics Academy!">
+
+  <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/fontawesome.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/academy.css" />
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #050505 0%, #0b1224 100%);
+      color: #fdfeff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .success-container {
+      max-width: 600px;
+      width: 100%;
+      background: rgba(8, 14, 30, 0.85);
+      border: 1px solid rgba(254, 197, 68, 0.3);
+      border-radius: 24px;
+      padding: 50px 40px;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 30px;
+      background: linear-gradient(135deg, #50fa7b, #00d4ff);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      color: #0a101e;
+      box-shadow: 0 15px 40px rgba(80, 250, 123, 0.3);
+    }
+
+    .success-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: #fdfeff;
+    }
+
+    .success-subtitle {
+      color: #a9adb8;
+      font-size: 16px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .student-details {
+      background: rgba(254, 197, 68, 0.08);
+      border: 1px solid rgba(254, 197, 68, 0.2);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(254, 197, 68, 0.1);
+    }
+
+    .detail-row:last-child {
+      border-bottom: none;
+    }
+
+    .detail-label {
+      color: #a9adb8;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .detail-value {
+      color: #fec544;
+      font-weight: 700;
+    }
+
+    .whatsapp-message {
+      background: rgba(37, 211, 102, 0.1);
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 30px;
+      color: #bbf7d0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .whatsapp-message i {
+      color: #25d366;
+      margin-right: 8px;
+    }
+
+    .next-steps {
+      text-align: left;
+      margin-bottom: 30px;
+    }
+
+    .next-steps h4 {
+      color: #fdfeff;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .next-steps ol {
+      color: #d0d4dc;
+      font-size: 14px;
+      line-height: 1.8;
+      padding-left: 20px;
+    }
+
+    .next-steps li {
+      margin-bottom: 10px;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 12px;
+      flex-direction: column;
+    }
+
+    .btn-primary-success {
+      background: linear-gradient(135deg, #ffd76b 0%, #fec544 50%, #f0a92a 100%);
+      color: #0a101e;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 22px rgba(254, 197, 68, 0.3);
+    }
+
+    .btn-primary-success:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(254, 197, 68, 0.45);
+      color: #0a101e;
+      text-decoration: none;
+    }
+
+    .btn-secondary-success {
+      background: rgba(255, 255, 255, 0.04);
+      color: #fdfeff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary-success:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(254, 197, 68, 0.5);
+      color: #fdfeff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .success-container {
+        padding: 30px 20px;
+      }
+
+      .success-title {
+        font-size: 24px;
+      }
+
+      .student-details {
+        padding: 16px;
+      }
+
+      .detail-row {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="success-container">
+    <div class="success-icon">✓</div>
+
+    <h1 class="success-title">Payment Successful!</h1>
+    <p class="success-subtitle">
+      Your enrollment has been confirmed. Welcome to the NEET Physics Elite Cohort 2026!
+    </p>
+
+    <div class="student-details">
+      <div class="detail-row">
+        <span class="detail-label">Student Name</span>
+        <span class="detail-value" id="displayName">--</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Email</span>
+        <span class="detail-value" id="displayEmail">--</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">WhatsApp Number</span>
+        <span class="detail-value" id="displayPhone">--</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Program</span>
+        <span class="detail-value" id="displayClass">--</span>
+      </div>
+    </div>
+
+    <div class="whatsapp-message">
+      <i class="fab fa-whatsapp"></i>
+      <strong>We will update you on your WhatsApp number or phone message</strong> with your login credentials, batch schedule, and next steps within 24 hours.
+    </div>
+
+    <div class="next-steps">
+      <h4>What Happens Next?</h4>
+      <ol>
+        <li>You'll receive a WhatsApp message with your login credentials</li>
+        <li>Access the student portal and complete your profile</li>
+        <li>Join the orientation session on <strong>1 June 2026</strong></li>
+        <li>Start your physics journey with personalized mentorship</li>
+      </ol>
+    </div>
+
+    <div class="action-buttons">
+      <a href="https://wa.me/919496654440" target="_blank" rel="noopener" class="btn-primary-success">
+        <i class="fab fa-whatsapp"></i>
+        Chat on WhatsApp
+      </a>
+      <a href="neet-physics-academy.html" class="btn-secondary-success">
+        <i class="fas fa-arrow-left"></i>
+        Back to Academy
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Retrieve student data from session storage
+      const studentName = sessionStorage.getItem('studentName') || 'Student';
+      const studentEmail = sessionStorage.getItem('studentEmail') || 'email@example.com';
+      const studentPhone = sessionStorage.getItem('studentPhone') || '+91 XXXXXXXXXX';
+      const studentClass = sessionStorage.getItem('studentClass') || 'Class 11';
+
+      // Display student details
+      document.getElementById('displayName').textContent = studentName;
+      document.getElementById('displayEmail').textContent = studentEmail;
+      document.getElementById('displayPhone').textContent = studentPhone;
+      document.getElementById('displayClass').textContent = studentClass;
+
+      // Clear session storage after displaying
+      setTimeout(function() {
+        sessionStorage.clear();
+      }, 5000);
+    });
+  </script>
+</body>
+
+</html>

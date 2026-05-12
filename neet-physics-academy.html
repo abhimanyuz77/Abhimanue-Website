@@ -193,18 +193,30 @@
         </div>
       </div>
       <div class="batch-urgency-right">
-        <div class="urgency-stat">
-          <div class="urgency-icon"><i class="fas fa-user-graduate"></i></div>
-          <div>
-            <h4><span id="registeredCount">65</span> <small class="seat-total">/ 100 seats</small></h4>
-            <p><span id="seatsLeft">35</span> seats left in this cohort</p>
+        <div class="cohort-stats-grid">
+          <div class="cohort-stat-item">
+            <div class="cohort-stat-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="cohort-stat-content">
+              <h5>Class 11</h5>
+              <p class="cohort-enrollment"><span class="enrollment-num">65</span> / 100</p>
+              <p class="cohort-seats-left">35 seats left</p>
+            </div>
           </div>
-        </div>
-        <div class="urgency-stat live-stat">
-          <div class="urgency-icon live"><span class="live-dot"></span><i class="fas fa-eye"></i></div>
-          <div>
-            <h4 id="liveViewers" data-stats-url="/api/public/visitor-stats">--</h4>
-            <p>Watching this page right now <small class="live-updated">Updated <span id="liveUpdated">--:--</span></small></p>
+          <div class="cohort-stat-item">
+            <div class="cohort-stat-icon"><i class="fas fa-book"></i></div>
+            <div class="cohort-stat-content">
+              <h5>Class 12</h5>
+              <p class="cohort-enrollment"><span class="enrollment-num">56</span> / 100</p>
+              <p class="cohort-seats-left">44 seats left</p>
+            </div>
+          </div>
+          <div class="cohort-stat-item">
+            <div class="cohort-stat-icon"><i class="fas fa-rocket"></i></div>
+            <div class="cohort-stat-content">
+              <h5>Repeaters</h5>
+              <p class="cohort-enrollment"><span class="enrollment-num">72</span> / 100</p>
+              <p class="cohort-seats-left">28 seats left</p>
+            </div>
           </div>
         </div>
         <a href="#" class="st-btn st-style1 st-color1 urgency-cta" data-bs-toggle="modal" data-bs-target="#applyModal">Secure Your Seat</a>
@@ -564,32 +576,125 @@
           </ul>
         </div>
       </div>
-      <div class="col-lg-5">
-        <div class="price-card">
-          <div class="early-bird-badge"><i class="fas fa-bolt"></i> 30% OFF Early Bird</div>
-          <div class="countdown-timer" id="earlyBirdTimer">
-            <span class="timer-label">Offer ends in:</span>
-            <div class="timer-display">
-              <span class="time-unit"><span class="time-value" id="hours">23</span><span class="time-label">hrs</span></span>
-              <span class="time-separator">:</span>
-              <span class="time-unit"><span class="time-value" id="minutes">59</span><span class="time-label">min</span></span>
-              <span class="time-separator">:</span>
-              <span class="time-unit"><span class="time-value" id="seconds">59</span><span class="time-label">sec</span></span>
+    </div>
+
+    <div class="st-height-b50 st-height-lg-b30"></div>
+
+    <div class="pricing-table-wrapper">
+      <h3 class="pricing-table-title">Pricing by Program</h3>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h4>NEET Physics Class 11</h4>
+            <p class="pricing-subtitle">For Class 11 Students</p>
+          </div>
+          <div class="pricing-body">
+            <div class="price-section">
+              <span class="original-price">₹24,000</span>
+              <div class="price-display">
+                <h2>₹16,800<span>/year</span></h2>
+              </div>
+              <p class="installment">or ₹1,400/month</p>
             </div>
+            <div class="early-bird-badge"><i class="fas fa-bolt"></i> 30% OFF</div>
+            <ul class="pricing-features">
+              <li>100 seats per batch</li>
+              <li>Application based</li>
+              <li>14-day risk-free trial</li>
+            </ul>
+            <a href="https://rzp.io/rzp/yt5Q3JGb" class="st-btn st-style1 st-color1 w-100" target="_blank" rel="noopener">Enroll Now</a>
           </div>
-          <p class="price-eyebrow">Yearly Membership</p>
-          <div class="price-display">
-            <div class="original-price">₹24,000/year</div>
-            <h2>₹16,800<span>/year</span></h2>
-          </div>
-          <p class="installment">or ₹1,400/month</p>
-          <ul>
-            <li>Limited batch size</li>
-            <li>Application based</li>
-            <li>14-day risk-free trial — if the program doesn’t feel valuable, request a full refund within the first 14 days.</li>
-          </ul>
-          <a href="#" class="st-btn st-style1 st-color1 w-100" data-bs-toggle="modal" data-bs-target="#applyModal">Enroll Now</a>
         </div>
+
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h4>NEET Physics Class 12</h4>
+            <p class="pricing-subtitle">For Class 12 Students</p>
+          </div>
+          <div class="pricing-body">
+            <div class="price-section">
+              <span class="original-price">₹24,000</span>
+              <div class="price-display">
+                <h2>₹16,800<span>/year</span></h2>
+              </div>
+              <p class="installment">or ₹1,400/month</p>
+            </div>
+            <div class="early-bird-badge"><i class="fas fa-bolt"></i> 30% OFF</div>
+            <ul class="pricing-features">
+              <li>100 seats per batch</li>
+              <li>Application based</li>
+              <li>14-day risk-free trial</li>
+            </ul>
+            <a href="https://rzp.io/rzp/yt5Q3JGb" class="st-btn st-style1 st-color1 w-100" target="_blank" rel="noopener">Enroll Now</a>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h4>NEET Repeater Full Course</h4>
+            <p class="pricing-subtitle">For Repeaters & Droppers</p>
+          </div>
+          <div class="pricing-body">
+            <div class="price-section">
+              <span class="original-price">₹36,000</span>
+              <div class="price-display">
+                <h2>₹25,200<span>/year</span></h2>
+              </div>
+              <p class="installment">or ₹2,100/month</p>
+            </div>
+            <div class="early-bird-badge"><i class="fas fa-bolt"></i> 30% OFF</div>
+            <ul class="pricing-features">
+              <li>100 seats per batch</li>
+              <li>Application based</li>
+              <li>14-day risk-free trial</li>
+            </ul>
+            <a href="https://rzp.io/rzp/CgpeuOoT" class="st-btn st-style1 st-color1 w-100" target="_blank" rel="noopener">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cohort-stats st-dark-bg">
+  <div class="container">
+    <div class="st-section-heading st-style1 text-center">
+      <h4 class="st-section-heading-title">Current Cohort Status</h4>
+      <p>Real-time enrollment across all programs</p>
+    </div>
+    <div class="st-height-b40 st-height-lg-b30"></div>
+    <div class="stats-grid">
+      <div class="stat-card-cohort">
+        <div class="cohort-name">Class 11 Cohort</div>
+        <div class="enrollment-display">
+          <h3><span class="enrolled-count">56</span> <span class="total-seats">/ 100</span></h3>
+        </div>
+        <div class="enrollment-bar">
+          <div class="enrollment-fill" style="width: 56%;"></div>
+        </div>
+        <p class="seats-available"><span class="seats-left">44</span> seats available</p>
+      </div>
+
+      <div class="stat-card-cohort">
+        <div class="cohort-name">Class 12 Cohort</div>
+        <div class="enrollment-display">
+          <h3><span class="enrolled-count">45</span> <span class="total-seats">/ 100</span></h3>
+        </div>
+        <div class="enrollment-bar">
+          <div class="enrollment-fill" style="width: 45%;"></div>
+        </div>
+        <p class="seats-available"><span class="seats-left">55</span> seats available</p>
+      </div>
+
+      <div class="stat-card-cohort">
+        <div class="cohort-name">Repeater Cohort</div>
+        <div class="enrollment-display">
+          <h3><span class="enrolled-count">65</span> <span class="total-seats">/ 100</span></h3>
+        </div>
+        <div class="enrollment-bar">
+          <div class="enrollment-fill" style="width: 65%;"></div>
+        </div>
+        <p class="seats-available"><span class="seats-left">35</span> seats available</p>
       </div>
     </div>
   </div>
@@ -788,8 +893,8 @@
               <option value="Repeater">Repeater / Dropper</option>
             </select>
           </div>
-          <input type="hidden" name="redirect_url" value="https://abhimanue.in/payment.html">
-          <button type="submit" class="st-btn st-style1 st-color1 w-100">Submit Application</button>
+          <input type="hidden" name="redirect_url" id="payment_redirect_url" value="">
+          <button type="submit" class="st-btn st-style1 st-color1 w-100">Proceed to Payment</button>
           <p class="form-fineprint">By submitting, you consent to a counseling call within 24 hours.</p>
         </form>
       </div>
@@ -951,6 +1056,59 @@
           e.preventDefault();
           bsModal.show();
         });
+      });
+    }
+
+    // Handle apply form submission with payment redirect
+    const applyForm = document.getElementById('apply-form');
+    const classLevelSelect = document.getElementById('class_level');
+    const paymentRedirectUrl = document.getElementById('payment_redirect_url');
+
+    if (applyForm && classLevelSelect) {
+      // Payment links mapping
+      const paymentLinks = {
+        'Class 11': 'https://rzp.io/rzp/yt5Q3JGb',
+        'Class 12': 'https://rzp.io/rzp/yt5Q3JGb',
+        'Repeater': 'https://rzp.io/rzp/CgpeuOoT'
+      };
+
+      // Update payment URL when class level changes
+      classLevelSelect.addEventListener('change', function() {
+        const selectedClass = this.value;
+        if (paymentLinks[selectedClass]) {
+          paymentRedirectUrl.value = paymentLinks[selectedClass];
+        }
+      });
+
+      // Handle form submission
+      applyForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const selectedClass = classLevelSelect.value;
+        const paymentLink = paymentLinks[selectedClass];
+
+        if (!paymentLink) {
+          alert('Please select a valid class level');
+          return;
+        }
+
+        // Collect form data
+        const formData = new FormData(applyForm);
+        const studentName = formData.get('student_name');
+        const email = formData.get('email');
+        const phone = formData.get('phone');
+
+        // Store form data in session storage for payment success page
+        sessionStorage.setItem('studentName', studentName);
+        sessionStorage.setItem('studentEmail', email);
+        sessionStorage.setItem('studentPhone', phone);
+        sessionStorage.setItem('studentClass', selectedClass);
+
+        // Submit form to backend first (optional - for logging)
+        // Then redirect to payment
+        setTimeout(function() {
+          window.location.href = paymentLink;
+        }, 500);
       });
     }
   });
