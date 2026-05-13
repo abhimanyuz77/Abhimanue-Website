@@ -1,0 +1,109 @@
+{
+  "description": "Cloudflare Cache Configuration for Abhimanue Website",
+  "caching_rules": [
+    {
+      "name": "No Cache for HTML Files",
+      "description": "HTML files must never be cached - always fetch fresh",
+      "url_pattern": "*.html",
+      "cache_level": "bypass",
+      "browser_cache_ttl": 0,
+      "edge_cache_ttl": 0,
+      "cache_on_cookie": [],
+      "cache_key_fields": {
+        "include_host": true,
+        "include_query_string": true
+      }
+    },
+    {
+      "name": "No Cache for Index",
+      "description": "Root index must always be fresh",
+      "url_pattern": "/index.html",
+      "cache_level": "bypass",
+      "browser_cache_ttl": 0,
+      "edge_cache_ttl": 0
+    },
+    {
+      "name": "Aggressive Cache for Versioned Assets",
+      "description": "Cache hashed CSS/JS files for 1 year (immutable)",
+      "url_pattern": "*.*.css",
+      "cache_level": "cache_everything",
+      "browser_cache_ttl": 31536000,
+      "edge_cache_ttl": 31536000,
+      "cache_key_fields": {
+        "include_host": true,
+        "include_query_string": false
+      }
+    },
+    {
+      "name": "Aggressive Cache for Versioned JS",
+      "description": "Cache hashed JS files for 1 year (immutable)",
+      "url_pattern": "*.*.js",
+      "cache_level": "cache_everything",
+      "browser_cache_ttl": 31536000,
+      "edge_cache_ttl": 31536000,
+      "cache_key_fields": {
+        "include_host": true,
+        "include_query_string": false
+      }
+    },
+    {
+      "name": "Long Cache for Images",
+      "description": "Cache images for 1 year",
+      "url_pattern": "*.{jpg,jpeg,png,gif,svg,webp}",
+      "cache_level": "cache_everything",
+      "browser_cache_ttl": 31536000,
+      "edge_cache_ttl": 31536000
+    },
+    {
+      "name": "Long Cache for Fonts",
+      "description": "Cache fonts for 1 year",
+      "url_pattern": "*.{woff,woff2,ttf,eot}",
+      "cache_level": "cache_everything",
+      "browser_cache_ttl": 31536000,
+      "edge_cache_ttl": 31536000
+    },
+    {
+      "name": "Moderate Cache for Non-Versioned Assets",
+      "description": "Fallback for non-hashed CSS/JS (1 hour)",
+      "url_pattern": "*.css",
+      "cache_level": "cache_everything",
+      "browser_cache_ttl": 3600,
+      "edge_cache_ttl": 3600
+    }
+  ],
+  "page_rules": [
+    {
+      "targets": ["*.html"],
+      "actions": {
+        "cache_level": "bypass",
+        "browser_cache_ttl": 0
+      }
+    },
+    {
+      "targets": ["/index.html"],
+      "actions": {
+        "cache_level": "bypass",
+        "browser_cache_ttl": 0
+      }
+    }
+  ],
+  "headers": {
+    "html_files": {
+      "Cache-Control": "no-cache, no-store, must-revalidate",
+      "Pragma": "no-cache",
+      "Expires": "0"
+    },
+    "versioned_assets": {
+      "Cache-Control": "public, max-age=31536000, immutable"
+    },
+    "static_assets": {
+      "Cache-Control": "public, max-age=31536000"
+    }
+  },
+  "cloudflare_api": {
+    "description": "Use these endpoints to manage cache purging",
+    "purge_all_cache": "POST /client/v4/zones/{zone_id}/purge_cache",
+    "purge_files": "POST /client/v4/zones/{zone_id}/purge_cache",
+    "purge_by_tags": "POST /client/v4/zones/{zone_id}/purge_cache"
+  }
+}

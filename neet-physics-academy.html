@@ -25,6 +25,7 @@
   <meta name="twitter:image" content="https://abhimanue.in/assets/img/Abhimanue-NEET-Physics-Academy.jpg">
 
   <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+  <meta name="site-version" content="cache-buster-enabled">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
   <link rel="stylesheet" href="assets/css/fontawesome.css" />
   <link rel="stylesheet" href="assets/css/slick.css" />
@@ -33,6 +34,7 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="https://vjs.zencdn.net/8.10.0/video-js.css">
   <link rel="stylesheet" href="assets/css/academy.css" />
+  <script src="assets/js/cache-buster-client.js"></script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GPVMY7JG4V"></script>
   <script>
@@ -1261,10 +1263,24 @@
         const cardTotalAmount = programInfo.price + cardChargeAmount;
         document.getElementById('cardTotalAmount').textContent = `Total Amount: ₹${cardTotalAmount.toLocaleString('en-IN')} (₹${programInfo.price.toLocaleString('en-IN')} + ₹${cardChargeAmount} gateway charge)`;
 
-        // Create WhatsApp message
-        const whatsappMessage = `Hi! I've completed my admission form for ${programInfo.name}. My details are:\n\nName: ${studentName}\nEmail: ${email}\nPhone: ${phone}\n\nPlease send me the payment link or confirm my bank transfer details. Amount: ₹${programInfo.price}`;
-        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-        whatsappPaymentBtn.href = whatsappLink;
+        // Create different WhatsApp messages for each payment method
+        const upiMessage = `Hi! I've completed my admission form for ${programInfo.name}. I'm paying via UPI/QR Code.\n\nName: ${studentName}\nEmail: ${email}\nPhone: ${phone}\nAmount: ₹${programInfo.price}\n\nI will scan the QR code and send you the payment screenshot shortly.`;
+        
+        const bankMessage = `Hi! I've completed my admission form for ${programInfo.name}. I'm paying via Bank Transfer.\n\nName: ${studentName}\nEmail: ${email}\nPhone: ${phone}\nAmount: ₹${programInfo.price}\n\nPlease confirm the bank details. I will transfer the amount and send you the transaction screenshot.`;
+        
+        const creditCardMessage = `Hi! I've completed my admission form for ${programInfo.name}. I want to pay via Credit/Debit Card.\n\nName: ${studentName}\nEmail: ${email}\nPhone: ${phone}\nAmount: ₹${programInfo.price} (+ 3% gateway charge = ₹${cardTotalAmount})\n\nPlease send me the secure payment link.`;
+
+        // Store messages in data attributes for each tab
+        const qrTab = document.getElementById('qr-tab');
+        const bankTab = document.getElementById('bank-tab');
+        const cardTab = document.getElementById('card-tab');
+
+        if (qrTab) qrTab.dataset.whatsappMessage = upiMessage;
+        if (bankTab) bankTab.dataset.whatsappMessage = bankMessage;
+        if (cardTab) cardTab.dataset.whatsappMessage = creditCardMessage;
+
+        // Set initial message to UPI (first tab)
+        whatsappPaymentBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(upiMessage)}`;
 
         // IMPORTANT: Submit form data to backend API FIRST (before showing payment modal)
         // This ensures we capture the lead even if payment fails
@@ -1278,6 +1294,18 @@
           // Show payment modal AFTER successful form submission
           const bsPaymentModal = new bootstrap.Modal(paymentModal);
           bsPaymentModal.show();
+
+          // Add tab change listeners to update WhatsApp message
+          const paymentTabs = document.querySelectorAll('#paymentTabs button');
+          paymentTabs.forEach(tab => {
+            tab.addEventListener('shown.bs.tab', function() {
+              const whatsappMessage = this.dataset.whatsappMessage;
+              if (whatsappMessage) {
+                whatsappPaymentBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+                console.log('WhatsApp message updated for:', this.textContent);
+              }
+            });
+          });
         })
         .catch(error => {
           console.error('⚠️ Form submission error:', error);
@@ -1286,6 +1314,18 @@
           console.log('Showing payment modal despite backend error - lead capture may have failed');
           const bsPaymentModal = new bootstrap.Modal(paymentModal);
           bsPaymentModal.show();
+
+          // Add tab change listeners to update WhatsApp message
+          const paymentTabs = document.querySelectorAll('#paymentTabs button');
+          paymentTabs.forEach(tab => {
+            tab.addEventListener('shown.bs.tab', function() {
+              const whatsappMessage = this.dataset.whatsappMessage;
+              if (whatsappMessage) {
+                whatsappPaymentBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+                console.log('WhatsApp message updated for:', this.textContent);
+              }
+            });
+          });
         });
       });
 
