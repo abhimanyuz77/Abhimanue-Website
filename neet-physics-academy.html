@@ -902,6 +902,103 @@
   </div>
 </div>
 
+<!-- Payment Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content" style="border-radius: 15px; overflow: hidden;">
+      <div class="modal-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <h5 class="modal-title" id="paymentModalLabel">💳 Complete Your Payment</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+        <div id="paymentContent">
+          <!-- Program and Fee Details -->
+          <div class="payment-header mb-4">
+            <h6 class="text-muted">Program Selected</h6>
+            <h4 id="selectedProgram" style="color: #667eea; font-weight: 700;">Class 11</h4>
+            <h5 id="paymentAmount" style="color: #28a745; font-size: 1.8rem; margin-top: 10px;">₹16,800</h5>
+            <p class="text-muted small mt-2">30% discount already applied • 14-day risk-free trial</p>
+          </div>
+
+          <!-- Payment Methods Tabs -->
+          <ul class="nav nav-tabs mb-4" id="paymentTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="qr-tab" data-bs-toggle="tab" data-bs-target="#qrMethod" type="button" role="tab">📱 QR Code</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="bank-tab" data-bs-toggle="tab" data-bs-target="#bankMethod" type="button" role="tab">🏦 Bank Transfer</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="card-tab" data-bs-toggle="tab" data-bs-target="#cardMethod" type="button" role="tab">💳 Credit Card</button>
+            </li>
+          </ul>
+
+          <!-- Tab Content -->
+          <div class="tab-content">
+            <!-- QR Code Method -->
+            <div class="tab-pane fade show active" id="qrMethod" role="tabpanel">
+              <div class="text-center">
+                <p class="mb-3">Scan with Google Pay, PhonePe, or any UPI app</p>
+                <img src="assets/img/GooglePay_QR.png" alt="Payment QR Code" style="max-width: 250px; border-radius: 10px; border: 2px solid #ddd; padding: 10px;">
+                <p class="text-muted small mt-3">After payment, please share the transaction screenshot on WhatsApp</p>
+              </div>
+            </div>
+
+            <!-- Bank Transfer Method -->
+            <div class="tab-pane fade" id="bankMethod" role="tabpanel">
+              <div class="bank-details" style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                <div class="detail-row mb-3">
+                  <label class="text-muted small">Account Holder Name</label>
+                  <p class="mb-0" style="font-weight: 600;">ABHIMANUE UDAYAN</p>
+                </div>
+                <div class="detail-row mb-3">
+                  <label class="text-muted small">Account Number</label>
+                  <p class="mb-0" style="font-weight: 600; font-family: monospace;">5010 0207 7603 75</p>
+                </div>
+                <div class="detail-row mb-3">
+                  <label class="text-muted small">Account Type</label>
+                  <p class="mb-0" style="font-weight: 600;">Savings Account</p>
+                </div>
+                <div class="detail-row mb-3">
+                  <label class="text-muted small">Bank Name</label>
+                  <p class="mb-0" style="font-weight: 600;">HDFC Bank</p>
+                </div>
+                <div class="detail-row mb-3">
+                  <label class="text-muted small">IFSC Code</label>
+                  <p class="mb-0" style="font-weight: 600; font-family: monospace;">HDFC0000122</p>
+                </div>
+                <div class="detail-row">
+                  <label class="text-muted small">Branch</label>
+                  <p class="mb-0" style="font-weight: 600;">BHUBANESWAR JANPATH BRANCH</p>
+                </div>
+              </div>
+              <p class="text-muted small mt-3">After bank transfer, please share the transaction screenshot on WhatsApp</p>
+            </div>
+
+            <!-- Credit Card Method -->
+            <div class="tab-pane fade" id="cardMethod" role="tabpanel">
+              <div class="text-center">
+                <p class="mb-4">Request a payment link via WhatsApp to pay with your credit card</p>
+                <p class="text-muted small mb-4">We'll send you a secure payment link that accepts all major credit cards</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="payment-actions mt-4">
+            <a id="whatsappPaymentBtn" href="#" class="st-btn st-style1 st-color1 w-100 mb-3" target="_blank" rel="noopener">
+              <i class="fab fa-whatsapp"></i> Send Payment Details via WhatsApp
+            </a>
+            <p class="text-center text-muted small">
+              <i class="fas fa-info-circle"></i> We'll send you a payment link or confirm your bank transfer details
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Demo Session Modal -->
 <div class="modal fade" id="webinarModal" tabindex="-1" aria-labelledby="webinarModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -1098,35 +1195,31 @@
       });
     }
 
-    // Handle apply form submission with payment redirect
+    // Handle apply form submission with custom payment modal
     const applyForm = document.getElementById('apply-form');
     const classLevelSelect = document.getElementById('class_level');
-    const paymentRedirectUrl = document.getElementById('payment_redirect_url');
+    const paymentModal = document.getElementById('paymentModal');
+    const whatsappPaymentBtn = document.getElementById('whatsappPaymentBtn');
+
+    // Program pricing mapping
+    const programPricing = {
+      'Class 11': { name: 'NEET Physics Class 11', price: 16800 },
+      'Class 12': { name: 'NEET Physics Class 12', price: 16800 },
+      'Repeater': { name: 'NEET Repeater Full Course', price: 25200 }
+    };
+
+    // WhatsApp Business Number (update with your actual number)
+    const whatsappNumber = '919496654440';
 
     if (applyForm && classLevelSelect) {
-      // Payment links mapping
-      const paymentLinks = {
-        'Class 11': 'https://rzp.io/rzp/yt5Q3JGb',
-        'Class 12': 'https://rzp.io/rzp/yt5Q3JGb',
-        'Repeater': 'https://rzp.io/rzp/CgpeuOoT'
-      };
-
-      // Update payment URL when class level changes
-      classLevelSelect.addEventListener('change', function() {
-        const selectedClass = this.value;
-        if (paymentLinks[selectedClass]) {
-          paymentRedirectUrl.value = paymentLinks[selectedClass];
-        }
-      });
-
       // Handle form submission
       applyForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
         const selectedClass = classLevelSelect.value;
-        const paymentLink = paymentLinks[selectedClass];
+        const programInfo = programPricing[selectedClass];
 
-        if (!paymentLink) {
+        if (!programInfo) {
           alert('Please select a valid class level');
           return;
         }
@@ -1137,17 +1230,39 @@
         const email = formData.get('email');
         const phone = formData.get('phone');
 
-        // Store form data in session storage for payment success page
+        // Store form data in session storage
         sessionStorage.setItem('studentName', studentName);
         sessionStorage.setItem('studentEmail', email);
         sessionStorage.setItem('studentPhone', phone);
         sessionStorage.setItem('studentClass', selectedClass);
+        sessionStorage.setItem('studentPrice', programInfo.price);
 
-        // Submit form to backend first (optional - for logging)
-        // Then redirect to payment
-        setTimeout(function() {
-          window.location.href = paymentLink;
-        }, 500);
+        // Update payment modal with program details
+        document.getElementById('selectedProgram').textContent = programInfo.name;
+        document.getElementById('paymentAmount').textContent = '₹' + programInfo.price.toLocaleString('en-IN');
+
+        // Create WhatsApp message
+        const whatsappMessage = `Hi! I've completed my admission form for ${programInfo.name}. My details are:\n\nName: ${studentName}\nEmail: ${email}\nPhone: ${phone}\n\nPlease send me the payment link or confirm my bank transfer details. Amount: ₹${programInfo.price}`;
+        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+        whatsappPaymentBtn.href = whatsappLink;
+
+        // Submit form data to backend API
+        fetch('/api/contact', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          console.log('Form submitted to backend:', response.status);
+          // Show payment modal
+          const bsPaymentModal = new bootstrap.Modal(paymentModal);
+          bsPaymentModal.show();
+        })
+        .catch(error => {
+          console.error('Form submission error:', error);
+          // Still show payment modal even if backend fails
+          const bsPaymentModal = new bootstrap.Modal(paymentModal);
+          bsPaymentModal.show();
+        });
       });
     }
   });
