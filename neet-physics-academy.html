@@ -999,6 +999,9 @@
             <a id="whatsappPaymentBtn" href="#" class="st-btn st-style1 st-color1 w-100 mb-3" target="_blank" rel="noopener">
               <i class="fab fa-whatsapp"></i> Send Payment Details via WhatsApp
             </a>
+            <button id="paymentCompleteBtn" type="button" class="st-btn st-style2 w-100 mb-3" data-bs-dismiss="modal">
+              <i class="fas fa-check-circle"></i> I Have Completed the Payment
+            </button>
             <p class="text-center text-muted small">
               <i class="fas fa-info-circle"></i> We'll send you a payment link or confirm your bank transfer details
             </p>
@@ -1239,6 +1242,8 @@
         const studentName = formData.get('student_name');
         const email = formData.get('email');
         const phone = formData.get('phone');
+        const studentState = formData.get('student_state');
+        const schoolName = formData.get('school_name');
 
         // Store form data in session storage
         sessionStorage.setItem('studentName', studentName);
@@ -1261,24 +1266,73 @@
         const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
         whatsappPaymentBtn.href = whatsappLink;
 
-        // Submit form data to backend API
+        // IMPORTANT: Submit form data to backend API FIRST (before showing payment modal)
+        // This ensures we capture the lead even if payment fails
         fetch('/api/contact', {
           method: 'POST',
           body: formData
         })
         .then(response => {
-          console.log('Form submitted to backend:', response.status);
-          // Show payment modal
+          console.log('✅ Form submitted to backend successfully:', response.status);
+          console.log('Lead captured - Student details sent to email');
+          // Show payment modal AFTER successful form submission
           const bsPaymentModal = new bootstrap.Modal(paymentModal);
           bsPaymentModal.show();
         })
         .catch(error => {
-          console.error('Form submission error:', error);
+          console.error('⚠️ Form submission error:', error);
           // Still show payment modal even if backend fails
+          // This ensures student can still proceed with payment
+          console.log('Showing payment modal despite backend error - lead capture may have failed');
           const bsPaymentModal = new bootstrap.Modal(paymentModal);
           bsPaymentModal.show();
         });
       });
+
+      // Handle "I Have Completed the Payment" button click
+      const paymentCompleteBtn = document.getElementById('paymentCompleteBtn');
+      if (paymentCompleteBtn) {
+        paymentCompleteBtn.addEventListener('click', function() {
+          const studentName = sessionStorage.getItem('studentName');
+          const studentEmail = sessionStorage.getItem('studentEmail');
+          const studentPhone = sessionStorage.getItem('studentPhone');
+          const studentClass = sessionStorage.getItem('studentClass');
+          const studentPrice = sessionStorage.getItem('studentPrice');
+
+          // Log payment completion
+          console.log('✅ Payment marked as complete by student:', {
+            name: studentName,
+            email: studentEmail,
+            phone: studentPhone,
+            class: studentClass,
+            amount: studentPrice
+          });
+
+          // Optional: Send payment confirmation to backend
+          const paymentData = new FormData();
+          paymentData.append('student_name', studentName);
+          paymentData.append('email', studentEmail);
+          paymentData.append('phone', studentPhone);
+          paymentData.append('class_level', studentClass);
+          paymentData.append('amount', studentPrice);
+          paymentData.append('form_context', 'NEET Physics Payment Confirmation');
+          paymentData.append('forward_to', 'support@hexagonknow.com,abhimanue@hexagonknow.com');
+
+          fetch('/api/contact', {
+            method: 'POST',
+            body: paymentData
+          })
+          .then(response => {
+            console.log('Payment confirmation sent to backend');
+          })
+          .catch(error => {
+            console.error('Payment confirmation error:', error);
+          });
+
+          // Show success message
+          alert('Thank you! Your payment has been recorded. We will verify and confirm your enrollment shortly. Check your WhatsApp for updates!');
+        });
+      }
     }
   });
 </script>
