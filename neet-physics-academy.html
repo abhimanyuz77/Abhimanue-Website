@@ -978,8 +978,18 @@
             <!-- Credit Card Method -->
             <div class="tab-pane fade" id="cardMethod" role="tabpanel">
               <div class="text-center">
-                <p class="mb-4">Request a payment link via WhatsApp to pay with your credit card</p>
-                <p class="text-muted small mb-4">We'll send you a secure payment link that accepts all major credit cards</p>
+                <p class="mb-4">Request a payment link via WhatsApp to pay with your credit/debit card</p>
+                <p class="text-muted small mb-4">We'll send you a secure payment link that accepts all major credit and debit cards</p>
+                
+                <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #ffc107;">
+                  <p class="mb-2" style="color: #856404; font-weight: 600;">⚠️ Payment Gateway Charges</p>
+                  <p class="mb-0" style="color: #856404; font-size: 0.95rem;">
+                    An additional <strong>3% charge</strong> will be applied for credit/debit card payments to cover payment gateway fees.
+                  </p>
+                  <p id="cardTotalAmount" style="color: #856404; font-weight: 700; font-size: 1.1rem; margin-top: 10px;">
+                    Total Amount: ₹--
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -1240,6 +1250,11 @@
         // Update payment modal with program details
         document.getElementById('selectedProgram').textContent = programInfo.name;
         document.getElementById('paymentAmount').textContent = '₹' + programInfo.price.toLocaleString('en-IN');
+
+        // Calculate 3% charge for credit card
+        const cardChargeAmount = Math.round(programInfo.price * 0.03);
+        const cardTotalAmount = programInfo.price + cardChargeAmount;
+        document.getElementById('cardTotalAmount').textContent = `Total Amount: ₹${cardTotalAmount.toLocaleString('en-IN')} (₹${programInfo.price.toLocaleString('en-IN')} + ₹${cardChargeAmount} gateway charge)`;
 
         // Create WhatsApp message
         const whatsappMessage = `Hi! I've completed my admission form for ${programInfo.name}. My details are:\n\nName: ${studentName}\nEmail: ${email}\nPhone: ${phone}\n\nPlease send me the payment link or confirm my bank transfer details. Amount: ₹${programInfo.price}`;
