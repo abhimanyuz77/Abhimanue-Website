@@ -36,6 +36,22 @@
   <link rel="stylesheet" href="assets/css/academy.css" />
   <script src="assets/js/cache-buster-client.js"></script>
 
+  <style>
+    /* Balance 2-card pricing layout */
+    @media (max-width: 1024px) {
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+      .pricing-grid .pricing-card:nth-child(3) {
+        grid-column: 1 / -1;
+        max-width: 50%;
+        margin: 0 auto;
+      }
+    }
+  </style>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GPVMY7JG4V"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -208,8 +224,8 @@
             <div class="cohort-stat-icon"><i class="fas fa-book"></i></div>
             <div class="cohort-stat-content">
               <h5>Class 12</h5>
-              <p class="cohort-enrollment"><span class="enrollment-num">21</span> / 33</p>
-              <p class="cohort-seats-left">12 seats left</p>
+              <p class="cohort-enrollment"><span class="enrollment-num">33</span> / 33</p>
+              <p class="cohort-seats-left" style="color: #dc3545; font-weight: 600;">❌ Fully Filled - No Admission Available</p>
             </div>
           </div>
           <div class="cohort-stat-item">
@@ -608,7 +624,7 @@
           </div>
         </div>
 
-        <div class="pricing-card">
+        <div class="pricing-card" style="opacity: 0.7; border: 2px solid #dc3545;">
           <div class="pricing-header">
             <h4>NEET Physics Class 12</h4>
             <p class="pricing-subtitle">For Class 12 Students</p>
@@ -621,13 +637,13 @@
               </div>
               <p class="installment">or ₹1,400/month</p>
             </div>
-            <div class="early-bird-badge"><i class="fas fa-bolt"></i> 30% OFF <span class="discount-timer" id="timer-class12"></span></div>
+            <div class="early-bird-badge" style="background: #dc3545; border-color: #dc3545;"><i class="fas fa-times-circle"></i> FULLY FILLED</div>
             <ul class="pricing-features">
               <li>33 seats per batch</li>
               <li>Application based</li>
               <li>14-day risk-free trial</li>
             </ul>
-            <a href="https://rzp.io/rzp/yt5Q3JGb" class="st-btn st-style1 st-color1 w-100" target="_blank" rel="noopener">Enroll Now</a>
+            <div class="st-btn st-style1 w-100" style="background: #ccc; color: #666; cursor: not-allowed; text-align: center; padding: 12px; border-radius: 8px; font-weight: 600;">Admissions Closed</div>
           </div>
         </div>
 
@@ -680,12 +696,12 @@
       <div class="stat-card-cohort">
         <div class="cohort-name">Class 12 Cohort</div>
         <div class="enrollment-display">
-          <h3><span class="enrolled-count">21</span> <span class="total-seats">/ 33</span></h3>
+          <h3><span class="enrolled-count">33</span> <span class="total-seats">/ 33</span></h3>
         </div>
         <div class="enrollment-bar">
-          <div class="enrollment-fill" style="width: 63.6%;"></div>
+          <div class="enrollment-fill" style="width: 100%;"></div>
         </div>
-        <p class="seats-available"><span class="seats-left">12</span> seats available</p>
+        <p class="seats-available" style="color: #dc3545; font-weight: 600;">❌ Fully Filled - No Admission Available</p>
       </div>
 
       <div class="stat-card-cohort">
