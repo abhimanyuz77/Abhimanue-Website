@@ -50,6 +50,69 @@
         margin: 0 auto;
       }
     }
+
+    /* Balance cohort stats grid - center 2 cards */
+    .cohort-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      gap: 25px;
+      place-items: center;
+    }
+
+    .cohort-stat-item {
+      width: 100%;
+      max-width: 220px;
+      padding: 30px 20px;
+      border: 2px solid #667eea;
+      border-radius: 16px;
+      background: rgba(102, 126, 234, 0.05);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .cohort-stat-item:hover {
+      border-color: #ffd700;
+      background: rgba(255, 215, 0, 0.08);
+      transform: translateY(-5px);
+    }
+
+    .cohort-stat-icon {
+      font-size: 40px;
+      color: #ffd700;
+    }
+
+    .cohort-stat-content h5 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+
+    .cohort-enrollment {
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffd700;
+      margin: 8px 0 0;
+    }
+
+    .cohort-enrollment .enrollment-num {
+      color: #ffd700;
+    }
+
+    .cohort-seats-left {
+      font-size: 13px;
+      color: #aaa;
+      margin: 0;
+      font-weight: 500;
+    }
   </style>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GPVMY7JG4V"></script>
@@ -218,14 +281,6 @@
               <h5>Class 11</h5>
               <p class="cohort-enrollment"><span class="enrollment-num">18</span> / 33</p>
               <p class="cohort-seats-left">15 seats left</p>
-            </div>
-          </div>
-          <div class="cohort-stat-item">
-            <div class="cohort-stat-icon"><i class="fas fa-book"></i></div>
-            <div class="cohort-stat-content">
-              <h5>Class 12</h5>
-              <p class="cohort-enrollment"><span class="enrollment-num">33</span> / 33</p>
-              <p class="cohort-seats-left" style="color: #dc3545; font-weight: 600;">❌ Fully Filled - No Admission Available</p>
             </div>
           </div>
           <div class="cohort-stat-item">
@@ -624,29 +679,6 @@
           </div>
         </div>
 
-        <div class="pricing-card" style="opacity: 0.7; border: 2px solid #dc3545;">
-          <div class="pricing-header">
-            <h4>NEET Physics Class 12</h4>
-            <p class="pricing-subtitle">For Class 12 Students</p>
-          </div>
-          <div class="pricing-body">
-            <div class="price-section">
-              <span class="original-price">₹24,000</span>
-              <div class="price-display">
-                <h2>₹16,800<span>/year</span></h2>
-              </div>
-              <p class="installment">or ₹1,400/month</p>
-            </div>
-            <div class="early-bird-badge" style="background: #dc3545; border-color: #dc3545;"><i class="fas fa-times-circle"></i> FULLY FILLED</div>
-            <ul class="pricing-features">
-              <li>33 seats per batch</li>
-              <li>Application based</li>
-              <li>14-day risk-free trial</li>
-            </ul>
-            <div class="st-btn st-style1 w-100" style="background: #ccc; color: #666; cursor: not-allowed; text-align: center; padding: 12px; border-radius: 8px; font-weight: 600;">Admissions Closed</div>
-          </div>
-        </div>
-
         <div class="pricing-card">
           <div class="pricing-header">
             <h4>NEET Repeater Physics Class 11 & 12</h4>
@@ -691,17 +723,6 @@
           <div class="enrollment-fill" style="width: 54.5%;"></div>
         </div>
         <p class="seats-available"><span class="seats-left">15</span> seats available</p>
-      </div>
-
-      <div class="stat-card-cohort">
-        <div class="cohort-name">Class 12 Cohort</div>
-        <div class="enrollment-display">
-          <h3><span class="enrolled-count">33</span> <span class="total-seats">/ 33</span></h3>
-        </div>
-        <div class="enrollment-bar">
-          <div class="enrollment-fill" style="width: 100%;"></div>
-        </div>
-        <p class="seats-available" style="color: #dc3545; font-weight: 600;">❌ Fully Filled - No Admission Available</p>
       </div>
 
       <div class="stat-card-cohort">
@@ -1235,8 +1256,7 @@
     // Program pricing mapping
     const programPricing = {
       'Class 11': { name: 'NEET Physics Class 11', price: 16800 },
-      'Class 12': { name: 'NEET Physics Class 12', price: 16800 },
-      'Repeater': { name: 'NEET Repeater Full Course', price: 25200 }
+      'Repeater': { name: 'NEET Repeater Physics Class 11 & 12', price: 25200 }
     };
 
     // WhatsApp Business Number (update with your actual number)
