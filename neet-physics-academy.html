@@ -675,7 +675,7 @@
               <li>Application based</li>
               <li>14-day risk-free trial</li>
             </ul>
-            <a href="https://rzp.io/rzp/yt5Q3JGb" class="st-btn st-style1 st-color1 w-100" target="_blank" rel="noopener">Enroll Now</a>
+            <a href="#" class="st-btn st-style1 st-color1 w-100 enroll-cta" data-bs-toggle="modal" data-bs-target="#applyModal" data-program="Class 11">Enroll Now</a>
           </div>
         </div>
 
@@ -698,7 +698,7 @@
               <li>Application based</li>
               <li>14-day risk-free trial</li>
             </ul>
-            <a href="https://rzp.io/rzp/CgpeuOoT" class="st-btn st-style1 st-color1 w-100" target="_blank" rel="noopener">Enroll Now</a>
+            <a href="#" class="st-btn st-style1 st-color1 w-100 enroll-cta" data-bs-toggle="modal" data-bs-target="#applyModal" data-program="Repeater">Enroll Now</a>
           </div>
         </div>
       </div>
@@ -1252,6 +1252,16 @@
     const classLevelSelect = document.getElementById('class_level');
     const paymentModal = document.getElementById('paymentModal');
     const whatsappPaymentBtn = document.getElementById('whatsappPaymentBtn');
+
+    // Pre-select class level from Enroll Now buttons (pricing cards)
+    document.querySelectorAll('.enroll-cta[data-program]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var program = this.getAttribute('data-program');
+        if (program && classLevelSelect) {
+          classLevelSelect.value = program;
+        }
+      });
+    });
 
     // Program pricing mapping
     const programPricing = {
