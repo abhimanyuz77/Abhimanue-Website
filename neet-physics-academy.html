@@ -38,12 +38,19 @@
 
   <style>
     /* Balance 2-card pricing layout */
-    @media (max-width: 1024px) {
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    @media (min-width: 768px) {
       .pricing-grid {
-        display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 30px;
       }
+    }
+
+    @media (max-width: 1024px) {
       .pricing-grid .pricing-card:nth-child(3) {
         grid-column: 1 / -1;
         max-width: 50%;
