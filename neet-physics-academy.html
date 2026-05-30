@@ -37,90 +37,68 @@
   <script src="assets/js/cache-buster-client.js"></script>
 
   <style>
-    /* Balance 2-card pricing layout */
-    .pricing-grid {
+    .pricing-grid-simple {
       display: grid;
       grid-template-columns: 1fr;
       gap: 30px;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     @media (min-width: 768px) {
-      .pricing-grid {
+      .pricing-grid-simple {
         grid-template-columns: 1fr 1fr;
       }
     }
 
-    @media (max-width: 1024px) {
-      .pricing-grid .pricing-card:nth-child(3) {
-        grid-column: 1 / -1;
-        max-width: 50%;
-        margin: 0 auto;
-      }
-    }
-
-    /* Balance cohort stats grid - center 2 cards */
-    .cohort-stats-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      max-width: 500px;
-      margin: 0 auto 40px;
-      gap: 25px;
-      place-items: center;
-    }
-
-    .cohort-stat-item {
-      width: 100%;
-      max-width: 220px;
-      padding: 30px 20px;
+    .pricing-card-simple {
+      padding: 40px 30px;
       border: 2px solid #667eea;
       border-radius: 16px;
       background: rgba(102, 126, 234, 0.05);
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
       transition: all 0.3s ease;
     }
 
-    .cohort-stat-item:hover {
+    .pricing-card-simple:hover {
       border-color: #ffd700;
       background: rgba(255, 215, 0, 0.08);
       transform: translateY(-5px);
     }
 
-    .cohort-stat-icon {
-      font-size: 40px;
-      color: #ffd700;
-    }
-
-    .cohort-stat-content h5 {
-      font-size: 16px;
-      font-weight: 700;
-      color: #fff;
-      margin: 0;
-      letter-spacing: 0.5px;
-    }
-
-    .cohort-enrollment {
+    .pricing-header-simple h4 {
       font-size: 24px;
       font-weight: 700;
-      color: #ffd700;
-      margin: 8px 0 0;
+      color: #fff;
+      margin: 0 0 8px 0;
     }
 
-    .cohort-enrollment .enrollment-num {
-      color: #ffd700;
-    }
-
-    .cohort-seats-left {
-      font-size: 13px;
+    .pricing-subtitle-simple {
+      font-size: 14px;
       color: #aaa;
+      margin: 0 0 25px 0;
+    }
+
+    .pricing-body-simple {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .price-display-simple h2 {
+      font-size: 48px;
+      font-weight: 700;
+      color: #ffd700;
       margin: 0;
+    }
+
+    .price-display-simple span {
+      font-size: 18px;
+      color: #aaa;
       font-weight: 500;
     }
   </style>
+
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GPVMY7JG4V"></script>
   <script>
@@ -593,115 +571,6 @@
   </div>
 </section>
 
-<section id="structure" class="structure-section">
-  <div class="container">
-    <div class="st-section-heading st-style1">
-      <h4 class="st-section-heading-title">Course Structure & Investment</h4>
-    </div>
-    <div class="row gy-4 align-items-stretch">
-      <div class="col-lg-7">
-        <div class="structure-list">
-          <h3>What You Get</h3>
-          <ul>
-            <li>Student portal with gamified learning experience</li>
-            <li>Direct mentoring by Abhimanue Sir</li>
-            <li>Live classes + recordings</li>
-            <li>Advanced test series with debriefs</li>
-            <li>Doubt-solving and questions</li>
-            <li>AI analytics + assignments + revision systems</li>
-            <li>Discipline councils & accountability pods</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="st-height-b50 st-height-lg-b30"></div>
-
-    <div class="pricing-table-wrapper">
-      <h3 class="pricing-table-title">Pricing by Program</h3>
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <h4>NEET Physics Class 11</h4>
-            <p class="pricing-subtitle">For Class 11 Students</p>
-          </div>
-          <div class="pricing-body">
-            <div class="price-section">
-              <span class="original-price">₹24,000</span>
-              <div class="price-display">
-                <h2>₹16,800<span>/year</span></h2>
-              </div>
-              <p class="installment">or ₹1,400/month</p>
-            </div>
-            <div class="early-bird-badge"><i class="fas fa-bolt"></i> 30% OFF <span class="discount-timer" id="timer-class11"></span></div>
-            <ul class="pricing-features">
-              <li>33 seats per batch</li>
-              <li>Application based</li>
-              <li>14-day risk-free trial</li>
-            </ul>
-            <a href="#" class="st-btn st-style1 st-color1 w-100 enroll-cta" data-bs-toggle="modal" data-bs-target="#applyModal" data-program="Class 11">Enroll Now</a>
-          </div>
-        </div>
-
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <h4>NEET Repeater Physics Class 11 & 12</h4>
-            <p class="pricing-subtitle">For Repeaters & Droppers</p>
-          </div>
-          <div class="pricing-body">
-            <div class="price-section">
-              <span class="original-price">₹36,000</span>
-              <div class="price-display">
-                <h2>₹25,200<span>/year</span></h2>
-              </div>
-              <p class="installment">or ₹2,100/month</p>
-            </div>
-            <div class="early-bird-badge"><i class="fas fa-bolt"></i> 30% OFF <span class="discount-timer" id="timer-repeater"></span></div>
-            <ul class="pricing-features">
-              <li>33 seats per batch</li>
-              <li>Application based</li>
-              <li>14-day risk-free trial</li>
-            </ul>
-            <a href="#" class="st-btn st-style1 st-color1 w-100 enroll-cta" data-bs-toggle="modal" data-bs-target="#applyModal" data-program="Repeater">Enroll Now</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cohort-stats st-dark-bg">
-  <div class="container">
-    <div class="st-section-heading st-style1 text-center">
-      <h4 class="st-section-heading-title">Current Cohort Status</h4>
-      <p>Real-time enrollment across all programs</p>
-    </div>
-    <div class="st-height-b40 st-height-lg-b30"></div>
-    <div class="stats-grid">
-      <div class="stat-card-cohort">
-        <div class="cohort-name">Class 11 Cohort</div>
-        <div class="enrollment-display">
-          <h3><span class="enrolled-count">18</span> <span class="total-seats">/ 33</span></h3>
-        </div>
-        <div class="enrollment-bar">
-          <div class="enrollment-fill" style="width: 54.5%;"></div>
-        </div>
-        <p class="seats-available"><span class="seats-left">15</span> seats available</p>
-      </div>
-
-      <div class="stat-card-cohort">
-        <div class="cohort-name">Repeater Cohort</div>
-        <div class="enrollment-display">
-          <h3><span class="enrolled-count">19</span> <span class="total-seats">/ 33</span></h3>
-        </div>
-        <div class="enrollment-bar">
-          <div class="enrollment-fill" style="width: 57.6%;"></div>
-        </div>
-        <p class="seats-available"><span class="seats-left">14</span> seats available</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section class="audience-section st-dark-bg">
   <div class="container">
@@ -714,6 +583,43 @@
       <span class="audience-chip">Repeaters aiming for top ranks</span>
       <span class="audience-chip">Students struggling in Physics</span>
       <span class="audience-chip">Learners needing discipline/accountability</span>
+    </div>
+  </div>
+</section>
+
+<section class="pricing-section st-dark-bg">
+  <div class="container">
+    <div class="st-section-heading st-style1 text-center">
+      <h4 class="st-section-heading-title">Simple Pricing</h4>
+      <p>Start your NEET Physics journey today</p>
+    </div>
+    <div class="st-height-b40 st-height-lg-b30"></div>
+    <div class="pricing-grid-simple">
+      <div class="pricing-card-simple">
+        <div class="pricing-header-simple">
+          <h4>Class 11</h4>
+          <p class="pricing-subtitle-simple">For Class 11 Students</p>
+        </div>
+        <div class="pricing-body-simple">
+          <div class="price-display-simple">
+            <h2>₹3,999<span>/year</span></h2>
+          </div>
+          <a href="https://clearphysics.in" target="_blank" rel="noopener" class="st-btn st-style1 st-color1 w-100">Enroll Now</a>
+        </div>
+      </div>
+
+      <div class="pricing-card-simple">
+        <div class="pricing-header-simple">
+          <h4>Repeaters & Droppers</h4>
+          <p class="pricing-subtitle-simple">For Class 11 & 12 Repeaters</p>
+        </div>
+        <div class="pricing-body-simple">
+          <div class="price-display-simple">
+            <h2>₹5,999<span>/year</span></h2>
+          </div>
+          <a href="https://clearphysics.in" target="_blank" rel="noopener" class="st-btn st-style1 st-color1 w-100">Enroll Now</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -828,7 +734,7 @@
         </aside>
         <form action="/api/contact" method="POST" class="st-enroll-form modern-form" id="apply-form" novalidate>
           <div id="apply-alert" class="apply-alert" role="alert"></div>
-          <p class="apply-form-note"><i class="fas fa-info-circle"></i> WhatsApp number is mandatory so our team can confirm your seat instantly.</p>
+          <p class="apply-form-note"><i class="fas fa-info-circle"></i> WhatsApp number is mandatory so our team can reach you instantly.</p>
           <input type="hidden" name="form_context" value="NEET Physics Admission">
           <input type="hidden" name="forward_to" id="forward_to" value="support@hexagonknow.com,abhimanue@hexagonknow.com">
           <div class="form-floating-modern">
@@ -896,8 +802,7 @@
               <option value="Repeater">Repeater / Dropper</option>
             </select>
           </div>
-          <input type="hidden" name="redirect_url" id="payment_redirect_url" value="">
-          <button type="submit" class="st-btn st-style1 st-color1 w-100">Proceed to Payment</button>
+          <button type="submit" class="st-btn st-style1 st-color1 w-100">Submit Application</button>
           <p class="form-fineprint">By submitting, you consent to a counseling call within some time.</p>
         </form>
       </div>
@@ -905,115 +810,6 @@
   </div>
 </div>
 
-<!-- Payment Modal -->
-<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content" style="border-radius: 15px; overflow: hidden;">
-      <div class="modal-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-        <h5 class="modal-title" id="paymentModalLabel">💳 Complete Your Payment</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-4">
-        <div id="paymentContent">
-          <!-- Program and Fee Details -->
-          <div class="payment-header mb-4">
-            <h6 class="text-muted">Program Selected</h6>
-            <h4 id="selectedProgram" style="color: #667eea; font-weight: 700;">Class 11</h4>
-            <h5 id="paymentAmount" style="color: #28a745; font-size: 1.8rem; margin-top: 10px;">₹16,800</h5>
-            <p class="text-muted small mt-2">30% discount already applied • 14-day risk-free trial</p>
-          </div>
-
-          <!-- Payment Methods Tabs -->
-          <ul class="nav nav-tabs mb-4" id="paymentTabs" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="qr-tab" data-bs-toggle="tab" data-bs-target="#qrMethod" type="button" role="tab">📱 QR Code</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="bank-tab" data-bs-toggle="tab" data-bs-target="#bankMethod" type="button" role="tab">🏦 Bank Transfer</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="card-tab" data-bs-toggle="tab" data-bs-target="#cardMethod" type="button" role="tab">💳 Credit Card</button>
-            </li>
-          </ul>
-
-          <!-- Tab Content -->
-          <div class="tab-content">
-            <!-- QR Code Method -->
-            <div class="tab-pane fade show active" id="qrMethod" role="tabpanel">
-              <div class="text-center">
-                <p class="mb-3">Scan with Google Pay, PhonePe, or any UPI app</p>
-                <img src="assets/img/GooglePay_QR.png" alt="Payment QR Code" style="max-width: 250px; border-radius: 10px; border: 2px solid #ddd; padding: 10px;">
-                <p class="text-muted small mt-3">After payment, please share the transaction screenshot on WhatsApp</p>
-              </div>
-            </div>
-
-            <!-- Bank Transfer Method -->
-            <div class="tab-pane fade" id="bankMethod" role="tabpanel">
-              <div class="bank-details" style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
-                <div class="detail-row mb-3">
-                  <label class="text-muted small">Account Holder Name</label>
-                  <p class="mb-0" style="font-weight: 600;">ABHIMANUE UDAYAN</p>
-                </div>
-                <div class="detail-row mb-3">
-                  <label class="text-muted small">Account Number</label>
-                  <p class="mb-0" style="font-weight: 600; font-family: monospace;">5010 0207 7603 75</p>
-                </div>
-                <div class="detail-row mb-3">
-                  <label class="text-muted small">Account Type</label>
-                  <p class="mb-0" style="font-weight: 600;">Savings Account</p>
-                </div>
-                <div class="detail-row mb-3">
-                  <label class="text-muted small">Bank Name</label>
-                  <p class="mb-0" style="font-weight: 600;">HDFC Bank</p>
-                </div>
-                <div class="detail-row mb-3">
-                  <label class="text-muted small">IFSC Code</label>
-                  <p class="mb-0" style="font-weight: 600; font-family: monospace;">HDFC0000122</p>
-                </div>
-                <div class="detail-row">
-                  <label class="text-muted small">Branch</label>
-                  <p class="mb-0" style="font-weight: 600;">BHUBANESWAR JANPATH BRANCH</p>
-                </div>
-              </div>
-              <p class="text-muted small mt-3">After bank transfer, please share the transaction screenshot on WhatsApp</p>
-            </div>
-
-            <!-- Credit Card Method -->
-            <div class="tab-pane fade" id="cardMethod" role="tabpanel">
-              <div class="text-center">
-                <p class="mb-4">Request a payment link via WhatsApp to pay with your credit/debit card</p>
-                <p class="text-muted small mb-4">We'll send you a secure payment link that accepts all major credit and debit cards</p>
-                
-                <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #ffc107;">
-                  <p class="mb-2" style="color: #856404; font-weight: 600;">⚠️ Payment Gateway Charges</p>
-                  <p class="mb-0" style="color: #856404; font-size: 0.95rem;">
-                    An additional <strong>3% charge</strong> will be applied for credit/debit card payments to cover payment gateway fees.
-                  </p>
-                  <p id="cardTotalAmount" style="color: #856404; font-weight: 700; font-size: 1.1rem; margin-top: 10px;">
-                    Total Amount: ₹--
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Action Buttons -->
-          <div class="payment-actions mt-4">
-            <a id="whatsappPaymentBtn" href="#" class="st-btn st-style1 st-color1 w-100 mb-3" target="_blank" rel="noopener">
-              <i class="fab fa-whatsapp"></i> Send Payment Details via WhatsApp
-            </a>
-            <button id="paymentCompleteBtn" type="button" class="st-btn st-style2 w-100 mb-3" data-bs-dismiss="modal">
-              <i class="fas fa-check-circle"></i> I Have Completed the Payment
-            </button>
-            <p class="text-center text-muted small">
-              <i class="fas fa-info-circle"></i> We'll send you a payment link or confirm your bank transfer details
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Demo Session Modal -->
 <div class="modal fade" id="webinarModal" tabindex="-1" aria-labelledby="webinarModalLabel" aria-hidden="true">
@@ -1159,46 +955,7 @@
     }
   });
 
-  // Discount Timer - Resets daily at 3:00 AM IST
-  function initDiscountTimer() {
-    const timerElements = document.querySelectorAll('.discount-timer');
-    
-    function updateTimers() {
-      const now = new Date();
-      const istTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
-      
-      // Calculate next reset time (3:00 AM IST)
-      let nextReset = new Date(istTime);
-      nextReset.setHours(3, 0, 0, 0);
-      
-      // If 3 AM has already passed today, set for tomorrow
-      if (istTime >= nextReset) {
-        nextReset.setDate(nextReset.getDate() + 1);
-      }
-      
-      // Calculate time remaining
-      const timeRemaining = nextReset - istTime;
-      const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-      
-      const timerText = `(${hours}h ${minutes}m ${seconds}s)`;
-      
-      timerElements.forEach(el => {
-        el.textContent = timerText;
-      });
-    }
-    
-    // Update immediately
-    updateTimers();
-    
-    // Update every second
-    setInterval(updateTimers, 1000);
-  }
-  
   document.addEventListener('DOMContentLoaded', function() {
-    initDiscountTimer();
-    
     const webinarButtons = document.querySelectorAll('[data-bs-target="#webinarModal"]');
     const webinarModal = document.getElementById('webinarModal');
     if (webinarModal) {
@@ -1211,29 +968,9 @@
       });
     }
 
-    // Handle apply form submission with custom payment modal
+    // Handle apply form submission - just capture form data and send email
     const applyForm = document.getElementById('apply-form');
     const classLevelSelect = document.getElementById('class_level');
-    const paymentModal = document.getElementById('paymentModal');
-    const whatsappPaymentBtn = document.getElementById('whatsappPaymentBtn');
-
-    // Pre-select class level from Enroll Now buttons (pricing cards)
-    document.querySelectorAll('.enroll-cta[data-program]').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var program = this.getAttribute('data-program');
-        if (program && classLevelSelect) {
-          classLevelSelect.value = program;
-        }
-      });
-    });
-
-    // Program pricing mapping
-    const programPricing = {
-      'Class 11': { name: 'NEET Physics Class 11', price: 16800 },
-      'Repeater': { name: 'NEET Repeater Physics Class 11 & 12', price: 25200 }
-    };
-
-    // WhatsApp Business Number (update with your actual number)
     const whatsappNumber = '919496654440';
 
     if (applyForm && classLevelSelect) {
@@ -1242,9 +979,8 @@
         e.preventDefault();
 
         const selectedClass = classLevelSelect.value;
-        const programInfo = programPricing[selectedClass];
 
-        if (!programInfo) {
+        if (!selectedClass) {
           alert('Please select a valid class level');
           return;
         }
@@ -1254,46 +990,8 @@
         const studentName = formData.get('student_name');
         const email = formData.get('email');
         const phone = formData.get('phone');
-        const studentState = formData.get('student_state');
-        const schoolName = formData.get('school_name');
 
-        // Store form data in session storage
-        sessionStorage.setItem('studentName', studentName);
-        sessionStorage.setItem('studentEmail', email);
-        sessionStorage.setItem('studentPhone', phone);
-        sessionStorage.setItem('studentClass', selectedClass);
-        sessionStorage.setItem('studentPrice', programInfo.price);
-
-        // Update payment modal with program details
-        document.getElementById('selectedProgram').textContent = programInfo.name;
-        document.getElementById('paymentAmount').textContent = '₹' + programInfo.price.toLocaleString('en-IN');
-
-        // Calculate 3% charge for credit card
-        const cardChargeAmount = Math.round(programInfo.price * 0.03);
-        const cardTotalAmount = programInfo.price + cardChargeAmount;
-        document.getElementById('cardTotalAmount').textContent = `Total Amount: ₹${cardTotalAmount.toLocaleString('en-IN')} (₹${programInfo.price.toLocaleString('en-IN')} + ₹${cardChargeAmount} gateway charge)`;
-
-        // Create different WhatsApp messages for each payment method
-        const upiMessage = `Hi! I've completed my admission form for ${programInfo.name}. I'm paying via UPI/QR Code.\n\nName: ${studentName}\nEmail: ${email}\nPhone: ${phone}\nAmount: ₹${programInfo.price}\n\nI will scan the QR code and send you the payment screenshot shortly.`;
-        
-        const bankMessage = `Hi! I've completed my admission form for ${programInfo.name}. I'm paying via Bank Transfer.\n\nName: ${studentName}\nEmail: ${email}\nPhone: ${phone}\nAmount: ₹${programInfo.price}\n\nPlease confirm the bank details. I will transfer the amount and send you the transaction screenshot.`;
-        
-        const creditCardMessage = `Hi! I've completed my admission form for ${programInfo.name}. I want to pay via Credit/Debit Card.\n\nName: ${studentName}\nEmail: ${email}\nPhone: ${phone}\nAmount: ₹${programInfo.price} (+ 3% gateway charge = ₹${cardTotalAmount})\n\nPlease send me the secure payment link.`;
-
-        // Store messages in data attributes for each tab
-        const qrTab = document.getElementById('qr-tab');
-        const bankTab = document.getElementById('bank-tab');
-        const cardTab = document.getElementById('card-tab');
-
-        if (qrTab) qrTab.dataset.whatsappMessage = upiMessage;
-        if (bankTab) bankTab.dataset.whatsappMessage = bankMessage;
-        if (cardTab) cardTab.dataset.whatsappMessage = creditCardMessage;
-
-        // Set initial message to UPI (first tab)
-        whatsappPaymentBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(upiMessage)}`;
-
-        // IMPORTANT: Submit form data to backend API FIRST (before showing payment modal)
-        // This ensures we capture the lead even if payment fails
+        // Submit form data to backend API to send email
         fetch('/api/contact', {
           method: 'POST',
           body: formData
@@ -1301,88 +999,25 @@
         .then(response => {
           console.log('✅ Form submitted to backend successfully:', response.status);
           console.log('Lead captured - Student details sent to email');
-          // Show payment modal AFTER successful form submission
-          const bsPaymentModal = new bootstrap.Modal(paymentModal);
-          bsPaymentModal.show();
-
-          // Add tab change listeners to update WhatsApp message
-          const paymentTabs = document.querySelectorAll('#paymentTabs button');
-          paymentTabs.forEach(tab => {
-            tab.addEventListener('shown.bs.tab', function() {
-              const whatsappMessage = this.dataset.whatsappMessage;
-              if (whatsappMessage) {
-                whatsappPaymentBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-                console.log('WhatsApp message updated for:', this.textContent);
-              }
-            });
-          });
+          
+          // Show success message with WhatsApp notification
+          const successMessage = `Thank you for your application!\n\nYou will receive a message on your WhatsApp number (${phone}) from our academy team shortly with further details about your admission.\n\nPlease keep your WhatsApp active to receive updates.`;
+          alert(successMessage);
+          
+          // Reset form
+          applyForm.reset();
+          
+          // Close modal if it's open
+          const modal = bootstrap.Modal.getInstance(applyForm.closest('.modal'));
+          if (modal) {
+            modal.hide();
+          }
         })
         .catch(error => {
           console.error('⚠️ Form submission error:', error);
-          // Still show payment modal even if backend fails
-          // This ensures student can still proceed with payment
-          console.log('Showing payment modal despite backend error - lead capture may have failed');
-          const bsPaymentModal = new bootstrap.Modal(paymentModal);
-          bsPaymentModal.show();
-
-          // Add tab change listeners to update WhatsApp message
-          const paymentTabs = document.querySelectorAll('#paymentTabs button');
-          paymentTabs.forEach(tab => {
-            tab.addEventListener('shown.bs.tab', function() {
-              const whatsappMessage = this.dataset.whatsappMessage;
-              if (whatsappMessage) {
-                whatsappPaymentBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-                console.log('WhatsApp message updated for:', this.textContent);
-              }
-            });
-          });
+          alert('There was an issue submitting your application. Please try again or contact us on WhatsApp.');
         });
       });
-
-      // Handle "I Have Completed the Payment" button click
-      const paymentCompleteBtn = document.getElementById('paymentCompleteBtn');
-      if (paymentCompleteBtn) {
-        paymentCompleteBtn.addEventListener('click', function() {
-          const studentName = sessionStorage.getItem('studentName');
-          const studentEmail = sessionStorage.getItem('studentEmail');
-          const studentPhone = sessionStorage.getItem('studentPhone');
-          const studentClass = sessionStorage.getItem('studentClass');
-          const studentPrice = sessionStorage.getItem('studentPrice');
-
-          // Log payment completion
-          console.log('✅ Payment marked as complete by student:', {
-            name: studentName,
-            email: studentEmail,
-            phone: studentPhone,
-            class: studentClass,
-            amount: studentPrice
-          });
-
-          // Optional: Send payment confirmation to backend
-          const paymentData = new FormData();
-          paymentData.append('student_name', studentName);
-          paymentData.append('email', studentEmail);
-          paymentData.append('phone', studentPhone);
-          paymentData.append('class_level', studentClass);
-          paymentData.append('amount', studentPrice);
-          paymentData.append('form_context', 'NEET Physics Payment Confirmation');
-          paymentData.append('forward_to', 'support@hexagonknow.com,abhimanue@hexagonknow.com');
-
-          fetch('/api/contact', {
-            method: 'POST',
-            body: paymentData
-          })
-          .then(response => {
-            console.log('Payment confirmation sent to backend');
-          })
-          .catch(error => {
-            console.error('Payment confirmation error:', error);
-          });
-
-          // Show success message
-          alert('Thank you! Your payment has been recorded. We will verify and confirm your enrollment shortly. Check your WhatsApp for updates!');
-        });
-      }
     }
   });
 </script>
