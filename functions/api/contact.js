@@ -35,6 +35,14 @@ export async function onRequestPost(context) {
 
     const RESEND_API_KEY = context.env.RESEND_API_KEY;
 
+    if (!RESEND_API_KEY) {
+      console.error("Missing RESEND_API_KEY environment variable.");
+      return new Response(
+        JSON.stringify({ success: false, message: "Email service is not configured. Please contact us on WhatsApp." }),
+        { headers: { "Content-Type": "application/json" } }
+      );
+    }
+
     // Use forward_to if provided, otherwise default
     const recipients = data.forward_to
       ? data.forward_to.split(',').map(e => e.trim()).filter(Boolean)
@@ -48,7 +56,8 @@ export async function onRequestPost(context) {
       },
       body: JSON.stringify({
         from: "Abhimanue Website <noreply@hexagonknow.com>",
-        to: recipients.join(', '),
+        to: recipients,
+        reply_to: email,
         subject: `Contact Form: ${subject}`,
         html: `
           <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
@@ -73,9 +82,9 @@ export async function onRequestPost(context) {
 
     if (!emailResponse.ok) {
       const errBody = await emailResponse.text();
-      console.error("Resend API error:", errBody);
+      console.error("Resend API error:", emailResponse.status, errBody);
       return new Response(
-        JSON.stringify({ success: false, message: "Something went wrong. Please try again later." }),
+        JSON.stringify({ success: false, message: "Something went wrong. Please try again later.", detail: errBody }),
         { headers: { "Content-Type": "application/json" } }
       );
     }
