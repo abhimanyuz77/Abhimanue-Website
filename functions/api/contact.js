@@ -1,20 +1,30 @@
 export async function onRequestPost(context) {
   try {
-    const formData = await context.request.formData();
+    let data;
+    const contentType = context.request.headers.get('content-type') || '';
+
+    if (contentType.includes('application/json')) {
+      data = await context.request.json();
+    } else {
+      const formData = await context.request.formData();
+      data = {};
+      for (const [key, value] of formData.entries()) {
+        data[key] = value;
+      }
+    }
 
     // Honeypot spam check
-    const honeypot = formData.get("company");
-    if (honeypot) {
+    if (data.company) {
       return new Response(JSON.stringify({ success: false, message: "Spam detected" }), {
         status: 400,
         headers: { "Content-Type": "application/json" }
       });
     }
 
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const subject = formData.get("subject") || "No Subject";
-    const msg = formData.get("msg");
+    const name = data.name;
+    const email = data.email;
+    const subject = data.subject || "No Subject";
+    const msg = data.msg;
 
     if (!name || !email || !msg) {
       return new Response(
@@ -25,6 +35,11 @@ export async function onRequestPost(context) {
 
     const RESEND_API_KEY = context.env.RESEND_API_KEY;
 
+    // Use forward_to if provided, otherwise default
+    const recipients = data.forward_to
+      ? data.forward_to.split(',').map(e => e.trim()).filter(Boolean)
+      : ["abhimanue@hexagonknow.com"];
+
     const emailResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -33,7 +48,7 @@ export async function onRequestPost(context) {
       },
       body: JSON.stringify({
         from: "Abhimanue Website <noreply@hexagonknow.com>",
-        to: "abhimanue@hexagonknow.com",
+        to: recipients.join(', '),
         subject: `Contact Form: ${subject}`,
         html: `
           <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">

@@ -70,6 +70,13 @@
    * Force page reload with cache bypass
    */
   function forceReload() {
+    // Prevent reload loop: if URL already has ?v=, don't reload again
+    const url = window.location.href;
+    if (url.indexOf('?v=') !== -1 || url.indexOf('&v=') !== -1) {
+      log('Already reloaded with cache buster — skipping to prevent loop', 'warning');
+      return;
+    }
+
     log('New version detected! Reloading page...', 'warning');
     
     // Clear service worker cache if available
@@ -81,8 +88,9 @@
       });
     }
     
-    // Reload with cache bypass
-    window.location.href = window.location.href.split('#')[0] + '?v=' + Date.now();
+    // Strip existing query params, then append fresh ?v=
+    const cleanUrl = window.location.href.split('#')[0].split('?')[0];
+    window.location.href = cleanUrl + '?v=' + Date.now();
   }
 
   /**

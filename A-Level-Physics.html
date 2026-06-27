@@ -484,23 +484,91 @@
     });
   });
 </script>
+<style>
+  .form-toast {
+    position: fixed; top: 24px; right: 24px; z-index: 9999;
+    min-width: 320px; max-width: 400px; padding: 20px 24px;
+    border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    transform: translateX(420px); opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease;
+    font-family: inherit; font-size: 15px; line-height: 1.5;
+  }
+  .form-toast.show { transform: translateX(0); opacity: 1; }
+  .form-toast.success { background: linear-gradient(135deg,#0d7c4a,#10b981); color: #fff; }
+  .form-toast.error { background: linear-gradient(135deg,#b91c1c,#ef4444); color: #fff; }
+  .form-toast-title { font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+  .form-toast-body { opacity: 0.92; }
+  .form-toast-close { position: absolute; top: 12px; right: 14px; cursor: pointer; font-size: 18px; opacity: 0.7; }
+  .form-toast-close:hover { opacity: 1; }
+</style>
+<div id="formToast" class="form-toast" onclick="this.classList.remove('show')"></div>
 <script>
+  function showToast(type, title, body) {
+    const toast = document.getElementById('formToast');
+    toast.className = 'form-toast ' + type;
+    toast.innerHTML = '<span class="form-toast-close" onclick="this.parentElement.classList.remove(\'show\')">&times;</span><div class="form-toast-title">' + title + '</div><div class="form-toast-body">' + body + '</div>';
+    toast.classList.add('show');
+    setTimeout(function() { toast.classList.remove('show'); }, 6000);
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     const applyForm = document.getElementById('apply-form');
     if (applyForm) {
       applyForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        const formData = new FormData(applyForm);
-        const phone = formData.get('phone');
-        fetch('/api/contact', { method: 'POST', body: formData })
-        .then(response => {
-          alert('Thank you for booking your free trial!\n\nYou will receive a message on WhatsApp (' + phone + ') shortly with details about your trial lesson.\n\nPlease keep your WhatsApp active.');
-          applyForm.reset();
-          const modal = bootstrap.Modal.getInstance(applyForm.closest('.modal'));
-          if (modal) modal.hide();
+        const studentName = document.getElementById('student_name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const examBoard = document.getElementById('exam_board').value;
+        const schoolName = document.getElementById('school_name').value.trim();
+
+        if (!studentName || !email || !phone || !examBoard || !schoolName) {
+          showToast('error', 'Missing Info', 'Please fill in all fields before submitting.');
+          return;
+        }
+
+        const payload = {
+          name: studentName,
+          email: email,
+          subject: 'A Level Physics Free Trial Booking',
+          msg: [
+            'Student Name: ' + studentName,
+            'Email: ' + email,
+            'WhatsApp / Mobile: ' + phone,
+            'Exam Board: ' + examBoard,
+            'School / College: ' + schoolName
+          ].join('\n'),
+          form_context: 'A Level Physics Free Trial',
+          forward_to: document.getElementById('forward_to').value || ''
+        };
+
+        const submitBtn = applyForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="button-spinner"></span> Sending...';
+
+        fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
         })
-        .catch(error => {
-          alert('There was an issue submitting your request. Please try again or contact us on WhatsApp.');
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (data.success) {
+            showToast('success', 'Booking Received!', 'Thank you, ' + studentName + '! We will contact you on WhatsApp (' + phone + ') within 24 hours.');
+            applyForm.reset();
+            var modal = bootstrap.Modal.getInstance(applyForm.closest('.modal'));
+            if (modal) modal.hide();
+          } else {
+            showToast('error', 'Submission Failed', data.message || 'Please try again or contact us on WhatsApp.');
+          }
+        })
+        .catch(function() {
+          showToast('error', 'Connection Error', 'Could not submit. Please try again or WhatsApp us directly.');
+        })
+        .finally(function() {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
         });
       });
     }
