@@ -426,7 +426,7 @@
             <li>Doubt solving &amp; feedback</li>
           </ul>
         </aside>
-        <form action="/api/contact" method="POST" class="st-enroll-form modern-form" id="apply-form" novalidate>
+        <form action="/api/contact" method="POST" class="st-enroll-form modern-form" id="alevel-apply-form" novalidate>
           <div id="apply-alert" class="apply-alert" role="alert"></div>
           <input type="hidden" name="form_context" value="A Level Physics Free Trial">
           <input type="hidden" name="forward_to" id="forward_to" value="support@hexagonknow.com,abhimanue@hexagonknow.com">
@@ -441,18 +441,6 @@
           <div class="form-floating-modern">
             <input type="tel" id="phone" name="phone" required placeholder=" ">
             <label for="phone">WhatsApp / Mobile</label>
-          </div>
-          <div class="form-floating-modern select-field">
-            <label for="exam_board">Exam Board</label>
-            <select id="exam_board" name="exam_board" required>
-              <option value="">Select exam board</option>
-              <option value="Cambridge">Cambridge International A Level</option>
-              <option value="Edexcel">Pearson Edexcel International A Level</option>
-            </select>
-          </div>
-          <div class="form-floating-modern input-field">
-            <label for="school_name">School / College Name</label>
-            <input type="text" id="school_name" name="school_name" placeholder=" " required>
           </div>
           <button type="submit" class="st-btn st-style1 st-color1 w-100">Book Free Trial</button>
           <p class="form-fineprint">By submitting, you consent to a counseling call within 24 hours.</p>
@@ -518,31 +506,28 @@
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    const applyForm = document.getElementById('apply-form');
+    const applyForm = document.getElementById('alevel-apply-form');
     if (applyForm) {
       applyForm.addEventListener('submit', function(e) {
         e.preventDefault();
         const studentName = document.getElementById('student_name').value.trim();
         const email = document.getElementById('email').value.trim();
         const phone = document.getElementById('phone').value.trim();
-        const examBoard = document.getElementById('exam_board').value;
-        const schoolName = document.getElementById('school_name').value.trim();
 
-        if (!studentName || !email || !phone || !examBoard || !schoolName) {
-          showToast('error', 'Missing Info', 'Please fill in all fields before submitting.');
+        if (!studentName || !email || !phone) {
+          showToast('error', 'Missing Info', 'Please fill in your name, email and WhatsApp number.');
           return;
         }
 
         const payload = {
           name: studentName,
           email: email,
+          phone: phone,
           subject: 'A Level Physics Free Trial Booking',
           msg: [
             'Student Name: ' + studentName,
             'Email: ' + email,
-            'WhatsApp / Mobile: ' + phone,
-            'Exam Board: ' + examBoard,
-            'School / College: ' + schoolName
+            'WhatsApp / Mobile: ' + phone
           ].join('\n'),
           form_context: 'A Level Physics Free Trial',
           forward_to: document.getElementById('forward_to').value || ''
