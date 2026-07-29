@@ -56,44 +56,66 @@
   position: relative;
   z-index: 2;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 50px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 60px;
   flex-wrap: wrap;
 }
 
 .spc-hero-content {
   position: relative;
   z-index: 2;
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-  flex: 1 1 500px;
+  text-align: left;
+  flex: 1 1 520px;
+  max-width: 580px;
+}
+
+.spc-hero-content .spc-hero-badge,
+.spc-hero-content .spc-offer-banner,
+.spc-hero-content .spc-hero-pricing,
+.spc-hero-content .spc-hero-trust,
+.spc-hero-content .contact-micro-cta {
+  justify-content: flex-start;
+}
+
+.spc-hero-content .spc-offer-banner {
+  flex-wrap: wrap;
 }
 
 .spc-hero-image {
   position: relative;
   z-index: 2;
-  flex: 0 0 380px;
-  max-width: 380px;
+  flex: 0 0 480px;
+  max-width: 480px;
 }
 
 .spc-hero-image img {
   width: 100%;
-  border-radius: 20px;
+  border-radius: 24px;
   border: 2px solid rgba(80, 250, 123, 0.3);
-  box-shadow: 0 0 40px rgba(80, 250, 123, 0.15), 0 20px 60px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 50px rgba(80, 250, 123, 0.2), 0 24px 70px rgba(0, 0, 0, 0.45);
   object-fit: cover;
 }
 
 @media (max-width: 991px) {
   .spc-hero-row {
     flex-direction: column;
-    gap: 30px;
+    gap: 36px;
+  }
+  .spc-hero-content {
+    text-align: center;
+    max-width: 100%;
+  }
+  .spc-hero-content .spc-hero-badge,
+  .spc-hero-content .spc-offer-banner,
+  .spc-hero-content .spc-hero-pricing,
+  .spc-hero-content .spc-hero-trust,
+  .spc-hero-content .contact-micro-cta {
+    justify-content: center;
   }
   .spc-hero-image {
     flex: 0 0 auto;
-    max-width: 320px;
+    max-width: 400px;
   }
 }
 
@@ -152,7 +174,7 @@
   line-height: 1.7;
   color: #b7bdd1;
   max-width: 600px;
-  margin: 0 auto 16px;
+  margin: 0 0 16px;
 }
 
 .spc-hero-tagline {
@@ -160,7 +182,7 @@
   line-height: 1.6;
   color: #a9adb8;
   max-width: 580px;
-  margin: 0 auto 36px;
+  margin: 0 0 36px;
 }
 
 /* ===== Offer Banner + Timer (Hero) ===== */
@@ -253,7 +275,7 @@
 .spc-hero-pricing {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 30px;
   flex-wrap: wrap;
   margin-bottom: 40px;
@@ -262,7 +284,7 @@
 .spc-price-amount {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 2px;
 }
 
@@ -340,7 +362,7 @@
 
 .spc-hero-trust {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 20px 30px;
   flex-wrap: wrap;
   margin-bottom: 20px;
@@ -1173,13 +1195,30 @@
     min-height: auto;
   }
 
+  .spc-hero-content {
+    text-align: center;
+    max-width: 100%;
+  }
+
   .spc-hero-pricing {
     flex-direction: column;
     gap: 20px;
+    justify-content: center;
+  }
+
+  .spc-price-amount {
+    align-items: center;
   }
 
   .spc-hero-trust {
     gap: 14px;
+    justify-content: center;
+  }
+
+  .spc-hero-desc,
+  .spc-hero-tagline {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .spc-trust-item {

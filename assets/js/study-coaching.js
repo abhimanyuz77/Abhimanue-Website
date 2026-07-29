@@ -157,7 +157,7 @@
 
       $.ajax({
         type: "POST",
-        url: "assets/php/study-coaching-signup.php",
+        url: "/api/study-coaching-signup",
         data: formData,
         dataType: 'json',
         success: function (response) {
