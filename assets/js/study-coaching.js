@@ -63,6 +63,8 @@
       '.spc-process-step',
       '.spc-info-card',
       '.spc-final-cta',
+      '.spc-archimedes',
+      '.spc-achievement-card',
       '.signup-form-wrapper'
     ];
 

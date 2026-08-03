@@ -55,19 +55,17 @@
 .spc-hero-row {
   position: relative;
   z-index: 2;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 60px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: 50px;
 }
 
 .spc-hero-content {
   position: relative;
   z-index: 2;
   text-align: left;
-  flex: 1 1 520px;
-  max-width: 580px;
+  min-width: 0;
 }
 
 .spc-hero-content .spc-hero-badge,
@@ -85,8 +83,15 @@
 .spc-hero-image {
   position: relative;
   z-index: 2;
-  flex: 0 0 480px;
-  max-width: 480px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.spc-hero-card {
+  position: relative;
+  width: 100%;
 }
 
 .spc-hero-image img {
@@ -97,9 +102,46 @@
   object-fit: cover;
 }
 
+.spc-hero-image .spc-offer-banner {
+  width: 100%;
+  margin-bottom: 0;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 82, 82, 0.05);
+  border: 1px solid rgba(255, 122, 89, 0.2);
+}
+
+.spc-hero-image .spc-offer-banner .spc-offer-timer {
+  justify-content: center;
+}
+
+.spc-hero-image .spc-hero-trust {
+  width: 100%;
+  margin-bottom: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 18px 20px;
+}
+
+.spc-hero-image .contact-micro-cta {
+  margin-top: 4px;
+  text-align: center;
+  font-size: 13px;
+  color: #74839B;
+}
+
+.spc-hero-image .contact-micro-cta a {
+  color: #50fa7b;
+  font-weight: 600;
+}
+
 @media (max-width: 991px) {
   .spc-hero-row {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 36px;
   }
   .spc-hero-content {
@@ -107,15 +149,20 @@
     max-width: 100%;
   }
   .spc-hero-content .spc-hero-badge,
-  .spc-hero-content .spc-offer-banner,
-  .spc-hero-content .spc-hero-pricing,
-  .spc-hero-content .spc-hero-trust,
-  .spc-hero-content .contact-micro-cta {
+  .spc-hero-content .spc-hero-pricing {
     justify-content: center;
   }
   .spc-hero-image {
-    flex: 0 0 auto;
-    max-width: 400px;
+    max-width: 500px;
+    width: 100%;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .spc-hero-image .spc-hero-trust {
+    justify-content: center;
+  }
+  .spc-hero-image .contact-micro-cta {
+    text-align: center;
   }
 }
 
@@ -336,7 +383,9 @@
   transition: all 0.25s ease;
   text-decoration: none;
   border: 1px solid transparent;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.4;
 }
 
 .spc-cta-btn i {
@@ -580,7 +629,7 @@
   display: grid;
   grid-template-columns: 360px 1fr;
   gap: 50px;
-  align-items: center;
+  align-items: start;
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -1689,6 +1738,28 @@ body {
 }
 .st-site-footer .st-text-field p { color: #74839B; }
 
+/* ---- Powered by HexagonKnow ---- */
+.spc-powered-by {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+.spc-powered-by span {
+  font-size: 12px;
+  color: #74839B;
+}
+.spc-powered-by-logo {
+  height: 20px;
+  width: auto;
+  opacity: 0.7;
+  transition: opacity 0.25s ease;
+}
+.spc-powered-by-logo:hover {
+  opacity: 1;
+}
+
 /* ---- Header nav: keep on one line, dark theme ---- */
 .st-nav .st-nav-list {
   display: flex;
@@ -1767,4 +1838,462 @@ body {
   .spc-section { padding: 72px 0; }
   .floating-whatsapp span { display: none; }
   .floating-whatsapp { padding: 14px; }
+}
+
+/* ===== Coach credentials strip ===== */
+.spc-coach-creds { margin: 4px 0 26px; }
+.spc-coach-creds-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #74839B;
+  margin-bottom: 12px;
+}
+.spc-coach-creds-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.spc-cred-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #DCE6F2;
+  background: rgba(25, 242, 140, 0.07);
+  border: 1px solid rgba(25, 242, 140, 0.22);
+  padding: 7px 14px;
+  border-radius: 999px;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+.spc-cred-pill:hover {
+  background: rgba(25, 242, 140, 0.14);
+  border-color: rgba(25, 242, 140, 0.45);
+  transform: translateY(-2px);
+}
+
+/* ===== Signature achievement: Archimedes' Cattle Problem ===== */
+.spc-archimedes {
+  position: relative;
+  display: flex;
+  gap: 26px;
+  align-items: flex-start;
+  margin: 70px auto 0;
+  max-width: 1100px;
+  padding: 34px 34px 30px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(25, 242, 140, 0.08), rgba(18, 216, 120, 0.02));
+  border: 1px solid rgba(25, 242, 140, 0.28);
+  box-shadow: 0 0 70px rgba(25, 242, 140, 0.12);
+  overflow: hidden;
+}
+.spc-archimedes-glow {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(25, 242, 140, 0.25), transparent 70%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+.spc-archimedes-icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #19F28C, #12D878);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 28px rgba(25, 242, 140, 0.35);
+}
+.spc-archimedes-icon i { font-size: 28px; color: #04140C; }
+.spc-archimedes-body { position: relative; z-index: 1; }
+.spc-archimedes-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #19F28C;
+  background: rgba(25, 242, 140, 0.1);
+  border: 1px solid rgba(25, 242, 140, 0.25);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+.spc-archimedes-body h3 {
+  font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.3;
+  margin: 0 0 12px;
+}
+.spc-archimedes-body p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #B8C6D8;
+  margin: 0 0 20px;
+}
+.spc-archimedes-body p strong { color: #19F28C; font-weight: 700; }
+.spc-archimedes-stats { display: flex; flex-wrap: wrap; gap: 14px; }
+.spc-archimedes-stat {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 14px 20px;
+  min-width: 130px;
+}
+.spc-archimedes-stat b {
+  font-size: 26px;
+  font-weight: 800;
+  color: #19F28C;
+  line-height: 1;
+}
+.spc-archimedes-stat span {
+  font-size: 12px;
+  color: #74839B;
+  margin-top: 6px;
+}
+
+/* ===== Achievements grid ===== */
+.spc-achievements {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin: 28px auto 0;
+  max-width: 1100px;
+}
+.spc-achievement-card {
+  background: #0D1728;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  padding: 24px 22px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.spc-achievement-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(25, 242, 140, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+.spc-achievement-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(25, 242, 140, 0.1);
+  border: 1px solid rgba(25, 242, 140, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+.spc-achievement-icon i { font-size: 20px; color: #19F28C; }
+.spc-achievement-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 6px;
+}
+.spc-achievement-card p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #74839B;
+  margin: 0;
+}
+
+/* Responsive — credentials, Archimedes, achievements */
+@media (max-width: 991px) {
+  .spc-archimedes { flex-direction: column; padding: 28px; gap: 18px; }
+  .spc-achievements { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .spc-achievements { grid-template-columns: 1fr; }
+  .spc-archimedes-stat { min-width: 100%; }
+  .spc-archimedes-stats { gap: 10px; }
+}
+
+/* ===== Results & Testimonials Section ===== */
+
+/* Coach Honor Badge */
+.spc-honor-badge {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 32px 28px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(25, 242, 140, 0.08), rgba(18, 216, 120, 0.02));
+  border: 1px solid rgba(25, 242, 140, 0.28);
+  box-shadow: 0 0 60px rgba(25, 242, 140, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.spc-honor-badge::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(25, 242, 140, 0.2), transparent 70%);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.spc-honor-icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #19F28C, #12D878);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 28px rgba(25, 242, 140, 0.35);
+}
+
+.spc-honor-icon i {
+  font-size: 28px;
+  color: #04140C;
+}
+
+.spc-honor-body {
+  position: relative;
+  z-index: 1;
+}
+
+.spc-honor-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #19F28C;
+  background: rgba(25, 242, 140, 0.1);
+  border: 1px solid rgba(25, 242, 140, 0.25);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.spc-honor-body h3 {
+  font-family: 'Sora', 'Inter', sans-serif;
+  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.3;
+  margin: 0 0 10px;
+}
+
+.spc-honor-body p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #B8C6D8;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .spc-honor-badge { flex-direction: column; padding: 24px; gap: 16px; }
+}
+
+.spc-results-subheading {
+  font-family: 'Sora', 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #19F28C;
+  text-align: center;
+  margin-bottom: 28px;
+  letter-spacing: 0.3px;
+}
+
+/* Featured Achievers */
+.spc-achievers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.spc-achiever-card {
+  background: linear-gradient(135deg, rgba(25, 242, 140, 0.08), rgba(18, 216, 120, 0.02));
+  border: 1px solid rgba(25, 242, 140, 0.28);
+  border-radius: 20px;
+  padding: 32px 28px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.spc-achiever-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 50px rgba(25, 242, 140, 0.15);
+}
+
+.spc-achiever-rank {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Sora', 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #FFB45B;
+  background: rgba(255, 155, 48, 0.1);
+  border: 1px solid rgba(255, 155, 48, 0.3);
+  padding: 10px 20px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.spc-achiever-rank i {
+  font-size: 18px;
+}
+
+.spc-achiever-quote {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #B8C6D8;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Testimonials Grid */
+.spc-testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.spc-testimonial-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 28px 24px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.spc-testimonial-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(25, 242, 140, 0.3);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.spc-testimonial-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.spc-testimonial-stars i {
+  font-size: 16px;
+  color: #FFB45B;
+}
+
+.spc-testimonial-title {
+  font-family: 'Sora', 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 12px;
+  line-height: 1.4;
+}
+
+.spc-testimonial-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #B8C6D8;
+  margin: 0 0 16px;
+}
+
+.spc-testimonial-author {
+  font-size: 13px;
+  font-weight: 600;
+  color: #19F28C;
+  margin: 0;
+}
+
+/* Results Beyond Marks */
+.spc-results-beyond-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.spc-results-beyond-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 22px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #B8C6D8;
+  transition: all 0.3s ease;
+}
+
+.spc-results-beyond-item:hover {
+  border-color: rgba(25, 242, 140, 0.3);
+  background: rgba(25, 242, 140, 0.06);
+  transform: translateY(-3px);
+}
+
+.spc-results-beyond-item i {
+  font-size: 18px;
+  color: #19F28C;
+  flex-shrink: 0;
+}
+
+/* Trusted Exams */
+.spc-trusted-exams {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.spc-trusted-exam {
+  display: inline-flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #DCE6F2;
+  background: rgba(25, 242, 140, 0.07);
+  border: 1px solid rgba(25, 242, 140, 0.22);
+  padding: 12px 24px;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+}
+
+.spc-trusted-exam:hover {
+  background: rgba(25, 242, 140, 0.14);
+  border-color: rgba(25, 242, 140, 0.45);
+  transform: translateY(-2px);
+}
+
+/* Results CTA */
+.spc-results-cta {
+  text-align: center;
+}
+
+/* Responsive — Results & Testimonials */
+@media (max-width: 991px) {
+  .spc-testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+  .spc-results-beyond-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .spc-achievers-grid { grid-template-columns: 1fr; }
+  .spc-testimonials-grid { grid-template-columns: 1fr; }
+  .spc-results-beyond-grid { grid-template-columns: 1fr; }
+  .spc-results-subheading { font-size: 19px; }
 }
