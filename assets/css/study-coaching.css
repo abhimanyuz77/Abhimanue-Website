@@ -732,6 +732,60 @@
   margin: 0;
 }
 
+/* ===== Founder Message ===== */
+.spc-founder-message {
+  margin-top: 36px;
+  padding: 32px 28px;
+  border-left: 3px solid #00b894;
+  background: linear-gradient(135deg, rgba(0, 184, 148, 0.04), rgba(0, 184, 148, 0.01));
+  border-radius: 12px;
+}
+
+.spc-founder-message-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1d2e;
+  margin: 0 0 20px;
+}
+
+.spc-founder-message-body p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #52586b;
+  margin: 0 0 14px;
+}
+
+.spc-founder-message-body p:last-child {
+  margin-bottom: 0;
+}
+
+.spc-founder-message-body em {
+  font-style: italic;
+  color: #00b894;
+}
+
+.spc-founder-message-signature {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.spc-founder-name {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1d2e;
+  margin: 0;
+}
+
+.spc-founder-role {
+  font-size: 13px;
+  color: #00b894;
+  font-weight: 500;
+  margin: 2px 0 0;
+}
+
 /* ===== Pricing Offer Strip ===== */
 .spc-pricing-offer-strip {
   display: flex;
@@ -1552,6 +1606,15 @@ body {
 .spc-coach-highlight p { color: #74839B; }
 .spc-coach-highlight-icon { background: rgba(25, 242, 140, 0.1); border-color: rgba(25, 242, 140, 0.25); }
 .spc-coach-highlight-icon i { color: #19F28C; }
+
+/* Founder message dark mode */
+.spc-founder-message { border-left-color: #19F28C; background: linear-gradient(135deg, rgba(25, 242, 140, 0.05), rgba(25, 242, 140, 0.01)); }
+.spc-founder-message-title { color: #FFFFFF; }
+.spc-founder-message-body p { color: #B8C6D8; }
+.spc-founder-message-body em { color: #19F28C; }
+.spc-founder-message-signature { border-top-color: rgba(255, 255, 255, 0.08); }
+.spc-founder-name { color: #FFFFFF; }
+.spc-founder-role { color: #19F28C; }
 
 /* Coach journey timeline */
 .spc-coach-journey {
