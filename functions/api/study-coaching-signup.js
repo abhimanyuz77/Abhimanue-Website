@@ -18,10 +18,11 @@ export async function onRequestPost(context) {
     const phone = data.phone;
     const student_type = data.student_type;
     const challenges = data.challenges;
+    const address = data.address;
     const message = data.message || 'No additional message';
     const timestamp = data.timestamp || new Date().toISOString();
 
-    if (!fullname || !email || !phone || !student_type || !challenges) {
+    if (!fullname || !email || !phone || !student_type || !challenges || !address) {
       return new Response(
         JSON.stringify({ success: false, message: "All required fields must be filled" }),
         { headers: { "Content-Type": "application/json" } }
@@ -90,6 +91,7 @@ export async function onRequestPost(context) {
                 <tr><td style="padding:10px 0;font-weight:bold;color:#333;width:140px;">Full Name</td><td style="padding:10px 0;color:#555;">${fullname}</td></tr>
                 <tr><td style="padding:10px 0;font-weight:bold;color:#333;">Email</td><td style="padding:10px 0;color:#555;"><a href="mailto:${email}">${email}</a></td></tr>
                 <tr><td style="padding:10px 0;font-weight:bold;color:#333;">Phone</td><td style="padding:10px 0;color:#555;">${phone}</td></tr>
+                <tr><td style="padding:10px 0;font-weight:bold;color:#333;">Address</td><td style="padding:10px 0;color:#555;">${address}</td></tr>
                 <tr><td style="padding:10px 0;font-weight:bold;color:#333;">Current Status</td><td style="padding:10px 0;color:#555;">${studentTypeLabel}</td></tr>
                 <tr><td style="padding:10px 0;font-weight:bold;color:#333;">Main Challenge</td><td style="padding:10px 0;color:#555;">${challengeLabel}</td></tr>
                 <tr><td style="padding:10px 0;font-weight:bold;color:#333;">Timestamp</td><td style="padding:10px 0;color:#555;">${timestamp}</td></tr>

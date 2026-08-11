@@ -125,12 +125,13 @@
       var phone = $('#sc-phone').val().trim();
       var studentType = $('#sc-student-type').val();
       var challenges = $('#sc-challenges').val();
+      var address = $('#sc-address').val().trim();
       var message = $('#sc-message').val().trim();
       var terms = $('#sc-terms').is(':checked');
 
       var emailRegex = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-      if (!fullname || !email || !phone || !studentType || !challenges) {
+      if (!fullname || !email || !phone || !studentType || !challenges || !address) {
         showAlert('warning', '<strong>Warning!</strong> Please fill in all required fields.');
         return false;
       }
@@ -151,6 +152,7 @@
         phone: phone,
         student_type: studentType,
         challenges: challenges,
+        address: address,
         message: message || 'No additional message',
         timestamp: new Date().toISOString()
       };
@@ -164,15 +166,30 @@
         dataType: 'json',
         success: function (response) {
           if (response.success) {
-            showAlert('success', '<strong>Success!</strong> Your assessment request has been submitted. We will contact you within 24 hours to schedule your personalized consultation.');
-            form[0].reset();
-            $('html, body').animate({
-              scrollTop: alertBox.offset().top - 100
-            }, 500);
+            // Email sent to support — now redirect to Hexagon Know payment page
+            showAlert('success', '<strong>Success!</strong> Your details have been submitted. Redirecting to our secure payment page...');
+
+            var paymentParams = new URLSearchParams({
+              name: fullname,
+              email: email,
+              redirect_url: window.location.origin + '/study-coaching-thank-you.html'
+            });
+
+            // Only add phone if provided
+            var cleanPhone = phone.replace(/\D/g, '');
+            if (cleanPhone) {
+              paymentParams.append('phone', cleanPhone);
+            }
+
+            var paymentUrl = 'https://hexagonknow.com/abhimanue-payment.html?' + paymentParams.toString();
+
+            setTimeout(function () {
+              window.location.href = paymentUrl;
+            }, 1200);
           } else {
             showAlert('danger', '<strong>Error!</strong> ' + (response.message || 'There was a problem submitting your request. Please try again.'));
+            submitBtn.prop('disabled', false).html(defaultBtnText);
           }
-          submitBtn.prop('disabled', false).html(defaultBtnText);
         },
         error: function (xhr, status, error) {
           showAlert('danger', '<strong>Error!</strong> There was a problem submitting your request. Please try again later or WhatsApp us directly.');
