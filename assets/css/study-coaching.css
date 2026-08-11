@@ -336,8 +336,10 @@
 }
 
 .spc-price-original {
+  display: block;
   font-size: 20px;
   font-weight: 600;
+  line-height: 1.1;
   color: #8a8f9e;
   text-decoration: line-through;
   text-decoration-color: rgba(255, 82, 82, 0.7);
@@ -347,11 +349,13 @@
   display: flex;
   align-items: baseline;
   gap: 4px;
+  line-height: 1;
 }
 
 .spc-price-label {
   font-size: 12px;
   font-weight: 600;
+  line-height: 1.2;
   color: #50fa7b;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -360,12 +364,14 @@
 .spc-price-currency {
   font-size: 28px;
   font-weight: 700;
+  line-height: 1;
   color: #50fa7b;
 }
 
 .spc-price-value {
   font-size: 48px;
   font-weight: 900;
+  line-height: 1;
   color: #50fa7b;
   letter-spacing: -1px;
 }
@@ -833,10 +839,11 @@
   display: block;
   font-size: 24px;
   font-weight: 600;
+  line-height: 1.1;
   color: #a0a3b0;
   text-decoration: line-through;
   text-decoration-color: rgba(255, 82, 82, 0.7);
-  margin-bottom: 4px;
+  margin-bottom: 10px;
 }
 
 .spc-pricing-now {
@@ -844,6 +851,7 @@
   align-items: baseline;
   justify-content: center;
   gap: 4px;
+  line-height: 1;
 }
 
 .spc-pricing-save {
@@ -1163,12 +1171,14 @@
 .spc-pricing-amount .spc-price-currency {
   font-size: 32px;
   font-weight: 700;
+  line-height: 1;
   color: #00b894;
 }
 
 .spc-price-value-lg {
   font-size: 64px;
   font-weight: 900;
+  line-height: 1;
   color: #00b894;
   letter-spacing: -2px;
   line-height: 1;
@@ -1311,6 +1321,7 @@
 
   .spc-price-amount {
     align-items: center;
+    gap: 10px;
   }
 
   .spc-hero-trust {
