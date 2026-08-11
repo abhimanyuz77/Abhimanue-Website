@@ -2371,3 +2371,19 @@ body {
   .spc-results-beyond-grid { grid-template-columns: 1fr; }
   .spc-results-subheading { font-size: 19px; }
 }
+
+/* Mobile — show signup form before the header/badges section */
+@media (max-width: 768px) {
+  #signup .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #signup .signup-header-prominent {
+    order: 2;
+  }
+
+  #signup .row.justify-content-center {
+    order: 1;
+  }
+}
