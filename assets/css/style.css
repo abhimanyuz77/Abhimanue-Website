@@ -3749,6 +3749,31 @@ canvas {
   background: #fdfeff;
 }
 
+/* View solution button inside modal */
+.diophantine-view-solution-wrap {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.diophantine-view-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  background: #fec544;
+  color: #1a1d29;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid #fec544;
+}
+
+.diophantine-view-btn:hover {
+  background: transparent;
+  color: #fec544;
+  transform: translateY(-2px);
+}
+
 /* Mobile responsiveness */
 @media screen and (max-width: 768px) {
   .diophantine-modal-content {
