@@ -2387,3 +2387,151 @@ body {
     order: 1;
   }
 }
+
+/* ===== Footer Terms & Conditions ===== */
+.spc-footer-terms {
+  max-width: 900px;
+  margin: 0 auto 36px;
+  padding: 30px 34px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  text-align: left;
+}
+
+.spc-footer-terms-title {
+  font-family: 'Sora', 'Inter', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+}
+
+.spc-footer-terms-title i {
+  color: #19F28C;
+  font-size: 17px;
+}
+
+.spc-footer-terms-lead {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #B8C6D8;
+  margin: 0 0 18px;
+}
+
+.spc-footer-terms-lead strong {
+  color: #FFB45B;
+}
+
+.spc-terms-details summary {
+  cursor: pointer;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #19F28C;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: rgba(25, 242, 140, 0.08);
+  border: 1px solid rgba(25, 242, 140, 0.25);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.spc-terms-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.spc-terms-details summary:hover {
+  background: rgba(25, 242, 140, 0.15);
+  border-color: rgba(25, 242, 140, 0.45);
+}
+
+.spc-terms-details summary i {
+  font-size: 12px;
+  transition: transform 0.25s ease;
+}
+
+.spc-terms-details[open] summary i {
+  transform: rotate(180deg);
+}
+
+.spc-terms-body {
+  margin-top: 20px;
+  padding-top: 6px;
+}
+
+.spc-terms-body h4 {
+  font-family: 'Sora', 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 20px 0 8px;
+}
+
+.spc-terms-body p,
+.spc-terms-body li {
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: #B8C6D8;
+}
+
+.spc-terms-body p {
+  margin: 0 0 12px;
+}
+
+.spc-terms-body ul {
+  padding-left: 22px;
+  margin: 0 0 10px;
+}
+
+.spc-terms-body li {
+  margin-bottom: 6px;
+}
+
+.spc-terms-body a {
+  color: #19F28C;
+}
+
+.spc-terms-body strong {
+  color: #E4ECF5;
+}
+
+.spc-terms-highlight {
+  background: rgba(255, 155, 48, 0.07);
+  border: 1px solid rgba(255, 155, 48, 0.22);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin: 12px 0;
+}
+
+.spc-terms-highlight p {
+  margin: 0;
+  color: #D8CBB4;
+}
+
+.spc-terms-highlight strong {
+  color: #FFB45B;
+}
+
+.spc-terms-updated {
+  font-size: 12px;
+  color: #74839B;
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.checkbox-label a {
+  color: #19F28C;
+}
+
+@media (max-width: 768px) {
+  .spc-footer-terms {
+    padding: 24px 20px;
+  }
+}
