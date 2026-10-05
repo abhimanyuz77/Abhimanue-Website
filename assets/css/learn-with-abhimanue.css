@@ -2396,6 +2396,31 @@ body {
   }
 }
 
+/* ===== Hero "Recommended For" pill ===== */
+.spc-hero-recommended {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4DE7EE;
+  background: rgba(22, 217, 227, 0.08);
+  border: 1px solid rgba(22, 217, 227, 0.25);
+  border-radius: 999px;
+  padding: 8px 18px;
+  margin: 0 0 18px;
+}
+
+.spc-hero-recommended i {
+  font-size: 13px;
+  color: #16D9E3;
+}
+
+.spc-hero-recommended strong {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
 /* ===== Login to Academy ===== */
 .spc-login-btn {
   display: inline-flex;
