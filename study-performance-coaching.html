@@ -58,6 +58,8 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="assets/css/academy.css" />
   <link rel="stylesheet" href="assets/css/learn-with-abhimanue.css" />
+  <link rel="preconnect" href="https://vjs.zencdn.net" crossorigin>
+  <link rel="stylesheet" href="https://vjs.zencdn.net/8.10.0/video-js.css">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GPVMY7JG4V"></script>
@@ -789,6 +791,30 @@
   </section>
   <!-- End Learning Process Section -->
 
+  <!-- Start Free Video Lesson Section -->
+  <section id="video-lesson" class="spc-section spc-section-light">
+    <div class="container">
+      <div class="st-section-heading st-style1">
+        <h4 class="st-section-heading-title">Free Video Lesson: How To Handle Mental Chatter</h4>
+      </div>
+      <div class="st-height-b40 st-height-lg-b40"></div>
+
+      <div class="spc-video-wrapper">
+        <div class="spc-video-meta">
+          <span class="spc-video-tag"><i class="fas fa-play-circle"></i> Free Lesson</span>
+          <span class="spc-video-duration"><i class="fas fa-clock"></i> 7 min</span>
+        </div>
+        <p class="spc-video-desc">Overthinking, distracting thoughts, and constant self-talk can quietly drain hours from your study day. In this short lesson, learn practical ways to quiet the noise and get back to focused learning.</p>
+        <div class="spc-video-card">
+          <video id="mentalChatterHlsPlayer" class="video-js vjs-big-play-centered" controls preload="none" playsinline poster="assets/Mental-Chatter-Thumbnail-HQ.jpg">
+            <source src="https://hexagonknow-website-storage.s3.ap-south-1.amazonaws.com/HandleMentalChatter/master.m3u8" type="application/x-mpegURL">
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Free Video Lesson Section -->
+
   <!-- Start Results & Testimonials Section -->
   <section id="results" class="spc-section spc-section-dark">
     <div class="container">
@@ -1281,7 +1307,26 @@
   <script src="assets/js/jquery.ripples-min.js"></script>
   <script src="assets/js/wow.min.js"></script>
   <script src="assets/js/particles.min.js"></script>
+  <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+  <script src="https://unpkg.com/videojs-contrib-quality-levels@2.2.1/dist/videojs-contrib-quality-levels.min.js"></script>
+  <script src="https://unpkg.com/videojs-hls-quality-selector@1.1.4/dist/videojs-hls-quality-selector.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/study-coaching.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof videojs === 'undefined') return;
+      const videoElement = document.getElementById('mentalChatterHlsPlayer');
+      if (!videoElement) return;
+      const player = videojs(videoElement, {
+        controls: true, fluid: true, preload: 'none', autoplay: false, playsinline: true,
+        html5: { vhs: { overrideNative: true } }
+      });
+      player.ready(function () {
+        if (typeof this.hlsQualitySelector === 'function') {
+          this.hlsQualitySelector({ displayCurrentQuality: true });
+        }
+      });
+    });
+  </script>
 </body>
 </html>

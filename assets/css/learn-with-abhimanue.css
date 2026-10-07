@@ -2480,6 +2480,120 @@ body {
   }
 }
 
+/* ===== Free Video Lesson (HLS) ===== */
+.spc-video-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.spc-video-meta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.spc-video-tag,
+.spc-video-duration {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.spc-video-tag {
+  color: #4DE7EE;
+  background: rgba(22, 217, 227, 0.1);
+  border: 1px solid rgba(22, 217, 227, 0.25);
+}
+
+.spc-video-duration {
+  color: #B8C7DA;
+  background: rgba(18, 104, 232, 0.08);
+  border: 1px solid #234667;
+}
+
+.spc-video-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #B8C7DA;
+  max-width: 680px;
+  margin: 0 auto 28px;
+}
+
+.spc-video-card {
+  border-radius: 20px;
+  overflow: hidden;
+  background: #0C1B30;
+  border: 1px solid #19314D;
+  box-shadow: 0 0 60px rgba(18, 104, 232, 0.12), 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.spc-video-card .video-js {
+  width: 100%;
+  background: #050B18;
+}
+
+.spc-video-card .video-js .vjs-poster {
+  background-size: cover;
+}
+
+.spc-video-card .video-js .vjs-big-play-button {
+  width: 84px;
+  height: 84px;
+  line-height: 84px;
+  margin-top: -42px;
+  margin-left: -42px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1268E8, #16D9E3);
+  box-shadow: 0 0 40px rgba(22, 217, 227, 0.4);
+}
+
+.spc-video-card .video-js .vjs-big-play-button .vjs-icon-placeholder:before {
+  font-size: 48px;
+  line-height: 84px;
+}
+
+.spc-video-card .video-js:hover .vjs-big-play-button {
+  background: linear-gradient(135deg, #168FEF, #4DE7EE);
+}
+
+.spc-video-card .video-js .vjs-control-bar {
+  background: rgba(5, 11, 24, 0.85);
+}
+
+.spc-video-card .video-js .vjs-play-progress,
+.spc-video-card .video-js .vjs-volume-level {
+  background: #16D9E3;
+}
+
+@media (max-width: 768px) {
+  .spc-video-card {
+    border-radius: 14px;
+  }
+
+  .spc-video-card .video-js .vjs-big-play-button {
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    margin-top: -32px;
+    margin-left: -32px;
+  }
+
+  .spc-video-card .video-js .vjs-big-play-button .vjs-icon-placeholder:before {
+    font-size: 36px;
+    line-height: 64px;
+  }
+}
+
 /* ===== Free Diagnostic Assessment Card ===== */
 .spc-assessment-card {
   position: relative;
