@@ -244,23 +244,6 @@
 
 
 
-<section id="elite-video" class="elite-video-section">
-  <div class="container">
-    <div class="video-only-wrapper">
-      <div class="video-player-card">
-        <video id="academyHlsPlayer"
-               class="video-js vjs-big-play-centered video-inline-player"
-               controls
-               preload="auto"
-               playsinline
-               poster="assets/img/Abhimanue_Udayan_NEET_Physics_Academy.jpg">
-          <source src="https://d1nh1cy4xqxz3k.cloudfront.net/Physics-Academy/1080p/playlist.m3u8" type="application/x-mpegURL">
-        </video>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="founder-story" class="founder-authority st-dark-bg">
   <div class="st-height-b80 st-height-lg-b60"></div>
   <div class="container">
@@ -860,7 +843,7 @@
     if (typeof videojs === 'undefined') {
       return;
     }
-    ['academyHlsPlayer', 'phyGHlsPlayer'].forEach(function (id) {
+    ['phyGHlsPlayer'].forEach(function (id) {
       const videoElement = document.getElementById(id);
       if (!videoElement) return;
 
