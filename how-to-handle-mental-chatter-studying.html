@@ -92,7 +92,8 @@
       line-height: 80px;
     }
     .blog-video-label {
-      display: inline-flex;
+      display: flex;
+      width: fit-content;
       align-items: center;
       gap: 8px;
       font-size: 12px;
@@ -104,7 +105,7 @@
       border: 1px solid rgba(18, 104, 232, 0.25);
       padding: 6px 16px;
       border-radius: 999px;
-      margin-bottom: 6px;
+      margin: 0 auto 10px;
     }
     .chatter-quote {
       background: #f6f8fc;
@@ -177,7 +178,12 @@
       <div class="row">
         <div class="col-lg-10 offset-md-1">
           <div class="st-post-details st-style1">
-            <img class="st-zoom-in" src="assets/Mental-Chatter-Thumbnail-HQ.jpg" alt="How to Handle Mental Chatter When Studying - video lesson thumbnail" style="width:100%; height:auto; display:block; border-radius:14px;">
+            <span class="blog-video-label"><i class="fas fa-play-circle"></i> Free Video Lesson · 7 min</span>
+            <div class="blog-video-card">
+              <video id="mentalChatterHlsPlayer" class="video-js vjs-big-play-centered" controls preload="auto" playsinline poster="assets/Mental-Chatter-Thumbnail-HQ.jpg">
+                <source src="https://d1nh1cy4xqxz3k.cloudfront.net/HandleMentalChatter/master.m3u8" type="application/x-mpegURL">
+              </video>
+            </div>
             <div class="st-height-b40 st-height-lg-b40"></div>
             <p>Have you ever sat down to study, only to find your mind immediately coming up with reasons to stop?</p>
             <div class="chatter-quote">
@@ -190,14 +196,6 @@
             <p>Before you know it, several minutes have disappeared.</p>
             <p>The problem isn't that your mind talks. <strong>Your mind is supposed to talk.</strong> The problem begins when you start treating every thought as an instruction.</p>
             <p>In this lesson, you'll learn how to create some distance between you and your thoughts, recognize mental chatter without automatically obeying it, and bring your attention back to what you actually decided to do.</p>
-
-            <h2>Watch the Video Lesson (7 min)</h2>
-            <p>Press play to watch the full lesson on handling mental chatter while studying:</p>
-            <div class="blog-video-card">
-              <video id="mentalChatterHlsPlayer" class="video-js vjs-big-play-centered" controls preload="none" playsinline poster="assets/Mental-Chatter-Thumbnail-HQ.jpg">
-                <source src="https://d1nh1cy4xqxz3k.cloudfront.net/HandleMentalChatter/master.m3u8" type="application/x-mpegURL">
-              </video>
-            </div>
 
             <h2>You'll Learn How To:</h2>
             <ul>
@@ -291,13 +289,23 @@
       const videoElement = document.getElementById('mentalChatterHlsPlayer');
       if (!videoElement) return;
       const player = videojs(videoElement, {
-        controls: true, fluid: true, preload: 'none', autoplay: false, playsinline: true,
+        controls: true, fluid: true, preload: 'auto', autoplay: false, playsinline: true,
         html5: { vhs: { overrideNative: true } }
       });
       player.ready(function () {
         if (typeof this.hlsQualitySelector === 'function') {
           this.hlsQualitySelector({ displayCurrentQuality: true });
         }
+        // Autoplay 1 second after page load; falls back to muted if the browser blocks sound
+        setTimeout(function () {
+          var playPromise = player.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(function () {
+              player.muted(true);
+              player.play().catch(function () {});
+            });
+          }
+        }, 1000);
       });
     });
   </script>
