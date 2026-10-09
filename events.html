@@ -47,6 +47,59 @@
   <!-- Fancybox for Gallery -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
+  <!-- Hero Slideshow Styles -->
+  <style>
+    #events-hero .events-hero-slideshow {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+    #events-hero .events-hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transform: scale(1);
+      animation: eventsHeroSlide 72s ease-in-out infinite;
+      will-change: opacity, transform;
+    }
+    #events-hero .events-hero-slide:nth-child(1)  { animation-delay: 0s; }
+    #events-hero .events-hero-slide:nth-child(2)  { animation-delay: 6s; }
+    #events-hero .events-hero-slide:nth-child(3)  { animation-delay: 12s; }
+    #events-hero .events-hero-slide:nth-child(4)  { animation-delay: 18s; }
+    #events-hero .events-hero-slide:nth-child(5)  { animation-delay: 24s; }
+    #events-hero .events-hero-slide:nth-child(6)  { animation-delay: 30s; }
+    #events-hero .events-hero-slide:nth-child(7)  { animation-delay: 36s; }
+    #events-hero .events-hero-slide:nth-child(8)  { animation-delay: 42s; }
+    #events-hero .events-hero-slide:nth-child(9)  { animation-delay: 48s; }
+    #events-hero .events-hero-slide:nth-child(10) { animation-delay: 54s; }
+    #events-hero .events-hero-slide:nth-child(11) { animation-delay: 60s; }
+    #events-hero .events-hero-slide:nth-child(12) { animation-delay: 66s; }
+    @keyframes eventsHeroSlide {
+      0%    { opacity: 0; transform: scale(1); }
+      2.8%  { opacity: 1; }
+      8.33% { opacity: 1; transform: scale(1.05); }
+      11.1% { opacity: 0; transform: scale(1.07); }
+      100%  { opacity: 0; transform: scale(1.07); }
+    }
+    #events-hero .events-hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(15, 22, 36, 0.55) 0%, rgba(15, 22, 36, 0.8) 100%);
+      pointer-events: none;
+    }
+    @media (max-width: 768px) {
+      #events-hero { padding: 110px 0 70px !important; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #events-hero .events-hero-slide { animation: none; }
+      #events-hero .events-hero-slide:first-child { opacity: 1; }
+    }
+  </style>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GPVMY7JG4V"></script>
   <script>
@@ -93,11 +146,27 @@
   <!-- End Header Section -->
 
   <!-- Start Page Header -->
-  <section class="st-hero st-style2 st-bg" id="events-hero" style="background-color: #0f1624; padding: 90px 0 10px; position: relative; overflow: hidden;">
+  <section class="st-hero st-style2 st-bg" id="events-hero" style="background-color: #0f1624; padding: 150px 0 100px; position: relative; overflow: hidden;">
+    <!-- Hero Photo Slideshow -->
+    <div class="events-hero-slideshow">
+      <div class="events-hero-slide" style="background-image: url('assets/img/Events/Award.jpg');"></div>
+      <div class="events-hero-slide" style="background-image: url('assets/img/Events/TYE-Launch.jpg');"></div>
+      <div class="events-hero-slide" style="background-image: url('assets/img/Events/TYE-GLobal-2026-Moderator.jpg');"></div>
+      <div class="events-hero-slide" style="background-image: url('assets/img/Events/tie-4567.jpg');"></div>
+      <div class="events-hero-slide" style="background-image: url('assets/img/Events/Amal-Jyothy-TIE-U.jpg');"></div>
+      <div class="events-hero-slide" style="background-image: url('assets/img/Events/Amal-Jyothy-TIE-U-2.jpg');"></div>
+      <div class="events-hero-slide" style="background-image: url('assets/img/Events/Rajagiri-TIE-U.jpg');"></div>
+      <div class="events-hero-slide" style="background-image: url('assets/img/Events/Rajagiri-TIE-U-2.jpg');"></div>
+      <div class="events-hero-slide" style="background-image: url('assets/img/Events/TIE-SH.jpg');"></div>
+      <div class="events-hero-slide" style="background-image: url('assets/img/Events/TIE-SH-2.jpg');"></div>
+      <div class="events-hero-slide" style="background-image: url('assets/img/Events/TYE-Bhavans-Thiruvankulam.jpg');"></div>
+      <div class="events-hero-slide" style="background-image: url('assets/img/Events/TYE-Charter-International.jpg');"></div>
+    </div>
+    <div class="events-hero-overlay"></div>
     <!-- Particle Background -->
-    <div id="particles-events" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0;"></div>
-    
-    <div class="container" style="position: relative; z-index: 1;">
+    <div id="particles-events" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 2;"></div>
+
+    <div class="container" style="position: relative; z-index: 3;">
       <div class="st-hero-text text-center">
         <h1 class="st-hero-title cd-headline clip" style="margin-bottom: 8px;">
           <span class="cd-words-wrapper" style="width: 100%;">
@@ -311,7 +380,7 @@
   <footer class="st-dark-bg">
     <div class="container">
       <div class="st-copyright-wrap text-center st-border-top">
-        <div class="st-copyright-text">© 2025. Designed by Abhimanue. All right reserved.</div>
+        <div class="st-copyright-text">© 2026. Designed by Abhimanue. All right reserved.</div>
       </div>
     </div>
   </footer>

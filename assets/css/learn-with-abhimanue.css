@@ -792,6 +792,13 @@
   margin: 2px 0 0;
 }
 
+.spc-coach-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
 /* ===== Pricing Offer Strip ===== */
 .spc-pricing-offer-strip {
   display: flex;
