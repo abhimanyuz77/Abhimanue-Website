@@ -314,6 +314,29 @@
   </section>
   <!-- End Hero Section -->
 
+  <!-- Start Demo Video Section -->
+  <section id="demo-video" class="spc-section spc-section-light">
+    <div class="container">
+      <div class="st-section-heading st-style1">
+        <h4 class="st-section-heading-title">Demo Video: How To Learn</h4>
+      </div>
+      <div class="st-height-b40 st-height-lg-b40"></div>
+
+      <div class="spc-video-wrapper">
+        <div class="spc-video-meta">
+          <span class="spc-video-tag"><i class="fas fa-play-circle"></i> Demo Video</span>
+        </div>
+        <p class="spc-video-desc">See the Study Performance Coaching approach in action. This short demo shows the methods used to build focus, memory, and efficient learning habits.</p>
+        <div class="spc-video-card">
+          <video id="demoVideoHlsPlayer" class="video-js vjs-big-play-centered" controls preload="none" playsinline poster="assets/Study-Performance-Coaching.jpg">
+            <source src="https://d1nh1cy4xqxz3k.cloudfront.net/HowToLearn/master.m3u8" type="application/x-mpegURL">
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Demo Video Section -->
+
   <!-- Start Problems Section -->
   <section id="problems" class="spc-section spc-section-light">
     <div class="container">
@@ -795,30 +818,6 @@
     </div>
   </section>
   <!-- End Learning Process Section -->
-
-  <!-- Start Free Video Lesson Section -->
-  <section id="video-lesson" class="spc-section spc-section-light">
-    <div class="container">
-      <div class="st-section-heading st-style1">
-        <h4 class="st-section-heading-title">Free Video Lesson: How To Handle Mental Chatter</h4>
-      </div>
-      <div class="st-height-b40 st-height-lg-b40"></div>
-
-      <div class="spc-video-wrapper">
-        <div class="spc-video-meta">
-          <span class="spc-video-tag"><i class="fas fa-play-circle"></i> Free Lesson</span>
-          <span class="spc-video-duration"><i class="fas fa-clock"></i> 7 min</span>
-        </div>
-        <p class="spc-video-desc">Overthinking, distracting thoughts, and constant self-talk can quietly drain hours from your study day. In this short lesson, learn practical ways to quiet the noise and get back to focused learning.</p>
-        <div class="spc-video-card">
-          <video id="mentalChatterHlsPlayer" class="video-js vjs-big-play-centered" controls preload="none" playsinline poster="assets/Mental-Chatter-Thumbnail-HQ.jpg">
-            <source src="https://d1nh1cy4xqxz3k.cloudfront.net/HandleMentalChatter/master.m3u8" type="application/x-mpegURL">
-          </video>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Free Video Lesson Section -->
 
   <!-- Start Results & Testimonials Section -->
   <section id="results" class="spc-section spc-section-dark">
@@ -1306,7 +1305,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       if (typeof videojs === 'undefined') return;
-      const videoElement = document.getElementById('mentalChatterHlsPlayer');
+      const videoElement = document.getElementById('demoVideoHlsPlayer');
       if (!videoElement) return;
       const player = videojs(videoElement, {
         controls: true, fluid: true, preload: 'none', autoplay: false, playsinline: true,
