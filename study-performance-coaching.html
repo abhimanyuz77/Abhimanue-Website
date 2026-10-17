@@ -47,19 +47,17 @@
   <!-- Google Fonts: Sora (headings) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
   <link rel="stylesheet" href="assets/css/fontawesome.css" />
-  <link rel="stylesheet" href="assets/css/slick.css" />
-  <link rel="stylesheet" href="assets/css/lightgallery.min.css" />
-  <link rel="stylesheet" href="assets/css/animate.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="stylesheet" href="assets/css/academy.css" />
   <link rel="stylesheet" href="assets/css/learn-with-abhimanue.css" />
-  <link rel="preconnect" href="https://vjs.zencdn.net" crossorigin>
-  <link rel="stylesheet" href="https://vjs.zencdn.net/8.10.0/video-js.css">
+  <!-- Video.js skin is only needed for the below-the-fold player; load non-blocking -->
+  <link rel="stylesheet" href="assets/css/video-js.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="assets/css/video-js.css"></noscript>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GPVMY7JG4V"></script>
@@ -208,7 +206,7 @@
       <div class="container">
         <div class="st-main-header-in">
           <div class="st-main-header-left">
-            <a class="st-site-branding" href="index.html"><img src="assets/img/logo.png" alt="Abhimanue"></a>
+            <a class="st-site-branding" href="index.html"><img src="assets/img/logo.png" alt="Abhimanue" width="200" height="54"></a>
           </div>
           <div class="st-main-header-right">
             <div class="st-nav">
@@ -260,7 +258,7 @@
             </div>
             <a href="#signup" class="spc-cta-btn spc-cta-primary st-smooth-move">
               <i class="fas fa-rocket"></i>
-              
+              Enroll Now
             </a>
             <a href="https://learn.abhimanue.in/study-assessment" class="spc-login-btn"><i class="fas fa-clipboard-check"></i> Start Your Free Assessment</a>
           </div>
@@ -268,7 +266,7 @@
 
         <div class="spc-hero-image">
           <div class="spc-hero-card">
-            <img src="assets/img/Abhimanue-Udayan-SCP.jpg" alt="Abhimanue Udayan - Study Performance Coach" class="img-fluid">
+            <img src="assets/img/Abhimanue-Udayan-SCP.jpg" alt="Abhimanue Udayan - Study Performance Coach" class="img-fluid" width="600" height="600">
           </div>
 
           <div class="spc-offer-banner">
@@ -318,7 +316,7 @@
   <section id="demo-video" class="spc-section spc-section-light">
     <div class="container">
       <div class="st-section-heading st-style1">
-        <h4 class="st-section-heading-title">Video : How To Learn</h4>
+        <h2 class="st-section-heading-title">Video : How To Learn</h2>
       </div>
       <div class="st-height-b40 st-height-lg-b40"></div>
 
@@ -337,7 +335,7 @@
               <span class="spc-quality-current">Auto</span>
               <i class="fas fa-chevron-down"></i>
             </button>
-            <div class="spc-quality-menu" id="spcQualityMenu" role="menu">
+            <div class="spc-quality-menu" id="spcQualityMenu">
               <button type="button" class="spc-quality-item active" data-quality="auto">Auto</button>
               <button type="button" class="spc-quality-item" data-quality="1080">1080p</button>
               <button type="button" class="spc-quality-item" data-quality="720">720p</button>
@@ -354,7 +352,7 @@
   <section id="problems" class="spc-section spc-section-light">
     <div class="container">
       <div class="st-section-heading st-style1">
-        <h4 class="st-section-heading-title">Are You Facing These Problems?</h4>
+        <h2 class="st-section-heading-title">Are You Facing These Problems?</h2>
       </div>
       <div class="st-height-b40 st-height-lg-b40"></div>
 
@@ -413,7 +411,7 @@
   <section class="spc-section spc-section-dark">
     <div class="container">
       <div class="st-section-heading st-style1">
-        <h4 class="st-section-heading-title">What Makes This Different?</h4>
+        <h2 class="st-section-heading-title">What Makes This Different?</h2>
       </div>
       <div class="st-height-b40 st-height-lg-b40"></div>
 
@@ -431,13 +429,13 @@
   <section id="coach" class="spc-section spc-section-light">
     <div class="container">
       <div class="st-section-heading st-style1">
-        <h4 class="st-section-heading-title">Meet Your Study Coach</h4>
+        <h2 class="st-section-heading-title">Meet Your Study Coach</h2>
       </div>
       <div class="st-height-b50 st-height-lg-b50"></div>
 
       <div class="spc-coach-wrapper">
         <div class="spc-coach-image">
-          <img src="assets/img/Abhimanue-Udayan-Vertical.jpg" alt="Abhimanue Udayan - Study Performance Coach" class="img-fluid" style="width: 100%; height: auto; display: block;">
+          <img src="assets/img/Abhimanue-Udayan-Vertical.jpg" alt="Abhimanue Udayan - Study Performance Coach" class="img-fluid" width="700" height="896" style="width: 100%; height: auto; display: block;" loading="lazy" decoding="async">
           <div class="spc-coach-image-badge">
             <i class="fas fa-star"></i>
             <span>Study Smarter. Perform Better.</span>
@@ -502,21 +500,21 @@
             <div class="spc-coach-highlight">
               <div class="spc-coach-highlight-icon"><i class="fas fa-brain"></i></div>
               <div>
-                <h4>Proven Study Techniques</h4>
+                <h3>Proven Study Techniques</h3>
                 <p>Active recall, spaced revision, memory systems, and focus methods that actually stick.</p>
               </div>
             </div>
             <div class="spc-coach-highlight">
               <div class="spc-coach-highlight-icon"><i class="fas fa-calendar-check"></i></div>
               <div>
-                <h4>A System to Fix Your Timetable</h4>
+                <h3>A System to Fix Your Timetable</h3>
                 <p>We'll build a personalized daily and weekly timetable that keeps you consistent and accountable.</p>
               </div>
             </div>
             <div class="spc-coach-highlight">
               <div class="spc-coach-highlight-icon"><i class="fas fa-hands-helping"></i></div>
               <div>
-                <h4>Personal Guidance Throughout</h4>
+                <h3>Personal Guidance Throughout</h3>
                 <p>You're not left alone with videos—I guide you personally as you improve week after week.</p>
               </div>
             </div>
@@ -587,7 +585,7 @@
   <section id="included" class="spc-section spc-section-tint">
     <div class="container">
       <div class="st-section-heading st-style1">
-        <h4 class="st-section-heading-title">What's Included</h4>
+        <h2 class="st-section-heading-title">What's Included</h2>
       </div>
       <div class="st-height-b50 st-height-lg-b50"></div>
 
@@ -721,7 +719,7 @@
   <section class="spc-section spc-section-dark">
     <div class="container">
       <div class="st-section-heading st-style1">
-        <h4 class="st-section-heading-title">Who Is This Program For?</h4>
+        <h2 class="st-section-heading-title">Who Is This Program For?</h2>
       </div>
       <div class="st-height-b40 st-height-lg-b40"></div>
 
@@ -759,7 +757,7 @@
   <section class="spc-section spc-section-light">
     <div class="container">
       <div class="st-section-heading st-style1">
-        <h4 class="st-section-heading-title">What You'll Learn</h4>
+        <h2 class="st-section-heading-title">What You'll Learn</h2>
       </div>
       <div class="st-height-b40 st-height-lg-b40"></div>
 
@@ -785,7 +783,7 @@
   <section id="process" class="spc-section spc-section-dark">
     <div class="container">
       <div class="st-section-heading st-style1">
-        <h4 class="st-section-heading-title">Our Learning Process</h4>
+        <h2 class="st-section-heading-title">Our Learning Process</h2>
       </div>
       <div class="st-height-b50 st-height-lg-b50"></div>
 
@@ -836,7 +834,7 @@
     <div class="container">
       <!-- Headline -->
       <div class="st-section-heading st-style1">
-        <h4 class="st-section-heading-title">Results That Speak for Themselves</h4>
+        <h2 class="st-section-heading-title">Results That Speak for Themselves</h2>
       </div>
       <div class="st-height-b50 st-height-lg-b50"></div>
 
@@ -845,37 +843,37 @@
       <div class="spc-testimonials-grid">
         <div class="spc-testimonial-card">
           <div class="spc-testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <h4 class="spc-testimonial-title">"Not a generic course- a system."</h4>
+          <h3 class="spc-testimonial-title">"Not a generic course- a system."</h3>
           <p class="spc-testimonial-text">"When I enrolled I thought is a fluff course with memory lessons, after 1 week I realised it is not. This is a system designed to maximize a student's productivity. It can transform your learning methodology and even your mindset. Abhimanue Sir is really helpful he is the one who made me stay in track."</p>
           <p class="spc-testimonial-author">Ram Kumar, UPSC Student</p>
         </div>
         <div class="spc-testimonial-card">
           <div class="spc-testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <h4 class="spc-testimonial-title">"A systematic approach for students."</h4>
+          <h3 class="spc-testimonial-title">"A systematic approach for students."</h3>
           <p class="spc-testimonial-text">"Schools should make these types of approaches for every student. This program helped me stick to a time table and help me syat accountable. Had an amazing live consultation with Abhimanue sir."</p>
           <p class="spc-testimonial-author">Sneha Raghu, JEE Aspirant</p>
         </div>
         <div class="spc-testimonial-card">
           <div class="spc-testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <h4 class="spc-testimonial-title">"Didn't know what I was doing with my studies before this."</h4>
+          <h3 class="spc-testimonial-title">"Didn't know what I was doing with my studies before this."</h3>
           <p class="spc-testimonial-text">"I was just studying randomly without any structure. This program gave me a clear roadmap and helped me stay consistent."</p>
           <p class="spc-testimonial-author">Rahul Krishna, Class XII Student</p>
         </div>
         <div class="spc-testimonial-card">
           <div class="spc-testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <h4 class="spc-testimonial-title">"Really transformative approach."</h4>
+          <h3 class="spc-testimonial-title">"Really transformative approach."</h3>
           <p class="spc-testimonial-text">"This program helps a lot if you stick to the simple things sir suggests. Using the platform I setup a time table, logged my study hours and I can see clear improvement in my studies. I used to study 3-4 hours before now it is 6+."</p>
           <p class="spc-testimonial-author">Ananya Madhav, NEET Student</p>
         </div>
         <div class="spc-testimonial-card">
           <div class="spc-testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <h4 class="spc-testimonial-title">"I stopped wasting time."</h4>
+          <h3 class="spc-testimonial-title">"I stopped wasting time."</h3>
           <p class="spc-testimonial-text">"My screen time dropped, my focus improved, and I actually started completing everything I planned each day."</p>
           <p class="spc-testimonial-author">Arjun Prakash., Medical Aspirant</p>
         </div>
         <div class="spc-testimonial-card">
           <div class="spc-testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <h4 class="spc-testimonial-title">"Worth every minute."</h4>
+          <h3 class="spc-testimonial-title">"Worth every minute."</h3>
           <p class="spc-testimonial-text">"This isn't another course that teaches subjects. It teaches you how to perform at your highest level while studying. I wish I had joined much earlier."</p>
           <p class="spc-testimonial-author">Priya Nair, Engineering Aspirant</p>
         </div>
@@ -922,7 +920,7 @@
 
       <div class="text-center">
         <a href="https://www.teacheron.com/tutor/21N7?r=21N7" target="_blank" rel="noopener" style="display: inline-block;">
-          <img src="https://www.teacheron.com/resources/assets/img/badges/viewMyProfile.png" alt="View my tutor profile on TeacherOn" style="width: 160px !important; height: 68px !important">
+          <img src="https://www.teacheron.com/resources/assets/img/badges/viewMyProfile.png" alt="View my tutor profile on TeacherOn" width="160" height="68" loading="lazy" decoding="async" style="width: 160px !important; height: 68px !important">
         </a>
       </div>
     </div>
@@ -933,7 +931,7 @@
   <section id="pricing" class="spc-section spc-section-light">
     <div class="container">
       <div class="st-section-heading st-style1">
-        <h4 class="st-section-heading-title">Program Fee</h4>
+        <h2 class="st-section-heading-title">Program Fee</h2>
       </div>
       <div class="st-height-b40 st-height-lg-b40"></div>
 
@@ -982,7 +980,7 @@
             <div class="st-height-b30 st-height-lg-b30"></div>
             <div class="spc-powered-by">
               <span>Powered by</span>
-              <img src="assets/img/HKPL_Light.png" alt="Hexagon Know" class="spc-powered-by-logo">
+              <img src="assets/img/HKPL_Light.png" alt="Hexagon Know" class="spc-powered-by-logo" width="1000" height="200" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -995,7 +993,7 @@
   <section class="spc-section spc-section-dark" style="padding: 60px 0;">
     <div class="container">
       <div class="text-center">
-        <img src="assets/How-To-Learn-Abhimanue.jpg" alt="How To Learn - Abhimanue Udayan" class="img-fluid" style="max-width: 100%; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);">
+        <img src="assets/How-To-Learn-Abhimanue.jpg" alt="How To Learn - Abhimanue Udayan" class="img-fluid" width="1000" height="562" loading="lazy" decoding="async" style="max-width: 100%; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);">
       </div>
     </div>
   </section>
@@ -1005,7 +1003,7 @@
   <!-- <section class="spc-section spc-section-dark">
     <div class="container">
       <div class="st-section-heading st-style1">
-        <h4 class="st-section-heading-title">Important Information</h4>
+        <h2 class="st-section-heading-title">Important Information</h2>
       </div>
       <div class="st-height-b40 st-height-lg-b40"></div>
 
@@ -1154,7 +1152,7 @@
   <!-- End Signup Section -->
 
   <!-- Start Footer -->
-  <footer class="st-site-footer st-dynamic-bg" data-src="assets/img/footer-bg.png">
+  <footer class="st-site-footer">
     <div class="st-main-footer">
       <div class="container">
         <div class="row">
@@ -1304,24 +1302,16 @@
   <!-- End Footer -->
 
   <!-- Floating WhatsApp -->
-  <a href="https://wa.me/919496654440" target="_blank" class="floating-whatsapp">
+  <a href="https://wa.me/919496654440" target="_blank" class="floating-whatsapp" aria-label="Chat with us on WhatsApp">
     <i class="fab fa-whatsapp"></i>
     <span>Chat with us</span>
   </a>
 
   <!-- Scripts -->
   <script src="assets/js/jquery-1.12.4.min.js"></script>
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/slick.min.js"></script>
-  <script src="assets/js/lightgallery.min.js"></script>
-  <script src="assets/js/jquery.ripples-min.js"></script>
-  <script src="assets/js/wow.min.js"></script>
-  <script src="assets/js/particles.min.js"></script>
-  <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
-  <script src="https://unpkg.com/videojs-contrib-quality-levels@2.2.1/dist/videojs-contrib-quality-levels.min.js"></script>
-  <script src="https://unpkg.com/videojs-hls-quality-selector@1.1.4/dist/videojs-hls-quality-selector.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/study-coaching.js"></script>
+  <script src="assets/js/video.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       if (typeof videojs === 'undefined') return;
@@ -1329,15 +1319,12 @@
       if (!videoElement) return;
       const player = videojs(videoElement, {
         controls: true, fluid: true, preload: 'none', autoplay: false, playsinline: true,
+        textTrackSettings: false,
         html5: { vhs: { overrideNative: true } }
       });
       player.ready(function () {
-        if (typeof this.hlsQualitySelector === 'function') {
-          this.hlsQualitySelector({ displayCurrentQuality: true });
-        }
-
         // Minimal quality picker (Auto / 1080p / 720p / 480p)
-        const levels = player.qualityLevels();
+        // Uses VHS representations directly — no extra plugins needed
         const picker = document.getElementById('spcQualityPicker');
         const toggle = document.getElementById('spcQualityToggle');
         const toggleLabel = toggle.querySelector('.spc-quality-current');
@@ -1345,10 +1332,26 @@
         const qualityItems = menu.querySelectorAll('.spc-quality-item');
         let desiredQuality = 'auto';
 
+        function getRepresentations() {
+          const tech = player.tech({ IWillNotUseThisInPlugins: true });
+          const vhs = tech && tech.vhs;
+          return (vhs && typeof vhs.representations === 'function') ? vhs.representations() : [];
+        }
+
         function applyQuality() {
-          for (let i = 0; i < levels.length; i++) {
-            levels[i].enabled = desiredQuality === 'auto' || levels[i].height === desiredQuality;
-          }
+          getRepresentations().forEach(function (rep) {
+            rep.enabled(desiredQuality === 'auto' || rep.height === desiredQuality);
+          });
+        }
+
+        function syncAvailableQualities() {
+          const available = {};
+          getRepresentations().forEach(function (rep) { available[rep.height] = true; });
+          qualityItems.forEach(function (item) {
+            const q = item.dataset.quality;
+            item.disabled = q !== 'auto' && !available[parseInt(q, 10)];
+          });
+          applyQuality();
         }
 
         toggle.addEventListener('click', function (e) {
@@ -1372,15 +1375,7 @@
           });
         });
 
-        levels.on('addqualitylevel', function () {
-          const available = {};
-          for (let i = 0; i < levels.length; i++) available[levels[i].height] = true;
-          qualityItems.forEach(function (item) {
-            const q = item.dataset.quality;
-            item.disabled = q !== 'auto' && !available[parseInt(q, 10)];
-          });
-          applyQuality();
-        });
+        player.on('loadedmetadata', syncAvailableQualities);
       });
     });
   </script>

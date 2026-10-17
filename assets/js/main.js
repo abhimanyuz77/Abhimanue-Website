@@ -54,7 +54,9 @@
     particles();
     parallaxEffect();
     rippleInit();
-    new WOW().init();
+    if (typeof WOW !== 'undefined') {
+      new WOW().init();
+    }
 
   });
 

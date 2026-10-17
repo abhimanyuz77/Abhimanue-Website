@@ -724,7 +724,7 @@
   color: #168FEF;
 }
 
-.spc-coach-highlight h4 {
+.spc-coach-highlight h3 {
   font-size: 16px;
   font-weight: 700;
   color: #1a1d2e;
@@ -1550,7 +1550,7 @@ body {
   border-radius: 14px;
 }
 .spc-timer-box b { color: #FFFFFF; }
-.spc-timer-box small { color: #71839C; }
+.spc-timer-box small { color: #B8C7DA; }
 .spc-timer-sep { color: #16D9E3; }
 
 /* ---- Prices ---- */
@@ -1622,7 +1622,7 @@ body {
 .spc-coach-bio em { color: #16D9E3; }
 .spc-coach-image img { border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; }
 .spc-coach-image-badge { background: linear-gradient(135deg, #1268E8, #16D9E3); color: #050B18; }
-.spc-coach-highlight h4 { color: #FFFFFF; }
+.spc-coach-highlight h3 { color: #FFFFFF; }
 .spc-coach-highlight p { color: #71839C; }
 .spc-coach-highlight-icon { background: rgba(22, 217, 227, 0.1); border-color: rgba(22, 217, 227, 0.25); }
 .spc-coach-highlight-icon i { color: #16D9E3; }

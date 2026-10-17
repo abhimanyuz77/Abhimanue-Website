@@ -43,12 +43,9 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
   <link rel="stylesheet" href="assets/css/fontawesome.css" />
-  <link rel="stylesheet" href="assets/css/slick.css" />
-  <link rel="stylesheet" href="assets/css/lightgallery.min.css" />
-  <link rel="stylesheet" href="assets/css/animate.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="preconnect" href="https://vjs.zencdn.net" crossorigin>
-  <link rel="stylesheet" href="https://vjs.zencdn.net/8.10.0/video-js.css">
+  <link rel="stylesheet" href="assets/css/video-js.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="assets/css/video-js.css"></noscript>
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -129,6 +126,7 @@
 
   <style>
     .blog-video-card {
+      position: relative;
       border-radius: 16px;
       overflow: hidden;
       background: #050B18;
@@ -184,6 +182,115 @@
       color: #065f46;
       line-height: 1.9;
     }
+    .blog-quality-picker {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 20;
+    }
+    .blog-quality-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      background: rgba(5, 11, 24, 0.55);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+    }
+    .blog-quality-toggle .q-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #16D9E3;
+      box-shadow: 0 0 8px rgba(22, 217, 227, 0.8);
+    }
+    .blog-quality-toggle i {
+      font-size: 0.5rem;
+      opacity: 0.5;
+      transition: transform 0.25s ease;
+    }
+    .blog-quality-toggle:hover {
+      border-color: rgba(22, 217, 227, 0.45);
+      color: #16D9E3;
+    }
+    .blog-quality-picker.open .blog-quality-toggle i {
+      transform: rotate(180deg);
+    }
+    .blog-quality-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      min-width: 118px;
+      padding: 5px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 14px;
+      background: rgba(5, 11, 24, 0.82);
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.55);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      opacity: 0;
+      transform: translateY(-6px) scale(0.97);
+      transform-origin: top right;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .blog-quality-picker.open .blog-quality-menu {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .blog-quality-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 9px;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.18s ease, color 0.18s ease;
+    }
+    .blog-quality-item:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff;
+    }
+    .blog-quality-item.active {
+      color: #16D9E3;
+    }
+    .blog-quality-item.active::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #16D9E3;
+      box-shadow: 0 0 8px rgba(22, 217, 227, 0.8);
+    }
+    .blog-quality-item:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    @media (max-width: 768px) {
+      .blog-quality-picker {
+        top: 10px;
+        right: 10px;
+      }
+    }
   </style>
 </head>
 
@@ -231,9 +338,21 @@
           <div class="st-post-details st-style1">
             <span class="blog-video-label"><i class="fas fa-play-circle"></i> Video Lesson</span>
             <div class="blog-video-card">
-              <video id="focusHlsPlayer" class="video-js vjs-big-play-centered" controls preload="auto" playsinline poster="assets/Be-Extremely-Focussed.jpg">
+              <video id="focusHlsPlayer" class="video-js vjs-big-play-centered" controls preload="none" playsinline poster="assets/Be-Extremely-Focussed.jpg">
                 <source src="https://d1nh1cy4xqxz3k.cloudfront.net/FocusVideo/master.m3u8" type="application/x-mpegURL">
               </video>
+              <div class="blog-quality-picker" id="blogQualityPicker">
+                <button type="button" class="blog-quality-toggle" id="blogQualityToggle" aria-haspopup="true" aria-expanded="false">
+                  <span class="q-dot"></span>
+                  <span class="blog-quality-current">1080p</span>
+                  <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="blog-quality-menu" id="blogQualityMenu">
+                  <button type="button" class="blog-quality-item" data-quality="auto">Auto</button>
+                  <button type="button" class="blog-quality-item active" data-quality="1080">1080p</button>
+                  <button type="button" class="blog-quality-item" data-quality="720">720p</button>
+                </div>
+              </div>
             </div>
             <div class="st-height-b40 st-height-lg-b40"></div>
             <p>Before you learn how to study better, remember more, or plan your day effectively, you need to understand one thing: <strong>focus</strong>.</p>
@@ -314,26 +433,86 @@
 
   <!-- Scripts -->
   <script src="assets/js/jquery-1.12.4.min.js"></script>
-  <script src="assets/js/jquery.slick.min.js"></script>
-  <script src="assets/js/lightgallery.min.js"></script>
-  <script src="assets/js/wow.min.js"></script>
   <script src="assets/js/main.js"></script>
-  <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
-  <script src="https://unpkg.com/videojs-contrib-quality-levels@2.2.1/dist/videojs-contrib-quality-levels.min.js"></script>
-  <script src="https://unpkg.com/videojs-hls-quality-selector@1.1.4/dist/videojs-hls-quality-selector.min.js"></script>
+  <script src="assets/js/video.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       if (typeof videojs === 'undefined') return;
       const videoElement = document.getElementById('focusHlsPlayer');
       if (!videoElement) return;
       const player = videojs(videoElement, {
-        controls: true, fluid: true, preload: 'auto', autoplay: false, playsinline: true,
+        controls: true, fluid: true, preload: 'none', autoplay: false, playsinline: true,
+        textTrackSettings: false,
         html5: { vhs: { overrideNative: true } }
       });
       player.ready(function () {
-        if (typeof this.hlsQualitySelector === 'function') {
-          this.hlsQualitySelector({ displayCurrentQuality: true });
+        // Minimal quality picker (Auto / 1080p / 720p) — 480p excluded,
+        // defaults to 1080p, only loads/plays when the user hits play.
+        // Uses VHS representations directly — no extra plugins needed.
+        const picker = document.getElementById('blogQualityPicker');
+        const toggle = document.getElementById('blogQualityToggle');
+        const toggleLabel = toggle.querySelector('.blog-quality-current');
+        const menu = document.getElementById('blogQualityMenu');
+        const qualityItems = menu.querySelectorAll('.blog-quality-item');
+        const MAX_SKIP_HEIGHT = 480; // never play renditions at or below 480p
+        let desiredQuality = 1080; // always try to play 1080p first
+
+        function getRepresentations() {
+          const tech = player.tech({ IWillNotUseThisInPlugins: true });
+          const vhs = tech && tech.vhs;
+          return (vhs && typeof vhs.representations === 'function') ? vhs.representations() : [];
         }
+
+        function applyQuality() {
+          const reps = getRepresentations();
+          const hasAboveMin = reps.some(function (rep) { return rep.height > MAX_SKIP_HEIGHT; });
+          reps.forEach(function (rep) {
+            if (desiredQuality === 'auto') {
+              rep.enabled(hasAboveMin ? rep.height > MAX_SKIP_HEIGHT : true);
+            } else {
+              rep.enabled(rep.height === desiredQuality);
+            }
+          });
+        }
+
+        function syncAvailableQualities() {
+          const available = {};
+          getRepresentations().forEach(function (rep) { available[rep.height] = true; });
+          // Fall back to Auto if the requested rendition isn't in the stream
+          if (desiredQuality !== 'auto' && !available[desiredQuality]) {
+            desiredQuality = 'auto';
+            toggleLabel.textContent = 'Auto';
+            qualityItems.forEach(function (i) { i.classList.toggle('active', i.dataset.quality === 'auto'); });
+          }
+          qualityItems.forEach(function (item) {
+            const q = item.dataset.quality;
+            item.disabled = q !== 'auto' && !available[parseInt(q, 10)];
+          });
+          applyQuality();
+        }
+
+        toggle.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const isOpen = picker.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        document.addEventListener('click', function (e) {
+          if (!picker.contains(e.target)) picker.classList.remove('open');
+        });
+
+        qualityItems.forEach(function (item) {
+          item.addEventListener('click', function () {
+            qualityItems.forEach(function (i) { i.classList.remove('active'); });
+            this.classList.add('active');
+            desiredQuality = this.dataset.quality === 'auto' ? 'auto' : parseInt(this.dataset.quality, 10);
+            toggleLabel.textContent = this.textContent.trim();
+            applyQuality();
+            picker.classList.remove('open');
+          });
+        });
+
+        player.on('loadedmetadata', syncAvailableQualities);
       });
     });
   </script>
