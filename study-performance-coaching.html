@@ -331,6 +331,19 @@
           <video id="demoVideoHlsPlayer" class="video-js vjs-big-play-centered" controls preload="none" playsinline poster="assets/Study-Performance-Coaching.jpg">
             <source src="https://d1nh1cy4xqxz3k.cloudfront.net/How-To-Learn-Demo-Video/master.m3u8" type="application/x-mpegURL">
           </video>
+          <div class="spc-quality-picker" id="spcQualityPicker">
+            <button type="button" class="spc-quality-toggle" id="spcQualityToggle" aria-haspopup="true" aria-expanded="false">
+              <span class="q-dot"></span>
+              <span class="spc-quality-current">Auto</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="spc-quality-menu" id="spcQualityMenu" role="menu">
+              <button type="button" class="spc-quality-item active" data-quality="auto">Auto</button>
+              <button type="button" class="spc-quality-item" data-quality="1080">1080p</button>
+              <button type="button" class="spc-quality-item" data-quality="720">720p</button>
+              <button type="button" class="spc-quality-item" data-quality="480">480p</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1314,6 +1327,52 @@
         if (typeof this.hlsQualitySelector === 'function') {
           this.hlsQualitySelector({ displayCurrentQuality: true });
         }
+
+        // Minimal quality picker (Auto / 1080p / 720p / 480p)
+        const levels = player.qualityLevels();
+        const picker = document.getElementById('spcQualityPicker');
+        const toggle = document.getElementById('spcQualityToggle');
+        const toggleLabel = toggle.querySelector('.spc-quality-current');
+        const menu = document.getElementById('spcQualityMenu');
+        const qualityItems = menu.querySelectorAll('.spc-quality-item');
+        let desiredQuality = 'auto';
+
+        function applyQuality() {
+          for (let i = 0; i < levels.length; i++) {
+            levels[i].enabled = desiredQuality === 'auto' || levels[i].height === desiredQuality;
+          }
+        }
+
+        toggle.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const isOpen = picker.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        document.addEventListener('click', function (e) {
+          if (!picker.contains(e.target)) picker.classList.remove('open');
+        });
+
+        qualityItems.forEach(function (item) {
+          item.addEventListener('click', function () {
+            qualityItems.forEach(function (i) { i.classList.remove('active'); });
+            this.classList.add('active');
+            desiredQuality = this.dataset.quality === 'auto' ? 'auto' : parseInt(this.dataset.quality, 10);
+            toggleLabel.textContent = this.textContent.trim();
+            applyQuality();
+            picker.classList.remove('open');
+          });
+        });
+
+        levels.on('addqualitylevel', function () {
+          const available = {};
+          for (let i = 0; i < levels.length; i++) available[levels[i].height] = true;
+          qualityItems.forEach(function (item) {
+            const q = item.dataset.quality;
+            item.disabled = q !== 'auto' && !available[parseInt(q, 10)];
+          });
+          applyQuality();
+        });
       });
     });
   </script>
