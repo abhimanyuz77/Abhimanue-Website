@@ -1786,8 +1786,16 @@ body {
   backdrop-filter: blur(16px);
   border-radius: 20px !important;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  padding: 50px;
 }
-.academy-form label { color: #B8C7DA !important; font-weight: 500; }
+.academy-form .form-group { margin-bottom: 25px; }
+.academy-form label {
+  color: #B8C7DA !important;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
 .required-star { color: #FBBF24; }
 .academy-form .form-control {
   height: 54px;
@@ -1795,8 +1803,24 @@ body {
   background: rgba(255, 255, 255, 0.04) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   color: #FFFFFF !important;
+  padding: 12px 18px;
 }
-.academy-form textarea.form-control { height: auto; }
+.academy-form select.form-control {
+  cursor: pointer;
+  padding-right: 40px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a9adb8' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+}
+.academy-form textarea.form-control { height: auto; min-height: 100px; resize: vertical; }
+
+@media (max-width: 768px) {
+  .signup-form-wrapper { padding: 24px 20px; }
+}
 .academy-form .form-control::-webkit-input-placeholder { color: #71839C; }
 .academy-form .form-control::placeholder { color: #71839C; }
 .academy-form .form-control:focus {
@@ -1805,7 +1829,7 @@ body {
   background: rgba(255, 255, 255, 0.06) !important;
 }
 .academy-form select.form-control option { background: #081426; color: #FFFFFF; }
-.checkbox-label { color: #B8C7DA !important; }
+.checkbox-label { color: #B8C7DA !important; display: flex; align-items: center; gap: 10px; cursor: pointer; }
 #sc-submit {
   width: 100%;
   background: linear-gradient(135deg, #1268E8 0%, #16D9E3 100%) !important;
