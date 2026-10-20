@@ -3055,3 +3055,151 @@ body {
     padding: 24px 20px;
   }
 }
+
+/* ------------------------------------------------------------
+   AI Study Partner — Hero App Dashboard Mockup
+   ------------------------------------------------------------ */
+.asp-dash {
+  width: 100%;
+  border-radius: 24px;
+  border: 1px solid rgba(22, 217, 227, 0.28);
+  background: linear-gradient(180deg, #0d1526 0%, #0a111f 100%);
+  box-shadow: 0 0 50px rgba(22, 217, 227, 0.15), 0 24px 70px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.asp-dash-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.asp-dash-bar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.asp-dash-bar span:nth-child(1) { background: #f87171; }
+.asp-dash-bar span:nth-child(2) { background: #fbbf24; }
+.asp-dash-bar span:nth-child(3) { background: #34d399; }
+
+.asp-dash-bar em {
+  margin-left: auto;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: #8fa3c0;
+}
+
+.asp-dash-body {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
+.asp-dash-card {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 13px 15px;
+}
+
+.asp-dash-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #16D9E3;
+  margin-bottom: 10px;
+}
+
+.asp-tt-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 5px 0;
+  font-size: 13px;
+  color: #d7e0ee;
+}
+
+.asp-tt-row + .asp-tt-row {
+  border-top: 1px dashed rgba(255, 255, 255, 0.07);
+}
+
+.asp-tt-row b {
+  color: #FCD34D;
+  font-weight: 700;
+  min-width: 56px;
+  font-size: 12px;
+}
+
+.asp-task {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  color: #a9b7cc;
+  padding: 4px 0;
+}
+
+.asp-task i {
+  color: #55637a;
+}
+
+.asp-task-done {
+  color: #d7e0ee;
+}
+
+.asp-task-done i {
+  color: #34d399;
+}
+
+.asp-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+  height: 56px;
+  margin-bottom: 9px;
+}
+
+.asp-bars i {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(180deg, #16D9E3 0%, rgba(22, 217, 227, 0.25) 100%);
+}
+
+.asp-report-tag {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.asp-chat-bubble {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #d7e0ee;
+  background: rgba(22, 217, 227, 0.07);
+  border: 1px solid rgba(22, 217, 227, 0.18);
+  border-radius: 10px 10px 10px 2px;
+  padding: 9px 12px;
+}
+
+@media (max-width: 575px) {
+  .asp-dash-body { padding: 12px; gap: 10px; }
+  .asp-tt-row, .asp-task, .asp-chat-bubble { font-size: 12px; }
+}

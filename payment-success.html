@@ -258,12 +258,12 @@
       </ol>
     </div>
 
-    <div class="action-buttons">
+    <div class="action-buttons" id="actionButtons">
       <a href="https://wa.me/919496654440" target="_blank" rel="noopener" class="btn-primary-success">
         <i class="fab fa-whatsapp"></i>
         Chat on WhatsApp
       </a>
-      <a href="neet-physics-academy.html" class="btn-secondary-success">
+      <a href="neet-physics-academy.html" class="btn-secondary-success" id="backLink">
         <i class="fas fa-arrow-left"></i>
         Back to Academy
       </a>
@@ -272,23 +272,103 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Retrieve student data from session storage
+      const params = new URLSearchParams(window.location.search);
+
+      // ---- App lifetime-access callback flow ----
+      // Redirected here from hexagonknow.com/abhimanue-app-payment.html after
+      // a verified Razorpay payment (see ABHIMANUE_APP_PAYMENT_SETUP.md).
+      if (params.get('payment_status') === 'success' && params.get('payment_id')) {
+        handleAppPaymentCallback(params);
+        return;
+      }
+
+      // ---- Legacy NEET Physics Academy flow (session storage) ----
       const studentName = sessionStorage.getItem('studentName') || 'Student';
       const studentEmail = sessionStorage.getItem('studentEmail') || 'email@example.com';
       const studentPhone = sessionStorage.getItem('studentPhone') || '+91 XXXXXXXXXX';
       const studentClass = sessionStorage.getItem('studentClass') || 'Class 11';
 
-      // Display student details
       document.getElementById('displayName').textContent = studentName;
       document.getElementById('displayEmail').textContent = studentEmail;
       document.getElementById('displayPhone').textContent = studentPhone;
       document.getElementById('displayClass').textContent = studentClass;
 
-      // Clear session storage after displaying
       setTimeout(function() {
         sessionStorage.clear();
       }, 5000);
     });
+
+    function handleAppPaymentCallback(params) {
+      const paymentId = params.get('payment_id');
+      const orderId = params.get('order_id') || '';
+      const customerId = params.get('customer_id') || '';
+      const name = params.get('name') || 'Learner';
+      const email = params.get('email') || '';
+      const phone = params.get('phone') || '';
+
+      // Swap the page copy for the app flow
+      document.title = 'Payment Successful - Learn with Abhimanue App';
+      document.querySelector('.success-title').textContent = 'Payment Successful!';
+      document.querySelector('.success-subtitle').textContent =
+        'Verifying your payment and activating your access…';
+
+      document.querySelectorAll('.student-details .detail-label')[2].textContent = 'Phone';
+      document.querySelectorAll('.student-details .detail-label')[3].textContent = 'Order ID';
+      document.getElementById('displayName').textContent = name;
+      document.getElementById('displayEmail').textContent = email || '—';
+      document.getElementById('displayPhone').textContent = phone || '—';
+      document.getElementById('displayClass').textContent = orderId || '—';
+      document.getElementById('displayClass').style.fontSize = '12px';
+
+      document.querySelector('.whatsapp-message').innerHTML =
+        '<i class="fab fa-whatsapp"></i>' +
+        '<strong>Almost there!</strong> Your platform invite will be sent to your email / WhatsApp once activation completes — usually within a few minutes.';
+
+      document.querySelector('.next-steps').innerHTML =
+        '<h4>What Happens Next?</h4>' +
+        '<ol>' +
+        '<li>We verify your payment on our servers (happening now)</li>' +
+        '<li>Our team sends your invite to <strong>learn.abhimanue.in</strong></li>' +
+        '<li>Log in and take the diagnostic assessment</li>' +
+        '<li>Your AI Study Partner builds your timetable &amp; daily tasks</li>' +
+        '</ol>';
+
+      const backLink = document.getElementById('backLink');
+      backLink.href = 'learn-with-abhimanue.html';
+      backLink.innerHTML = '<i class="fas fa-arrow-left"></i> Back to AI Study Partner';
+
+      // Server-side verification + activation (required — callback params are
+      // user-visible and must not be trusted on their own)
+      fetch('/api/activate-app-access', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          payment_id: paymentId,
+          order_id: orderId,
+          customer_id: customerId,
+          name: name,
+          email: email,
+          phone: phone
+        })
+      })
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+          if (d && d.success) {
+            document.querySelector('.success-subtitle').textContent =
+              'Payment verified — your access is being activated. Watch your email and WhatsApp for the invite.';
+          } else {
+            showAppActivationError();
+          }
+        })
+        .catch(function() {
+          showAppActivationError();
+        });
+    }
+
+    function showAppActivationError() {
+      document.querySelector('.success-subtitle').textContent =
+        'Payment received, but automatic verification failed. Don\'t worry — contact us on WhatsApp with your Payment ID and we\'ll activate your access manually.';
+    }
   </script>
 </body>
 

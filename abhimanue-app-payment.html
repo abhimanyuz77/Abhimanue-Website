@@ -1,0 +1,370 @@
+<!doctype html>
+<!--
+  Learn with Abhimanue App — Lifetime Access Payment Page
+  Hosted on: https://hexagonknow.com/abhimanue-app-payment.html
+  Backend:   /api/abhimanue-app-payment (Cloudflare Pages Function)
+
+  Flow: get-key → create-order → Razorpay Checkout → verify-payment
+        → redirect to return_url with payment_status=success + details
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Learn with Abhimanue App — Lifetime Access | Secure Payment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070b14;
+      --card: #0d1526;
+      --card-2: #111c33;
+      --border: rgba(255, 255, 255, 0.09);
+      --accent: #16d9e3;
+      --accent-2: #fbbf24;
+      --text: #e8eef8;
+      --muted: #8fa3c0;
+      --danger: #f87171;
+      --success: #34d399;
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: radial-gradient(1000px 500px at 80% -10%, rgba(22, 217, 227, 0.08), transparent 60%),
+                  radial-gradient(800px 400px at 10% 110%, rgba(251, 191, 36, 0.06), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .wrap { width: 100%; max-width: 460px; }
+    .brand { text-align: center; margin-bottom: 24px; }
+    .brand .logo-mark {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-weight: 800; font-size: 18px; letter-spacing: 0.3px;
+    }
+    .brand .logo-mark .dot {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), #0e7490);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: #04121a; font-size: 17px;
+    }
+    .brand p { color: var(--muted); font-size: 13px; margin-top: 8px; }
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 26px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+    }
+    .product-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--accent-2);
+      background: rgba(251, 191, 36, 0.09);
+      border: 1px solid rgba(251, 191, 36, 0.25);
+      border-radius: 999px; padding: 6px 12px; margin-bottom: 16px;
+    }
+    h1 { font-size: 21px; font-weight: 800; line-height: 1.3; margin-bottom: 6px; }
+    .sub { color: var(--muted); font-size: 13.5px; line-height: 1.55; margin-bottom: 20px; }
+    .price-row {
+      display: flex; align-items: baseline; gap: 10px;
+      padding: 14px 16px; margin-bottom: 20px;
+      background: rgba(22, 217, 227, 0.06);
+      border: 1px solid rgba(22, 217, 227, 0.2);
+      border-radius: 12px;
+    }
+    .price-row .amount { font-size: 30px; font-weight: 800; color: var(--accent); }
+    .price-row .label { color: var(--muted); font-size: 13px; }
+    .features { list-style: none; margin-bottom: 22px; }
+    .features li {
+      font-size: 13.5px; color: #c6d2e4; padding: 6px 0 6px 26px; position: relative;
+    }
+    .features li::before {
+      content: "✓"; position: absolute; left: 2px;
+      color: var(--success); font-weight: 800;
+    }
+    .form-group { margin-bottom: 14px; }
+    .form-group label {
+      display: block; font-size: 12px; font-weight: 600;
+      color: var(--muted); margin-bottom: 6px; letter-spacing: 0.3px;
+    }
+    .form-group input {
+      width: 100%; padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border); border-radius: 10px;
+      color: var(--text); font-size: 14px; font-family: inherit;
+      outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus { border-color: var(--accent); }
+    .summary {
+      display: none; padding: 14px 16px; margin-bottom: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border); border-radius: 12px;
+      font-size: 13.5px; line-height: 1.9;
+    }
+    .summary b { color: var(--accent); }
+    .pay-btn {
+      width: 100%; padding: 15px;
+      background: linear-gradient(135deg, var(--accent) 0%, #0ea5b7 100%);
+      color: #04121a; border: none; border-radius: 12px;
+      font-size: 15px; font-weight: 800; font-family: inherit;
+      cursor: pointer; transition: transform 0.15s, box-shadow 0.2s;
+    }
+    .pay-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(22, 217, 227, 0.3); }
+    .pay-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .secure-note {
+      display: flex; align-items: center; justify-content: center; gap: 7px;
+      margin-top: 14px; font-size: 12px; color: var(--muted);
+    }
+    .alert {
+      display: none; padding: 12px 14px; margin-bottom: 16px;
+      border-radius: 10px; font-size: 13px; line-height: 1.5;
+    }
+    .alert-error { background: rgba(248, 113, 113, 0.1); border: 1px solid rgba(248, 113, 113, 0.3); color: #fca5a5; }
+    .alert-info { background: rgba(22, 217, 227, 0.08); border: 1px solid rgba(22, 217, 227, 0.25); color: #a5f3fc; }
+    .spinner {
+      display: inline-block; width: 16px; height: 16px;
+      border: 2px solid rgba(4, 18, 26, 0.3); border-top-color: #04121a;
+      border-radius: 50%; animation: spin 0.8s linear infinite;
+      vertical-align: -3px; margin-right: 8px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .footer-note {
+      text-align: center; margin-top: 18px; font-size: 12px; color: var(--muted); line-height: 1.7;
+    }
+    .footer-note a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo-mark"><span class="dot">◆</span> Hexagon Know</div>
+      <p>Secure checkout · powered by Razorpay</p>
+    </div>
+
+    <div class="card">
+      <div class="product-tag">◆ Lifetime Access · One-Time</div>
+      <h1>Learn with Abhimanue App</h1>
+      <p class="sub">Your AI Study Partner — smart timetable, daily tasks, performance reports, guidance, and tailored lessons &amp; assessments. One payment, lifetime access.</p>
+
+      <div class="price-row">
+        <span class="amount">₹2,000</span>
+        <span class="label">one-time · lifetime access</span>
+      </div>
+
+      <ul class="features">
+        <li>Diagnostic assessment → personalized learning path</li>
+        <li>AI-built timetable &amp; daily tasks</li>
+        <li>Performance reports &amp; progress analytics</li>
+        <li>Tailored lessons, videos &amp; assessments</li>
+      </ul>
+
+      <div id="alert" class="alert"></div>
+
+      <!-- Shown when name+email+phone came in via URL params -->
+      <div id="summary" class="summary">
+        Paying as <b id="sum-name"></b><br>
+        <span id="sum-email"></span><br>
+        <span id="sum-phone"></span>
+      </div>
+
+      <!-- Shown when details are missing -->
+      <form id="details-form" novalidate>
+        <div class="form-group">
+          <label for="f-name">Full Name *</label>
+          <input type="text" id="f-name" autocomplete="name" required>
+        </div>
+        <div class="form-group">
+          <label for="f-email">Email Address *</label>
+          <input type="email" id="f-email" autocomplete="email" required>
+        </div>
+        <div class="form-group">
+          <label for="f-phone">Phone / WhatsApp *</label>
+          <input type="tel" id="f-phone" autocomplete="tel" required>
+        </div>
+      </form>
+
+      <button id="pay-btn" class="pay-btn" type="button">Pay ₹2,000 Securely</button>
+
+      <div class="secure-note">🔒 Payments processed by Razorpay · UPI, cards, netbanking, wallets</div>
+    </div>
+
+    <div class="footer-note">
+      Instant activation after payment verification.<br>
+      Questions? <a href="mailto:support@hexagonknow.com">support@hexagonknow.com</a>
+    </div>
+  </div>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var API = '/api/abhimanue-app-payment';
+      var PRODUCT_ID = 'app-lifetime';
+      var DEFAULT_RETURN_URL = 'https://abhimanue.in/payment-success';
+
+      var params = new URLSearchParams(window.location.search);
+      var customer = {
+        name:  (params.get('name')  || '').trim(),
+        email: (params.get('email') || '').trim(),
+        phone: (params.get('phone') || '').trim(),
+        customer_id: (params.get('customer_id') || '').trim()
+      };
+      var returnUrl = params.get('return_url') || DEFAULT_RETURN_URL;
+
+      var alertEl = document.getElementById('alert');
+      var formEl = document.getElementById('details-form');
+      var summaryEl = document.getElementById('summary');
+      var payBtn = document.getElementById('pay-btn');
+
+      function showAlert(kind, msg) {
+        alertEl.className = 'alert alert-' + kind;
+        alertEl.textContent = msg;
+        alertEl.style.display = 'block';
+      }
+      function hideAlert() { alertEl.style.display = 'none'; }
+
+      function setBusy(busy, label) {
+        payBtn.disabled = busy;
+        payBtn.innerHTML = busy
+          ? '<span class="spinner"></span>' + (label || 'Processing…')
+          : 'Pay ₹2,000 Securely';
+      }
+
+      function validEmail(e) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+      }
+
+      // Pre-fill form / decide form vs summary
+      var hasAllDetails = customer.name && validEmail(customer.email) && customer.phone;
+      if (hasAllDetails) {
+        formEl.style.display = 'none';
+        summaryEl.style.display = 'block';
+        document.getElementById('sum-name').textContent = customer.name;
+        document.getElementById('sum-email').textContent = customer.email;
+        document.getElementById('sum-phone').textContent = customer.phone;
+      } else {
+        if (customer.name)  document.getElementById('f-name').value = customer.name;
+        if (customer.email) document.getElementById('f-email').value = customer.email;
+        if (customer.phone) document.getElementById('f-phone').value = customer.phone;
+      }
+
+      function collectDetails() {
+        if (hasAllDetails) return customer;
+        var c = {
+          name:  document.getElementById('f-name').value.trim(),
+          email: document.getElementById('f-email').value.trim(),
+          phone: document.getElementById('f-phone').value.trim(),
+          customer_id: customer.customer_id
+        };
+        if (!c.name || !c.phone || !validEmail(c.email)) return null;
+        return c;
+      }
+
+      function apiPost(body) {
+        return fetch(API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        }).then(function (r) { return r.json(); });
+      }
+
+      function buildCallbackUrl(c, orderId, paymentId, signature) {
+        var cb = new URLSearchParams({
+          payment_status: 'success',
+          order_id: orderId,
+          payment_id: paymentId,
+          signature: signature || '',
+          product: PRODUCT_ID,
+          name: c.name,
+          email: c.email,
+          phone: c.phone
+        });
+        if (c.customer_id) cb.append('customer_id', c.customer_id);
+        var sep = returnUrl.indexOf('?') === -1 ? '?' : '&';
+        return returnUrl + sep + cb.toString();
+      }
+
+      payBtn.addEventListener('click', function () {
+        hideAlert();
+        var c = collectDetails();
+        if (!c) {
+          showAlert('error', 'Please fill in your name, a valid email, and your phone number.');
+          return;
+        }
+
+        setBusy(true, 'Preparing order…');
+
+        apiPost({
+          action: 'create-order',
+          product: PRODUCT_ID,
+          name: c.name,
+          email: c.email,
+          phone: c.phone,
+          customer_id: c.customer_id
+        }).then(function (order) {
+          if (!order.success || !order.order_id) {
+            throw new Error(order.message || 'Could not create the order. Please try again.');
+          }
+
+          var rzp = new Razorpay({
+            key: order.key_id,
+            amount: order.amount,
+            currency: order.currency || 'INR',
+            name: 'Learn with Abhimanue App',
+            description: 'Lifetime Access — One-Time Payment',
+            order_id: order.order_id,
+            prefill: { name: c.name, email: c.email, contact: c.phone },
+            notes: { product: PRODUCT_ID, customer_id: c.customer_id },
+            theme: { color: '#16d9e3' },
+            handler: function (resp) {
+              setBusy(true, 'Verifying payment…');
+              apiPost({
+                action: 'verify-payment',
+                razorpay_order_id: resp.razorpay_order_id,
+                razorpay_payment_id: resp.razorpay_payment_id,
+                razorpay_signature: resp.razorpay_signature
+              }).then(function (v) {
+                if (v.success && v.verified) {
+                  window.location.href = buildCallbackUrl(
+                    c, resp.razorpay_order_id, resp.razorpay_payment_id, resp.razorpay_signature
+                  );
+                } else {
+                  setBusy(false);
+                  showAlert('error', v.message || 'Payment could not be verified. If money was deducted, contact support@hexagonknow.com with your payment ID: ' + resp.razorpay_payment_id);
+                }
+              }).catch(function () {
+                setBusy(false);
+                showAlert('error', 'Verification request failed. If money was deducted, contact support@hexagonknow.com with payment ID: ' + resp.razorpay_payment_id);
+              });
+            },
+            modal: {
+              ondismiss: function () { setBusy(false); }
+            }
+          });
+
+          rzp.on('payment.failed', function (resp) {
+            setBusy(false);
+            var desc = resp && resp.error && resp.error.description
+              ? resp.error.description : 'Payment failed. Please try again.';
+            showAlert('error', desc);
+          });
+
+          rzp.open();
+        }).catch(function (err) {
+          setBusy(false);
+          showAlert('error', err.message || 'Something went wrong. Please try again.');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
