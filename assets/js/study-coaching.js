@@ -91,9 +91,32 @@
     elements.forEach(function (el) { observer.observe(el); });
   }
 
+  /*--------------------------------------------------------------
+    Screenshots Gallery — arrow buttons scroll one card at a time
+  --------------------------------------------------------------*/
+  function initGallery() {
+    var gallery = document.getElementById('lwaGallery');
+    var prev = document.getElementById('lwaGalleryPrev');
+    var next = document.getElementById('lwaGalleryNext');
+    if (!gallery || !prev || !next) return;
+
+    function step() {
+      var card = gallery.querySelector('.lwa-shot');
+      return card ? card.offsetWidth + 22 : gallery.clientWidth * 0.8;
+    }
+
+    prev.addEventListener('click', function () {
+      gallery.scrollBy({ left: -step(), behavior: 'smooth' });
+    });
+    next.addEventListener('click', function () {
+      gallery.scrollBy({ left: step(), behavior: 'smooth' });
+    });
+  }
+
   $(document).ready(function () {
     startOfferCountdown();
     initScrollReveal();
+    initGallery();
 
     var form = $('#study-coaching-form');
     if (form.length === 0) return;
