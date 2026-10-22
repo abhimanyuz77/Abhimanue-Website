@@ -62,7 +62,7 @@
       background-position: center 15%;
       opacity: 0;
       transform: scale(1);
-      animation: eventsHeroSlide 72s ease-in-out infinite;
+      animation: eventsHeroSlide 84s ease-in-out infinite;
       will-change: opacity, transform;
     }
     #events-hero .events-hero-slide:nth-child(1)  { animation-delay: 0s; }
@@ -77,11 +77,13 @@
     #events-hero .events-hero-slide:nth-child(10) { animation-delay: 54s; }
     #events-hero .events-hero-slide:nth-child(11) { animation-delay: 60s; }
     #events-hero .events-hero-slide:nth-child(12) { animation-delay: 66s; }
+    #events-hero .events-hero-slide:nth-child(13) { animation-delay: 72s; }
+    #events-hero .events-hero-slide:nth-child(14) { animation-delay: 78s; }
     @keyframes eventsHeroSlide {
       0%    { opacity: 0; transform: scale(1); }
-      2.8%  { opacity: 1; }
-      8.33% { opacity: 1; transform: scale(1.05); }
-      11.1% { opacity: 0; transform: scale(1.07); }
+      2.4%  { opacity: 1; }
+      7.14% { opacity: 1; transform: scale(1.05); }
+      9.6%  { opacity: 0; transform: scale(1.07); }
       100%  { opacity: 0; transform: scale(1.07); }
     }
     #events-hero .events-hero-overlay {
@@ -97,6 +99,56 @@
     @media (prefers-reduced-motion: reduce) {
       #events-hero .events-hero-slide { animation: none; }
       #events-hero .events-hero-slide:first-child { opacity: 1; }
+    }
+
+    /* Event photo-count badge */
+    .ev-photo-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 22, 36, 0.78);
+      color: #fec544;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 11px;
+      border-radius: 999px;
+      pointer-events: none;
+    }
+
+    /* Instagram-style caption for event slides */
+    .fancybox__caption {
+      max-width: 760px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 16px 20px 20px !important;
+      text-align: left;
+      line-height: 1.7;
+      color: #dfe6f2;
+      font-size: 14px;
+      max-height: 34vh;
+      overflow-y: auto;
+    }
+    .fancybox__caption .ev-cap-title {
+      display: block;
+      color: #fec544;
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    .fancybox__caption .ev-cap-sub {
+      display: block;
+      color: #9fb0c7;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .fancybox__caption .ev-cap-text {
+      display: block;
     }
   </style>
 
@@ -161,6 +213,8 @@
       <div class="events-hero-slide" style="background-image: url('assets/img/Events/TIE-SH-2.jpg');"></div>
       <div class="events-hero-slide" style="background-image: url('assets/img/Events/TYE-Bhavans-Thiruvankulam.jpg');"></div>
       <div class="events-hero-slide" style="background-image: url('assets/img/Events/TYE-Charter-International.jpg');"></div>
+      <div class="events-hero-slide" style="background-image: url('assets/img/Events/Amity-Event.jpg');"></div>
+      <div class="events-hero-slide" style="background-image: url('assets/img/Events/Bhavans-Adarsha-Vidyalaya-22-10-2026.jpg');"></div>
     </div>
     <div class="events-hero-overlay"></div>
     <!-- Particle Background -->
@@ -192,11 +246,11 @@
       </div>
       
       <div class="row" id="gallery">
-        <!-- Image 1 - Award from Minister -->
+        <!-- Event 1 - Award from Minister -->
         <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
-          <a href="assets/img/Events/Award.jpg" data-fancybox="gallery" class="mil-portfolio-item">
+          <a href="assets/img/Events/Award.jpg" data-fancybox="ev-award" data-caption="<span class='ev-cap-title'>Receiving Memento from Minister Roji M. John</span><span class='ev-cap-sub'>TiE Young Entrepreneurs Global Summit 2026</span><span class='ev-cap-text'>An honour to be recognised at the TiE Young Entrepreneurs Global Summit 2026. The summit brought together members of the entrepreneurship ecosystem to celebrate innovation, leadership, and the importance of nurturing the next generation of entrepreneurs. Experiences like these reinforce my commitment to helping students develop an entrepreneurial mindset and turn their ideas into meaningful ventures.</span>" class="mil-portfolio-item">
             <div class="mil-cover-frame" style="aspect-ratio: 5/4; overflow: hidden; border-radius: 8px; position: relative;">
-              <img src="assets/img/Events/Award.jpg" alt="Receiving Memento from Minister" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+              <img src="assets/img/Events/Award.jpg" alt="Receiving Memento from Minister" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
             </div>
             <div class="mil-description" style="padding: 12px 0;">
               <div>
@@ -207,86 +261,86 @@
           </a>
         </div>
 
-        <!-- Image 2 - TYE Global 2026 Moderator -->
+        <!-- Event 2 - TYE Global 2026 Moderator -->
         <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
-          <a href="assets/img/Events/TYE-GLobal-2026-Moderator.jpg" data-fancybox="gallery" class="mil-portfolio-item">
+          <a href="assets/img/Events/TYE-GLobal-2026-Moderator.jpg" data-fancybox="ev-moderator" data-caption="<span class='ev-cap-title'>Moderator at the TiE Young Entrepreneurs Global Summit 2026</span><span class='ev-cap-sub'>Entrepreneurship, Innovation &amp; Leadership</span><span class='ev-cap-text'>Participated as a moderator at the TiE Young Entrepreneurs Global Summit 2026, contributing to conversations around entrepreneurship, innovation, and the opportunities available to aspiring founders. The experience provided an opportunity to engage with the startup ecosystem, exchange perspectives, and encourage young people to explore entrepreneurship as a pathway to solving real-world problems.</span>" class="mil-portfolio-item">
             <div class="mil-cover-frame" style="aspect-ratio: 5/4; overflow: hidden; border-radius: 8px; position: relative;">
-              <img src="assets/img/Events/TYE-GLobal-2026-Moderator.jpg" alt="TiE Young Entrepreneurs Global Summit 2026" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+              <img src="assets/img/Events/TYE-GLobal-2026-Moderator.jpg" alt="Moderating at TYE Global Summit 2026" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
             </div>
             <div class="mil-description" style="padding: 12px 0;">
               <div>
-                <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">Moderator at International Summit</p>
+                <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">Entrepreneurship, Innovation &amp; Leadership</p>
+                <h4 class="st-white-color">Moderator — TYE Global Summit 2026</h4>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Event 3 - TYE Global Summit participation -->
+        <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
+          <a href="assets/img/Events/tie-4567.jpg" data-fancybox="ev-summit" data-caption="<span class='ev-cap-title'>TiE Young Entrepreneurs Global Summit 2026</span><span class='ev-cap-sub'>Entrepreneurship &amp; Startup Ecosystem</span><span class='ev-cap-text'>Participated in the TiE Young Entrepreneurs Global Summit 2026, an opportunity to engage with entrepreneurs, mentors, and ecosystem leaders working to nurture future business builders. The summit highlighted the importance of entrepreneurial thinking, collaboration, and practical exposure in helping young people transform ideas into businesses.</span>" class="mil-portfolio-item">
+            <div class="mil-cover-frame" style="aspect-ratio: 5/4; overflow: hidden; border-radius: 8px; position: relative;">
+              <img src="assets/img/Events/tie-4567.jpg" alt="TiE Young Entrepreneurs Global Summit 2026" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+            </div>
+            <div class="mil-description" style="padding: 12px 0;">
+              <div>
+                <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">Entrepreneurship &amp; Startup Ecosystem</p>
                 <h4 class="st-white-color">TiE Young Entrepreneurs Global Summit 2026</h4>
               </div>
             </div>
           </a>
         </div>
 
-        <!-- Image 3 - TiE 4567 -->
+        <!-- Event 4 - Amal Jyothy TiE U Funding -->
         <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
-          <a href="assets/img/Events/tie-4567.jpg" data-fancybox="gallery" class="mil-portfolio-item">
+          <a href="assets/img/Events/Amal-Jyothy-TIE-U.jpg" data-fancybox="ev-amal-funding" data-caption="<span class='ev-cap-title'>TiE University — Amal Jyothi College of Engineering, Kottayam 2026</span><span class='ev-cap-sub'>Funding Guidance for Startups</span><span class='ev-cap-text'>Introduced aspiring founders to the startup funding landscape and the different pathways available for building and scaling early-stage ventures. The session explored startup accelerators, investment opportunities, and organisations such as Y Combinator, Antler, and Entrepreneur First. The objective was to help students understand how to validate their ideas, build early prototypes, and identify appropriate opportunities for mentorship and funding.</span>" class="mil-portfolio-item">
             <div class="mil-cover-frame" style="aspect-ratio: 5/4; overflow: hidden; border-radius: 8px; position: relative;">
-              <img src="assets/img/Events/tie-4567.jpg" alt="TiE Young Entrepreneurs Global Summit 2026" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+              <img src="assets/img/Events/Amal-Jyothy-TIE-U.jpg" alt="TiE U at Amal Jyothi College" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
             </div>
             <div class="mil-description" style="padding: 12px 0;">
               <div>
-                <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">International Entrepreneurship Summit</p>
-                <h4 class="st-white-color">TiE Young Entrepreneurs Global Summit 2026</h4>
+                <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">Funding Guidance for Startups</p>
+                <h4 class="st-white-color">TiE University — Amal Jyothi, Kottayam 2026</h4>
               </div>
             </div>
           </a>
         </div>
 
-        <!-- Image 4 - Amal Jyothy TiE U -->
+        <!-- Event 5 - Amal Jyothy Building Future Leaders -->
         <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
-          <a href="assets/img/Events/Amal-Jyothy-TIE-U.jpg" data-fancybox="gallery" class="mil-portfolio-item">
+          <a href="assets/img/Events/Amal-Jyothy-TIE-U-2.jpg" data-fancybox="ev-amal-leaders" data-caption="<span class='ev-cap-title'>Building Future Leaders — Amal Jyothi College of Engineering, Kottayam 2026</span><span class='ev-cap-sub'>Entrepreneurship &amp; Innovation</span><span class='ev-cap-text'>Engaged with students on the importance of developing entrepreneurial thinking, identifying meaningful problems, and transforming ideas into practical solutions. The session encouraged students to take initiative, experiment with new approaches, and develop the confidence to explore opportunities beyond traditional career paths. The focus was on building the problem-solving, innovation, and business thinking skills needed by future founders and leaders.</span>" class="mil-portfolio-item">
             <div class="mil-cover-frame" style="aspect-ratio: 5/4; overflow: hidden; border-radius: 8px; position: relative;">
-              <img src="assets/img/Events/Amal-Jyothy-TIE-U.jpg" alt="TiE U at Amal Jyothy College" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+              <img src="assets/img/Events/Amal-Jyothy-TIE-U-2.jpg" alt="Building Future Leaders at Amal Jyothi" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
             </div>
             <div class="mil-description" style="padding: 12px 0;">
               <div>
-                <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">Funding Guidance For Startups</p>
-                <h4 class="st-white-color">TiE University - Amal Jyothy- Kottayam 2026</h4>
+                <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">Entrepreneurship &amp; Innovation</p>
+                <h4 class="st-white-color">Building Future Leaders — Amal Jyothi, Kottayam</h4>
               </div>
             </div>
           </a>
         </div>
-        
-        <!-- Image 2 - Amal Jyothy TiE U 2 -->
+
+        <!-- Event 6 - Rajagiri Ideation & Funding -->
         <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
-          <a href="assets/img/Events/Amal-Jyothy-TIE-U-2.jpg" data-fancybox="gallery" class="mil-portfolio-item">
+          <a href="assets/img/Events/Rajagiri-TIE-U.jpg" data-fancybox="ev-rajagiri-funding" data-caption="<span class='ev-cap-title'>Rajagiri Business School Workshop 2026</span><span class='ev-cap-sub'>Ideation &amp; Startup Funding Sources</span><span class='ev-cap-text'>Conducted an entrepreneurship-focused session introducing students to startup ideation, business opportunities, and funding pathways. Participants explored how founders identify problems worth solving, evaluate business opportunities, and understand the resources available to early-stage startups. The session connected entrepreneurial ideas with practical considerations around business viability, funding, and execution.</span>" class="mil-portfolio-item">
             <div class="mil-cover-frame" style="aspect-ratio: 5/4; overflow: hidden; border-radius: 8px; position: relative;">
-              <img src="assets/img/Events/Amal-Jyothy-TIE-U-2.jpg" alt="Entrepreneurship Workshop at Amal Jyothy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+              <img src="assets/img/Events/Rajagiri-TIE-U.jpg" alt="TiE U Session at Rajagiri" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
             </div>
             <div class="mil-description" style="padding: 12px 0;">
               <div>
-                <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">IEDC Startup Summit 2026</p>
-                <h4 class="st-white-color">Building Future Leaders - Amal Jyothy- Kottayam</h4>
-              </div>
-            </div>
-          </a>
-        </div>
-        
-        <!-- Image 3 - Rajagiri TiE U -->
-        <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
-          <a href="assets/img/Events/Rajagiri-TIE-U.jpg" data-fancybox="gallery" class="mil-portfolio-item">
-            <div class="mil-cover-frame" style="aspect-ratio: 5/4; overflow: hidden; border-radius: 8px; position: relative;">
-              <img src="assets/img/Events/Rajagiri-TIE-U.jpg" alt="TiE U Session at Rajagiri" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
-            </div>
-            <div class="mil-description" style="padding: 12px 0;">
-              <div>
-                <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">Ideation & Funding Sources</p>
+                <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">Ideation &amp; Startup Funding Sources</p>
                 <h4 class="st-white-color">Rajagiri Business School Workshop 2026</h4>
               </div>
             </div>
           </a>
         </div>
-        
-        <!-- Image 4 - Rajagiri TiE U 2 -->
+
+        <!-- Event 7 - Rajagiri Design Thinking -->
         <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
-          <a href="assets/img/Events/Rajagiri-TIE-U-2.jpg" data-fancybox="gallery" class="mil-portfolio-item">
+          <a href="assets/img/Events/Rajagiri-TIE-U-2.jpg" data-fancybox="ev-rajagiri-dt" data-caption="<span class='ev-cap-title'>Rajagiri Business School 2026</span><span class='ev-cap-sub'>Design Thinking Workshop</span><span class='ev-cap-text'>Facilitated a Design Thinking workshop focused on identifying user problems, understanding customer needs, and developing solutions through structured ideation. Students were introduced to the process of moving from a problem statement to potential solutions and evaluating ideas based on their usefulness and feasibility. The session encouraged a user-centred approach to innovation and demonstrated how design thinking can support the development of meaningful products and services.</span>" class="mil-portfolio-item">
             <div class="mil-cover-frame" style="aspect-ratio: 5/4; overflow: hidden; border-radius: 8px; position: relative;">
-              <img src="assets/img/Events/Rajagiri-TIE-U-2.jpg" alt="Student Innovation at Rajagiri" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+              <img src="assets/img/Events/Rajagiri-TIE-U-2.jpg" alt="Design Thinking Workshop at Rajagiri" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
             </div>
             <div class="mil-description" style="padding: 12px 0;">
               <div>
@@ -296,27 +350,27 @@
             </div>
           </a>
         </div>
-        
-        <!-- Image 5 - TIE SH -->
+
+        <!-- Event 8 - Sacred Heart Lean Canvas -->
         <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
-          <a href="assets/img/Events/TIE-SH.jpg" data-fancybox="gallery" class="mil-portfolio-item">
+          <a href="assets/img/Events/TIE-SH.jpg" data-fancybox="ev-sh-canvas" data-caption="<span class='ev-cap-title'>Sacred Heart College, Thevara 2026</span><span class='ev-cap-sub'>Lean Canvas &amp; Business Ideation</span><span class='ev-cap-text'>Conducted a session on startup ideation, business planning, and Lean Canvas to help students understand how business ideas can be structured and evaluated. The discussion covered essential elements of a business model, including customer segments, problem statements, value propositions, potential revenue streams, and costs. Students were encouraged to think beyond the initial idea and consider how a business could create value for customers and sustain itself.</span>" class="mil-portfolio-item">
             <div class="mil-cover-frame" style="aspect-ratio: 5/4; overflow: hidden; border-radius: 8px; position: relative;">
-              <img src="assets/img/Events/TIE-SH.jpg" alt="TiE StartUp Hub Event" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+              <img src="assets/img/Events/TIE-SH.jpg" alt="Lean Canvas Session at Sacred Heart" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
             </div>
             <div class="mil-description" style="padding: 12px 0;">
               <div>
-                <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">Lean Canvas & Business Ideation</p>
+                <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">Lean Canvas &amp; Business Ideation</p>
                 <h4 class="st-white-color">Sacred Heart College, Thevara 2026</h4>
               </div>
             </div>
           </a>
         </div>
-        
-        <!-- Image 6 - TIE SH 2 -->
+
+        <!-- Event 9 - Sacred Heart Bootcamp -->
         <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
-          <a href="assets/img/Events/TIE-SH-2.jpg" data-fancybox="gallery" class="mil-portfolio-item">
+          <a href="assets/img/Events/TIE-SH-2.jpg" data-fancybox="ev-sh-bootcamp" data-caption="<span class='ev-cap-title'>Sacred Heart College, Thevara 2026</span><span class='ev-cap-sub'>Idea to Impact Bootcamp</span><span class='ev-cap-text'>Participated in an entrepreneurship bootcamp focused on helping students bridge the gap between ideas and implementation. The session explored how aspiring founders can identify real-world problems, develop possible solutions, evaluate their business potential, and plan their next steps. The emphasis was on moving from abstract concepts to practical experimentation, customer validation, and early-stage business development.</span>" class="mil-portfolio-item">
             <div class="mil-cover-frame" style="aspect-ratio: 5/4; overflow: hidden; border-radius: 8px; position: relative;">
-              <img src="assets/img/Events/TIE-SH-2.jpg" alt="Startup Mentorship Session" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+              <img src="assets/img/Events/TIE-SH-2.jpg" alt="Idea to Impact Bootcamp at Sacred Heart" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
             </div>
             <div class="mil-description" style="padding: 12px 0;">
               <div>
@@ -326,50 +380,85 @@
             </div>
           </a>
         </div>
-        
-        <!-- Image 7 - TYE Bhavans Thiruvankulam -->
+
+        <!-- Event 10 - Bhavans Thrippunithura -->
         <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
-          <a href="assets/img/Events/TYE-Bhavans-Thiruvankulam.jpg" data-fancybox="gallery" class="mil-portfolio-item">
+          <a href="assets/img/Events/TYE-Bhavans-Thiruvankulam.jpg" data-fancybox="ev-bhavans-tvm" data-caption="<span class='ev-cap-title'>Bhavans Public School, Thrippunithura 2026</span><span class='ev-cap-sub'>Ideation &amp; Design Thinking Workshop</span><span class='ev-cap-text'>Engaged students in exploring entrepreneurship through ideation and design thinking. The session introduced the importance of observing everyday challenges, identifying problems, understanding the people affected by them, and generating possible solutions. Students were encouraged to approach problems creatively and think about how their ideas could become useful products, services, or business opportunities.</span>" class="mil-portfolio-item">
             <div class="mil-cover-frame" style="aspect-ratio: 5/4; overflow: hidden; border-radius: 8px; position: relative;">
-              <img src="assets/img/Events/TYE-Bhavans-Thiruvankulam.jpg" alt="TYE Program at Bhavans Thiruvankulam" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+              <img src="assets/img/Events/TYE-Bhavans-Thiruvankulam.jpg" alt="TYE Program at Bhavans Thrippunithura" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
             </div>
             <div class="mil-description" style="padding: 12px 0;">
               <div>
-                <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">Ideation & Design Thinking Workshop</p>
-                <h4 class="st-white-color">Bhavans Public School, Thiruvankulam 2026</h4>
+                <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">Ideation &amp; Design Thinking Workshop</p>
+                <h4 class="st-white-color">Bhavans Public School, Thrippunithura 2026</h4>
               </div>
             </div>
           </a>
         </div>
-        
-        <!-- Image 8 - TYE Charter International -->
+
+        <!-- Event 11 - Charter International -->
         <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
-          <a href="assets/img/Events/TYE-Charter-International.jpg" data-fancybox="gallery" class="mil-portfolio-item">
+          <a href="assets/img/Events/TYE-Charter-International.jpg" data-fancybox="ev-charter" data-caption="<span class='ev-cap-title'>Charter International School 2025</span><span class='ev-cap-sub'>TiE Young Entrepreneurs Workshop</span><span class='ev-cap-text'>Conducted an entrepreneurship-focused workshop for students as part of the TiE Young Entrepreneurs initiative. The session encouraged young learners to explore their entrepreneurial potential, understand the fundamentals of building a business, and approach everyday challenges as opportunities for innovation. The workshop emphasised creative thinking, problem-solving, collaboration, and the importance of developing ideas into practical solutions.</span>" class="mil-portfolio-item">
             <div class="mil-cover-frame" style="aspect-ratio: 5/4; overflow: hidden; border-radius: 8px; position: relative;">
-              <img src="assets/img/Events/TYE-Charter-International.jpg" alt="TYE at Charter International" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+              <img src="assets/img/Events/TYE-Charter-International.jpg" alt="TYE Workshop at Charter International" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
             </div>
             <div class="mil-description" style="padding: 12px 0;">
               <div>
                 <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">TiE Young Entrepreneurs Workshop</p>
-                <h4 class="st-white-color">Charter International School, 2025</h4>
+                <h4 class="st-white-color">Charter International School 2025</h4>
               </div>
             </div>
           </a>
         </div>
-        
-        <!-- Image 9 - TYE Launch -->
+
+        <!-- Event 12 - Bhavans Adarsh Vidyalaya TYE Launch -->
         <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
-          <a href="assets/img/Events/TYE-Launch.jpg" data-fancybox="gallery" class="mil-portfolio-item">
+          <a href="assets/img/Events/TYE-Launch.jpg" data-fancybox="ev-bhavans-launch" data-caption="<span class='ev-cap-title'>Bhavans Adarsh Vidyalaya 2025</span><span class='ev-cap-sub'>TiE Young Entrepreneurs Launch</span><span class='ev-cap-text'>Participated in the TiE Young Entrepreneurs launch at Bhavans Adarsh Vidyalaya, supporting initiatives that introduce students to entrepreneurship and innovation at an early stage. The event highlighted the importance of helping young people discover their interests, develop an entrepreneurial mindset, and explore how ideas can be transformed into ventures that solve real-world problems.</span>" class="mil-portfolio-item">
             <div class="mil-cover-frame" style="aspect-ratio: 5/4; overflow: hidden; border-radius: 8px; position: relative;">
-              <img src="assets/img/Events/TYE-Launch.jpg" alt="TYE Program Launch Event" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+              <img src="assets/img/Events/TYE-Launch.jpg" alt="TYE Program Launch at Bhavans Adarsh Vidyalaya" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
             </div>
             <div class="mil-description" style="padding: 12px 0;">
               <div>
                 <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">TiE Young Entrepreneurs Launch</p>
-                <h4 class="st-white-color">Bhavans Adarsh Vidyala 2025</h4>
+                <h4 class="st-white-color">Bhavans Adarsh Vidyalaya 2025</h4>
               </div>
             </div>
           </a>
+        </div>
+
+        <!-- Event 13 - Amity College (2 photos) -->
+        <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
+          <a href="assets/img/Events/Amity-Event-TiE-University.jpg" data-fancybox="ev-amity" data-caption="<span class='ev-cap-title'>Amity College</span><span class='ev-cap-sub'>TiE Design Thinking, Business Planning &amp; Lean Canvas Session</span><span class='ev-cap-text'>Conducted an entrepreneurship education session for students, introducing them to design thinking, ideation, business planning, and Lean Canvas. The session focused on identifying meaningful problems, understanding customer needs, developing value propositions, and structuring business ideas into viable models. Students were encouraged to think critically about their ideas and explore the practical steps involved in building a startup.</span>" class="mil-portfolio-item">
+            <div class="mil-cover-frame" style="aspect-ratio: 5/4; overflow: hidden; border-radius: 8px; position: relative;">
+              <img src="assets/img/Events/Amity-Event-TiE-University.jpg" alt="TiE Session at Amity College" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+              <span class="ev-photo-badge"><i class="fas fa-images"></i> 2</span>
+            </div>
+            <div class="mil-description" style="padding: 12px 0;">
+              <div>
+                <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">Design Thinking, Business Planning &amp; Lean Canvas</p>
+                <h4 class="st-white-color">Amity College — TiE Session</h4>
+              </div>
+            </div>
+          </a>
+          <a href="assets/img/Events/Amity-Event.jpg" data-fancybox="ev-amity" data-caption="<span class='ev-cap-title'>Amity College</span><span class='ev-cap-sub'>TiE Design Thinking, Business Planning &amp; Lean Canvas Session</span><span class='ev-cap-text'>Conducted an entrepreneurship education session for students, introducing them to design thinking, ideation, business planning, and Lean Canvas. The session focused on identifying meaningful problems, understanding customer needs, developing value propositions, and structuring business ideas into viable models. Students were encouraged to think critically about their ideas and explore the practical steps involved in building a startup.</span>" style="display:none;"></a>
+        </div>
+
+        <!-- Event 14 - Bhavan's Adarsha Vidyalaya TiE Kerala Session (3 photos) -->
+        <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
+          <a href="assets/img/Events/Bhavans-Adarsha-Vidyalaya-22-10-2026.jpg" data-fancybox="ev-bhavans-adarsha" data-caption="<span class='ev-cap-title'>Bhavan&rsquo;s Adarsha Vidyalaya</span><span class='ev-cap-sub'>TiE Kerala Design Thinking &amp; Lean Canvas Session 2026</span><span class='ev-cap-text'>Engaged approximately 300&ndash;400 students during a TiE Kerala session focused on design thinking, startup ideation, and business planning. The session explored real-life startup stories, Lean Canvas, startup funding pathways, and opportunities offered by organisations such as Y Combinator, Antler, and Entrepreneur First. Students were also introduced to AI-powered development tools such as Devin.ai and discussed how platforms like Instagram can help aspiring founders test business ideas and reach potential customers.<br><br>A key highlight was the student pitching activity, where teams developed and presented their startup ideas. Participating teams were invited to present their ideas and receive free training in preparation for the TiE Global Young Entrepreneurs competition. The session aimed to help students move beyond brainstorming and begin thinking about customer needs, business viability, and practical execution.</span>" class="mil-portfolio-item">
+            <div class="mil-cover-frame" style="aspect-ratio: 5/4; overflow: hidden; border-radius: 8px; position: relative;">
+              <img src="assets/img/Events/Bhavans-Adarsha-Vidyalaya-22-10-2026.jpg" alt="TiE Kerala Session at Bhavans Adarsha Vidyalaya" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+              <span class="ev-photo-badge"><i class="fas fa-images"></i> 3</span>
+            </div>
+            <div class="mil-description" style="padding: 12px 0;">
+              <div>
+                <p class="st-white-color" style="text-transform: uppercase; margin-bottom: 5px; font-size: 12px; opacity: 0.7;">TiE Kerala Design Thinking &amp; Lean Canvas Session</p>
+                <h4 class="st-white-color">Bhavan&rsquo;s Adarsha Vidyalaya 2026</h4>
+              </div>
+            </div>
+          </a>
+          <a href="assets/img/Events/Bhavans-Adarsha-Vidyalaya-_1_22-10-2026.jpg" data-fancybox="ev-bhavans-adarsha" data-caption="<span class='ev-cap-title'>Bhavan&rsquo;s Adarsha Vidyalaya</span><span class='ev-cap-sub'>TiE Kerala Design Thinking &amp; Lean Canvas Session 2026</span><span class='ev-cap-text'>Engaged approximately 300&ndash;400 students during a TiE Kerala session focused on design thinking, startup ideation, and business planning. The session explored real-life startup stories, Lean Canvas, startup funding pathways, and opportunities offered by organisations such as Y Combinator, Antler, and Entrepreneur First. Students were also introduced to AI-powered development tools such as Devin.ai and discussed how platforms like Instagram can help aspiring founders test business ideas and reach potential customers.<br><br>A key highlight was the student pitching activity, where teams developed and presented their startup ideas. Participating teams were invited to present their ideas and receive free training in preparation for the TiE Global Young Entrepreneurs competition. The session aimed to help students move beyond brainstorming and begin thinking about customer needs, business viability, and practical execution.</span>" style="display:none;"></a>
+          <a href="assets/img/Events/Bhavans-Adarsha-Vidyalaya_2_22-10-2026.jpg" data-fancybox="ev-bhavans-adarsha" data-caption="<span class='ev-cap-title'>Bhavan&rsquo;s Adarsha Vidyalaya</span><span class='ev-cap-sub'>TiE Kerala Design Thinking &amp; Lean Canvas Session 2026</span><span class='ev-cap-text'>Engaged approximately 300&ndash;400 students during a TiE Kerala session focused on design thinking, startup ideation, and business planning. The session explored real-life startup stories, Lean Canvas, startup funding pathways, and opportunities offered by organisations such as Y Combinator, Antler, and Entrepreneur First. Students were also introduced to AI-powered development tools such as Devin.ai and discussed how platforms like Instagram can help aspiring founders test business ideas and reach potential customers.<br><br>A key highlight was the student pitching activity, where teams developed and presented their startup ideas. Participating teams were invited to present their ideas and receive free training in preparation for the TiE Global Young Entrepreneurs competition. The session aimed to help students move beyond brainstorming and begin thinking about customer needs, business viability, and practical execution.</span>" style="display:none;"></a>
         </div>
       </div>
     </div>
@@ -398,7 +487,7 @@
   <!-- Fancybox Script -->
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
   <script>
-    Fancybox.bind("[data-fancybox='gallery']", {
+    Fancybox.bind("[data-fancybox]", {
       Thumbs: {
         autoStart: true,
       },
