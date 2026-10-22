@@ -162,7 +162,7 @@ export async function onRequestPost(context) {
             (Order <em>${esc(check.order_id)}</em>).</p>
             <p>We're activating your account now — you'll receive your platform invite on
             this email / WhatsApp shortly. If it doesn't arrive within 24 hours, reply to
-            this email or WhatsApp us at <strong>+91 94966 54440</strong>.</p>
+            this email or WhatsApp us at <strong>+91 88917 00108</strong>.</p>
             <p style="margin:0;">— Team Hexagon Know</p>
           </div>
         </div>
