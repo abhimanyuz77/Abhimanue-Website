@@ -3134,6 +3134,38 @@ canvas {
   }
 }
 
+/* Hero desktop layout: avatar left, text right */
+@media (min-width: 992px) {
+  .st-hero.st-style2 .st-hero-text {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 40px;
+    text-align: left !important;
+  }
+
+  .st-hero.st-style2 .st-hero-text .st-author {
+    flex-shrink: 0;
+    margin: 0;
+  }
+
+  .st-hero.st-style2 .st-hero-info {
+    max-width: 520px;
+  }
+
+  .st-hero.st-style2 .st-hero-info .hero-main-title {
+    margin-bottom: 12px;
+  }
+
+  .st-hero.st-style2 .st-hero-info .st-hero-social-links {
+    justify-content: flex-start;
+  }
+
+  .st-hero.st-style2 .st-hero-info .st-social-btn:first-child {
+    margin-left: 0;
+  }
+}
+
 /* Hero Welcome Text Styling */
 .hero-welcome-text {
   font-size: 48px !important;
