@@ -83,11 +83,11 @@ export async function onRequestPost(context) {
         from: "Abhimanue Website <noreply@hexagonknow.com>",
         to: ["abhimanue@hexagonknow.com"],
         reply_to: email,
-        subject: `AI Study Partner Signup: ${fullname}`,
+        subject: `Learning OS Signup: ${fullname}`,
         html: `
           <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
             <div style="background:linear-gradient(135deg,#1a1a2e,#16213e);padding:24px;border-radius:12px 12px 0 0;">
-              <h2 style="color:#fff;margin:0;">New AI Study Partner Signup</h2>
+              <h2 style="color:#fff;margin:0;">New Learning OS Signup</h2>
               <p style="color:rgba(255,255,255,0.7);margin:8px 0 0;">From abhimanue.in — Learn With Abhimanue</p>
             </div>
             <div style="padding:24px;background:#f9f9f9;border-radius:0 0 12px 12px;">

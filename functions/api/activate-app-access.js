@@ -150,7 +150,7 @@ export async function onRequestPost(context) {
     await sendEmail(env, {
       from: 'Learn with Abhimanue <noreply@hexagonknow.com>',
       to: [email],
-      subject: 'Payment received — your AI Study Partner invite is on the way',
+      subject: 'Payment received — your Learning OS invite is on the way',
       html: `
         <div style="font-family:Arial,sans-serif;max-width:620px;margin:0 auto;">
           <div style="background:linear-gradient(135deg,#1a1a2e,#16213e);padding:24px;border-radius:12px 12px 0 0;">
