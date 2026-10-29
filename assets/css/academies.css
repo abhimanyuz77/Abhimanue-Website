@@ -312,3 +312,46 @@
   .academies-section { padding: 70px 0; }
   .academies-feature-strip { grid-template-columns: 1fr; gap: 16px; }
 }
+
+/* ---- Header: Performance Accelerator CTA ---- */
+@media screen and (min-width: 992px) {
+  .st-nav .st-nav-list {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  .st-nav .st-nav-list > li { margin-right: 30px; }
+  .st-nav .st-nav-list > li:last-child { margin-right: 30px; }
+  .st-nav .sp-phone { padding-left: 30px; white-space: nowrap; }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .st-nav .st-nav-list > li { margin-right: 20px; }
+  .st-nav .st-nav-list > li > a { font-size: 14px; }
+  .st-nav .sp-phone { padding-left: 20px; }
+}
+
+.st-nav .st-nav-list > li > a.nav-accelerator-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid #fec544;
+  border-radius: 999px;
+  color: #fec544;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  transition: background .2s ease, color .2s ease;
+}
+.st-nav .st-nav-list > li > a.nav-accelerator-btn i { font-size: 11px; }
+.st-nav .st-nav-list > li > a.nav-accelerator-btn:hover {
+  background: #fec544;
+  color: #0a101e;
+}
+
+@media (max-width: 991px) {
+  .st-nav .st-nav-list > li > a.nav-accelerator-btn {
+    display: inline-flex;
+    margin: 6px 20px 10px;
+  }
+}
