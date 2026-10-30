@@ -190,6 +190,9 @@
         success: function (response) {
           if (response.success) {
             // Email sent to support — now redirect to Hexagon Know payment page
+            if (typeof rdt === 'function') {
+              rdt('track', 'SignUp');
+            }
             showAlert('success', '<strong>Success!</strong> Your details have been submitted. Redirecting to our secure payment page...');
 
             var paymentParams = new URLSearchParams({
