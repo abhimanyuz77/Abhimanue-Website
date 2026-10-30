@@ -169,6 +169,8 @@
         return false;
       }
 
+      var conversionId = 'signup-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+
       var formData = {
         fullname: fullname,
         email: email,
@@ -177,7 +179,8 @@
         challenges: challenges,
         address: address,
         message: message || 'No additional message',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
+        conversion_id: conversionId
       };
 
       submitBtn.prop('disabled', true).html('<span class="button-spinner"></span> Submitting...');
@@ -192,7 +195,7 @@
             // Email sent to support — now redirect to Hexagon Know payment page
             if (typeof rdt === 'function') {
               rdt('init', 'a2_jxllfdswuba3', { email: email, phoneNumber: phone });
-              rdt('track', 'SignUp');
+              rdt('track', 'SignUp', { conversionId: conversionId });
             }
             showAlert('success', '<strong>Success!</strong> Your details have been submitted. Redirecting to our secure payment page...');
 

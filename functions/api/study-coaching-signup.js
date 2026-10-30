@@ -114,6 +114,13 @@ export async function onRequestPost(context) {
       );
     }
 
+    const redditPromise = sendRedditConversion(context, { email, phone, conversionId: data.conversion_id });
+    if (context.waitUntil) {
+      context.waitUntil(redditPromise);
+    } else {
+      await redditPromise;
+    }
+
     return new Response(
       JSON.stringify({ success: true, message: "Enrollment request submitted successfully" }),
       { headers: { "Content-Type": "application/json" } }
@@ -125,5 +132,59 @@ export async function onRequestPost(context) {
       JSON.stringify({ success: false, message: "An unexpected error occurred. Please try again." }),
       { headers: { "Content-Type": "application/json" } }
     );
+  }
+}
+
+async function sha256Hex(value) {
+  const buf = await crypto.subtle.digest(
+    'SHA-256',
+    new TextEncoder().encode(value.trim().toLowerCase())
+  );
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function sendRedditConversion(context, { email, phone, conversionId }) {
+  try {
+    const token = context.env.REDDIT_CONV_API;
+    if (!token) {
+      console.error("Missing REDDIT_CONV_API environment variable. Skipping Reddit CAPI event.");
+      return;
+    }
+
+    const user = {
+      email: await sha256Hex(email),
+      ip_address: context.request.headers.get('cf-connecting-ip') || '',
+      user_agent: context.request.headers.get('user-agent') || ''
+    };
+    const cleanPhone = (phone || '').replace(/\D/g, '');
+    if (cleanPhone) {
+      user.phone_number = await sha256Hex(cleanPhone);
+    }
+
+    const event = {
+      event_at: Date.now(),
+      action_source: "WEBSITE",
+      type: { tracking_type: "SIGN_UP" },
+      user: user
+    };
+    if (conversionId) {
+      event.metadata = { conversion_id: conversionId };
+    }
+
+    const resp = await fetch('https://ads-api.reddit.com/api/v3/pixels/a2_jxllfdswuba3/conversion_events', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ data: { events: [event] } })
+    });
+
+    if (!resp.ok) {
+      const body = await resp.text();
+      console.error("Reddit CAPI error:", resp.status, body);
+    }
+  } catch (err) {
+    console.error("Reddit CAPI request failed:", err);
   }
 }
