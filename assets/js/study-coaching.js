@@ -191,6 +191,7 @@
           if (response.success) {
             // Email sent to support — now redirect to Hexagon Know payment page
             if (typeof rdt === 'function') {
+              rdt('init', 'a2_jxllfdswuba3', { email: email, phoneNumber: phone });
               rdt('track', 'SignUp');
             }
             showAlert('success', '<strong>Success!</strong> Your details have been submitted. Redirecting to our secure payment page...');
