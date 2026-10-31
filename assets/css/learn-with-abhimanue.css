@@ -2906,6 +2906,26 @@ body {
   color: #16D9E3;
 }
 
+/* ---- Gold variant (Start Your Free Assessment) ---- */
+.spc-login-btn-gold {
+  background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
+  color: #231703;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 28px rgba(245, 158, 11, 0.35);
+  animation: spcGlowPulseGold 3s ease-in-out infinite;
+}
+.spc-login-btn-gold:hover {
+  color: #231703;
+  background: linear-gradient(135deg, #F59E0B 0%, #FCD34D 100%);
+  border-color: #FCD34D;
+  box-shadow: 0 0 42px rgba(245, 158, 11, 0.55);
+}
+.spc-login-btn-gold i { color: #231703; }
+@keyframes spcGlowPulseGold {
+  0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
+  50% { box-shadow: 0 0 38px rgba(245, 158, 11, 0.55); }
+}
+
 .spc-login-cta {
   font-size: 13px;
   color: #71839C;

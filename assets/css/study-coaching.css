@@ -1569,6 +1569,23 @@ body {
   50% { box-shadow: 0 0 42px rgba(25, 242, 140, 0.5); }
 }
 
+/* ---- Gold CTA variant ---- */
+.spc-cta-primary.spc-cta-gold {
+  background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
+  color: #231703;
+  box-shadow: 0 0 35px rgba(245, 158, 11, 0.35);
+  animation: spcGlowPulseGold 3s ease-in-out infinite;
+}
+.spc-cta-primary.spc-cta-gold:hover {
+  color: #231703;
+  background: linear-gradient(135deg, #F59E0B 0%, #FCD34D 100%);
+  box-shadow: 0 0 50px rgba(245, 158, 11, 0.55);
+}
+@keyframes spcGlowPulseGold {
+  0%, 100% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.3); }
+  50% { box-shadow: 0 0 42px rgba(245, 158, 11, 0.55); }
+}
+
 /* ---- Glass cards (shared) ---- */
 .spc-problem-item,
 .spc-included-card,
