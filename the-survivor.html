@@ -59,50 +59,6 @@
     ::-webkit-scrollbar-track { background: var(--matte-black); }
     ::-webkit-scrollbar-thumb { background: var(--antique-gold); border-radius: 3px; }
 
-    /* ============================== LOADING ============================== */
-    #loader {
-      position: fixed; inset: 0; z-index: 10000;
-      background: var(--matte-black);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      transition: opacity 1.5s ease, visibility 1.5s ease;
-    }
-    #loader.hidden { opacity: 0; visibility: hidden; }
-
-    .loader-line {
-      width: 0; height: 1px;
-      background: var(--antique-gold);
-      margin-bottom: 60px;
-      transition: width 3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .loader-line.draw { width: 220px; }
-
-    .loader-text {
-      font-family: var(--serif);
-      font-size: 1.6rem;
-      letter-spacing: 0.3em;
-      color: var(--warm-ivory);
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-      text-align: center;
-      position: absolute;
-      min-height: 2rem;
-    }
-    .loader-text.visible { opacity: 1; transform: translateY(0); }
-
-    .loader-subtext {
-      font-family: var(--sans);
-      font-size: 0.7rem;
-      letter-spacing: 0.4em;
-      color: var(--antique-gold);
-      text-transform: uppercase;
-      opacity: 0;
-      transition: opacity 0.8s ease;
-      margin-top: 10px;
-    }
-    .loader-subtext.visible { opacity: 0.7; }
-
     /* ============================== MUSIC TOGGLE ============================== */
     .music-toggle {
       position: fixed; top: 24px; right: 24px; z-index: 9000;
@@ -820,7 +776,78 @@
     }
     .meaning-list span { display: inline-block; }
 
-    /* ============================== SECTION 10: CERTIFICATE ============================== */
+    /* ============================== SECTION 10: PURPOSE ============================== */
+    .purpose-section {
+      padding: 160px 60px;
+      text-align: center;
+      background: var(--matte-black);
+    }
+    .purpose-body, .commitment-body {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .purpose-body p, .commitment-body p {
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--ivory-dim);
+      margin-bottom: 22px;
+    }
+    .purpose-body p.purpose-lead {
+      font-family: var(--serif);
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      font-style: italic;
+      color: var(--warm-ivory);
+      line-height: 1.6;
+    }
+    .purpose-body p.purpose-close,
+    .commitment-body p.commitment-close {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-style: italic;
+      color: var(--antique-gold);
+    }
+
+    /* ============================== SECTION 11: BEYOND THE ARTWORK ============================== */
+    .impact-section {
+      padding: 120px 60px;
+      background: #060606;
+      text-align: center;
+    }
+    .impact-grid {
+      max-width: 1000px;
+      margin: 50px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      text-align: left;
+    }
+    .impact-item { border-top: 1px solid var(--gold-soft); padding-top: 26px; }
+    .impact-num {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      color: var(--antique-gold);
+      margin-bottom: 14px;
+    }
+    .impact-name {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--warm-ivory);
+      margin-bottom: 10px;
+    }
+    .impact-desc {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--ivory-dim);
+    }
+
+    /* ============================== SECTION 12: CERTIFICATE ============================== */
     .certificate-section {
       padding: 120px 60px;
       background: var(--matte-black);
@@ -911,7 +938,7 @@
     }
     .cert-qr svg { width: 50px; height: 50px; fill: #F4F1EB; }
 
-    /* ============================== SECTION 11: PACKAGING ============================== */
+    /* ============================== SECTION 13: PACKAGING ============================== */
     .packaging-section {
       padding: 120px 60px;
       background: #060606;
@@ -951,7 +978,7 @@
       line-height: 1.6;
     }
 
-    /* ============================== SECTION 12: ACQUISITION ============================== */
+    /* ============================== SECTION 14: ACQUISITION ============================== */
     .acquisition-section {
       padding: 180px 60px;
       text-align: center;
@@ -1035,7 +1062,14 @@
     }
     .form-submit:hover { background: var(--antique-gold); color: var(--matte-black); }
 
-    /* ============================== SECTION 13: FAQ ============================== */
+    /* ============================== SECTION 15: COMMITMENT ============================== */
+    .commitment-section {
+      padding: 120px 60px;
+      background: #060606;
+      text-align: center;
+    }
+
+    /* ============================== SECTION 16: FAQ ============================== */
     .faq-section {
       padding: 120px 60px;
       background: #060606;
@@ -1208,6 +1242,7 @@
       .hero-content { grid-template-columns: 1fr; padding: 120px 30px 60px; }
       .hero-right { height: 50vh; min-height: 350px; }
       .artist-grid { grid-template-columns: 1fr; gap: 40px; }
+      .impact-grid { grid-template-columns: 1fr; gap: 36px; }
       .masonry-gallery { columns: 2; }
       .packaging-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
@@ -1216,7 +1251,8 @@
     @media (max-width: 600px) {
       .hero-content, .discover, .film-section, .viewer-section,
       .gallery-section, .philosophy-section, .artist-section,
-      .spec-section, .meaning-section, .certificate-section,
+      .spec-section, .meaning-section, .purpose-section, .impact-section,
+      .certificate-section, .commitment-section,
       .packaging-section, .acquisition-section, .faq-section,
       .footer, .final-moment { padding-left: 24px; padding-right: 24px; }
       .masonry-gallery { columns: 1; }
@@ -1227,13 +1263,6 @@
   </style>
 </head>
 <body>
-
-  <!-- ============================== LOADER ============================== -->
-  <div id="loader">
-    <div class="loader-line" id="loaderLine"></div>
-    <div class="loader-text" id="loaderText"></div>
-    <div class="loader-subtext" id="loaderSubtext"></div>
-  </div>
 
   <!-- ============================== MUSIC TOGGLE ============================== -->
   <div class="music-toggle paused" id="musicToggle" title="Toggle ambient music">
@@ -1251,6 +1280,7 @@
       <a href="#viewer" style="display:none;">360°</a>
       <a href="#philosophy">Philosophy</a>
       <a href="#artist">Artist</a>
+      <a href="#purpose">Purpose</a>
       <a href="#acquisition">Acquire</a>
     </div>
   </nav>
@@ -1311,7 +1341,7 @@
   <!-- ============================== SECTION 3: FILM ============================== -->
   <section class="film-section" id="film">
     <span class="section-label reveal" style="text-align:center;display:block;">The Film</span>
-    <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">A Survival Story</h2>
+    <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">The Story Behind The Survivor</h2>
     <div class="film-wrapper reveal reveal-delay-2" style="position:relative;">
       <video class="film-video" id="filmVideo" playsinline></video>
       <div class="film-overlay" id="filmOverlay" onclick="playFilm()">
@@ -1481,7 +1511,7 @@
 
   <!-- ============================== SECTION 7: MEET THE ARTIST ============================== -->
   <section class="artist-section" id="artist">
-    <span class="section-label reveal" style="text-align:center;display:block;">Meet The Artist</span>
+    <span class="section-label reveal" style="text-align:center;display:block;">The Artist Behind the Work</span>
     <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">Abhimanue Udayan</h2>
     <div class="artist-grid">
       <div class="artist-portrait reveal">
@@ -1514,7 +1544,7 @@
   <!-- ============================== SECTION 8: SPECIFICATION ============================== -->
   <section class="spec-section" id="specification">
     <span class="section-label reveal" style="text-align:center;display:block;">The Survivor</span>
-    <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">Specification</h2>
+    <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">The Details of the Artwork</h2>
     <div class="spec-card reveal reveal-delay-2">
       <h3 class="spec-card-title">The Survivor</h3>
       <div class="spec-row"><span class="spec-label">Artist</span><span class="spec-value">Abhimanue Udayan</span></div>
@@ -1549,7 +1579,42 @@
     </div>
   </section>
 
-  <!-- ============================== SECTION 10: CERTIFICATE ============================== -->
+  <!-- ============================== SECTION 10: PURPOSE ============================== -->
+  <section class="purpose-section" id="purpose">
+    <span class="section-label reveal" style="text-align:center;display:block;">Art That Gives Back</span>
+    <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">A Purpose Beyond Art.</h2>
+    <div class="purpose-body reveal reveal-delay-2">
+      <p class="purpose-lead">Every child deserves the opportunity to learn, grow and build a better future.</p>
+      <p>The Survivor is a celebration of courage, resilience and the strength to rise above adversity. Its purpose extends beyond the artwork itself.</p>
+      <p>A portion of the proceeds from the sale of this artwork will be dedicated to supporting the education of children from economically disadvantaged backgrounds.</p>
+      <p>Because true success is not just about how far we rise, but how many lives we help uplift along the way.</p>
+      <p class="purpose-close">Art that inspires. Art that makes a difference.</p>
+    </div>
+  </section>
+
+  <!-- ============================== SECTION 11: BEYOND THE ARTWORK ============================== -->
+  <section class="impact-section" id="impact">
+    <span class="section-label reveal" style="text-align:center;display:block;">Beyond the Artwork</span>
+    <div class="impact-grid">
+      <div class="impact-item reveal">
+        <span class="impact-num">01.</span>
+        <h3 class="impact-name">A Meaningful Purchase</h3>
+        <p class="impact-desc">Acquire a unique piece of original art with a purpose beyond its aesthetic value.</p>
+      </div>
+      <div class="impact-item reveal reveal-delay-1">
+        <span class="impact-num">02.</span>
+        <h3 class="impact-name">Supporting Education</h3>
+        <p class="impact-desc">A dedicated portion of the sale proceeds will contribute towards educational opportunities for children in need.</p>
+      </div>
+      <div class="impact-item reveal reveal-delay-2">
+        <span class="impact-num">03.</span>
+        <h3 class="impact-name">A Lasting Impact</h3>
+        <p class="impact-desc">An artwork that represents resilience can also help create opportunities for the next generation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== SECTION 12: CERTIFICATE ============================== -->
   <section class="certificate-section" id="certificate" style="display:none;">
     <span class="section-label reveal" style="text-align:center;display:block;">Certificate</span>
     <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">Certificate of Authenticity</h2>
@@ -1574,10 +1639,10 @@
     </div>
   </section>
 
-  <!-- ============================== SECTION 11: PACKAGING ============================== -->
+  <!-- ============================== SECTION 13: PACKAGING ============================== -->
   <section class="packaging-section" id="packaging">
     <span class="section-label reveal" style="text-align:center;display:block;">Packaging</span>
-    <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">Museum-Grade Presentation</h2>
+    <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">Presented as a Collectible</h2>
     <div class="packaging-grid">
       <div class="packaging-item reveal">
         <div class="packaging-icon"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm3 3h8v2H8V8zm0 4h8v2H8v-2zm0 4h5v2H8v-2z"/></svg></div>
@@ -1612,11 +1677,11 @@
     </div>
   </section>
 
-  <!-- ============================== SECTION 12: ACQUISITION ============================== -->
+  <!-- ============================== SECTION 14: ACQUISITION ============================== -->
   <section class="acquisition-section" id="acquisition">
     <h2 class="acquisition-title reveal">THE SURVIVOR</h2>
     <p class="acquisition-edition reveal reveal-delay-1">Edition 1 of 1</p>
-    <p class="acquisition-label reveal reveal-delay-2">Available for Private Acquisition</p>
+    <p class="acquisition-label reveal reveal-delay-2">Own a Story. Support a Future.</p>
     <p class="acquisition-price reveal reveal-delay-2">USD 10,000</p>
     <div class="reveal reveal-delay-3" style="text-align:center;">
       <button class="btn-gold" id="acquireBtn" onclick="toggleForm()">Request Acquisition</button>
@@ -1642,10 +1707,21 @@
     </form>
   </section>
 
-  <!-- ============================== SECTION 13: FAQ ============================== -->
+  <!-- ============================== SECTION 15: OUR COMMITMENT ============================== -->
+  <section class="commitment-section" id="commitment">
+    <span class="section-label reveal" style="text-align:center;display:block;">Our Commitment</span>
+    <div class="commitment-body reveal reveal-delay-1">
+      <p>We believe that access to education should never be limited by financial circumstances.</p>
+      <p>A fixed portion of the proceeds from the sale of The Survivor will be allocated towards supporting the education of underprivileged children.</p>
+      <p>We intend to share updates on how these contributions are utilised, ensuring that the purpose behind this artwork remains transparent and accountable.</p>
+      <p class="commitment-close">Every acquisition contributes to something beyond art.</p>
+    </div>
+  </section>
+
+  <!-- ============================== SECTION 16: FAQ ============================== -->
   <section class="faq-section" id="faq">
-    <span class="section-label reveal" style="text-align:center;display:block;">Frequently Asked Questions</span>
-    <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">Questions &amp; Answers</h2>
+    <span class="section-label reveal" style="text-align:center;display:block;">Questions &amp; Answers</span>
+    <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">Frequently Asked Questions</h2>
     <div class="faq-container reveal reveal-delay-2">
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFAQ(this)">
@@ -1790,52 +1866,7 @@
 
   <!-- ============================== MAIN JS ============================== -->
   <script>
-    // ==================== LOADING SEQUENCE ====================
-    const loaderTexts = [
-      { text: "Persistence", sub: "" },
-      { text: "Courage", sub: "" },
-      { text: "Hope", sub: "" },
-      { text: "THE SURVIVOR", sub: "" }
-    ];
-
-    let textIndex = 0;
-    const loaderTextEl = document.getElementById('loaderText');
-    const loaderSubEl = document.getElementById('loaderSubtext');
-    const loaderLineEl = document.getElementById('loaderLine');
-
-    function showNextText() {
-      if (textIndex >= loaderTexts.length) {
-        // Fade out loader
-        setTimeout(() => {
-          document.getElementById('loader').classList.add('hidden');
-          document.getElementById('navMinimal').classList.add('visible');
-          // Reveal hero elements
-          revealHero();
-          // Try to start music (needs user interaction in most browsers)
-        }, 800);
-        return;
-      }
-
-      const item = loaderTexts[textIndex];
-      loaderTextEl.textContent = item.text;
-      loaderTextEl.classList.add('visible');
-      if (item.sub) {
-        loaderSubEl.textContent = item.sub;
-        loaderSubEl.classList.add('visible');
-      } else {
-        loaderSubEl.classList.remove('visible');
-      }
-
-      setTimeout(() => {
-        loaderTextEl.classList.remove('visible');
-        loaderSubEl.classList.remove('visible');
-        setTimeout(() => {
-          textIndex++;
-          showNextText();
-        }, 600);
-      }, 1400);
-    }
-
+    // ==================== REVEAL ON LOAD ====================
     function revealHero() {
       const heroReveals = document.querySelectorAll('.hero .reveal');
       heroReveals.forEach(el => {
@@ -1843,15 +1874,9 @@
       });
     }
 
-    // Start loading sequence
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        loaderLineEl.classList.add('draw');
-        setTimeout(() => {
-          showNextText();
-        }, 2000);
-      }, 300);
-    });
+    // Reveal nav and hero smoothly once the DOM is ready
+    document.getElementById('navMinimal').classList.add('visible');
+    revealHero();
 
     // ==================== SCROLL REVEAL ====================
     const revealObserver = new IntersectionObserver((entries) => {
