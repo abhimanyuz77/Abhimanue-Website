@@ -59,32 +59,6 @@
     ::-webkit-scrollbar-track { background: var(--matte-black); }
     ::-webkit-scrollbar-thumb { background: var(--antique-gold); border-radius: 3px; }
 
-    /* ============================== MUSIC TOGGLE ============================== */
-    .music-toggle {
-      position: fixed; top: 24px; right: 24px; z-index: 9000;
-      width: 44px; height: 44px;
-      border: 1px solid var(--gold-line);
-      border-radius: 50%;
-      background: rgba(10, 10, 10, 0.6);
-      backdrop-filter: blur(10px);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      transition: all 0.4s ease;
-      color: var(--antique-gold);
-    }
-    .music-toggle:hover { border-color: var(--antique-gold); transform: scale(1.08); }
-    .music-toggle svg { width: 18px; height: 18px; }
-    .music-toggle .music-bars { display: flex; gap: 2px; align-items: flex-end; height: 14px; }
-    .music-toggle .music-bars span {
-      width: 2px; background: var(--antique-gold);
-      animation: musicBar 1s ease-in-out infinite alternate;
-    }
-    .music-toggle .music-bars span:nth-child(1) { height: 6px; animation-delay: 0s; }
-    .music-toggle .music-bars span:nth-child(2) { height: 12px; animation-delay: 0.2s; }
-    .music-toggle .music-bars span:nth-child(3) { height: 8px; animation-delay: 0.4s; }
-    .music-toggle.paused .music-bars span { animation-play-state: paused; }
-    @keyframes musicBar { from { transform: scaleY(0.3); } to { transform: scaleY(1); } }
-
     /* ============================== NAVIGATION ============================== */
     .nav-minimal {
       position: fixed; top: 0; left: 0; width: 100%; z-index: 8000;
@@ -383,7 +357,10 @@
       inset: 0;
       display: flex; align-items: center; justify-content: center;
       cursor: pointer;
-      background: linear-gradient(135deg, #111 0%, #0A0A0A 100%);
+      background:
+        linear-gradient(135deg, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.45) 100%),
+        url('assets/survivor-art-work.jpg') center/contain no-repeat,
+        var(--matte-black);
       transition: opacity 0.6s ease;
       z-index: 2;
     }
@@ -401,12 +378,6 @@
     }
     .film-overlay .play-btn svg { width: 28px; height: 28px; fill: var(--antique-gold); transition: fill 0.4s; }
     .film-overlay .play-btn:hover svg { fill: var(--matte-black); }
-    .film-duration {
-      position: absolute; bottom: 20px; right: 20px;
-      font-family: var(--sans); font-size: 0.7rem;
-      letter-spacing: 0.2em; color: var(--ivory-faint);
-      z-index: 3;
-    }
     .film-controls {
       display: flex; align-items: center; gap: 12px;
       padding: 14px 20px;
@@ -1061,6 +1032,15 @@
       transition: all 0.4s ease;
     }
     .form-submit:hover { background: var(--antique-gold); color: var(--matte-black); }
+    .acquisition-note {
+      margin-top: 18px;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      line-height: 1.7;
+      letter-spacing: 0.05em;
+      color: var(--ivory-faint);
+      text-align: center;
+    }
 
     /* ============================== SECTION 15: COMMITMENT ============================== */
     .commitment-section {
@@ -1264,13 +1244,6 @@
 </head>
 <body>
 
-  <!-- ============================== MUSIC TOGGLE ============================== -->
-  <div class="music-toggle paused" id="musicToggle" title="Toggle ambient music">
-    <div class="music-bars">
-      <span></span><span></span><span></span>
-    </div>
-  </div>
-
   <!-- ============================== NAVIGATION ============================== -->
   <nav class="nav-minimal" id="navMinimal">
     <a href="#hero" class="nav-brand">Abhimanue Udayan</a>
@@ -1343,12 +1316,11 @@
     <span class="section-label reveal" style="text-align:center;display:block;">The Film</span>
     <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">The Story Behind The Survivor</h2>
     <div class="film-wrapper reveal reveal-delay-2" style="position:relative;">
-      <video class="film-video" id="filmVideo" playsinline></video>
+      <video class="film-video" id="filmVideo" playsinline poster="assets/survivor-art-work.jpg"></video>
       <div class="film-overlay" id="filmOverlay" onclick="playFilm()">
         <div class="play-btn">
           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         </div>
-        <span class="film-duration">3:20</span>
       </div>
       <div class="film-controls">
         <button class="film-play-btn" id="filmPlayBtn" onclick="togglePlayPause()" title="Play / Pause">
@@ -1703,7 +1675,8 @@
         <label>Message</label>
         <textarea name="message" placeholder="Tell us about your interest in The Survivor"></textarea>
       </div>
-      <button type="submit" class="form-submit">Submit Inquiry</button>
+      <button type="submit" class="form-submit">Proceed to Secure Payment</button>
+      <p class="acquisition-note">You will be redirected to our secure checkout on Hexagon Know (powered by Razorpay) to complete the acquisition of USD 10,000.<br/>Complimentary insured worldwide shipping · All sales are final — no refunds.</p>
     </form>
   </section>
 
@@ -1752,11 +1725,20 @@
       </div>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFAQ(this)">
-          Can it be shipped internationally?
+          Is worldwide shipping included?
           <span class="faq-toggle"></span>
         </div>
         <div class="faq-answer">
-          <p>Yes. The sculpture is professionally packed for worldwide shipping.</p>
+          <p>Yes. The Survivor ships worldwide at no additional cost — professionally crated, fully insured, and delivered with museum-standard handling. The studio will contact you after acquisition to coordinate delivery.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          What is the refund policy?
+          <span class="faq-toggle"></span>
+        </div>
+        <div class="faq-answer">
+          <p>All sales are final. As a one-of-one original work, The Survivor is sold without refunds, returns, or exchanges. Please review all details carefully before completing your acquisition.</p>
         </div>
       </div>
     </div>
@@ -1789,80 +1771,6 @@
     </p>
     <p class="final-signature" id="finalSignature">— Abhimanue Udayan</p>
   </section>
-
-  <!-- ============================== AMBIENT MUSIC (Web Audio API generated) ============================== -->
-  <script>
-    // Ambient music using Web Audio API - subtle drone
-    let audioCtx = null;
-    let audioNodes = [];
-    let musicPlaying = false;
-
-    function initAudio() {
-      if (audioCtx) return;
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-      // Create ambient drone layers
-      const frequencies = [110, 165, 220, 277];
-      const masterGain = audioCtx.createGain();
-      masterGain.gain.value = 0;
-      masterGain.connect(audioCtx.destination);
-
-      frequencies.forEach((freq, i) => {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        const filter = audioCtx.createBiquadFilter();
-
-        osc.type = 'sine';
-        osc.frequency.value = freq;
-
-        filter.type = 'lowpass';
-        filter.frequency.value = 400;
-        filter.Q.value = 1;
-
-        gain.gain.value = 0.08;
-
-        // Slow LFO for subtle modulation
-        const lfo = audioCtx.createOscillator();
-        const lfoGain = audioCtx.createGain();
-        lfo.frequency.value = 0.05 + i * 0.02;
-        lfoGain.gain.value = 0.03;
-        lfo.connect(lfoGain);
-        lfoGain.connect(gain.gain);
-
-        osc.connect(filter);
-        filter.connect(gain);
-        gain.connect(masterGain);
-
-        osc.start();
-        lfo.start();
-        audioNodes.push({ osc, gain, lfo, masterGain });
-      });
-
-      // Fade in
-      masterGain.gain.linearRampToValueAtTime(0.15, audioCtx.currentTime + 3);
-      musicPlaying = true;
-    }
-
-    function toggleMusic() {
-      const toggle = document.getElementById('musicToggle');
-      if (!audioCtx) {
-        initAudio();
-        toggle.classList.remove('paused');
-        return;
-      }
-      if (musicPlaying) {
-        audioNodes.forEach(n => n.masterGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1));
-        musicPlaying = false;
-        toggle.classList.add('paused');
-      } else {
-        audioNodes.forEach(n => n.masterGain.gain.linearRampToValueAtTime(0.15, audioCtx.currentTime + 2));
-        musicPlaying = true;
-        toggle.classList.remove('paused');
-      }
-    }
-
-    document.getElementById('musicToggle').addEventListener('click', toggleMusic);
-  </script>
 
   <!-- ============================== MAIN JS ============================== -->
   <script>
@@ -2169,6 +2077,10 @@
       }
     }
 
+    // Secure checkout is hosted on hexagonknow.com (Razorpay), same pattern
+    // as study-performance-coaching — USD 10,000, product "the-survivor".
+    const SURVIVOR_PAYMENT_URL = 'https://hexagonknow.com/abhimanue-survivor-payment.html';
+
     function submitInquiry(e) {
       e.preventDefault();
       const form = document.getElementById('acquireForm');
@@ -2176,20 +2088,39 @@
       btn.textContent = 'Submitting...';
       btn.disabled = true;
 
-      // Simulate submission - replace with actual endpoint
-      setTimeout(() => {
-        btn.textContent = 'Inquiry Sent';
-        btn.style.background = 'var(--antique-gold)';
-        btn.style.color = 'var(--matte-black)';
-        form.querySelectorAll('input, textarea').forEach(f => f.value = '');
-        setTimeout(() => {
-          btn.textContent = 'Submit Inquiry';
-          btn.style.background = '';
-          btn.style.color = '';
-          btn.disabled = false;
-          form.classList.remove('open');
-        }, 2500);
-      }, 1200);
+      const name = form.elements['name'].value.trim();
+      const email = form.elements['email'].value.trim();
+      const phone = form.elements['phone'].value.trim();
+      const message = form.elements['message'].value.trim();
+
+      // Notify the studio of the acquisition intent, then continue to payment
+      // regardless — the checkout page collects the buyer's details as well.
+      const notify = fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          subject: 'The Survivor — Acquisition Inquiry',
+          msg: 'Phone: ' + (phone || 'not provided') + '\n\n' + (message || 'Acquisition interest in The Survivor (USD 10,000).')
+        })
+      }).catch(function () { /* payment proceeds even if the notification fails */ });
+
+      const paymentParams = new URLSearchParams({
+        name: name,
+        email: email,
+        product: 'the-survivor',
+        return_url: window.location.origin + '/the-survivor.html'
+      });
+      const cleanPhone = phone.replace(/\D/g, '');
+      if (cleanPhone) {
+        paymentParams.append('phone', cleanPhone);
+      }
+
+      btn.textContent = 'Redirecting to secure payment...';
+      Promise.race([notify, new Promise(function (r) { setTimeout(r, 1500); })]).then(function () {
+        window.location.href = SURVIVOR_PAYMENT_URL + '?' + paymentParams.toString();
+      });
     }
 
     // ==================== FINAL MOMENT ====================
