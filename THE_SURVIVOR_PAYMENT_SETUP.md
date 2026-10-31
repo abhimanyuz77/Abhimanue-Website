@@ -1,14 +1,14 @@
 # The Survivor — Sculpture Acquisition Payment Setup Guide
 
 This document covers the payment integration for **The Survivor**, a one-of-one
-natural sculpture sold for **USD 10,000** through Hexagon Know's Razorpay
+natural sculpture sold for **USD 4,444** (discounted from USD 5,000) through Hexagon Know's Razorpay
 infrastructure. `abhimanue.in` sends the buyer to the hosted payment page; the
 payment is completed and verified on `hexagonknow.com`.
 
 ## Product Details
 - **Product ID:** `the-survivor`
 - **Product Name:** The Survivor — Natural Sculpture (Edition 1 of 1)
-- **Price:** USD 10,000 (fixed server-side — never trust client amounts)
+- **Price:** USD 4,444 — discounted acquisition price (list price USD 5,000 shown struck-through); charged amount is fixed server-side — never trust client amounts
 - **Currency:** `USD`
 - **Terms:** All sales final — no refunds, returns or exchanges
 - **Shipping:** Free insured worldwide shipping (address collected at checkout)

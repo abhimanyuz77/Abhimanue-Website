@@ -973,6 +973,11 @@
       color: var(--warm-ivory);
       margin-bottom: 50px;
     }
+    .acquisition-price s {
+      color: var(--ivory-faint);
+      font-size: 0.55em;
+      margin-right: 16px;
+    }
     .acquisition-form {
       max-width: 500px;
       margin: 40px auto 0;
@@ -1644,7 +1649,7 @@
     <h2 class="acquisition-title reveal">THE SURVIVOR</h2>
     <p class="acquisition-edition reveal reveal-delay-1">Edition 1 of 1</p>
     <p class="acquisition-label reveal reveal-delay-2">Own a Story. Support a Future.</p>
-    <p class="acquisition-price reveal reveal-delay-2">USD 10,000</p>
+    <p class="acquisition-price reveal reveal-delay-2"><s>USD 5,000</s> USD 4,444</p>
     <div class="reveal reveal-delay-3" style="text-align:center;">
       <button class="btn-gold" id="acquireBtn" onclick="toggleForm()">Request Acquisition</button>
     </div>
@@ -1666,7 +1671,7 @@
         <textarea name="message" placeholder="Tell us about your interest in The Survivor"></textarea>
       </div>
       <button type="submit" class="form-submit">Proceed to Secure Payment</button>
-      <p class="acquisition-note">You will be redirected to our secure checkout on Hexagon Know (powered by Razorpay) to complete the acquisition of USD 10,000.<br/>Complimentary insured worldwide shipping · All sales are final — no refunds.</p>
+      <p class="acquisition-note">You will be redirected to our secure checkout on Hexagon Know (powered by Razorpay) to complete the acquisition of USD 4,444.<br/>Complimentary insured worldwide shipping · All sales are final — no refunds.</p>
     </form>
   </section>
 
@@ -2068,7 +2073,7 @@
     }
 
     // Secure checkout is hosted on hexagonknow.com (Razorpay), same pattern
-    // as study-performance-coaching — USD 10,000, product "the-survivor".
+    // as study-performance-coaching — USD 4,444, product "the-survivor".
     const SURVIVOR_PAYMENT_URL = 'https://hexagonknow.com/abhimanue-survivor-payment.html';
 
     function submitInquiry(e) {
@@ -2092,7 +2097,7 @@
           name: name,
           email: email,
           subject: 'The Survivor — Acquisition Inquiry',
-          msg: 'Phone: ' + (phone || 'not provided') + '\n\n' + (message || 'Acquisition interest in The Survivor (USD 10,000).')
+          msg: 'Phone: ' + (phone || 'not provided') + '\n\n' + (message || 'Acquisition interest in The Survivor (USD 4,444).')
         })
       }).catch(function () { /* payment proceeds even if the notification fails */ });
 

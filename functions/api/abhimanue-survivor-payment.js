@@ -24,7 +24,7 @@
 const COURSES = {
   'the-survivor': {
     name: 'The Survivor — Natural Sculpture (Edition 1 of 1)',
-    amount: 10000,         // USD — $10,000 private acquisition
+    amount: 4444,          // USD — $4,444 private acquisition (discounted from $5,000)
     currency: 'USD'
   }
 };
