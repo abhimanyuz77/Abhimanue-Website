@@ -50,14 +50,16 @@ export async function onRequestPost(context) {
     const userTypeLabels = {
       'student': 'Student',
       'competitive-exam': 'Competitive Exam Aspirant',
-      'job-seeker': 'Job Seeker',
+      'competitive-exam-upsc': 'UPSC Aspirant',
+      'competitive-exam-neet': 'NEET Aspirant',
+      'competitive-exam-jee': 'IIT-JEE Aspirant',
       'working-professional': 'Working Professional',
       'other': 'Other'
     };
 
     const goalLabels = {
       'exam-prep': 'Prepare for an exam',
-      'job-prep': 'Prepare for a job / placements',
+      'beat-study-difficulties': 'Beat study difficulties (focus, memory, procrastination)',
       'skill-building': 'Build a new skill',
       'study-habits': 'Fix study habits & consistency',
       'personal-growth': 'General growth & learning',

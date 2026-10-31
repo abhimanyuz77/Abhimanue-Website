@@ -3085,9 +3085,9 @@ body {
   display: flex;
   gap: 22px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain;
   padding: 10px 5vw 26px;
   scrollbar-width: thin;
   scrollbar-color: rgba(22, 217, 227, 0.4) rgba(255, 255, 255, 0.05);
@@ -3189,6 +3189,16 @@ body {
   border: 1px solid rgba(251, 191, 36, 0.3);
   border-radius: 20px;
   padding: 26px 32px;
+}
+
+.lwa-coach-promo-img {
+  flex: 0 0 auto;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(251, 191, 36, 0.45);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .lwa-coach-promo-text { flex: 1 1 420px; }
