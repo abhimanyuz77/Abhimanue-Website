@@ -3263,3 +3263,254 @@ body {
   .lwa-coach-promo { padding: 22px; text-align: center; justify-content: center; }
   .lwa-coach-promo p { margin: 0 auto; }
 }
+
+/* ---- Gold CTA variant (Free Assessment buttons) ---- */
+.spc-cta-primary.spc-cta-gold {
+  background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
+  color: #231703;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 35px rgba(245, 158, 11, 0.35);
+  animation: spcGlowPulseGold 3s ease-in-out infinite;
+}
+.spc-cta-primary.spc-cta-gold:hover {
+  color: #231703;
+  background: linear-gradient(135deg, #F59E0B 0%, #FCD34D 100%);
+  box-shadow: 0 0 50px rgba(245, 158, 11, 0.55);
+}
+.spc-cta-primary.spc-cta-gold i { color: #231703; }
+
+/* ===== Assessment Popup ===== */
+.spc-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(5, 11, 24, 0.78);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+.spc-popup-overlay.spc-popup-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.spc-popup {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  text-align: center;
+  padding: 40px 32px 26px;
+  border-radius: 26px;
+  background:
+    linear-gradient(#0C1B30, #050B18) padding-box,
+    linear-gradient(135deg, #FCD34D, #16D9E3 50%, #1268E8) border-box;
+  border: 1.5px solid transparent;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 70px rgba(22, 217, 227, 0.15);
+  opacity: 0;
+  transform: translateY(40px) scale(0.92);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+}
+.spc-popup-overlay.spc-popup-visible .spc-popup {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.spc-popup-glow {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  width: 320px;
+  height: 240px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(252, 211, 77, 0.22), transparent 70%);
+  pointer-events: none;
+}
+
+.spc-popup-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #B8C7DA;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+.spc-popup-close:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  transform: rotate(90deg);
+}
+
+.spc-popup-icon {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+  animation: spcPopupFloat 3s ease-in-out infinite;
+}
+.spc-popup-icon i {
+  font-size: 30px;
+  color: #231703;
+}
+.spc-popup-icon-ring {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid rgba(252, 211, 77, 0.5);
+  animation: spcPopupRing 2s ease-out infinite;
+}
+@keyframes spcPopupFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes spcPopupRing {
+  0% { transform: scale(0.9); opacity: 1; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+.spc-popup-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #FCD34D;
+  background: rgba(252, 211, 77, 0.1);
+  border: 1px solid rgba(252, 211, 77, 0.3);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+.spc-popup h3 {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin: 0 0 12px;
+}
+.spc-popup h3 span {
+  display: block;
+  background: linear-gradient(135deg, #FCD34D 0%, #16D9E3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.spc-popup-lead {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #B8C7DA;
+  margin: 0 0 18px;
+}
+.spc-popup-lead strong { color: #FFFFFF; }
+
+.spc-popup-list {
+  list-style: none;
+  padding: 14px 18px;
+  margin: 0 0 22px;
+  text-align: left;
+  display: grid;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+}
+.spc-popup-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #E4ECF5;
+}
+.spc-popup-list li i {
+  color: #16D9E3;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.spc-popup-cta {
+  width: 100%;
+  font-size: 16px;
+}
+
+.spc-popup-trust {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 14px;
+  font-size: 12px;
+  color: #71839C;
+}
+.spc-popup-trust i {
+  color: #16D9E3;
+  margin-right: 4px;
+}
+
+.spc-popup-dismiss {
+  display: block;
+  margin: 14px auto 0;
+  padding: 4px 8px;
+  background: none;
+  border: none;
+  color: #71839C;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.spc-popup-dismiss:hover { color: #B8C7DA; }
+
+/* Mobile: slide-up bottom sheet */
+@media (max-width: 575px) {
+  .spc-popup-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+  .spc-popup {
+    max-width: 100%;
+    max-height: 92vh;
+    padding: 34px 22px 22px;
+    border-radius: 26px 26px 0 0;
+    transform: translateY(100%);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+  }
+  .spc-popup h3 { font-size: 21px; }
+  .spc-popup-icon { width: 62px; height: 62px; margin-bottom: 14px; }
+  .spc-popup-icon i { font-size: 26px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spc-popup,
+  .spc-popup-icon,
+  .spc-popup-icon-ring { animation: none; transition: opacity 0.2s ease; }
+}

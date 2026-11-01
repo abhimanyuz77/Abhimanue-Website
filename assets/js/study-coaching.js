@@ -157,6 +157,11 @@
 
     window.addEventListener('scroll', onScroll, { passive: true });
 
+    document.getElementById('spc-popup-cta').addEventListener('click', function () {
+      if (window.posthog && typeof window.posthog.capture === 'function') {
+        window.posthog.capture('assessment_popup_cta_click');
+      }
+    });
     document.getElementById('spc-popup-close').addEventListener('click', closePopup);
     document.getElementById('spc-popup-dismiss').addEventListener('click', closePopup);
     popup.addEventListener('click', function (e) {
