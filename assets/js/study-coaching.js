@@ -113,10 +113,65 @@
     });
   }
 
+  /*--------------------------------------------------------------
+    Assessment Popup — shows 3s after the visitor starts scrolling
+  --------------------------------------------------------------*/
+  function initAssessmentPopup() {
+    var popup = document.getElementById('spc-assessment-popup');
+    if (!popup) return;
+
+    // Only nudge once per session
+    try {
+      if (sessionStorage.getItem('spcAssessmentPopupShown')) return;
+    } catch (e) { /* storage unavailable — continue anyway */ }
+
+    var shown = false;
+    var armed = false;
+
+    function openPopup() {
+      if (shown) return;
+      shown = true;
+      popup.classList.add('spc-popup-visible');
+      popup.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      try { sessionStorage.setItem('spcAssessmentPopupShown', '1'); } catch (e) {}
+      if (window.posthog && typeof window.posthog.capture === 'function') {
+        window.posthog.capture('assessment_popup_shown');
+      }
+      window.removeEventListener('scroll', onScroll);
+    }
+
+    function closePopup() {
+      popup.classList.remove('spc-popup-visible');
+      popup.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function onScroll() {
+      if (armed || shown) return;
+      if (window.scrollY > 400) {
+        armed = true;
+        setTimeout(openPopup, 3000);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    document.getElementById('spc-popup-close').addEventListener('click', closePopup);
+    document.getElementById('spc-popup-dismiss').addEventListener('click', closePopup);
+    popup.addEventListener('click', function (e) {
+      if (e.target === popup) closePopup();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && popup.classList.contains('spc-popup-visible')) closePopup();
+    });
+  }
+
   $(document).ready(function () {
     startOfferCountdown();
     initScrollReveal();
     initGallery();
+    initAssessmentPopup();
 
     var form = $('#study-coaching-form');
     if (form.length === 0) return;
