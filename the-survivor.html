@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Abhimanue Udayan" />
   <meta name="robots" content="index, follow" />
-  <title>THE SURVIVOR — A Natural Sculpture by Abhimanue Udayan</title>
-  <meta name="description" content="The Survivor — a one-of-one guava root sculpture forged inside the mother earth, finished with minor carvings and polish. A study in persistence and survival by Abhimanue Udayan." />
-  <meta name="keywords" content="The Survivor, natural sculpture, guava root sculpture, Abhimanue Udayan, one of one art, museum art, luxury art, natural form art" />
-  <meta property="og:title" content="THE SURVIVOR — A Natural Sculpture by Abhimanue Udayan" />
-  <meta property="og:description" content="A one-of-one guava root sculpture, forged by mother earth over decades. A study in persistence, survival, and quiet endurance." />
+  <title>THE SURVIVOR — Art for a Cause by Abhimanue Udayan</title>
+  <meta name="description" content="The Survivor — art for a cause. A one-of-one guava root sculpture by Abhimanue Udayan, offered at USD 25,000 to support the education of underprivileged children." />
+  <meta name="keywords" content="The Survivor, art for a cause, charity art, education for underprivileged children, natural sculpture, guava root sculpture, Abhimanue Udayan, one of one art" />
+  <meta property="og:title" content="THE SURVIVOR — Art for a Cause by Abhimanue Udayan" />
+  <meta property="og:description" content="A one-of-one guava root sculpture, forged by mother earth over decades — offered as art for a cause, supporting the education of underprivileged children. USD 25,000." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://abhimanue.in/the-survivor.html" />
-  <meta property="og:image" content="https://abhimanue.in/assets/The-Survivor-Thumbnail.jpg" />
+  <meta property="og:image" content="https://abhimanue.in/assets/img/The-Survivor-Video-Thumbnail.jpg" />
   <link rel="canonical" href="https://abhimanue.in/the-survivor.html" />
   <link rel="icon" href="assets/img/favicon.png" type="image/png" />
 
@@ -291,7 +291,7 @@
     .discover-image {
       width: 100%;
       max-width: 900px;
-      height: 60vh;
+      height: auto;
       margin: 0 auto 60px;
       background: linear-gradient(135deg, #1a1510 0%, #0A0A0A 100%);
       border-radius: 4px;
@@ -349,7 +349,7 @@
       cursor: pointer;
       background:
         linear-gradient(135deg, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.45) 100%),
-        url('assets/survivor-art-work.jpg') center/contain no-repeat,
+        url('assets/img/The-Survivor-Video-Thumbnail.jpg') center/contain no-repeat,
         var(--matte-black);
       transition: opacity 0.6s ease;
       z-index: 2;
@@ -562,6 +562,48 @@
       transition: opacity 0.4s ease;
     }
     .masonry-item:hover .gallery-label { opacity: 1; }
+    .masonry-item img { display: block; width: 100%; height: auto; }
+
+    /* ============================== LIGHTBOX ============================== */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(10,10,10,0.96);
+      display: none; align-items: center; justify-content: center;
+      cursor: pointer;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 88vw; max-height: 86vh;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+      border-radius: 2px;
+    }
+    .lightbox-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 52px; height: 52px;
+      border: 1px solid var(--antique-gold); border-radius: 50%;
+      background: transparent; color: var(--antique-gold);
+      font-size: 1.3rem; cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lightbox-nav:hover { background: var(--antique-gold); color: var(--matte-black); }
+    .lightbox-prev { left: 24px; }
+    .lightbox-next { right: 24px; }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 28px;
+      background: none; border: none; color: var(--ivory-dim);
+      font-size: 2rem; cursor: pointer; line-height: 1;
+      font-family: var(--sans); font-weight: 300;
+    }
+    .lightbox-close:hover { color: var(--antique-gold); }
+    .lightbox-caption {
+      position: absolute; bottom: 24px; left: 0; right: 0;
+      text-align: center;
+      font-family: var(--sans); font-size: 0.7rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--ivory-dim);
+      pointer-events: none;
+    }
 
     /* ============================== SECTION 6: PHILOSOPHY ============================== */
     .philosophy-section {
@@ -618,18 +660,36 @@
     }
     .artist-portrait {
       width: 100%;
-      aspect-ratio: 3/4;
-      border-radius: 2px;
-      overflow: hidden;
-      background: linear-gradient(135deg, #1a1510 0%, #0A0A0A 100%);
       display: flex; align-items: center; justify-content: center;
     }
     .artist-portrait img {
-      width: 100%; height: 100%;
-      object-fit: cover;
+      display: block;
+      width: 100%; height: auto;
+      border-radius: 2px;
       filter: grayscale(20%) contrast(1.05);
     }
     .artist-portrait svg { width: 50%; height: 60%; opacity: 0.4; }
+    .artist-subtitle {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--antique-gold);
+      margin-bottom: 24px;
+    }
+    .artist-subtitle a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .artist-bio p {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--ivory-dim);
+      margin-bottom: 18px;
+    }
     .timeline {
       list-style: none;
       padding: 0;
@@ -996,6 +1056,7 @@
       margin-bottom: 8px;
     }
     .form-group input,
+    .form-group select,
     .form-group textarea {
       width: 100%;
       padding: 12px 16px;
@@ -1008,11 +1069,51 @@
       transition: border-color 0.3s ease;
     }
     .form-group input:focus,
+    .form-group select:focus,
     .form-group textarea:focus {
       outline: none;
       border-color: var(--antique-gold);
     }
+    .form-group select option { background: var(--matte-black); color: var(--warm-ivory); }
     .form-group textarea { resize: vertical; min-height: 80px; }
+    .phone-row { display: flex; gap: 10px; }
+    .phone-row .dial-code {
+      flex: 0 0 86px;
+      padding: 12px 10px;
+      border: 1px solid var(--gold-soft);
+      border-radius: 2px;
+      color: var(--antique-gold);
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      text-align: center;
+      background: rgba(255,255,255,0.03);
+    }
+    .acquisition-cause {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--ivory-dim);
+      max-width: 560px;
+      margin: -30px auto 40px;
+    }
+    .acquisition-success {
+      display: none;
+      max-width: 520px;
+      margin: 40px auto 0;
+      padding: 36px 28px;
+      border: 1px solid var(--gold-line);
+      text-align: center;
+    }
+    .acquisition-success.open { display: block; }
+    .acquisition-success h3 {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--antique-gold);
+      margin-bottom: 14px;
+    }
+    .acquisition-success p { color: var(--ivory-dim); font-size: 0.95rem; margin-bottom: 8px; }
+    .form-error { color: #d9846b; font-size: 0.8rem; text-align: center; margin-top: 12px; display: none; }
     .form-submit {
       width: 100%;
       padding: 14px;
@@ -1248,8 +1349,9 @@
       <a href="#viewer" style="display:none;">360°</a>
       <a href="#philosophy">Philosophy</a>
       <a href="#artist">Artist</a>
+      <a href="#gallery">Gallery</a>
       <a href="#purpose">Purpose</a>
-      <a href="#acquisition">Acquire</a>
+      <a href="#acquisition">Buy Now</a>
     </div>
   </nav>
 
@@ -1258,19 +1360,19 @@
     <div class="hero-content">
       <div class="hero-left">
         <h1 class="hero-title reveal">THE SURVIVOR</h1>
-        <p class="hero-subtitle reveal reveal-delay-1">Original Natural Sculpture</p>
-        <p class="hero-edition reveal reveal-delay-1">Edition 1 of 1</p>
+        <p class="hero-subtitle reveal reveal-delay-1">Art for a Cause &mdash; Education for Underprivileged Children</p>
+        <p class="hero-edition reveal reveal-delay-1">Original Natural Sculpture &bull; Edition 1 of 1 &bull; USD 25,000</p>
         <p class="hero-artist reveal reveal-delay-2">by Abhimanue Udayan</p>
         <p class="hero-roles reveal reveal-delay-2">Educator &bull; Physicist &bull; Technopreneur</p>
         <blockquote class="hero-quote reveal reveal-delay-3">
           "Forged by the earth. Refined by time. A quiet study in persistence."
         </blockquote>
         <div class="hero-buttons reveal reveal-delay-3">
-          <a href="#acquisition" class="btn-gold">Acquire</a>
+          <a href="#acquisition" class="btn-gold">Buy Now &mdash; USD 25,000</a>
           <a href="#film" class="btn-ghost">Watch Story</a>
         </div>
         <div class="hero-small reveal reveal-delay-4">
-          <span>Private Acquisition</span>
+          <span>Art for a Cause</span>
           <span>Worldwide Shipping</span>
           <span>Certificate Included</span>
         </div>
@@ -1280,7 +1382,7 @@
           <div class="sculpture-spotlight"></div>
           <div class="sculpture-container" id="heroSculpture">
             <div class="sculpture-mock">
-              <img src="assets/img/The-Sruvivor.jpg" alt="The Survivor - Natural Sculpture by Abhimanue Udayan" style="max-width:100%;max-height:70vh;width:auto;height:auto;border-radius:4px;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.8));" />
+              <img src="assets/img/The-Survivor-Video-Thumbnail.jpg" alt="The Survivor - Natural Sculpture by Abhimanue Udayan" style="max-width:100%;max-height:70vh;width:auto;height:auto;border-radius:4px;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.8));" />
             </div>
           </div>
         </div>
@@ -1293,7 +1395,7 @@
   <section class="discover" id="discover">
     <span class="section-label reveal" style="text-align:center;display:block;">Discover the Form</span>
     <div class="discover-image reveal reveal-delay-1">
-      <img src="assets/img/The-Sruvivor.jpg" alt="The Survivor - Natural Guava Root Sculpture" style="width:100%;height:100%;object-fit:cover;" />
+      <img src="assets/img/The-Sruvivor.jpg" alt="The Survivor - Natural Guava Root Sculpture" style="display:block;width:100%;height:auto;" />
     </div>
     <div class="discover-text">
       <p class="reveal reveal-delay-2">A guava root, forged inside the mother earth.</p>
@@ -1310,7 +1412,7 @@
     <span class="section-label reveal" style="text-align:center;display:block;">The Film</span>
     <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">The Story Behind The Survivor</h2>
     <div class="film-wrapper reveal reveal-delay-2" style="position:relative;">
-      <video class="film-video" id="filmVideo" playsinline poster="assets/survivor-art-work.jpg"></video>
+      <video class="film-video" id="filmVideo" playsinline poster="assets/img/The-Survivor-Video-Thumbnail.jpg"></video>
       <div class="film-overlay" id="filmOverlay" onclick="playFilm()">
         <div class="play-btn">
           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -1387,76 +1489,6 @@
     </div>
   </section>
 
-  <!-- ============================== SECTION 5: GALLERY ============================== -->
-  <section class="gallery-section" id="gallery" style="display:none;">
-    <span class="section-label reveal">Every Angle Tells Another Story</span>
-    <h2 class="section-title reveal reveal-delay-1">The Gallery</h2>
-    <div class="masonry-gallery">
-      <div class="masonry-item reveal">
-        <div class="gallery-placeholder" style="height:320px;">
-          <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#7B5234"/><stop offset="100%" style="stop-color:#3a2515"/></linearGradient></defs>
-            <path d="M100 20 C80 30, 70 50, 75 80 C60 90, 50 120, 60 150 C45 160, 40 190, 55 210 C50 230, 60 255, 80 260 L120 260 C140 255, 150 230, 145 210 C160 190, 155 160, 140 150 C150 120, 140 90, 125 80 C130 50, 120 30, 100 20 Z" fill="url(#g1)"/>
-          </svg>
-        </div>
-        <div class="gallery-label">Wood Grain Detail</div>
-      </div>
-      <div class="masonry-item reveal reveal-delay-1">
-        <div class="gallery-placeholder" style="height:240px;">
-          <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
-            <defs><radialGradient id="g2"><stop offset="0%" style="stop-color:#A78652;stop-opacity:0.6"/><stop offset="100%" style="stop-color:#0A0A0A"/></radialGradient></defs>
-            <circle cx="100" cy="75" r="60" fill="url(#g2)"/>
-            <circle cx="100" cy="75" r="40" fill="none" stroke="#7B5234" stroke-width="0.5" opacity="0.5"/>
-            <circle cx="100" cy="75" r="20" fill="none" stroke="#7B5234" stroke-width="0.5" opacity="0.3"/>
-          </svg>
-        </div>
-        <div class="gallery-label">Natural Textures</div>
-      </div>
-      <div class="masonry-item reveal reveal-delay-2">
-        <div class="gallery-placeholder" style="height:380px;">
-          <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="g3" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#5a3a24"/><stop offset="100%" style="stop-color:#1a1008"/></linearGradient></defs>
-            <path d="M90 10 C70 40, 60 80, 80 120 C50 140, 40 180, 70 220 C60 250, 80 270, 100 270 C120 270, 140 250, 130 220 C160 180, 150 140, 120 120 C140 80, 130 40, 110 10 Z" fill="url(#g3)"/>
-            <ellipse cx="100" cy="100" rx="10" ry="15" fill="#0A0A0A" opacity="0.7"/>
-          </svg>
-        </div>
-        <div class="gallery-label">Negative Space</div>
-      </div>
-      <div class="masonry-item reveal">
-        <div class="gallery-placeholder" style="height:200px;">
-          <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#7B5234"/><stop offset="50%" style="stop-color:#A78652"/><stop offset="100%" style="stop-color:#5a3a24"/></linearGradient></defs>
-            <path d="M0 60 Q50 30 100 60 T200 60 L200 120 L0 120 Z" fill="url(#g4)"/>
-            <path d="M0 60 Q50 30 100 60 T200 60" fill="none" stroke="#3a2515" stroke-width="1"/>
-          </svg>
-        </div>
-        <div class="gallery-label">Macro Surface</div>
-      </div>
-      <div class="masonry-item reveal reveal-delay-1">
-        <div class="gallery-placeholder" style="height:300px;">
-          <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="g5" x1="20%" y1="0%" x2="80%" y2="100%"><stop offset="0%" style="stop-color:#7B5234"/><stop offset="100%" style="stop-color:#2a1810"/></linearGradient></defs>
-            <path d="M100 10 C70 30, 60 70, 80 110 C50 130, 50 170, 80 200 C90 210, 110 210, 120 200 C150 170, 150 130, 120 110 C140 70, 130 30, 100 10 Z" fill="url(#g5)"/>
-            <path d="M90 30 C85 60, 80 90, 85 120" fill="none" stroke="#3a2515" stroke-width="0.8" opacity="0.6"/>
-            <path d="M110 30 C115 60, 120 90, 115 120" fill="none" stroke="#3a2515" stroke-width="0.8" opacity="0.6"/>
-          </svg>
-        </div>
-        <div class="gallery-label">Form &amp; Shadow</div>
-      </div>
-      <div class="masonry-item reveal reveal-delay-2">
-        <div class="gallery-placeholder" style="height:260px;">
-          <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
-            <defs><radialGradient id="g6" cx="50%" cy="40%"><stop offset="0%" style="stop-color:#A78652;stop-opacity:0.4"/><stop offset="100%" style="stop-color:#0A0A0A"/></radialGradient></defs>
-            <rect width="200" height="180" fill="url(#g6)"/>
-            <path d="M60 40 Q100 20 140 40 Q130 80 100 90 Q70 80 60 40 Z" fill="#5a3a24" opacity="0.7"/>
-            <path d="M70 100 Q100 80 130 100 Q120 140 100 150 Q80 140 70 100 Z" fill="#3a2515" opacity="0.6"/>
-          </svg>
-        </div>
-        <div class="gallery-label">Museum Lighting</div>
-      </div>
-    </div>
-  </section>
-
   <!-- ============================== SECTION 6: PHILOSOPHY ============================== -->
   <section class="philosophy-section" id="philosophy">
     <p class="philosophy-quote reveal">
@@ -1488,17 +1520,13 @@
         </svg>
       </div>
       <div class="artist-info reveal reveal-delay-2">
-        <ul class="timeline">
-          <li class="timeline-item">Physics</li>
-          <li class="timeline-arrow">&#8595;</li>
-          <li class="timeline-item">Education</li>
-          <li class="timeline-arrow">&#8595;</li>
-          <li class="timeline-item">Technology</li>
-          <li class="timeline-arrow">&#8595;</li>
-          <li class="timeline-item">Entrepreneurship</li>
-          <li class="timeline-arrow">&#8595;</li>
-          <li class="timeline-item" style="color:var(--antique-gold);">Natural Sculpture</li>
-        </ul>
+        <p class="artist-subtitle">Founder of <a href="https://hexagonknow.com" target="_blank" rel="noopener noreferrer">Hexagon Know</a></p>
+        <div class="artist-bio">
+          <p>My journey began with its share of struggles, but also with an enduring curiosity about the world and a desire to create something meaningful. I started exploring entrepreneurship at just 12 years old, driven by an early fascination with ideas, technology, and building things. I went on to complete my postgraduate studies in Physics and gradually found my calling at the intersection of technology, education, and innovation.</p>
+          <p>Over the years, I have worked on technology-driven learning solutions and educational applications that have helped children across the world access knowledge in new ways. Through this journey, I discovered how technology and education can transform lives, and how powerful that transformation can be when it reaches those who need it most.</p>
+          <p>Survivor Art was born from this belief. To me, survival is not just about finding the strength to move forward; it is also about extending a hand to help others find their way. It represents resilience, hope, and the possibility of turning our experiences into something meaningful for others.</p>
+          <p>The net proceeds from the sale of this artwork, after applicable costs and deductions, will be dedicated to educating underprivileged children and creating meaningful learning opportunities. I hope this artwork will inspire more than admiration; I hope it will help change lives.</p>
+        </div>
         <blockquote class="artist-quote">
           "Innovation taught me how to build.<br/>
           Nature taught me how to see."
@@ -1548,12 +1576,12 @@
 
   <!-- ============================== SECTION 10: PURPOSE ============================== -->
   <section class="purpose-section" id="purpose">
-    <span class="section-label reveal" style="text-align:center;display:block;">Art That Gives Back</span>
+    <span class="section-label reveal" style="text-align:center;display:block;">Art for a Cause</span>
     <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">A Purpose Beyond Art.</h2>
     <div class="purpose-body reveal reveal-delay-2">
       <p class="purpose-lead">Every child deserves the opportunity to learn, grow and build a better future.</p>
-      <p>The Survivor is a celebration of courage, resilience and the strength to rise above adversity. Its purpose extends beyond the artwork itself.</p>
-      <p>A portion of the proceeds from the sale of this artwork will be dedicated to supporting the education of children from economically disadvantaged backgrounds.</p>
+      <p>The Survivor is art for a cause &mdash; a celebration of courage, resilience and the strength to rise above adversity, offered to support the education of poor and underprivileged children.</p>
+      <p>The net proceeds from the sale of this artwork, after applicable costs and deductions, will be dedicated to the education of underprivileged children.</p>
       <p>Because true success is not just about how far we rise, but how many lives we help uplift along the way.</p>
       <p class="purpose-close">Art that inspires. Art that makes a difference.</p>
     </div>
@@ -1571,7 +1599,7 @@
       <div class="impact-item reveal reveal-delay-1">
         <span class="impact-num">02.</span>
         <h3 class="impact-name">Supporting Education</h3>
-        <p class="impact-desc">A dedicated portion of the sale proceeds will contribute towards educational opportunities for children in need.</p>
+        <p class="impact-desc">The net proceeds of the sale will contribute towards educational opportunities for children in need.</p>
       </div>
       <div class="impact-item reveal reveal-delay-2">
         <span class="impact-num">03.</span>
@@ -1648,31 +1676,78 @@
   <section class="acquisition-section" id="acquisition">
     <h2 class="acquisition-title reveal">THE SURVIVOR</h2>
     <p class="acquisition-edition reveal reveal-delay-1">Edition 1 of 1</p>
-    <p class="acquisition-label reveal reveal-delay-2">Own a Story. Support a Future.</p>
-    <p class="acquisition-price reveal reveal-delay-2"><s>USD 5,000</s> USD 4,444</p>
+    <p class="acquisition-label reveal reveal-delay-2">Art for a Cause. Own a Story. Support a Future.</p>
+    <p class="acquisition-price reveal reveal-delay-2">USD 25,000</p>
+    <p class="acquisition-cause reveal reveal-delay-2">Your acquisition supports the education of poor and underprivileged children.</p>
     <div class="reveal reveal-delay-3" style="text-align:center;">
-      <button class="btn-gold" id="acquireBtn" onclick="toggleForm()">Request Acquisition</button>
+      <button class="btn-gold" id="acquireBtn" onclick="toggleForm()">Buy Now &mdash; USD 25,000</button>
     </div>
     <form class="acquisition-form" id="acquireForm" onsubmit="submitInquiry(event)">
       <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" name="name" required placeholder="Your name" />
+        <label for="acqName">Full Name</label>
+        <input type="text" id="acqName" name="name" required placeholder="Your name" />
       </div>
       <div class="form-group">
-        <label>Email</label>
-        <input type="email" name="email" required placeholder="your@email.com" />
+        <label for="acqEmail">Email</label>
+        <input type="email" id="acqEmail" name="email" required placeholder="your@email.com" />
       </div>
       <div class="form-group">
-        <label>Phone</label>
-        <input type="tel" name="phone" placeholder="Optional" />
+        <label for="acqCountry">Country</label>
+        <select id="acqCountry" name="country" required onchange="updateDialCode()">
+          <option value="United States" data-code="+1">United States (+1)</option>
+          <option value="United Arab Emirates" data-code="+971">United Arab Emirates (+971)</option>
+          <option value="United Kingdom" data-code="+44">United Kingdom (+44)</option>
+          <option value="Canada" data-code="+1">Canada (+1)</option>
+          <option value="Saudi Arabia" data-code="+966">Saudi Arabia (+966)</option>
+          <option value="Qatar" data-code="+974">Qatar (+974)</option>
+          <option value="Kuwait" data-code="+965">Kuwait (+965)</option>
+          <option value="Bahrain" data-code="+973">Bahrain (+973)</option>
+          <option value="Oman" data-code="+968">Oman (+968)</option>
+          <option value="India" data-code="+91">India (+91)</option>
+          <option value="Singapore" data-code="+65">Singapore (+65)</option>
+          <option value="Hong Kong" data-code="+852">Hong Kong (+852)</option>
+          <option value="Australia" data-code="+61">Australia (+61)</option>
+          <option value="New Zealand" data-code="+64">New Zealand (+64)</option>
+          <option value="Germany" data-code="+49">Germany (+49)</option>
+          <option value="France" data-code="+33">France (+33)</option>
+          <option value="Switzerland" data-code="+41">Switzerland (+41)</option>
+          <option value="Netherlands" data-code="+31">Netherlands (+31)</option>
+          <option value="Italy" data-code="+39">Italy (+39)</option>
+          <option value="Spain" data-code="+34">Spain (+34)</option>
+          <option value="Ireland" data-code="+353">Ireland (+353)</option>
+          <option value="Sweden" data-code="+46">Sweden (+46)</option>
+          <option value="Norway" data-code="+47">Norway (+47)</option>
+          <option value="Japan" data-code="+81">Japan (+81)</option>
+          <option value="South Korea" data-code="+82">South Korea (+82)</option>
+          <option value="China" data-code="+86">China (+86)</option>
+          <option value="Malaysia" data-code="+60">Malaysia (+60)</option>
+          <option value="South Africa" data-code="+27">South Africa (+27)</option>
+          <option value="Brazil" data-code="+55">Brazil (+55)</option>
+          <option value="Mexico" data-code="+52">Mexico (+52)</option>
+          <option value="Other" data-code="">Other (enter code below)</option>
+        </select>
       </div>
       <div class="form-group">
-        <label>Message</label>
-        <textarea name="message" placeholder="Tell us about your interest in The Survivor"></textarea>
+        <label for="acqWhatsapp">WhatsApp Number</label>
+        <div class="phone-row">
+          <input type="text" class="dial-code" id="acqDialCode" name="dial_code" value="+1" required pattern="\+[0-9]{1,4}" title="Country code, e.g. +1" aria-label="Country code" />
+          <input type="tel" id="acqWhatsapp" name="whatsapp" required placeholder="WhatsApp number" pattern="[0-9 ()\-]{6,20}" title="Enter your WhatsApp number without the country code" />
+        </div>
       </div>
-      <button type="submit" class="form-submit">Proceed to Secure Payment</button>
-      <p class="acquisition-note">You will be redirected to our secure checkout on Hexagon Know (powered by Razorpay) to complete the acquisition of USD 4,444.<br/>Complimentary insured worldwide shipping · All sales are final — no refunds.</p>
+      <div class="form-group">
+        <label for="acqMessage">Message</label>
+        <textarea id="acqMessage" name="message" placeholder="Optional — anything you would like us to know"></textarea>
+      </div>
+      <button type="submit" class="form-submit">Express Interest to Buy</button>
+      <p class="form-error" id="acqError"></p>
+      <p class="acquisition-note">No payment is taken here. Once you submit, the payment details will be sent to your email address.<br/>Complimentary insured worldwide shipping · All sales are final — no refunds.</p>
     </form>
+    <div class="acquisition-success" id="acquireSuccess" role="status" aria-live="polite">
+      <h3>Thank You</h3>
+      <p>We have received your interest in <strong>The Survivor</strong>.</p>
+      <p>The payment details will be sent to your email address shortly. We may also reach out to you on WhatsApp.</p>
+      <p style="color:var(--antique-gold);font-family:var(--serif);font-style:italic;font-size:1.1rem;margin-top:16px;">Thank you for supporting the education of underprivileged children.</p>
+    </div>
   </section>
 
   <!-- ============================== SECTION 15: OUR COMMITMENT ============================== -->
@@ -1680,7 +1755,7 @@
     <span class="section-label reveal" style="text-align:center;display:block;">Our Commitment</span>
     <div class="commitment-body reveal reveal-delay-1">
       <p>We believe that access to education should never be limited by financial circumstances.</p>
-      <p>A fixed portion of the proceeds from the sale of The Survivor will be allocated towards supporting the education of underprivileged children.</p>
+      <p>The net proceeds from the sale of The Survivor, after applicable costs and deductions, will be allocated towards supporting the education of underprivileged children.</p>
       <p>We intend to share updates on how these contributions are utilised, ensuring that the purpose behind this artwork remains transparent and accountable.</p>
       <p class="commitment-close">Every acquisition contributes to something beyond art.</p>
     </div>
@@ -1698,6 +1773,24 @@
         </div>
         <div class="faq-answer">
           <p>The Survivor is a guava root, forged inside the mother earth over decades. The form is the earth's own work — shaped by pressure, time, and survival. The artist adds only minor carvings and a museum preservation polish to bring out what nature has already written.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          How do I purchase The Survivor?
+          <span class="faq-toggle"></span>
+        </div>
+        <div class="faq-answer">
+          <p>The Survivor is priced at USD 25,000. Click "Buy Now", share your name, email, country and WhatsApp number, and the payment details will be sent to your email address. The studio will guide you personally through the rest of the acquisition.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          Why is it called art for a cause?
+          <span class="faq-toggle"></span>
+        </div>
+        <div class="faq-answer">
+          <p>The Survivor is offered to support the education of poor and underprivileged children. The net proceeds from its sale, after applicable costs and deductions, go towards their education.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -1755,6 +1848,47 @@
       &copy; 2026 Abhimanue Udayan. All Rights Reserved.
     </div>
   </footer>
+
+  <!-- ============================== GALLERY ============================== -->
+  <section class="gallery-section" id="gallery">
+    <span class="section-label reveal">Every Angle Tells Another Story</span>
+    <h2 class="section-title reveal reveal-delay-1">The Gallery</h2>
+    <div class="masonry-gallery">
+      <div class="masonry-item reveal">
+        <img src="assets/img/Survivor-Photos/The_Survivor_Side_View_1.jpg" alt="The Survivor — side view" loading="lazy" onclick="openLightbox(0)" />
+        <div class="gallery-label">Side View I</div>
+      </div>
+      <div class="masonry-item reveal reveal-delay-1">
+        <img src="assets/img/Survivor-Photos/The_Survivor_Top_View.jpg" alt="The Survivor — top view" loading="lazy" onclick="openLightbox(1)" />
+        <div class="gallery-label">Top View</div>
+      </div>
+      <div class="masonry-item reveal reveal-delay-2">
+        <img src="assets/img/Survivor-Photos/The_Survivor_Side_View_2.jpg" alt="The Survivor — side view" loading="lazy" onclick="openLightbox(2)" />
+        <div class="gallery-label">Side View II</div>
+      </div>
+      <div class="masonry-item reveal">
+        <img src="assets/img/Survivor-Photos/The_Survivor_Side_View_3.jpg" alt="The Survivor — side view" loading="lazy" onclick="openLightbox(3)" />
+        <div class="gallery-label">Side View III</div>
+      </div>
+      <div class="masonry-item reveal reveal-delay-1">
+        <img src="assets/img/Survivor-Photos/The_Survivor_Side_View_4.jpg" alt="The Survivor — side view" loading="lazy" onclick="openLightbox(4)" />
+        <div class="gallery-label">Side View IV</div>
+      </div>
+      <div class="masonry-item reveal reveal-delay-2">
+        <img src="assets/img/Survivor-Photos/The_Survivor_Side_View_5.jpg" alt="The Survivor — side view" loading="lazy" onclick="openLightbox(5)" />
+        <div class="gallery-label">Side View V</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== LIGHTBOX ============================== -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" aria-label="Close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-nav lightbox-prev" aria-label="Previous photo" onclick="lightboxStep(event, -1)">&#8249;</button>
+    <img id="lightboxImg" src="" alt="The Survivor" onclick="lightboxStep(event, 1)" />
+    <button class="lightbox-nav lightbox-next" aria-label="Next photo" onclick="lightboxStep(event, 1)">&#8250;</button>
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+  </div>
 
   <!-- ============================== FINAL MOMENT ============================== -->
   <section class="final-moment" id="finalMoment">
@@ -1826,7 +1960,7 @@
     }
 
     // ==================== HLS FILM STREAMING ====================
-    const HLS_URL = 'https://d1nh1cy4xqxz3k.cloudfront.net/Survivor-V3/master.m3u8';
+    const HLS_URL = 'https://d1nh1cy4xqxz3k.cloudfront.net/Survivor-Promo/master.m3u8';
     let hls = null;
     let filmVideo = null;
     let filmStarted = false;
@@ -2055,6 +2189,49 @@
       }
     }
 
+    // ==================== GALLERY LIGHTBOX ====================
+    const galleryPhotos = [
+      { src: 'assets/img/Survivor-Photos/The_Survivor_Side_View_1.jpg', label: 'Side View I' },
+      { src: 'assets/img/Survivor-Photos/The_Survivor_Top_View.jpg', label: 'Top View' },
+      { src: 'assets/img/Survivor-Photos/The_Survivor_Side_View_2.jpg', label: 'Side View II' },
+      { src: 'assets/img/Survivor-Photos/The_Survivor_Side_View_3.jpg', label: 'Side View III' },
+      { src: 'assets/img/Survivor-Photos/The_Survivor_Side_View_4.jpg', label: 'Side View IV' },
+      { src: 'assets/img/Survivor-Photos/The_Survivor_Side_View_5.jpg', label: 'Side View V' }
+    ];
+    let lightboxIndex = 0;
+
+    function showLightboxPhoto() {
+      const photo = galleryPhotos[lightboxIndex];
+      document.getElementById('lightboxImg').src = photo.src;
+      document.getElementById('lightboxCaption').textContent =
+        photo.label + '  ·  ' + (lightboxIndex + 1) + ' / ' + galleryPhotos.length;
+    }
+
+    function openLightbox(i) {
+      lightboxIndex = i;
+      showLightboxPhoto();
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function lightboxStep(e, dir) {
+      e.stopPropagation();
+      lightboxIndex = (lightboxIndex + dir + galleryPhotos.length) % galleryPhotos.length;
+      showLightboxPhoto();
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (!document.getElementById('lightbox').classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lightboxIndex = (lightboxIndex - 1 + galleryPhotos.length) % galleryPhotos.length, showLightboxPhoto();
+      if (e.key === 'ArrowRight') lightboxIndex = (lightboxIndex + 1) % galleryPhotos.length, showLightboxPhoto();
+    });
+
     // ==================== FAQ ====================
     function toggleFAQ(el) {
       const item = el.parentElement;
@@ -2072,50 +2249,70 @@
       }
     }
 
-    // Secure checkout is hosted on hexagonknow.com (Razorpay), same pattern
-    // as study-performance-coaching — USD 4,444, product "the-survivor".
-    const SURVIVOR_PAYMENT_URL = 'https://hexagonknow.com/abhimanue-survivor-payment.html';
+    function updateDialCode() {
+      const select = document.getElementById('acqCountry');
+      const dial = document.getElementById('acqDialCode');
+      const code = select.options[select.selectedIndex].dataset.code;
+      dial.value = code || '+';
+      if (!code) dial.focus();
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
 
     function submitInquiry(e) {
       e.preventDefault();
       const form = document.getElementById('acquireForm');
       const btn = form.querySelector('.form-submit');
+      const errorEl = document.getElementById('acqError');
+      errorEl.style.display = 'none';
       btn.textContent = 'Submitting...';
       btn.disabled = true;
 
       const name = form.elements['name'].value.trim();
       const email = form.elements['email'].value.trim();
-      const phone = form.elements['phone'].value.trim();
+      const country = form.elements['country'].value;
+      const whatsapp = form.elements['dial_code'].value.trim() + ' ' + form.elements['whatsapp'].value.trim();
       const message = form.elements['message'].value.trim();
 
-      // Notify the studio of the acquisition intent, then continue to payment
-      // regardless — the checkout page collects the buyer's details as well.
-      const notify = fetch('/api/contact', {
+      const msg = [
+        '<strong>Buyer interest — The Survivor (USD 25,000)</strong>',
+        'Please send the payment details to the buyer\'s email address.',
+        '',
+        '<strong>Country:</strong> ' + escapeHtml(country),
+        '<strong>WhatsApp:</strong> ' + escapeHtml(whatsapp),
+        '<strong>Message:</strong> ' + (message ? escapeHtml(message) : '—')
+      ].join('<br/>');
+
+      fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: name,
           email: email,
-          subject: 'The Survivor — Acquisition Inquiry',
-          msg: 'Phone: ' + (phone || 'not provided') + '\n\n' + (message || 'Acquisition interest in The Survivor (USD 4,444).')
+          subject: 'The Survivor — Buyer Interest (USD 25,000)',
+          msg: msg
         })
-      }).catch(function () { /* payment proceeds even if the notification fails */ });
-
-      const paymentParams = new URLSearchParams({
-        name: name,
-        email: email,
-        product: 'the-survivor',
-        return_url: window.location.origin + '/the-survivor.html'
-      });
-      const cleanPhone = phone.replace(/\D/g, '');
-      if (cleanPhone) {
-        paymentParams.append('phone', cleanPhone);
-      }
-
-      btn.textContent = 'Redirecting to secure payment...';
-      Promise.race([notify, new Promise(function (r) { setTimeout(r, 1500); })]).then(function () {
-        window.location.href = SURVIVOR_PAYMENT_URL + '?' + paymentParams.toString();
-      });
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (!data.success) throw new Error(data.message || 'Submission failed');
+          form.classList.remove('open');
+          form.style.display = 'none';
+          document.getElementById('acquireBtn').style.display = 'none';
+          const success = document.getElementById('acquireSuccess');
+          success.classList.add('open');
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        })
+        .catch(function () {
+          errorEl.textContent = 'Something went wrong. Please try again or email contact@abhimanue.in.';
+          errorEl.style.display = 'block';
+          btn.textContent = 'Express Interest to Buy';
+          btn.disabled = false;
+        });
     }
 
     // ==================== FINAL MOMENT ====================
