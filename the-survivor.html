@@ -832,6 +832,21 @@
       color: var(--antique-gold);
       margin-bottom: 40px;
     }
+    .footer-hkpl {
+      margin-bottom: 36px;
+    }
+    .footer-hkpl img {
+      height: 44px; width: auto;
+      display: inline-block;
+      margin-bottom: 14px;
+      opacity: 0.9;
+    }
+    .footer-hkpl-text {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      line-height: 1.8;
+      color: var(--ivory-faint);
+    }
     .footer-contact {
       font-family: var(--sans);
       font-size: 0.8rem;
@@ -1720,12 +1735,18 @@
   <footer class="footer">
     <div class="footer-logo">THE SURVIVOR</div>
     <div class="footer-tagline">A Natural Sculpture by Abhimanue Udayan</div>
+    <div class="footer-hkpl">
+      <a href="https://hexagonknow.com" target="_blank" rel="noopener noreferrer">
+        <img src="assets/img/HKPL_Light.png" width="1000" height="200" alt="Hexagon Know Private Limited" />
+      </a>
+      <p class="footer-hkpl-text">The Survivor is sold and fulfilled by<br/>Hexagon Know Private Limited</p>
+    </div>
     <div class="footer-contact">
-      Private enquiries: <a href="mailto:contact@abhimanue.in">contact@abhimanue.in</a>
+      For inquiries: <a href="mailto:support@hexagonknow.com">support@hexagonknow.com</a>
       &nbsp;&bull;&nbsp; <a href="index.html">abhimanue.in</a>
     </div>
     <div class="footer-copy">
-      &copy; 2026 Abhimanue Udayan. All Rights Reserved.
+      &copy; 2026 Hexagon Know Private Limited. All Rights Reserved.
     </div>
   </footer>
 
@@ -1815,12 +1836,20 @@
         // hls.js for Chrome/Firefox/Edge
         hls = new Hls({
           enableWorker: true,
-          lowLatencyMode: false,
-          capLevelToPlayerSize: true
+          lowLatencyMode: false
         });
         hls.loadSource(HLS_URL);
         hls.attachMedia(filmVideo);
         hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          // Lock playback to 1080p; fall back to the closest level if unavailable.
+          const levels = hls.levels;
+          let target = -1, best = -1, bestDiff = Infinity;
+          for (let i = 0; i < levels.length; i++) {
+            if (levels[i].height === 1080) { target = i; break; }
+            const diff = Math.abs(levels[i].height - 1080);
+            if (diff < bestDiff) { bestDiff = diff; best = i; }
+          }
+          hls.currentLevel = target >= 0 ? target : best;
           filmVideo.play();
         });
         hls.on(Hls.Events.ERROR, (event, data) => {
