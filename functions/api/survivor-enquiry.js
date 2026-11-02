@@ -54,7 +54,7 @@ function ownerEmailHtml(e) {
       </div>
       <div style="padding:24px;background:#f9f9f9;border-radius:0 0 8px 8px;">
         <table style="width:100%;border-collapse:collapse;">${rows}</table>
-        <p style="color:#888;font-size:12px;margin-top:20px;">The enquirer has been sent an automatic confirmation stating that you will respond personally within 24 hours. Reply directly to this email to respond.</p>
+        <p style="color:#888;font-size:12px;margin-top:20px;">The enquirer has been sent an automatic confirmation that the banking details will be forwarded and that the transaction is completed with Hexagon Know Private Limited. Reply directly to this email to send the banking details.</p>
       </div>
     </div>`;
 }
@@ -66,8 +66,8 @@ function buyerEmailHtml(name, pageUrl) {
       <h1 style="font-weight:normal;font-size:30px;letter-spacing:2px;margin:0 0 28px;">THE SURVIVOR</h1>
       <p style="font-size:16px;line-height:1.8;color:#d8d4cc;">Dear ${escapeHtml(name)},</p>
       <p style="font-size:16px;line-height:1.8;color:#d8d4cc;">Thank you for your interest in <em>The Survivor</em>. This is to confirm that your private acquisition enquiry has been received.</p>
-      <p style="font-size:16px;line-height:1.8;color:#d8d4cc;">I will respond to you personally within 24 hours to discuss the artwork, a private viewing and the next steps.</p>
-      <p style="font-size:16px;line-height:1.8;color:#d8d4cc;">No payment is required at this stage.</p>
+      <p style="font-size:16px;line-height:1.8;color:#d8d4cc;"><em>The Survivor</em> is sold and fulfilled by my organisation, <strong>Hexagon Know Private Limited</strong>. I will forward the banking details so that you can complete the transaction.</p>
+      <p style="font-size:16px;line-height:1.8;color:#d8d4cc;">As only one piece is available, I kindly request that you initiate the payment at the earliest.</p>
       <p style="font-size:16px;line-height:1.8;color:#d8d4cc;margin-top:32px;">With gratitude,<br/><span style="color:#A78652;">Abhimanue Udayan</span></p>
       <hr style="border:none;border-top:1px solid rgba(167,134,82,0.4);margin:36px 0 20px;"/>
       <p style="font-family:Arial,sans-serif;font-size:12px;color:#8a867f;line-height:1.7;margin:0;">
@@ -83,9 +83,9 @@ function buyerEmailText(name, pageUrl) {
     '',
     'Thank you for your interest in The Survivor. This is to confirm that your private acquisition enquiry has been received.',
     '',
-    'I will respond to you personally within 24 hours to discuss the artwork, a private viewing and the next steps.',
+    'The Survivor is sold and fulfilled by my organisation, Hexagon Know Private Limited. I will forward the banking details so that you can complete the transaction.',
     '',
-    'No payment is required at this stage.',
+    'As only one piece is available, I kindly request that you initiate the payment at the earliest.',
     '',
     'With gratitude,',
     'Abhimanue Udayan',
