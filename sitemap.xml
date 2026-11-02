@@ -128,8 +128,14 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://abhimanue.in/the-survivor-story-belief-hope.html</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://abhimanue.in/the-survivor.html</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>

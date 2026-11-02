@@ -54,20 +54,40 @@ function ownerEmailHtml(e) {
       </div>
       <div style="padding:24px;background:#f9f9f9;border-radius:0 0 8px 8px;">
         <table style="width:100%;border-collapse:collapse;">${rows}</table>
-        <p style="color:#888;font-size:12px;margin-top:20px;">The enquirer has been sent an automatic confirmation that the banking details will be forwarded and that the transaction is completed with Hexagon Know Private Limited. Reply directly to this email to send the banking details.</p>
+        <p style="color:#888;font-size:12px;margin-top:20px;">The enquirer has been sent an automatic confirmation including the banking details for Hexagon Know Private Limited. Reply directly to this email to confirm receipt of their transfer.</p>
       </div>
     </div>`;
 }
 
+const BANK_DETAILS = [
+  ['Bank', 'Axis Bank Limited'],
+  ['Branch', 'Kochi Branch'],
+  ['Branch address', 'Ground Floor, 41/419, Chicago Plaza, Rajaji Road, Ernakulam, Kochi, Kerala 682035'],
+  ['Account holder', 'Hexagon Know Private Limited'],
+  ['Account number', '924020009462606'],
+  ['IFSC', 'UTIB0000081'],
+  ['SWIFT/BIC', 'AXISINBB081'],
+  ['Currency', 'INR'],
+  ['Country', 'India']
+];
+
 function buyerEmailHtml(name, pageUrl) {
+  const bankRows = BANK_DETAILS.map(([label, value]) => `
+        <tr>
+          <td style="padding:8px 12px 8px 0;font-family:Arial,sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#A78652;white-space:nowrap;vertical-align:top;">${label}</td>
+          <td style="padding:8px 0;font-size:14px;color:#d8d4cc;vertical-align:top;">${escapeHtml(value)}</td>
+        </tr>`).join('');
   return `
     <div style="font-family:Georgia,'Times New Roman',serif;max-width:600px;margin:0 auto;background:#0A0A0A;color:#F4F1EB;padding:48px 40px;">
       <p style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#A78652;margin:0 0 24px;">Private Acquisition Enquiry</p>
       <h1 style="font-weight:normal;font-size:30px;letter-spacing:2px;margin:0 0 28px;">THE SURVIVOR</h1>
       <p style="font-size:16px;line-height:1.8;color:#d8d4cc;">Dear ${escapeHtml(name)},</p>
       <p style="font-size:16px;line-height:1.8;color:#d8d4cc;">Thank you for your interest in <em>The Survivor</em>. This is to confirm that your private acquisition enquiry has been received.</p>
-      <p style="font-size:16px;line-height:1.8;color:#d8d4cc;"><em>The Survivor</em> is sold and fulfilled by my organisation, <strong>Hexagon Know Private Limited</strong>. I will forward the banking details so that you can complete the transaction.</p>
+      <p style="font-size:16px;line-height:1.8;color:#d8d4cc;"><em>The Survivor</em> is sold and fulfilled by my organisation, <strong>Hexagon Know Private Limited</strong>. The banking details for completing the transaction are below.</p>
       <p style="font-size:16px;line-height:1.8;color:#d8d4cc;">As only one piece is available, I kindly request that you initiate the payment at the earliest.</p>
+      <table style="width:100%;border-collapse:collapse;margin:32px 0;padding:24px 20px;border:1px solid rgba(167,134,82,0.4);">${bankRows}
+      </table>
+      <p style="font-family:Arial,sans-serif;font-size:12px;color:#8a867f;line-height:1.7;">Please use your name as the payment reference and reply to this email with the transfer confirmation once initiated.</p>
       <p style="font-size:16px;line-height:1.8;color:#d8d4cc;margin-top:32px;">With gratitude,<br/><span style="color:#A78652;">Abhimanue Udayan</span></p>
       <hr style="border:none;border-top:1px solid rgba(167,134,82,0.4);margin:36px 0 20px;"/>
       <p style="font-family:Arial,sans-serif;font-size:12px;color:#8a867f;line-height:1.7;margin:0;">
@@ -83,9 +103,11 @@ function buyerEmailText(name, pageUrl) {
     '',
     'Thank you for your interest in The Survivor. This is to confirm that your private acquisition enquiry has been received.',
     '',
-    'The Survivor is sold and fulfilled by my organisation, Hexagon Know Private Limited. I will forward the banking details so that you can complete the transaction.',
+    'The Survivor is sold and fulfilled by my organisation, Hexagon Know Private Limited. The banking details for completing the transaction are below.',
     '',
-    'As only one piece is available, I kindly request that you initiate the payment at the earliest.',
+    ...BANK_DETAILS.map(([label, value]) => `${label}: ${value}`),
+    '',
+    'As only one piece is available, I kindly request that you initiate the payment at the earliest. Please use your name as the payment reference and reply to this email with the transfer confirmation once initiated.',
     '',
     'With gratitude,',
     'Abhimanue Udayan',
