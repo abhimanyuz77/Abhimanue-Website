@@ -159,6 +159,11 @@
     margin: 0 auto;
     order: -1;
   }
+  /* Study Performance Coaching page: on mobile the hero starts with the
+     text and CTAs; the photo column follows below instead of leading */
+  .spc-hero-content-first .spc-hero-image {
+    order: 0;
+  }
   .spc-hero-image .spc-hero-trust {
     justify-content: center;
   }
