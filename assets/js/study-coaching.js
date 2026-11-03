@@ -114,7 +114,9 @@
   }
 
   /*--------------------------------------------------------------
-    Assessment Popup — shows 3s after the visitor starts scrolling
+    Assessment Popup — shows 3s after the visitor starts scrolling.
+    If the demo video is playing at that moment, the popup waits
+    until the video ends (or is paused) before appearing.
   --------------------------------------------------------------*/
   function initAssessmentPopup() {
     var popup = document.getElementById('spc-assessment-popup');
@@ -128,7 +130,27 @@
     var shown = false;
     var armed = false;
 
+    // video.js replaces the original <video> tag with its player markup,
+    // but a <video> element always remains inside the #demo-video section
+    function getDemoVideoEl() {
+      return document.querySelector('#demo-video video');
+    }
+
+    function isDemoVideoPlaying() {
+      var el = getDemoVideoEl();
+      return !!(el && !el.paused && !el.ended);
+    }
+
     function openPopup() {
+      if (shown) return;
+      if (isDemoVideoPlaying()) {
+        waitForVideoToEnd();
+        return;
+      }
+      showPopup();
+    }
+
+    function showPopup() {
       if (shown) return;
       shown = true;
       popup.classList.add('spc-popup-visible');
@@ -139,6 +161,31 @@
         window.posthog.capture('assessment_popup_shown');
       }
       window.removeEventListener('scroll', onScroll);
+    }
+
+    function waitForVideoToEnd() {
+      var done = false;
+
+      function tryShow() {
+        if (done || shown) return;
+        if (!isDemoVideoPlaying()) {
+          done = true;
+          clearInterval(poll);
+          showPopup();
+        }
+      }
+
+      // Safety net in case the ended/pause events are missed
+      var poll = setInterval(tryShow, 2500);
+
+      // Nudge the check right after the video finishes so the popup
+      // appears promptly instead of on the next poll tick
+      var video = getDemoVideoEl();
+      if (video) {
+        ['ended', 'pause'].forEach(function (evt) {
+          video.addEventListener(evt, function () { setTimeout(tryShow, 1000); });
+        });
+      }
     }
 
     function closePopup() {
