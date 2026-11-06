@@ -2,9 +2,9 @@
   "use strict";
 
   /*--------------------------------------------------------------
-    Geo Pricing — ₹2,000 INR (India) / $20 USD (International),
-    one-time lifetime access. All users are billed in INR on the
-    payment page; the $20 figure is the approximate USD equivalent.
+    Geo Pricing: ₹299/month (India) / ~$4/month (International).
+    All users are billed in INR on the payment page; the $4 figure
+    is the approximate USD equivalent.
   --------------------------------------------------------------*/
   function detectIsIndia() {
     try {
@@ -21,9 +21,9 @@
 
   function applyGeoPricing() {
     var isIndia = detectIsIndia();
-    var price = isIndia ? '2,000' : '20';
+    var price = isIndia ? '299' : '4';
     var currency = isIndia ? '₹' : '$';
-    var note = isIndia ? 'billed in INR' : 'billed as ₹2,000 INR — your card converts automatically';
+    var note = isIndia ? 'billed monthly in INR' : 'billed monthly as ₹299 INR, your card converts automatically';
 
     document.querySelectorAll('[data-asp-price]').forEach(function (el) {
       el.textContent = price;
@@ -35,7 +35,7 @@
       el.textContent = note;
     });
     document.querySelectorAll('[data-asp-submit-label]').forEach(function (el) {
-      el.textContent = 'Get Lifetime Access – ' + currency + price + ' one-time';
+      el.textContent = 'Get Instant Access for ' + currency + price + '/month';
     });
 
     return isIndia;
