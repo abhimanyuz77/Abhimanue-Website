@@ -3134,14 +3134,15 @@ canvas {
   }
 }
 
-/* Hero desktop layout: avatar left, text right */
+/* Hero desktop layout: avatar on top, text centered below */
 @media (min-width: 992px) {
   .st-hero.st-style2 .st-hero-text {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 40px;
-    text-align: left !important;
+    text-align: center !important;
   }
 
   .st-hero.st-style2 .st-hero-text .st-author {
@@ -3159,7 +3160,7 @@ canvas {
   }
 
   .st-hero.st-style2 .st-hero-info .st-hero-social-links {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .st-hero.st-style2 .st-hero-info .st-social-btn:first-child {
