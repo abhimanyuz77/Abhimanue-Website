@@ -3151,6 +3151,7 @@ canvas {
 
   .st-hero.st-style2 .st-hero-info {
     max-width: 520px;
+    text-align: center;
   }
 
   .st-hero.st-style2 .st-hero-info .hero-main-title {
