@@ -3900,3 +3900,26 @@ Blog CTA buttons (high-conversion style)
   0%, 100% { box-shadow: 0 10px 28px rgba(18, 104, 232, 0.35); }
   50% { box-shadow: 0 10px 36px rgba(22, 217, 227, 0.55); }
 }
+
+/*--------------------------------------------------------------
+End-of-post promo banner
+----------------------------------------------------------------*/
+.blog-end-cta {
+  display: block;
+  max-width: 640px;
+  margin: 0 auto;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-end-cta img {
+  width: 100%;
+  display: block;
+}
+
+.blog-end-cta:hover {
+  transform: scale(1.02);
+  box-shadow: 0 14px 34px rgba(18, 104, 232, 0.25);
+}
