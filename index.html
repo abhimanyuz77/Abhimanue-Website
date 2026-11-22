@@ -77,6 +77,11 @@
         person_profiles: 'identified_only',
     })
 </script>
+
+<!-- Book section font (From Zero to Hired) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 </head>
 
 <body id="home">
@@ -319,6 +324,147 @@
   </div>
 </section>
 <!-- End Academies Section -->
+
+<!-- Start Book Section (From Zero to Hired) -->
+<section id="book" class="fzh-book-section">
+  <div class="container">
+    <div class="fzh-book-card">
+      <div class="fzh-book-cover">
+        <a href="from-zero-to-hired.html" aria-label="From Zero to Hired — learn more">
+          <img src="assets/img/Book-Cover.jpg" alt="From Zero to Hired — book cover. The Unconventional Indian Graduate's Guide to Getting a Job, Earning More and Climbing the Economic Ladder" width="1024" height="1536" loading="lazy" decoding="async">
+        </a>
+      </div>
+      <div class="fzh-book-details">
+        <p class="fzh-book-eyebrow"><i class="fas fa-book-open"></i> New Book</p>
+        <h2 class="fzh-book-title">FROM ZERO TO <span>HIRED</span></h2>
+        <p class="fzh-book-subtitle">The Unconventional Indian Graduate's Guide to Getting a Job, Earning More and Climbing the Economic Ladder</p>
+        <p class="fzh-book-quote">"Your Degree Is Just the Beginning. Your Career Starts With What You Do Next."</p>
+        <ul class="fzh-book-features">
+          <li><i class="fas fa-check"></i>Five practical parts — from understanding the job market to a 30-day job hunting challenge</li>
+          <li><i class="fas fa-check"></i>Includes a career toolkit: resume checklist, LinkedIn optimization, application tracker & more</li>
+          <li><i class="fas fa-check"></i>Digital edition — PDF + EPUB, instant delivery</li>
+        </ul>
+        <div class="fzh-book-cta-row">
+          <span class="fzh-book-price">₹99</span>
+          <a href="from-zero-to-hired.html" class="fzh-book-btn">Get Your Copy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Book Section -->
+<style>
+  .fzh-book-section {
+    background: linear-gradient(160deg, #0A1310 0%, #05080A 80%);
+    padding: 90px 0;
+  }
+  .fzh-book-card {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    gap: 48px;
+    align-items: center;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .fzh-book-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px 12px 12px 6px;
+    box-shadow: 18px 24px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    transition: transform 0.4s ease;
+  }
+  .fzh-book-cover:hover img { transform: translateY(-6px); }
+  .fzh-book-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: #34D399;
+    margin: 0 0 14px;
+  }
+  .fzh-book-title {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-size: clamp(1.7rem, 3.6vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: #EDF4F1;
+    margin: 0 0 12px;
+    text-transform: uppercase;
+  }
+  .fzh-book-title span { color: #34D399; }
+  .fzh-book-subtitle {
+    font-size: 0.98rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: rgba(237, 244, 241, 0.75);
+    margin: 0 0 16px;
+  }
+  .fzh-book-quote {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #EDF4F1;
+    border-left: 2px solid #10B981;
+    padding-left: 16px;
+    margin: 0 0 22px;
+  }
+  .fzh-book-features {
+    list-style: none;
+    margin: 0 0 28px;
+    padding: 0;
+  }
+  .fzh-book-features li {
+    display: flex; gap: 12px; align-items: flex-start;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: rgba(237, 244, 241, 0.68);
+    margin-bottom: 10px;
+  }
+  .fzh-book-features li i {
+    color: #10B981;
+    font-size: 0.8rem;
+    margin-top: 5px;
+  }
+  .fzh-book-cta-row {
+    display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+  }
+  .fzh-book-price {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #34D399;
+    line-height: 1;
+  }
+  .fzh-book-btn {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #05080A;
+    background: #10B981;
+    border: 1px solid #10B981;
+    border-radius: 6px;
+    padding: 15px 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.25);
+  }
+  .fzh-book-btn:hover {
+    background: #34D399;
+    border-color: #34D399;
+    transform: translateY(-2px);
+    text-decoration: none;
+    color: #05080A;
+    box-shadow: 0 14px 40px rgba(16, 185, 129, 0.4);
+  }
+  @media (max-width: 768px) {
+    .fzh-book-section { padding: 60px 0; }
+    .fzh-book-card { grid-template-columns: 1fr; gap: 36px; text-align: left; }
+    .fzh-book-cover { max-width: 210px; margin: 0 auto; }
+    .fzh-book-cta-row .fzh-book-btn { width: 100%; text-align: center; }
+  }
+</style>
 
   <!-- Start Resume Section -->
 <section id="resume" class="st-dark-bg">
