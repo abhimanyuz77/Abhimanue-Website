@@ -8,6 +8,9 @@
         → redirect to return_url with payment_status=success + details
 
   Product: From Zero to Hired — Digital Edition (PDF + EPUB) · ₹99 INR
+  After verified payment the buyer is redirected to the LMS claim endpoint:
+  https://api.abhimanue.in/api/v1/books/from-zero-to-hired/claim
+  (see HEXAGONKNOW_BOOK_PAYMENT_SETUP.md §2)
 -->
 <html lang="en">
 <head>
@@ -232,7 +235,7 @@
 
       var API = '/api/abhimanue-book-payment';
       var PRODUCT_ID = 'from-zero-to-hired';
-      var DEFAULT_RETURN_URL = 'https://abhimanue.in/from-zero-to-hired.html';
+      var DEFAULT_RETURN_URL = 'https://api.abhimanue.in/api/v1/books/from-zero-to-hired/claim';
 
       var params = new URLSearchParams(window.location.search);
       var customer = {

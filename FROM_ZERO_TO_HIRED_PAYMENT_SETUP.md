@@ -33,19 +33,23 @@ the payment is completed and verified on `hexagonknow.com`.
 ## Flow
 
 ```
-abhimanue.in/from-zero-to-hired.html         hexagonknow.com                     abhimanue.in
-─────────────────────────────                ────────────────                    ─────────────
+abhimanue.in/from-zero-to-hired.html         hexagonknow.com                     api.abhimanue.in
+─────────────────────────────                ────────────────                    ──────────────────
 1. Buyer clicks "Get Your Copy – ₹99"
    (hero, nav, next-step or pricing CTA)
                                              2. Buyer fills NAME, EMAIL, PHONE
                                              3. Buyer ticks "digital product" checkbox
                                              4. create-order → Razorpay checkout
                                              5. verify-payment (HMAC signature)
-                                             6. Redirect back to return_url
-                                                                                 7. from-zero-to-hired.html loads
-                                                                                    with payment params → shows
-                                                                                    success banner (order ID)
+                                             6. Redirect to LMS claim endpoint
+                                                                                 7. /api/v1/books/from-zero-to-hired/claim
+                                                                                    re-verifies via check-payment,
+                                                                                    issues signed URLs + email
 ```
+
+See `HEXAGONKNOW_BOOK_PAYMENT_SETUP.md` §2 for the `DEFAULT_RETURN_URL` change
+that enables step 6, and `FROM_ZERO_TO_HIRED_FULFILMENT_SETUP.md` for the full
+Django-side specification.
 
 ## Payment Page URL
 
@@ -61,16 +65,17 @@ https://hexagonknow.com/abhimanue-book-payment.html
 | `email`       | No       | Buyer's email                                  | `buyer@example.com`                          |
 | `phone`       | No       | 10–15 digit phone number                       | `919876543210`                               |
 | `customer_id` | No       | Internal ID — passed through & stored          | `INQ_1042`                                   |
-| `return_url`  | No       | Redirect target after verified payment         | `https://abhimanue.in/from-zero-to-hired.html` |
+| `return_url`  | No       | Redirect target after verified payment         | `https://api.abhimanue.in/api/v1/books/from-zero-to-hired/claim` |
 
 \* If `name`, `email` **and** `phone` are all present, the personal-details form
 is hidden and a summary is shown instead. The terms checkbox is always shown.
 
-Default `return_url`: `https://abhimanue.in/from-zero-to-hired.html`
+Default `return_url`: `https://api.abhimanue.in/api/v1/books/from-zero-to-hired/claim`
 
-## Callback Parameters (payment page → abhimanue.in)
+## Callback Parameters (payment page → LMS claim endpoint)
 
-On **verified** success the buyer is redirected to `return_url` with:
+On **verified** success the buyer is redirected to `return_url` (the LMS claim
+endpoint) with:
 
 | Parameter        | Description                                  |
 |------------------|----------------------------------------------|
@@ -82,8 +87,9 @@ On **verified** success the buyer is redirected to `return_url` with:
 | `customer_id`    | Echoed back if sent                          |
 | `name`, `email`, `phone` | Buyer details                        |
 
-The landing page shows a success banner with the buyer's name and order ID, then
-cleans the URL (so a refresh does not re-show it).
+The LMS re-verifies these server-to-server before issuing signed URLs — the
+parameters alone are never trusted. The landing page's success banner remains as
+a fallback if the buyer later revisits `from-zero-to-hired.html?payment_status=success`.
 
 ## Backend API — `/api/abhimanue-book-payment`
 
@@ -116,7 +122,7 @@ auto-deploys `functions/api/*`.
 - [ ] (Optional) Bind `ABHIMANUE_KV` for order logging
 - [ ] Deploy `from-zero-to-hired.html` to abhimanue.in
 - [ ] Add `assets/img/Book-Cover.jpg` book cover (done — 1024×1536)
-- [ ] Test end-to-end: from-zero-to-hired.html → checkout → Razorpay test card → redirect back → success banner
+- [ ] Test end-to-end: from-zero-to-hired.html → checkout → Razorpay test card → LMS claim → signed downloads + email
 - [ ] Confirm the order appears in the Razorpay dashboard with PDF + EPUB notes
 
 ## Test Card (Razorpay test mode)
@@ -125,7 +131,7 @@ auto-deploys `functions/api/*`.
 
 ## Fulfilment
 
-Digital delivery is handled by the **learn.abhimanue.in academy Django backend**
+Digital delivery is handled by the **api.abhimanue.in academy Django backend**
 via time-limited signed download URLs. After a verified payment, the buyer is
 redirected to the LMS claim endpoint, which re-verifies the payment server-to-server
 (using this deployment's `check-payment` action), records the purchase and issues
