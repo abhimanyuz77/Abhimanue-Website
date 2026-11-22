@@ -384,6 +384,59 @@
         if (typeof this.hlsQualitySelector === 'function') {
           this.hlsQualitySelector({ displayCurrentQuality: true });
         }
+        // Default to 1080p (not Auto); fall back to Auto after 15s of buffering
+        (function () {
+          let stallStart = null;
+          let totalStallMs = 0;
+          let watchdog = null;
+          let released = false;
+
+          function releaseToAuto() {
+            if (released) return;
+            released = true;
+            if (watchdog) { clearInterval(watchdog); watchdog = null; }
+            try {
+              const levels = player.qualityLevels();
+              for (let i = 0; i < levels.length; i++) levels[i].enabled = true;
+            } catch (e) {}
+          }
+
+          player.on('loadedmetadata', function () {
+            if (released) return;
+            try {
+              const levels = player.qualityLevels();
+              let has1080 = false;
+              for (let i = 0; i < levels.length; i++) {
+                if (levels[i].height === 1080) { has1080 = true; break; }
+              }
+              if (has1080) {
+                for (let i = 0; i < levels.length; i++) {
+                  levels[i].enabled = levels[i].height === 1080;
+                }
+              }
+            } catch (e) {}
+          });
+
+          player.on('waiting', function () {
+            if (released) return;
+            if (!stallStart) stallStart = Date.now();
+            if (watchdog) return;
+            watchdog = setInterval(function () {
+              if (released) { clearInterval(watchdog); watchdog = null; return; }
+              const currentStall = stallStart ? Date.now() - stallStart : 0;
+              if (totalStallMs + currentStall >= 15000) releaseToAuto();
+            }, 1000);
+          });
+
+          ['playing', 'canplay', 'pause', 'seeked', 'ended'].forEach(function (evt) {
+            player.on(evt, function () {
+              if (stallStart) {
+                totalStallMs += Date.now() - stallStart;
+                stallStart = null;
+              }
+            });
+          });
+        })();
         // Autoplay 1 second after page load; falls back to muted if the browser blocks sound
         setTimeout(function () {
           var playPromise = player.play();

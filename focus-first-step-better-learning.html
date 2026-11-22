@@ -516,6 +516,42 @@
         });
 
         player.on('loadedmetadata', syncAvailableQualities);
+
+        // Fall back to Auto after 15s of accumulated buffering
+        (function () {
+          let stallStart = null;
+          let totalStallMs = 0;
+          let watchdog = null;
+
+          function releaseToAuto() {
+            desiredQuality = 'auto';
+            toggleLabel.textContent = 'Auto';
+            qualityItems.forEach(function (i) { i.classList.toggle('active', i.dataset.quality === 'auto'); });
+            applyQuality();
+          }
+
+          player.on('waiting', function () {
+            if (!stallStart) stallStart = Date.now();
+            if (watchdog) return;
+            watchdog = setInterval(function () {
+              const currentStall = stallStart ? Date.now() - stallStart : 0;
+              if (totalStallMs + currentStall >= 15000) {
+                clearInterval(watchdog);
+                watchdog = null;
+                releaseToAuto();
+              }
+            }, 1000);
+          });
+
+          ['playing', 'canplay', 'pause', 'seeked', 'ended'].forEach(function (evt) {
+            player.on(evt, function () {
+              if (stallStart) {
+                totalStallMs += Date.now() - stallStart;
+                stallStart = null;
+              }
+            });
+          });
+        })();
       });
     });
   </script>
