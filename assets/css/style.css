@@ -569,6 +569,23 @@ hr {
   }
 }
 
+/* Top bar: keep header content edge-to-edge on large screens
+   (prevents the nav being squeezed into a centered 1140px strip
+   on big-resolution displays) */
+@media screen and (min-width: 992px) {
+  .st-main-header .container {
+    max-width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+/* Header logo sizing */
+.st-site-branding img {
+  height: 64px;
+  width: auto;
+}
+
 .st-nav ul {
   margin: 0;
   padding: 0;
